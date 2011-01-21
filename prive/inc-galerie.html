@@ -67,8 +67,8 @@
 	
 	<h2>[(#GRAND_TOTAL|singulier_ou_pluriel{#VAL{medias:un_}|concat{#ENV{media,document}},#VAL{medias:des_}|concat{#ENV{media,document},s}})]</h2>
 	<div class='pagination tri'>
-		[(#TRI{'<',#CHEMIN{img_pack/tri_asc-16.png}|balise_img{<:medias:par_tri_croissant:>}}) |]
-		[(#TRI{'>',#CHEMIN{img_pack/tri_desc-16.png}|balise_img{<:medias:par_tri_decroissant:>}}) |]
+		[(#TRI{'<',#CHEMIN{images/tri_asc-16.png}|balise_img{<:medias:par_tri_croissant:>}}) |]
+		[(#TRI{'>',#CHEMIN{images/tri_desc-16.png}|balise_img{<:medias:par_tri_decroissant:>}}) |]
 		[(#TRI{id_document,<:medias:par_id:>}) |]
 		[(#TRI{date,<:medias:par_date:>}) |]
 		[(#TRI{taille,<:medias:par_taille:>}) |]
