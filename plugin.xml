@@ -1,0 +1,34 @@
+<plugin>
+	<nom>Medias</nom>
+	<auteur>Collectif SPIP</auteur>
+	<version>0.1.0</version>
+	<version_base>0.1.0</version_base>
+	<etat>dev</etat>
+	<description>Gestion des medias de SPIP</description>
+	<install>base/medias.php</install>
+	<fonctions>medias_fonctions.php</fonctions>
+	<prefix>medias</prefix>
+	<pipeline>
+		<nom>declarer_tables_interfaces</nom>
+		<inclure>base/medias.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>declarer_tables_principales</nom>
+		<inclure>base/medias.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>declarer_tables_auxiliaires</nom>
+		<inclure>base/medias.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>post_insertion</nom>
+		<inclure>medias_pipelines.php</inclure>
+	</pipeline>
+
+	<pipeline>
+		<nom>autoriser</nom>
+		<inclure>medias_autoriser.php</inclure>
+	</pipeline>
+	<necessite id="SPIP" version="[2.3.0-dev;]" />
+	<categorie>multimedia</categorie>
+</plugin>
