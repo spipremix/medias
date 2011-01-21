@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2009                                                *
+ *  Copyright (c) 2001-2011                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -13,6 +13,17 @@
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 
+/**
+ * Dissocier un document
+ * $arg fournit les arguments de la fonction dissocier_document
+ * sous la forme
+ * $document-$objet-$id_objet-suppr-safe
+ *
+ * 4eme arg : suppr = true, false sinon
+ * 5eme arg : safe = true, false sinon
+ * 
+ * @return void
+ */
 function action_dissocier_document_dist(){
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
@@ -31,7 +42,19 @@ function action_dissocier_document_dist(){
 		spip_log("Interdit de modifier $objet $id_objet","spip");
 }
 
-// http://doc.spip.org/@supprimer_lien_document
+/**
+ * Supprimer un lien entre un document et un objet
+ *
+ * @param int $id_document
+ * @param string $objet
+ * @param int $id_objet
+ * @param bool $supprime
+ *   si true, le document est supprime si plus lie a aucun objet
+ * @param bool $check
+ *   si true, on verifie les documents references dans le texte de l'objet
+ *   et on les associe si pas deja fait
+ * @return bool
+ */
 function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = false, $check = false) {
 	if (!$id_document = intval($id_document))
 		return false;
@@ -74,6 +97,24 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	}
 }
 
+/**
+ * Dissocier un ou des documents
+ *
+ * @param int|string $document
+ *   id_document a dissocier
+ *   I/image pour dissocier les images en mode Image
+ *   I/document pour dissocier les images en mode document
+ *   D/document pour dissocier les documents non image en mode document
+ * @param  $objet
+ *   objet duquel dissocier
+ * @param  $id_objet
+ *   id_objet duquel dissocier
+ * @param bool $supprime
+ *   supprimer les documents orphelins apres dissociation
+ * @param bool $check
+ *   verifier le texte des documents et relier les documents references dans l'objet
+ * @return void
+ */
 function dissocier_document($document, $objet, $id_objet, $supprime = false, $check = false){
 	if ($id_document=intval($document)) {
 		supprimer_lien_document($id_document, $objet, $id_objet, $supprime, $check);
@@ -96,7 +137,7 @@ function dissocier_document($document, $objet, $id_objet, $supprime = false, $ch
 	// pas tres generique ca ...
 	if ($objet == 'rubrique') {
 		include_spip('inc/rubriques');
-		depublier_branche_rubrique_if($id);
+		depublier_branche_rubrique_if($id_objet);
 	}
 }
 ?>
