@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2009                                                *
+ *  Copyright (c) 2001-2011                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -12,12 +12,17 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
-// Fonction appellee lorsque l'utilisateur clique sur le bouton
-// 'copier en local' (document/portfolio).
-// Il s'agit de la partie logique, c'est a dire que cette fonction
-// realise la copie.
-
-// http://doc.spip.org/@action_copier_local_dist
+/**
+ * Fonction appellee lorsque l'utilisateur clique sur le bouton
+ * 'copier en local' (document/portfolio).
+ * Il s'agit de la partie logique, c'est a dire que cette fonction
+ * realise la copie.
+ *
+ * http://doc.spip.org/@action_copier_local_dist
+ *
+ * @param null $id_document
+ * @return bool|mixed|string
+ */
 function action_copier_local_dist($id_document=null) {
 
 	if (!$id_document){
@@ -37,7 +42,12 @@ function action_copier_local_dist($id_document=null) {
 	}
 }
 
-// http://doc.spip.org/@action_copier_local_post
+/**
+ * http://doc.spip.org/@action_copier_local_post
+ *
+ * @param  $id_document
+ * @return bool|mixed|string
+ */
 function action_copier_local_post($id_document) {
 
 	// Il faut la source du document pour le copier

@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2009                                                *
+ *  Copyright (c) 2001-2011                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -18,6 +18,23 @@ include_spip('inc/ajouter_documents'); // compat core
 include_spip('inc/choisir_mode_document'); // compat core
 include_spip('inc/renseigner_document');
 
+/**
+ * Ajouter des documents
+ *
+ * @param int $id_document
+ *   document a remplacer, ou pour une vignette, l'id_document de maman
+ *   0 ou 'new' pour une insertion
+ * @param  $files
+ *   tableau de taleau de propriete pour chaque document a inserer
+ * @param  $objet
+ *   objet auquel associer le document
+ * @param  $id_objet
+ *   id_objet
+ * @param  $mode
+ *   mode par defaut si pas precise pour le document
+ * @return array
+ *   liste des id_documents inseres
+ */
 function action_ajouter_documents_dist($id_document, $files, $objet, $id_objet, $mode){
 	$ajouter_un_document = charger_fonction('ajouter_un_document','action');
 	$ajoutes = array();
@@ -35,28 +52,27 @@ function action_ajouter_documents_dist($id_document, $files, $objet, $id_objet, 
 
 /**
  * Ajouter un document (au format $_FILES)
- * $id_document,	# document a remplacer, ou pour une vignette, l'id_document de maman
- * $source,	# le fichier sur le serveur (/var/tmp/xyz34)
- * $nom_envoye,	# son nom chez le client (portequoi.pdf)
- * $objet,	# lie a un article, une breve ou une rubrique ?
- * $id_objet,	# identifiant de l'article (ou rubrique) lie
- * $mode,	# 'image' => image en mode image
- *          'vignette' => personnalisee liee a un document
- *          'document' => doc ou image en mode document
- *          'distant' => lien internet
- * $actifs	# les documents dont il faudra ouvrir la boite de dialogue
  *
- * @param unknown_type $id_document
- * @param array $source
- * @param unknown_type $nom_envoye
- * @param unknown_type $objet
- * @param unknown_type $id_objet
- * @param unknown_type $mode
- * @param unknown_type $documents_actifs
- * @param unknown_type $titrer
- * @return unknown
+ * http://doc.spip.org/@ajouter_un_document
+ *
+ * @param int $id_document
+ *   document a remplacer, ou pour une vignette, l'id_document de maman
+ *   0 ou 'new' pour une insertion
+ * @param array $file
+ *   proprietes au format $_FILE etendu :
+ *     strin tmp_name : source sur le serveur
+ *     string name : nom du fichier envoye
+ *     bool titrer : donner ou non un titre a partir du nom du fichier
+ *     bool distant : pour utiliser une source distante sur internet
+ *     string mode : vignette|image|documents|choix
+ * @param string $objet
+ *   objet auquel associer le document
+ * @param int $id_objet
+ *   id_objet
+ * @param string $mode
+ *   mode par defaut si pas precise pour le document
+ * @return array|bool|int|mixed|string|unknown
  */
-// http://doc.spip.org/@ajouter_un_document
 function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet, $mode) {
 	
 	$source = $file['tmp_name'];
@@ -194,7 +210,6 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 }
 
 
-if (!function_exists('corriger_extension')){
 /**
  * Corrige l'extension du fichier dans quelques cas particuliers
  * (a passer dans ecrire/base/typedoc)
@@ -218,7 +233,6 @@ function corriger_extension($ext) {
 			break;
 	}
 	return $ext;
-}
 }
 
 /**
@@ -257,8 +271,6 @@ function verifier_upload_autorise($source){
  * @return array
  */
 function fixer_fichier_upload($file){
-
-
 
 	if (is_array($row=verifier_upload_autorise($file['name']))) {
 		$row['fichier'] = copier_document($row['extension'], $file['name'], $file['tmp_name']);
@@ -307,7 +319,12 @@ function fixer_fichier_upload($file){
 	return false;
 }
 
-
+/**
+ * Verifier si le fichier respecte les contraintes de tailles
+ * 
+ * @param  $infos
+ * @return bool|mixed|string
+ */
 function verifier_taille_document_acceptable($infos){
 	
 	// si ce n'est pas une image

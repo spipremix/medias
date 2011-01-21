@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2009                                                *
+ *  Copyright (c) 2001-2011                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -12,17 +12,47 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
-// http://doc.spip.org/@action_tourner_dist
-function action_tourner_dist() {
-	$securiser_action = charger_fonction('securiser_action', 'inc');
-	$arg = $securiser_action();
+/**
+ * Tourner un document
+ *
+ * http://doc.spip.org/@action_tourner_dist
+ *
+ * lorsque les arguments sont passes dans arg en GET :
+ * id_document-angle
+ *
+ * @param int $id_document
+ * @param int $angle
+ *   angle de rotation en degre>0
+ * @return void
+ */
+function action_tourner_dist($id_document=null, $angle=null) {
+	if (is_null($id_document) OR is_null($angle)){
+		$securiser_action = charger_fonction('securiser_action', 'inc');
+		$arg = $securiser_action();
 
-	if (!preg_match(",^\W*(\d+)\W?(-?\d+)$,", $arg, $r)) {
-		spip_log("action_tourner_dist $arg pas compris");
-	} else  action_tourner_post($r[1],$r[2]);
+		if (!preg_match(",^\W*(\d+)\W?(-?\d+)$,", $arg, $r)) {
+			spip_log("action_tourner_dist $arg pas compris");
+		}
+		else{
+			array_shift($r);
+			list($id_document,$angle) = $r;
+		}
+
+	}
+	if ($id_document AND autoriser('modifier','document',$id_document))
+		action_tourner_post($id_document,$angle);
 }
 
-// http://doc.spip.org/@action_tourner_post
+/**
+ * Tourner un document
+ *
+ * http://doc.spip.org/@action_tourner_post
+ *
+ * @param int $id_document
+ * @param int $angle
+ *   angle de rotation en degre>0
+ * @return
+ */
 function action_tourner_post($id_document,$angle)
 {
 	$row = sql_fetsel("fichier,extension", "spip_documents", "id_document=".intval($id_document));

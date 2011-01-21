@@ -1,11 +1,17 @@
 <?php
-/**
- * Plugin Portfolio/Gestion des documents
- * Licence GPL (c) 2006-2008 Cedric Morin, romy.tetue.net
- *
- */
+
+/***************************************************************************\
+ *  SPIP, Systeme de publication pour l'internet                           *
+ *                                                                         *
+ *  Copyright (c) 2001-2011                                                *
+ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
+ *                                                                         *
+ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
+ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+\***************************************************************************/
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
+
 
 /**
  * Action editer_document
@@ -20,7 +26,7 @@ function action_editer_document_dist() {
 	// Envoi depuis le formulaire de creation d'un document
 	if (!$id_document = intval($arg)) {
 		$id_document = insert_document();
-	} 
+	}
 
 	if ($id_document = intval($id_document)) {
 		document_set($id_document);
@@ -129,6 +135,8 @@ function document_set ($id_document, $c=false) {
 	}
 
 }
+
+
 /**
  * determiner le statut d'un document : prepa/publie
  * si on trouve un element joint sans champ statut ou avec un statut='publie' alors le doc est publie aussi
