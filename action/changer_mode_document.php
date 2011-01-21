@@ -3,14 +3,14 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2011                                                *
+ *  Copyright (c) 2001-2009                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined("_ECRIRE_INC_VERSION")) return;
 
 
 // Cette action permet de basculer du mode image au mode document et vice versa
@@ -23,30 +23,17 @@ function action_changer_mode_document_dist()
 
 	if (!preg_match(",^(\d+)\W(\w+)$,", $arg, $r))
 		spip_log("action_changer_mode_document $arg pas compris");
-	else action_changer_mode_document_post($r);
+	else action_changer_mode_document_post($r[1],$r[2]);
 }
 
 // http://doc.spip.org/@action_changer_mode_document_post
-function action_changer_mode_document_post($r)
+function action_changer_mode_document_post($id_document, $mode)
 {
 	// - id_document le doc a modifier
 	// - mode le mode a lui donner
-	list(, $id_document, $mode) = $r;
 	if ($id_document = intval($id_document)
 	AND in_array($mode, array('vignette', 'image', 'document'))) {
 		sql_updateq('spip_documents', array('mode'=>$mode), 'id_document='.$id_document);
-	}
-	if ($case = _request('afficher_case')){
-		$case = explode('-',$case);
-		list($id,$type,$script) = $case;
-		include_spip('inc/presentation');
-		include_spip('inc/documents');
-		include_spip('inc/actions');
-		// vilain hack pour ne pas recharger un script js
-		affiche_raccourci_doc('doc', $id_document, 'left');
-		// voila
-		ajax_retour(afficher_case_document($id_document, $id, $script, $type, true));
-		exit();
 	}
 }
 ?>

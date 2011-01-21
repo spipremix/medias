@@ -9,6 +9,13 @@
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
+#
+# Fichier obsolete, a supprimer
+#
+#
+#
+#
+#
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 

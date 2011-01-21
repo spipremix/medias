@@ -1,8 +1,9 @@
 <plugin>
 	<nom>Medias</nom>
-	<auteur>Collectif SPIP</auteur>
-	<version>0.1.0</version>
-	<version_base>0.1.0</version_base>
+	<auteur>Collectif SPIP, Cedric Morin &amp; Romy Duhem-Verdiere pour la mediatheque</auteur>
+	<icon>img_pack/portfolio-64.png</icon>
+	<version>1.6.0</version>
+	<version_base>0.10.0</version_base>
 	<etat>dev</etat>
 	<description>Gestion des medias de SPIP</description>
 	<install>base/medias.php</install>
@@ -24,11 +25,41 @@
 		<nom>post_insertion</nom>
 		<inclure>medias_pipelines.php</inclure>
 	</pipeline>
+	<pipeline>
+		<nom>post_edition</nom>
+		<inclure>medias_pipelines.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>affiche_gauche</nom>
+		<inclure>medias_pipelines.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>header_prive</nom>
+		<action>modalbox_insert_head</action>
+		<inclure>modalbox/modalbox_pipelines.php</inclure>
+	</pipeline>
 
 	<pipeline>
 		<nom>autoriser</nom>
 		<inclure>medias_autoriser.php</inclure>
 	</pipeline>
+	<pipeline>
+		<nom>objets_extensibles</nom>
+		<inclure>medias_pipelines.php</inclure>
+	</pipeline>
+	<pipeline><nom>document_desc_actions</nom><action></action></pipeline>
+	<pipeline><nom>editer_document_actions</nom><action></action></pipeline>
+
+	<bouton id='documents' parent='bando_edition'>
+		<titre>medias:documents</titre>
+		<icone>images/portfolio-16.png</icone>
+		<url>portfolio</url>
+	</bouton>
+
+	<chemin dir="" />
+	<chemin dir="squelettes" />
 	<necessite id="SPIP" version="[2.3.0-dev;]" />
+	<utilise id="Z" version="[1.2.1;]" />
+	<utilise id="mediabox" version="[0.5.0;]" />
 	<categorie>multimedia</categorie>
 </plugin>
