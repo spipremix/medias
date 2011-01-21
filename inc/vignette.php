@@ -11,9 +11,19 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-//
-// Vignette pour les documents lies
-//
+/**
+ * Vignette pour les documents lies
+ * rechercher les fichiers d'icone au format png pour l'extension demandee
+ *
+ * on cherche vignettes/ext.png dans le path
+ * prive/vignettes/ext.png
+ *
+ *
+ * @param string $ext
+ * @param bool $size
+ * @param bool $loop
+ * @return array|bool|int|string
+ */
 function inc_vignette_dist($ext, $size=true, $loop = true) {
 
 	if (!$ext)
@@ -24,10 +34,10 @@ function inc_vignette_dist($ext, $size=true, $loop = true) {
 	if (
 	# installation dans un dossier /vignettes personnel, par exemple /squelettes/vignettes
 	!@file_exists($v = find_in_path("vignettes/".$ext.".png"))
-	AND !@file_exists($v = find_in_path("vignettes/".$ext.".gif"))
+	#AND !@file_exists($v = find_in_path("vignettes/".$ext.".gif"))
 	# dans /icones (n'existe plus)
-	AND !@file_exists($v = _DIR_IMG_ICONES . $ext.'.png')
-	AND !@file_exists($v = _DIR_IMG_ICONES . $ext.'.gif')
+	#AND !@file_exists($v = _DIR_IMG_ICONES . $ext.'.png')
+	#AND !@file_exists($v = _DIR_IMG_ICONES . $ext.'.gif')
 	# icones standard
 	AND !@file_exists($v = _DIR_IMG_ICONES_DIST . $ext.'.png')
 	# cas d'une install dans un repertoire "applicatif"...
