@@ -173,20 +173,26 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		// checker les erreurs eventuelles
 		$messages_erreur = array();
 		$nb_docs = 0;
+		$sel = array();
 		foreach ($nouveaux_doc as $doc) {
 			if (!is_numeric($doc))
 				$messages_erreur[] = $doc;
 			else{
 				if (!$ancre)
 					$ancre = $doc;
+				$sel[] = $doc;
 				$nb_docs++;
 			}
 		}
 		if (count($messages_erreur))
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
 		if ($nb_docs){
-			$autoopen = "<script type='text/javascript'>setTimeout(function(){if (window.jQuery) jQuery('#doc$ancre a.editbox').get(0).focus();},30);</script>";
-			$res['message_ok'] = $nb_docs==1? _T('medias:document_installe_succes').$autoopen:_T('medias:nb_documents_installe_succes',array('nb'=>$nb_docs));
+			$sel = "#doc".implode(",#doc",$sel);
+			$js = "if (window.jQuery) jQuery(function(){ajaxReload('portfolio');});";
+			if ($nb_docs==1)
+				$js .= "setTimeout(function(){if (window.jQuery) jQuery('#doc$ancre a.editbox').get(0).focus();},30);";
+			$js = "<script type='text/javascript'>$js</script>";
+			$res['message_ok'] = singulier_ou_pluriel($nb_docs,'medias:document_installe_succes','medias:nb_documents_installe_succes').$js;
 		}
 		if ($ancre)
 			$res['redirect'] = "#doc$ancre";
