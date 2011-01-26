@@ -13,7 +13,7 @@
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 // http://doc.spip.org/@naviguer_doc
-function inc_documenter_objet_dist($id, $type = "article", $script, $flag_editable=true) {
+function inc_documenter_objet_dist($id, $type) {
 	$serveur = '';
 	// avant de documenter un objet, on verifie que ses documents vus sont bien lies !
 	$spip_table_objet = table_objet_sql($type);

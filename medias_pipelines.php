@@ -87,6 +87,22 @@ $GLOBALS['medias_exec_colonne_document'][] = 'articles_edit';
 $GLOBALS['medias_exec_colonne_document'][] = 'breves_edit';
 $GLOBALS['medias_exec_colonne_document'][] = 'rubriques_edit';
 
+/**
+ * Pipeline afficher_complement_objet
+ * afficher le portfolio et ajout de document sur les fiches objet (article, rubrique..)
+ * 
+ * @param  $flux
+ * @return
+ */
+function medias_afficher_complement_objet($flux){
+	if ($type=$flux['args']['type']
+		AND $id=intval($flux['args']['id'])) {
+		$documenter_objet = charger_fonction('documenter_objet','inc');
+		$flux['data'] .= $documenter_objet($id,$type);
+	}
+	return $flux['data'];
+}
+
 function medias_affiche_gauche($flux){
 	if (in_array($flux['args']['exec'],$GLOBALS['medias_exec_colonne_document'])
 		AND $table = preg_replace(",_edit$,","",$flux['args']['exec'])
