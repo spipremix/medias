@@ -143,6 +143,11 @@ function autoriser_document_supprimer($faire, $type, $id, $qui, $opt){
 		OR !$qui['id_auteur']
 		OR !autoriser('ecrire','','',$qui))
 		return false;
+	// si c'est une vignette, se ramener a l'autorisation de son parent
+	if (sql_getfetsel('mode','spip_documents','id_document='.intval($id))=='vignette'){
+		$id_document = sql_getfetsel('id_document','spip_documents','id_vignette='.intval($id));
+	  return !$id_document OR autoriser('modifier','document',$id_document);
+	}
 	if (sql_countsel('spip_documents_liens', 'id_document='.intval($id)))
 		return false;
 
