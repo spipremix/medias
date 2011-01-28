@@ -71,6 +71,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@',
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image',
 	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@',
+	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette',
 	
 	// F
 	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes',

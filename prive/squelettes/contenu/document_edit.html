@@ -1,0 +1,15 @@
+[(#ID_DOCUMENT|interdire_acces)]
+[(#AUTORISER{modifier,document,#ID_DOCUMENT}|interdire_acces)]
+<div class='cadre-formulaire-editer'>
+<div class="entete-formulaire">
+	[(#ENV{redirect}|sinon{#URL_ECRIRE{portfolio}}|icone_verticale{<:icone_retour:>,document,'',left})]
+	[<:medias:info_modifier_document:>
+	<h1>(#INFO_TITRE{document,#ID_DOCUMENT}|sinon{#INFO_FICHIER*{document,#ID_DOCUMENT}})</h1>]
+</div>
+<div class="ajax">
+#FORMULAIRE_EDITER_DOCUMENT{#ID_DOCUMENT,#ENV{parent,''},#ENV{redirect,''},#ENV{lier_trad}}
+</div>
+<div class="ajax">
+#FORMULAIRE_ILLUSTRER_DOCUMENT{#ID_DOCUMENT}
+</div>
+</div>

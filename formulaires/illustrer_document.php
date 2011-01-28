@@ -21,10 +21,11 @@ function formulaires_illustrer_document_charger_dist($id_document){
 	$valeurs['id'] = $id_document;
 	$valeurs['_hidden'] = "<input name='id_document' value='$id_document' type='hidden' />";
 	$valeurs['mode'] = 'vignette'; // pour les id dans le dom
-	$vignette = sql_fetsel('fichier,largeur,hauteur','spip_documents','id_document='.$valeurs['id_vignette']);
+	$vignette = sql_fetsel('fichier,largeur,hauteur,id_document','spip_documents','id_document='.$valeurs['id_vignette']);
 	$valeurs['vignette'] = get_spip_doc($vignette['fichier']);
 	$valeurs['hauteur'] = $vignette['hauteur'];
 	$valeurs['largeur'] = $vignette['largeur'];
+	$valeurs['id_vignette'] = $vignette['id_document'];
 	$valeurs['_pipeline'] = array('editer_contenu_objet',array('type'=>'illustrer_document','id'=>$id_document));
 
 	return $valeurs;
@@ -49,9 +50,10 @@ function formulaires_illustrer_document_traiter_dist($id_document){
 	$res = array('editable'=>true);
 	if (_request('supprimer')){
 		$supprimer_document = charger_fonction('supprimer_document','action');
-		if ($id_vignette)
-			$supprimer_document($id_vignette);
-		$res['message_ok'] = _T('medias:vignette_supprimee');
+		if ($id_vignette AND $supprimer_document($id_vignette))
+			$res['message_ok'] = _T('medias:vignette_supprimee');
+	  else
+		  $res['message_erreur'] = _T('medias:erreur_suppression_vignette');
 	}
 	else {
 		$ajouter_documents = charger_fonction('ajouter_documents', 'action');

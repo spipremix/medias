@@ -136,7 +136,7 @@
 		<td>
 		[(#REM) Utilisation de la galerie en mode portfolio, avec renvoi vers l'edition]
 		[(#GET{editable})
-		[(#AUTORISER{modifier,document,#ID_DOCUMENT})&#91;<a href='#URL_ECRIRE{documents_edit,id_document=#ID_DOCUMENT}'><:bouton_modifier:></a>&#93;]
+		[(#AUTORISER{modifier,document,#ID_DOCUMENT})&#91;<a href='#URL_ECRIRE{document_edit,id_document=#ID_DOCUMENT}'><:bouton_modifier:></a>&#93;]
 		[<span class='supprimer'>(#GET{supprimer}|et{#AUTORISER{supprimer,document,#ID_DOCUMENT}})[(#BOUTON_ACTION{<:medias:bouton_supprimer:>,#URL_ACTION_AUTEUR{supprimer_document,#ID_DOCUMENT,#SELF},ajax})]</span>]
 		]
 		[(#PIPELINE{document_desc_actions,#ARRAY{args,#ARRAY{id_document,#ID_DOCUMENT,position,galerie},data,''}})]

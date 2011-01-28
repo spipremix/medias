@@ -40,9 +40,9 @@
 		  	<label><:medias:label_apercu:></label>
 		  	[(#ENV{apercu}|oui)
 				<div class="tourner">
-					<input class="image" type="image" name="tournerL90" src="#CHEMIN{images/tourner-gauche.gif}" alt="<:medias:tourner_90L:>" />
-					<input class="image" type="image" name="tournerR90" src="#CHEMIN{images/tourner-droite.gif}" alt="<:medias:tourner_90R:>" />
-					<input class="image" type="image" name="tourner180" src="#CHEMIN{images/tourner-180.gif}" alt="<:medias:tourner_180:>" />
+					<input class="image" type="image" name="tournerL90" src="#CHEMIN_IMAGE{tourner-gauche-10.png}" alt="<:medias:tourner_90L:>" />
+					<input class="image" type="image" name="tournerR90" src="#CHEMIN_IMAGE{tourner-droite-10.png}" alt="<:medias:tourner_90R:>" />
+					<input class="image" type="image" name="tourner180" src="#CHEMIN_IMAGE{tourner-180-10.png}" alt="<:medias:tourner_180:>" />
 				</div>
 				[<a href='#ENV{apercu}'>(#ENV{apercu}|image_reduire{300,200})</a>]
 				]
@@ -94,7 +94,7 @@
 	  </ul>
 	  [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 	  <!--extra-->
-	  <p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+	  <p class="boutons"><span class='image_loading'>&nbsp;</span><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
 	</div></form>
 	#INCLURE{fond=formulaires/dateur/inc-dateur}
 	]

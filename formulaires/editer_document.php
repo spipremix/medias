@@ -164,6 +164,9 @@ function formulaires_editer_document_traiter_dist($id_document='new', $id_parent
 	if (!isset($res['message_erreur']))
 		$res['message_ok'] = _L('Votre modification a &eacute;t&eacute; enregistr&eacute;e').$autoclose;
 
+	if ($res['message_ok'])
+		$res['message_ok'].='<script type="text/javascript">if (window.jQuery) ajaxReload("document_infos");</script>';
+
 	return $res;
 }
 
