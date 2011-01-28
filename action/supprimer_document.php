@@ -19,8 +19,10 @@ function action_supprimer_document_dist($id_document=0) {
 		$id_document = $securiser_action();
 	}
 	include_spip('inc/autoriser');
-	if (!autoriser('supprimer','document',$id_document))
+	if (!autoriser('supprimer','document',$id_document)){
+		spip_log("Echec : Suppression document $id_document interdite",_LOG_ERREUR);
 		return false;
+	}
 
 	// si c'etait une vignette, modifier le document source !
 	if ($source = sql_getfetsel('id_document', 'spip_documents', 'id_vignette='.intval($id_document))){
@@ -29,8 +31,10 @@ function action_supprimer_document_dist($id_document=0) {
 	}
 
 	include_spip('inc/documents');
-	if (!$doc = sql_fetsel('*', 'spip_documents', 'id_document='.intval($id_document)))
+	if (!$doc = sql_fetsel('*', 'spip_documents', 'id_document='.intval($id_document))){
+		spip_log("Echec : Suppression document $id_document : le document n'existe pas en base",_LOG_ERREUR);
 		return false;
+	}
 
 	spip_log("Suppression du document $id_document (".$doc['fichier'].")");
 
@@ -42,6 +46,8 @@ function action_supprimer_document_dist($id_document=0) {
 
 	// dereferencer dans la base
 	sql_delete('spip_documents', 'id_document='.intval($id_document));
+	// securite
+	sql_delete('spip_documents_liens', 'id_document='.intval($id_document));
 
 
 	// Supprimer le fichier si le doc est local,
@@ -64,6 +70,7 @@ function action_supprimer_document_dist($id_document=0) {
 			'data' => null
 		)
 	);
+  return true;
 }
 
 ?>
