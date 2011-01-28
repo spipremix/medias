@@ -97,15 +97,17 @@ function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
 	static $m = array();
 
-	// les admins ont le droit de modifier tous les documents
+  if (isset($m[$id]))
+	  return $m[$id];
+  $s = sql_getfetsel("statut", "spip_documents", "id_document=".intval($id));
+	// les admins ont le droit de modifier tous les documents existants
 	if ($qui['statut'] == '0minirezo'
 	AND !$qui['restreint'])
-		return true;
+		return is_string($s)?true:false;
 
 	if (!isset($m[$id])) {
 		// un document non publie peut etre modifie par tout le monde (... ?)
-		if ($s = sql_getfetsel("statut", "spip_documents", "id_document=".intval($id))
-			AND $s!=='publie')
+		if ($s AND $s!=='publie')
 			$m[$id] = true;
 	}
 
