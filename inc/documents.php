@@ -195,9 +195,7 @@ function affiche_raccourci_doc($doc, $id, $align) {
 		$align='center';
 	}
 
-	return
-	  ((++$num > 1) ? "" : http_script('',  "spip_barre.js"))
-		. "\n<div style='text-align: $align'$onclick>&lt;$doc$id$pipe&gt;</div>\n";
+	return "\n<div style='text-align: $align'$onclick>&lt;$doc$id$pipe&gt;</div>\n";
 }
 
 ?>

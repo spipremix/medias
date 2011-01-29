@@ -73,7 +73,9 @@ function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=
 	$valeurs['proposer_ftp'] = ($valeurs['_options_upload_ftp'] or $valeurs['_dir_upload_ftp']);
 	
 	if ($galerie){
-		# colonne documents ou portfolio ?
+		# passer optionnellement une galerie jointe au form
+		# plus utilise nativement, on prefere la mise a jour
+		# apres upload par ajaxReload('documents')
 		$valeurs['_galerie'] = $galerie;
 	}
 	if ($objet AND $id_objet){
@@ -187,17 +189,20 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		if (count($messages_erreur))
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
 		if ($nb_docs){
-			$sel = "#doc".implode(",#doc",$sel);
-			$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents');});";
-			if ($nb_docs==1)
-				$js .= "setTimeout(function(){if (window.jQuery) jQuery('#doc$ancre a.editbox').get(0).focus();},30);";
-			$js = "<script type='text/javascript'>$js</script>";
+			#$sel = "#doc".implode(",#doc",$sel);
 			$res['message_ok'] = singulier_ou_pluriel($nb_docs,'medias:document_installe_succes','medias:nb_documents_installe_succes').$js;
 		}
 		if ($ancre)
 			$res['redirect'] = "#doc$ancre";
 	}
-	
+	if (isset($res['message_ok'])){
+		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents');});";
+		if ($ancre)
+			$js .= "setTimeout(function(){if (window.jQuery) jQuery('#doc$ancre a.editbox').get(0).focus();},900);";
+		$js = "<script type='text/javascript'>$js</script>";
+	  $res['message_ok'] .= $js;
+	}
+
 	return $res;
 }
 

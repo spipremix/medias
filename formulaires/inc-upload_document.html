@@ -1,9 +1,15 @@
 #SET{domid,_#ENV{mode}|concat{'_',#ENV{id,new}}}
+#SET{methode,upload}
+[(#ENV{joindre_mediatheque}|oui)#SET{methode,mediatheque}]
+[(#ENV{joindre_distant}|oui)#SET{methode,distant}]
+[(#ENV{joindre_ftp}|oui)#SET{methode,ftp}]
+
+<div id="defaultsubmit#GET{domid}"></div>
 [
 
 
 (#REM) Formulaire d'upload de fichier
-]<div class='joindre_mode#GET{domid}' id='joindre_upload#GET{domid}'>
+]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={upload}|non)jsnone]' id='joindre_upload#GET{domid}'>
 	<ul>
 		<li class='editer_fichier_upload[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]'>
 			<label for='fichier_upload#GET{domid}'><:info_telecharger:></label>[
@@ -15,10 +21,10 @@
 		<:medias:bouton_download_depuis:>
 		<:medias:bouton_download_local:>
 		[(#ENV{mediatheque,''}|oui)
-		| <a href='#' onclick="if (jQuery('#joindre_media#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_media#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_par_mediatheque:></a>]
+		| <a href='#' onclick="change_methode('mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
 		[(#ENV{proposer_ftp,''}|oui)
-		| <a href='#' onclick="if (jQuery('#joindre_ftp#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_ftp#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_par_ftp:></a>]
-		| <a href='#' onclick="if (jQuery('#joindre_distant#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_distant#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_sur_le_web:></a>
+		| <a href='#' onclick="change_methode('ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
+		| <a href='#' onclick="change_methode('distant');return false;"><:medias:bouton_download_sur_le_web:></a>
 	</div>
 	<p class='boutons'><input class='submit' type="submit" name="joindre_upload" value="<:medias:bouton_upload:>"/></p>
 </div>[
@@ -28,7 +34,7 @@
 
 (#REM) Formulaire pour document dans mediatheque
 ][(#ENV{mediatheque,''}|oui)
-<div class='joindre_mode#GET{domid}' id='joindre_media#GET{domid}'>
+<div class='joindre_mode#GET{domid}[(#GET{methode}|=={mediatheque}|non)jsnone]' id='joindre_mediatheque#GET{domid}'>
 	<ul>
 		<li class='editer_refdoc_joindre[ (#ENV**{erreurs}|table_valeur{refdoc_joindre}|oui)erreur]'>
 			<label for='refdoc_joindre#GET{domid}'><:medias:label_refdoc_joindre:></label>[
@@ -50,11 +56,11 @@
 	</script>
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
-		<a href='#' onclick="if (jQuery('#joindre_upload#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_upload#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_local:></a>
+			<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>
 		| <:medias:bouton_download_par_mediatheque:>
 		[(#ENV{proposer_ftp,''}|oui)
-		| <a href='#' onclick="if (jQuery('#joindre_ftp#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_ftp#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_par_ftp:></a>]
-		| <a href='#' onclick="if (jQuery('#joindre_distant#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_distant#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_sur_le_web:></a>
+		| <a href='#' onclick="change_methode('ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
+		| <a href='#' onclick="change_methode('distant');return false;"><:medias:bouton_download_sur_le_web:></a>
 	</div>
 	<p class='boutons'><input class='submit' type="submit" name="joindre_mediatheque" value="<:medias:bouton_attacher_document:>"/></p>
 </div>
@@ -65,7 +71,7 @@
 
 (#REM) Formulaire pour upload ftp
 ][(#ENV{proposer_ftp,''}|oui)
-<div class='joindre_mode#GET{domid}' id='joindre_ftp#GET{domid}'>
+<div class='joindre_mode#GET{domid}[(#GET{methode}|=={ftp}|non)jsnone]' id='joindre_ftp#GET{domid}'>
 	[
 	<ul>
 		<li class='editer_cheminftp[ (#ENV**{erreurs}|table_valeur{cheminftp}|oui)erreur]'>
@@ -77,21 +83,23 @@
 			</select>
 		</li>
 	</ul>][(#ENV{_dir_upload_ftp}|et{#ENV{_options_upload_ftp}|non}|oui)
-	<div class="infos">
+	<p class="infos">
 	[(#VAL{info_installer_ftp}|_T{#ARRAY{upload,#ENV*{_dir_upload_ftp}}})] #AIDER{ins_upload}
-	</div>
+	</p>
 	]
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
-		<a href='#' onclick="if (jQuery('#joindre_upload#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_upload#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_local:></a>
+		<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>
 		[(#ENV{mediatheque,''}|oui)
-		| <a href='#' onclick="if (jQuery('#joindre_media#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_media#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_par_mediatheque:></a>]
+		| <a href='#' onclick="change_methode('mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
 		| <:medias:bouton_download_par_ftp:>
-		| <a href='#' onclick="if (jQuery('#joindre_distant#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_distant#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_sur_le_web:></a>
+		| <a href='#' onclick="change_methode('distant');return false;"><:medias:bouton_download_sur_le_web:></a>
 	</div>
-	[(#ENV*{_options_upload_ftp}|oui)
-	<p class='boutons'><input class='submit' type="submit" name="joindre_ftp" value="<:bouton_choisir:>"/></p>
-	]
+	<p class='boutons'>
+		[(#ENV*{_options_upload_ftp}|oui)
+		<input class='submit' type="submit" name="joindre_ftp" value="<:bouton_choisir:>"/>
+		]
+	</p>
 </div>
 ][
 
@@ -99,7 +107,7 @@
 
 
 (#REM) Formulaire pour document distant
-]<div class='joindre_mode#GET{domid}' id='joindre_distant#GET{domid}'>
+]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={distant}|non)jsnone]' id='joindre_distant#GET{domid}'>
 	<ul>
 		<li class='editer_url[ (#ENV**{erreurs}|table_valeur{url}|oui)erreur]'>
 			<label for='url#GET{domid}'><:info_referencer_doc_distant:></label>[
@@ -109,11 +117,11 @@
 	</ul>
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
-		<a href='#' onclick="if (jQuery('#joindre_upload#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_upload#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_local:></a>
+			<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>
 		[(#ENV{mediatheque,''}|oui)
-		| <a href='#' onclick="if (jQuery('#joindre_media#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_media#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_par_mediatheque:></a>]
+		| <a href='#' onclick="change_methode('mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
 		[(#ENV{proposer_ftp,''}|oui)
-		| <a href='#' onclick="if (jQuery('#joindre_ftp#GET{domid}').is(':hidden')) {jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');jQuery('#joindre_ftp#GET{domid}').slideDown('fast');}return false;"><:medias:bouton_download_par_ftp:></a>]
+		| <a href='#' onclick="change_methode('ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
 		| <:medias:bouton_download_sur_le_web:>
 	</div>
 	<p class='boutons'><input class='submit' type="submit" name="joindre_distant" value="<:bouton_choisir:>"/></p>
@@ -126,24 +134,14 @@
 ][<ul><li class='fieldset deballer_zip'>(#ENV**{erreurs}|table_valeur{lister_contenu_archive})</li></ul>]
 
 <script type='text/javascript'>/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
-setTimeout(function(){
-if (window.jQuery){
-jQuery(document).ready(function(){
-	[(#ENV{joindre_upload}|oui) 
-	jQuery('.joindre_mode#GET{domid}:not(#joindre_upload#GET{domid})').hide();
-	]
-	[(#ENV{joindre_mediatheque}|oui)
-	jQuery('.joindre_mode#GET{domid}:not(#joindre_media#GET{domid})').hide();
-	]
-	[(#ENV{joindre_distant}|oui)
-	jQuery('.joindre_mode#GET{domid}:not(#joindre_distant#GET{domid})').hide();
-	]
-	[(#ENV{joindre_ftp}|oui)
-	jQuery('.joindre_mode#GET{domid}:not(#joindre_ftp#GET{domid})').hide();
-	]
-	if (jQuery('.joindre_mode#GET{domid}:visible').length>1)
-		jQuery('.joindre_mode#GET{domid}:not(#joindre_upload#GET{domid})').hide();
-});
+function change_methode(methode){
+	var id = "#joindre_"+methode+"#GET{domid}";
+	if (jQuery(id).is(':hidden')) {
+		jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');
+		jQuery(id).slideDown('fast');
+	}
+	// placer en haut du formulaire les boutons submit par defaut correspondant a la methode active
+	jQuery("#defaultsubmit#GET{domid}").html('').append(jQuery(id).find('.boutons').eq(-1).find('input').clone(true));
 }
-},10);
+jQuery(function(){change_methode('#GET{methode}');});
 /*#EVAL{chr(93)}[(#EVAL{chr(93)})]>*/</script>
