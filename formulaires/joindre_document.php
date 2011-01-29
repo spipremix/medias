@@ -156,6 +156,7 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 			document_set($refdoc_joindre,$champs);
 			set_request('refdoc_joindre',''); // vider la saisie
 			$ancre = $refdoc_joindre;
+			$sel[] = $refdoc_joindre;
 			$res['message_ok'] = _T('medias:document_attache_succes');
 		}
 	}
@@ -189,16 +190,20 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		if (count($messages_erreur))
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
 		if ($nb_docs){
-			#$sel = "#doc".implode(",#doc",$sel);
 			$res['message_ok'] = singulier_ou_pluriel($nb_docs,'medias:document_installe_succes','medias:nb_documents_installe_succes').$js;
 		}
 		if ($ancre)
 			$res['redirect'] = "#doc$ancre";
 	}
 	if (isset($res['message_ok'])){
-		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents');});";
+		$callback = "";
 		if ($ancre)
-			$js .= "setTimeout(function(){if (window.jQuery) jQuery('#doc$ancre a.editbox').get(0).focus();},900);";
+			$callback .= "jQuery('#doc$ancre a.editbox').get(0).focus();";
+		if (count($sel)){
+			$sel = "#doc".implode(",#doc",$sel);
+		  $callback .= "jQuery('$sel').addClass('append').animeAppend();";
+		}
+		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents',function(){ $callback });});";
 		$js = "<script type='text/javascript'>$js</script>";
 	  $res['message_ok'] .= $js;
 	}
