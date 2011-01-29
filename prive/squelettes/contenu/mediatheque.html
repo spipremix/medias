@@ -1,0 +1,11 @@
+[(#AUTORISER{administrer,mediatheque}|sinon_interdire_acces)]
+#FORMULAIRE_RECHERCHE_ECRIRE{#URL_ECRIRE{mediatheque}}
+<div class='nettoyeur'></div>
+[(#ENV{editable,' '}|oui)
+<INCLURE{fond=prive/squelettes/inclure/mediatheque-navigation}{media}{ajax}{env}>
+[<script type="text/javascript" src='(#CHEMIN{javascript/jquery.MultiFile.js})'></script>]
+<script type='text/javascript'>
+jQuery.MultiFile();
+onAjaxLoad(function(){jQuery.MultiFile();});
+</script>
+]

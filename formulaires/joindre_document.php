@@ -188,7 +188,7 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
 		if ($nb_docs){
 			$sel = "#doc".implode(",#doc",$sel);
-			$js = "if (window.jQuery) jQuery(function(){ajaxReload('portfolio');});";
+			$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents');});";
 			if ($nb_docs==1)
 				$js .= "setTimeout(function(){if (window.jQuery) jQuery('#doc$ancre a.editbox').get(0).focus();},30);";
 			$js = "<script type='text/javascript'>$js</script>";

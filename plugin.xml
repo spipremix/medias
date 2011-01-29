@@ -57,7 +57,7 @@
 	<bouton id='documents' parent='bando_edition'>
 		<titre>medias:documents</titre>
 		<icone>images/portfolio-16.png</icone>
-		<url>portfolio</url>
+		<url>mediatheque</url>
 	</bouton>
 
 	<chemin dir="" />
