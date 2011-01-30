@@ -9,7 +9,7 @@
 
 
 (#REM) Formulaire d'upload de fichier
-]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={upload}|non)jsnone]' id='joindre_upload#GET{domid}'>
+]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={upload}|non)none-js]' id='joindre_upload#GET{domid}'>
 	<ul>
 		<li class='editer_fichier_upload[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]'>
 			<label for='fichier_upload#GET{domid}'><:info_telecharger:></label>[
@@ -34,7 +34,7 @@
 
 (#REM) Formulaire pour document dans mediatheque
 ][(#ENV{mediatheque,''}|oui)
-<div class='joindre_mode#GET{domid}[(#GET{methode}|=={mediatheque}|non)jsnone]' id='joindre_mediatheque#GET{domid}'>
+<div class='joindre_mode#GET{domid}[(#GET{methode}|=={mediatheque}|non)none-js]' id='joindre_mediatheque#GET{domid}'>
 	<ul>
 		<li class='editer_refdoc_joindre[ (#ENV**{erreurs}|table_valeur{refdoc_joindre}|oui)erreur]'>
 			<label for='refdoc_joindre#GET{domid}'><:medias:label_refdoc_joindre:></label>[
@@ -71,7 +71,7 @@
 
 (#REM) Formulaire pour upload ftp
 ][(#ENV{proposer_ftp,''}|oui)
-<div class='joindre_mode#GET{domid}[(#GET{methode}|=={ftp}|non)jsnone]' id='joindre_ftp#GET{domid}'>
+<div class='joindre_mode#GET{domid}[(#GET{methode}|=={ftp}|non)none-js]' id='joindre_ftp#GET{domid}'>
 	[
 	<ul>
 		<li class='editer_cheminftp[ (#ENV**{erreurs}|table_valeur{cheminftp}|oui)erreur]'>
@@ -107,7 +107,7 @@
 
 
 (#REM) Formulaire pour document distant
-]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={distant}|non)jsnone]' id='joindre_distant#GET{domid}'>
+]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={distant}|non)none-js]' id='joindre_distant#GET{domid}'>
 	<ul>
 		<li class='editer_url[ (#ENV**{erreurs}|table_valeur{url}|oui)erreur]'>
 			<label for='url#GET{domid}'><:info_referencer_doc_distant:></label>[
