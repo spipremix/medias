@@ -134,6 +134,7 @@
 ][<ul><li class='fieldset deballer_zip'>(#ENV**{erreurs}|table_valeur{lister_contenu_archive})</li></ul>]
 
 <script type='text/javascript'>/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
+if (window.jQuery){
 function change_methode(methode){
 	var id = "#joindre_"+methode+"#GET{domid}";
 	if (jQuery(id).is(':hidden')) {
@@ -144,4 +145,5 @@ function change_methode(methode){
 	jQuery("#defaultsubmit#GET{domid}").html('').append(jQuery(id).find('.boutons').eq(-1).find('input').clone(true));
 }
 jQuery(function(){change_methode('#GET{methode}');});
+}
 /*#EVAL{chr(93)}[(#EVAL{chr(93)})]>*/</script>

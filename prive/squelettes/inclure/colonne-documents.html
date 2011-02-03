@@ -10,20 +10,7 @@
 	#MODELE{document_case,id_document=#ID_DOCUMENT,id_objet,objet,ajax}
 </BOUCLE_docslies>
 </div>
-<script type="text/javascript">
-function editbox_init(){
-	jQuery('a.editbox:not(.nobox)')
-	.attr("onclick","").addClass('nobox').click(function(){
-		var casedoc = jQuery(this).parents('div.item').eq(0);
-		jQuery(casedoc).animateLoading();
-		jQuery.modalboxload(parametre_url(jQuery(this).attr('href'),'var_zajax','contenu'),{
-			onClose: function (dialog) {jQuery(casedoc).ajaxReload();}
-		});
-		return false;
-	});
-}
-if (window.jQuery)
-(function($){if(typeof onAjaxLoad == "function") onAjaxLoad(editbox_init);
-	$(editbox_init);
- })(jQuery);
-</script>
+<script type="text/javascript">/*<![CDATA[*/
+var multifile='[(#CHEMIN{javascript/jquery.Multifile.js}|texte_script)]';
+[(#INCLURE{javascript/medias_edit.js}|compacte{js})]
+/*]]>*/</script>

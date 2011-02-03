@@ -2,9 +2,3 @@
 #FORMULAIRE_JOINDRE_DOCUMENT{new,#ENV{id_objet},#ENV{objet}}
 </div>
 <INCLURE{fond=prive/squelettes/inclure/colonne-documents,env,ajax=documents}>
-[<script type="text/javascript" src='(#CHEMIN{javascript/jquery.MultiFile.js})'></script>
-<script type='text/javascript'>
-jQuery.MultiFile();
-onAjaxLoad(function(){jQuery.MultiFile();});
-</script>
-]
