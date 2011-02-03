@@ -14,10 +14,10 @@
 function editbox_init(){
 	jQuery('a.editbox:not(.nobox)')
 	.attr("onclick","").addClass('nobox').click(function(){
-		var casedoc = jQuery(this).parents('div.item.document,div.item.image').eq(0);
-		jQuery(casedoc).animeajax();
-		jQuery.modalboxload(jQuery(this).attr('href'),{
-			onClose: function (dialog) {var a = jQuery(casedoc).find('a.refresh');if (a.length) a.click();}
+		var casedoc = jQuery(this).parents('div.item').eq(0);
+		jQuery(casedoc).animateLoading();
+		jQuery.modalboxload(parametre_url(jQuery(this).attr('href'),'var_zajax','contenu'),{
+			onClose: function (dialog) {jQuery(casedoc).ajaxReload();}
 		});
 		return false;
 	});

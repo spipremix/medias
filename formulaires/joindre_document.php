@@ -201,9 +201,9 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 			$callback .= "jQuery('#doc$ancre a.editbox').get(0).focus();";
 		if (count($sel)){
 			$sel = "#doc".implode(",#doc",$sel);
-		  $callback .= "jQuery('$sel').addClass('append').animeAppend();";
+		  $callback .= "jQuery('$sel').animateAppend();";
 		}
-		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents',function(){ $callback });});";
+		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents',{callback:function(){ $callback }});});";
 		$js = "<script type='text/javascript'>$js</script>";
 	  $res['message_ok'] .= $js;
 	}
@@ -265,7 +265,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 			    $lefichier .
 			    "</option>";
 		}
-	} 
+	}
 
 	$texte = join('', $texte_upload);
 	if (count($texte_upload)>1) {
