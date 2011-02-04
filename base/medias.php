@@ -63,7 +63,7 @@ function medias_declarer_tables_principales($tables_principales) {
 			"taille"	=> "integer",
 			"largeur"	=> "integer",
 			"hauteur"	=> "integer",
-			"mode"	=> "ENUM('vignette', 'image', 'document') DEFAULT 'document' NOT NULL",
+			"mode"	=> "varchar(10) DEFAULT 'document' NOT NULL",
 			"distant"	=> "VARCHAR(3) DEFAULT 'non'",
 			"statut" => "varchar(10) DEFAULT '0' NOT NULL",
 			"credits" => "varchar(255) DEFAULT '' NOT NULL",
@@ -272,6 +272,12 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 			include_spip('base/abstract_sql');
 			sql_alter("TABLE spip_documents CHANGE fichier fichier TEXT NOT NULL DEFAULT ''");
 			ecrire_meta($nom_meta_base_version,$current_version="0.10.0",'non');
+		}
+		if (version_compare($current_version,'0.11.0','<')){
+			// Passage du mode en varchar
+			include_spip('base/abstract_sql');
+			sql_alter("TABLE spip_documents CHANGE mode mode varchar(10) DEFAULT 'document' NOT NULL");
+			ecrire_meta($nom_meta_base_version,$current_version="0.11.0",'non');
 		}
 	}
 	medias_check_statuts();

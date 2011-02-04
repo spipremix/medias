@@ -3,7 +3,7 @@
 	<auteur>Collectif SPIP, Cedric Morin &amp; Romy Duhem-Verdiere pour la mediatheque</auteur>
 	<icon>images/portfolio-64.png</icon>
 	<version>1.6.0</version>
-	<version_base>0.10.0</version_base>
+	<version_base>0.11.0</version_base>
 	<etat>dev</etat>
 	<description>Gestion des medias de SPIP</description>
 	<install>base/medias.php</install>
