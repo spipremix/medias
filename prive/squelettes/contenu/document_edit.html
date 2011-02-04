@@ -1,8 +1,10 @@
 [(#ID_DOCUMENT|sinon_interdire_acces)]
 [(#AUTORISER{modifier,document,#ID_DOCUMENT}|sinon_interdire_acces)]
-<div class='cadre-formulaire-editer'>
+<div class="cadre-formulaire-editer[(#ENV{popin,''}|oui)popin]">
 <div class="entete-formulaire">
+	[(#ENV{popin,''}|non)
 	[(#ENV{redirect}|sinon{#URL_ECRIRE{mediatheque}}|icone_verticale{<:icone_retour:>,document,'',left})]
+	]
 	[<:medias:info_modifier_document:>
 	<h1>(#INFO_TITRE{document,#ID_DOCUMENT}|sinon{#INFO_FICHIER*{document,#ID_DOCUMENT}})</h1>]
 </div>
