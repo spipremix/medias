@@ -198,7 +198,7 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 	if (isset($res['message_ok'])){
 		$callback = "";
 		if ($ancre)
-			$callback .= "jQuery('#doc$ancre a.editbox').get(0).focus();";
+			$callback .= "jQuery('#doc$ancre a.editbox').eq(0).focus();";
 		if (count($sel)){
 			$sel = "#doc".implode(",#doc",$sel);
 		  $callback .= "jQuery('$sel').animateAppend();";

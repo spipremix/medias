@@ -26,7 +26,7 @@
 		<th></th>
 	</thead>
 	<BOUCLE_galerie(DOCUMENTS) {id_rubrique ?}{id_article ?}{id_breve ?}{id_document ?}{recherche ?} {tri id_document,inverse}{media?}{extension?}{distant?}{brise?}{statut==#ENV{statut,.*}}{orphelins?}{titre==(#ENV{sanstitre}|?{'^$','.*'})}{pagination 10}>
-	<tr class="[(#ENV{media}|non)[ media-(#MEDIA)]]">
+	<tr class="[(#ENV{media}|non)[ media-(#MEDIA)]]" id="#ENV{iddoc,media}#ID_DOCUMENT">
 		<td class='infos'>
 		[(#DISTANT|=={oui}|non)#SET{missing,#FICHIER|file_exists|non}]
 		[(#ENV{media}|non|et{#MEDIA|!={file}})[(#CHEMIN{images/media-#MEDIA|concat{-32.png}}|balise_img|inserer_attribut{alt,#VAL{medias:media_#MEDIA}|_T}|inserer_attribut{title,#VAL{medias:media_#MEDIA}|_T})]]
@@ -75,7 +75,7 @@
 		[(#REM) Utilisation de la galerie en mode portfolio, avec renvoi vers l'edition]
 		[(#GET{editable})
 		[(#AUTORISER{modifier,document,#ID_DOCUMENT})&#91;<a href='#URL_ECRIRE{document_edit,id_document=#ID_DOCUMENT}'><:bouton_modifier:></a>&#93;]
-		[<span class='supprimer'>(#GET{supprimer}|et{#AUTORISER{supprimer,document,#ID_DOCUMENT}})[(#BOUTON_ACTION{<:medias:bouton_supprimer:>,#URL_ACTION_AUTEUR{supprimer_document,#ID_DOCUMENT,#SELF},ajax})]</span>]
+		[<span class='supprimer'>(#GET{supprimer}|et{#AUTORISER{supprimer,document,#ID_DOCUMENT}})[(#BOUTON_ACTION{<:medias:bouton_supprimer:>,#URL_ACTION_AUTEUR{supprimer_document,#ID_DOCUMENT,#SELF},ajax,'','',[(function(){jQuery("##ENV{iddoc,media}(#ID_DOCUMENT)").animateRemove();return true;})()]})]</span>]
 		]
 		[(#PIPELINE{document_desc_actions,#ARRAY{args,#ARRAY{id_document,#ID_DOCUMENT,position,galerie},data,''}})]
 		[(#REM) Utilisation de la galerie en mode selecteur, avec un bouton choix qui appelle une fonction js passee en argument]
