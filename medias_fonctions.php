@@ -59,7 +59,7 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
 	// Supprimer les vignettes
 	if (!isset($boucle->modificateur['criteres']['mode'])
 	AND !isset($boucle->modificateur['criteres']['tout'])) {
-		array_unshift($boucle->where,array("'!='", "'$id_table.mode'", "'\\'vignette\\''"));
+		array_unshift($boucle->where,array("'IN'", "'$id_table.mode'", "'(\\'image\\',\\'document\\')'"));
 	}
 
 	// Pour une boucle generique (DOCUMENTS) sans critere de lien, verifier
