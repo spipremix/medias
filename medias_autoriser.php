@@ -39,10 +39,10 @@ function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
 		return false;
 	if (!autoriser('modifier','document',$id,$qui,$options))
 		return false;
-
+	
 	if (!isset($options['document']) OR !$document = $options['document'])
 		$document = sql_fetsel('*','spip_documents','id_document='.intval($id_document));
-
+	
 	// (on ne le propose pas pour les images qu'on sait
 	// lire : gif jpg png), sauf bug, ou document distant
 	if (in_array($document['extension'], array('gif','jpg','png'))
@@ -50,7 +50,7 @@ function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
 		AND $document['largeur']
 		AND $document['distant']!='oui')
 		return false;
-
+	
 	// Donnees sur le type de document
 	$extension = $document['extension'];
 	$type_inclus = sql_getfetsel('inclus','spip_types_documents', "extension=".sql_quote($extension));
@@ -145,13 +145,21 @@ function autoriser_document_supprimer($faire, $type, $id, $qui, $opt){
 		OR !$qui['id_auteur']
 		OR !autoriser('ecrire','','',$qui))
 		return false;
+
+	// ne pas considerer les document parent
+	// (cas des vignettes ou autre document annexe rattache a un document)
+	if (sql_countsel('spip_documents_liens', "objet!='document' AND id_document=".intval($id)))
+		return false;
+
 	// si c'est une vignette, se ramener a l'autorisation de son parent
 	if (sql_getfetsel('mode','spip_documents','id_document='.intval($id))=='vignette'){
 		$id_document = sql_getfetsel('id_document','spip_documents','id_vignette='.intval($id));
-	  return !$id_document OR autoriser('modifier','document',$id_document);
+		return !$id_document OR autoriser('modifier','document',$id_document);
 	}
-	if (sql_countsel('spip_documents_liens', 'id_document='.intval($id)))
-		return false;
+  // si c'est un document annexe, se ramener a l'autorisation de son parent
+	if ($id_document=sql_getfetsel('id_objet','spip_documents_liens',"objet='document' AND id_document=".intval($id))){
+		return autoriser('modifier','document',$id_document);
+	}
 
 	return autoriser('modifier','document',$id,$qui,$opt);
 }
@@ -203,7 +211,7 @@ function autoriser_autoassocierdocument_dist($faire, $type, $id, $qui, $opts) {
 /**
  * Autoriser a nettoyer les orphelins de la base des documents
  * reserve aux admins complets
- * 
+ *
  * @param  $faire
  * @param  $type
  * @param  $id
