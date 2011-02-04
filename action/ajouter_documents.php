@@ -91,7 +91,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	$mode = ((isset($file['mode']) AND $file['mode'])?$file['mode']:$mode);
 
 	include_spip('inc/modifier');
-	if (isset($file['distant']) AND $file['distant'] AND $mode=='vignette') {
+	if (isset($file['distant']) AND $file['distant'] AND !in_array($mode,array('choix','auto','image','document'))) {
 		include_spip('inc/distant');
 		$file['tmp_name'] = _DIR_RACINE . copie_locale($source);
 		$source = $file['tmp_name'];
@@ -146,7 +146,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		$champs = array_merge($champs,$infos);
 
 		// Si mode == 'choix', fixer le mode image/document
-		if ($mode == 'choix' OR !in_array($mode, array('vignette', 'image', 'document'))) {
+		if (in_array($mode,array('choix','auto'))) {
 			$choisir_mode_document = charger_fonction('choisir_mode_document','inc');
 			$mode = $choisir_mode_document($champs, $champs['inclus'] == 'image', $objet);
 		}
@@ -179,7 +179,6 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 
 	include_spip('action/editer_document');
 	// Installer le document dans la base
-	// attention piege semantique : les images s'installent en mode 'vignette'
 	if (!$id_document){
 		$id_document = insert_document();
 		spip_log ("ajout du document ".$file['tmp_name']." ".$file['name']."  (M '$mode' T '$objet' L '$id_objet' D '$id_document')");
@@ -360,15 +359,10 @@ function verifier_taille_document_acceptable($infos){
 							'hauteur_vignette' => $infos['hauteur']))
 				));
 	}
-	
-	// Si on veut uploader une vignette, il faut qu'elle ait ete bien lue
-	if ($infos['mode'] == 'vignette') {
-		if ($infos['inclus'] != 'image')
-			return _T('medias:erreur_format_fichier_image',array('nom'=> $infos['fichier'])); #SVG
 
-		if (!($infos['largeur'] OR $infos['hauteur']))
-			return _T('medias:erreur_upload_vignette',array('nom'=>$infos['fichier']));
-	}
+  // verifier en fonction du mode si une fonction est proposee
+	if ($verifier_document_mode = charger_fonction("verifier_document_mode_".$infos['mode'],"inc",true))
+		return $verifier_document_mode($infos);
 
 	return true;
 }
