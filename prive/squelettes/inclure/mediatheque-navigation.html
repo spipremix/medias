@@ -44,16 +44,6 @@
 <div class='nettoyeur'></div>
 </div>
 
-[(#GET{editable})
-<div class='actions'>
-[(#ENV{brise,0}|oui)
-[(#URL_ACTION_AUTEUR{verifier_documents_brises,'1',#GET{self}}|lien_ou_expose{<:medias:verifier_documents_brises:>,0,ajax})]
-]
-[
-(#INCLURE{fond=prive/squelettes/inclure/ajouter-documents}{env}{ajax})
-]
-</div>]
-
 <B_types>
 <ul class='choix-type'>
 <BOUCLE_types(TYPES_DOCUMENTS){media=#ENV{media,''}}>
@@ -64,4 +54,18 @@
 </ul>
 </B_types>
 
+<div class='nettoyeur'></div>
+#FORMULAIRE_RECHERCHE_ECRIRE{#GET{self},ajax}
+
 <INCLURE{fond=prive/squelettes/inclure/mediatheque-galerie,ajax=documents,env}>
+
+[(#GET{editable})
+<div class='actions'>
+[(#ENV{brise,0}|oui)
+[(#URL_ACTION_AUTEUR{verifier_documents_brises,'1',#GET{self}}|lien_ou_expose{<:medias:verifier_documents_brises:>,0,ajax})]
+]
+[
+(#INCLURE{fond=prive/squelettes/inclure/ajouter-documents}{env}{ajax})
+]
+</div>]
+
