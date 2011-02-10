@@ -84,7 +84,7 @@ function medias_post_edition($flux){
 
 // liste des exec avec la colonne document
 $GLOBALS['medias_exec_colonne_document'][] = 'articles_edit';
-$GLOBALS['medias_exec_colonne_document'][] = 'breves_edit';
+$GLOBALS['medias_exec_colonne_document'][] = 'breve_edit';
 $GLOBALS['medias_exec_colonne_document'][] = 'rubriques_edit';
 
 /**
