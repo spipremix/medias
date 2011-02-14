@@ -83,7 +83,7 @@ function medias_post_edition($flux){
 }
 
 // liste des exec avec la colonne document
-$GLOBALS['medias_exec_colonne_document'][] = 'articles_edit';
+$GLOBALS['medias_exec_colonne_document'][] = 'article_edit';
 $GLOBALS['medias_exec_colonne_document'][] = 'breve_edit';
 $GLOBALS['medias_exec_colonne_document'][] = 'rubriques_edit';
 
@@ -110,7 +110,7 @@ function medias_affiche_gauche($flux){
 		AND $id_table_objet = id_table_objet($type)
 		AND ($id = intval($flux['args'][$id_table_objet]) OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
 	  AND (autoriser('joindredocument',$type,$id))){
-		$flux['data'] .= recuperer_fond('prive/editer/colonne_document',array('objet'=>$type,'id_objet'=>$id));
+		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document',array('objet'=>$type,'id_objet'=>$id));
 	}
 
 	return $flux;
