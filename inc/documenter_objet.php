@@ -25,7 +25,7 @@ function inc_documenter_objet_dist($id, $type) {
 	$marquer_doublons_doc($champs,$id,$type,$id_table_objet,$table_objet,$spip_table_objet, '', $serveur);
 
 	$contexte = array('objet'=>$type,'id_objet'=>$id);
-	return recuperer_fond('prive/contenu/portfolio_document',array_merge($_GET,$contexte));
+	return recuperer_fond('prive/objets/contenu/portfolio_document',array_merge($_GET,$contexte));
 
 
 }
