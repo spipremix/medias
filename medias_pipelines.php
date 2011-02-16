@@ -112,10 +112,6 @@ function medias_affiche_gauche($flux){
 	return $flux;
 }
 
-function medias_objets_extensibles($objets){
-	return array_merge($objets, array('document' => _T('medias:objet_documents')));
-}
-
 function medias_document_desc_actions($flux){
 	return $flux;
 }

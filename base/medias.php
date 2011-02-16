@@ -27,8 +27,6 @@ function medias_declarer_tables_interfaces($interfaces) {
 	$interfaces['exceptions_des_tables']['documents']['mime_type']=array('types_documents', 'mime_type');
 	$interfaces['exceptions_des_tables']['documents']['media']=array('types_documents', 'media');
 	
-	$interfaces['table_titre']['documents']= "titre, fichier AS surnom, '' AS lang";
-	$interfaces['table_date']['documents']='date';
 	$interfaces['table_date']['types_documents']='date';
 
 	// TODO : dynamiser en fonction de la configuration
@@ -133,13 +131,29 @@ function medias_declarer_tables_auxiliaires($tables_auxiliaires) {
  * @return array
  */
 function medias_declarer_tables_objets_surnoms($surnoms) {
-	$surnoms['doc'] = "documents";
-	$surnoms['img'] = "documents";
-	$surnoms['emb'] = "documents";
 	$surnoms['type_document'] = "types_documents"; # hum
 	$surnoms['extension'] = "types_documents"; # hum
 	#$surnoms['type'] = "types_documents"; # a ajouter pour id_table_objet('type')=='extension' ?
 	return $surnoms;
+}
+
+function medias_declarer_tables_objets_sql($tables){
+	$tables['spip_documents'] = array(
+		'table_objet_surnoms'=>array('doc','img','emb'),
+	  'type_surnoms' => array(),
+		'url_voir' => 'document_edit',
+		'url_edit' => 'document_edit',
+		'texte_retour' => 'icone_retour',
+		'texte_objets' => 'medias:objet_documents',
+		'texte_modifier' => 'medias:info_modifier_document',
+		'info_aucun_objet'=> 'medias:aucun_document',
+		'info_1_objet' => 'medias:un_document',
+		'info_nb_objets' => 'medias:des_documents',
+		'titre' => "titre, fichier AS surnom, '' AS lang",
+		'date' => 'date',
+	);
+
+	return $tables;
 }
 
 

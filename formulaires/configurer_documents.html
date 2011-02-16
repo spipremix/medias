@@ -14,7 +14,7 @@
 				<label><:medias:label_activer_document_objets:></label>[
 				<span class='erreur_message'>(#GET{erreurs})</span>
 				]<p class="explication"><:texte_documents_joints_2:></p>
-				#INCLURE{fond=formulaires/inc-choisir-objets,name=#GET{name},selected=#ENV**{#GET{name}}}
+				#INCLURE{fond=formulaires/inc-choisir-objets,name=#GET{name},selected=#ENV**{#GET{name}},exclus=spip_documents}
 			</li>
 			#SET{name,documents_date}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
 			<li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">

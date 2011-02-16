@@ -22,6 +22,10 @@
 		<inclure>base/medias.php</inclure>
 	</pipeline>
 	<pipeline>
+		<nom>declarer_tables_objets_sql</nom>
+		<inclure>base/medias.php</inclure>
+	</pipeline>
+	<pipeline>
 		<nom>post_insertion</nom>
 		<inclure>medias_pipelines.php</inclure>
 	</pipeline>
@@ -46,10 +50,6 @@
 	<pipeline>
 		<nom>autoriser</nom>
 		<inclure>medias_autoriser.php</inclure>
-	</pipeline>
-	<pipeline>
-		<nom>objets_extensibles</nom>
-		<inclure>medias_pipelines.php</inclure>
 	</pipeline>
 	<pipeline><nom>document_desc_actions</nom><action></action></pipeline>
 	<pipeline><nom>editer_document_actions</nom><action></action></pipeline>
