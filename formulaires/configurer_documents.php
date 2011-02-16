@@ -28,7 +28,7 @@ function formulaires_configurer_documents_traiter_dist(){
 	if (!is_null($v=_request($m='documents_date')))
 		ecrire_meta($m, $v=='oui'?'oui':'non');
 	if (!is_null($v=_request($m='documents_objets')))
-		ecrire_meta($m, is_array($v)?impode(',',$v):'');
+		ecrire_meta($m, is_array($v)?implode(',',$v):'');
 
 	$res['message_ok'] = _T('config_info_enregistree');
 	return $res;
