@@ -93,6 +93,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'logo' => 'Logo',
+	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:',
 	'label_refdoc_joindre' => 'Document num&eacute;ro',
 	'label_parents' => 'Ce document est li&eacute; &agrave;',
 	'label_fichier' => 'Fichier',

@@ -14,25 +14,21 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function formulaires_configurer_documents_charger_dist(){
 	foreach(array(
-		"documents_article",
-		"documents_rubrique",
+		"documents_objets",
 		"documents_date",
 		) as $m)
 		$valeurs[$m] = $GLOBALS['meta'][$m];
-
+	$valeurs['documents_objets']=explode(',',$valeurs['documents_objets']);
 	return $valeurs;
 }
 
 
 function formulaires_configurer_documents_traiter_dist(){
 	$res = array('editable'=>true);
-	foreach(array(
-		"documents_article",
-		"documents_rubrique",
-		"documents_date",
-		) as $m)
-		if (!is_null($v=_request($m)))
-			ecrire_meta($m, $v=='oui'?'oui':'non');
+	if (!is_null($v=_request($m='documents_date')))
+		ecrire_meta($m, $v=='oui'?'oui':'non');
+	if (!is_null($v=_request($m='documents_objets')))
+		ecrire_meta($m, is_array($v)?impode(',',$v):'');
 
 	$res['message_ok'] = _T('config_info_enregistree');
 	return $res;

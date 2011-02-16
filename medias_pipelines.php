@@ -42,8 +42,7 @@ function medias_post_insertion($flux){
 }
 
 function medias_configurer_liste_metas($config){
-	$config['documents_article'] = 'non';
-	$config['documents_rubrique'] = 'non';
+	$config['documents_objets'] = '';
 	$config['documents_date'] = 'non';
 	return $config;
 }
@@ -82,21 +81,19 @@ function medias_post_edition($flux){
 	return $flux;
 }
 
-// liste des exec avec la colonne document
-$GLOBALS['medias_exec_colonne_document'][] = 'article_edit';
-$GLOBALS['medias_exec_colonne_document'][] = 'breve_edit';
-$GLOBALS['medias_exec_colonne_document'][] = 'rubriques_edit';
-
 /**
  * Pipeline afficher_complement_objet
- * afficher le portfolio et ajout de document sur les fiches objet (article, rubrique..)
+ * afficher le portfolio et ajout de document sur les fiches objet
+ * sur lesquelles les medias ont ete activees
+ * Pour les articles, on ajoute toujours !
  * 
  * @param  $flux
  * @return
  */
 function medias_afficher_complement_objet($flux){
 	if ($type=$flux['args']['type']
-		AND $id=intval($flux['args']['id'])) {
+		AND $id=intval($flux['args']['id'])
+	  AND (autoriser('joindredocument',$type,$id))) {
 		$documenter_objet = charger_fonction('documenter_objet','inc');
 		$flux['data'] .= $documenter_objet($id,$type);
 	}
@@ -104,8 +101,7 @@ function medias_afficher_complement_objet($flux){
 }
 
 function medias_affiche_gauche($flux){
-	if (in_array($flux['args']['exec'],$GLOBALS['medias_exec_colonne_document'])
-		AND $table = preg_replace(",_edit$,","",$flux['args']['exec'])
+	if ($table = preg_replace(",_edit$,","",$flux['args']['exec'])
 		AND $type = objet_type($table)
 		AND $id_table_objet = id_table_objet($type)
 		AND ($id = intval($flux['args'][$id_table_objet]) OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])

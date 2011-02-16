@@ -279,6 +279,16 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 			sql_alter("TABLE spip_documents CHANGE mode mode varchar(10) DEFAULT 'document' NOT NULL");
 			ecrire_meta($nom_meta_base_version,$current_version="0.11.0",'non');
 		}
+		if (version_compare($current_version,'0.12.0','<')){
+			// generalisation des metas documents_article et documents_rubriques
+			$config = array();
+			if (isset($GLOBALS['meta']['documents_article']) AND $GLOBALS['meta']['documents_article']!=='non')
+				$config[] = 'spip_articles';
+			if (isset($GLOBALS['meta']['documents_rubrique']) AND $GLOBALS['meta']['documents_rubrique']!=='non')
+				$config[] = 'spip_rubriques';
+			ecrire_meta('documents_objets',implode(',',$config));
+			ecrire_meta($nom_meta_base_version,$current_version="0.12.0",'non');
+		}
 	}
 	medias_check_statuts();
 }

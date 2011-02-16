@@ -67,18 +67,29 @@ function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
 		return true;
 }
 
-// On ne peut joindre un document qu'a un article qu'on a le droit d'editer
-// mais il faut prevoir le cas d'une *creation* par un redacteur, qui correspond
-// au hack id_article = 0-id_auteur
-// http://doc.spip.org/@autoriser_joindredocument_dist
+/**
+ * On ne peut joindre un document qu'a un objet qu'on a le droit d'editer
+ * mais il faut prevoir le cas d'une *creation* par un redacteur, qui correspond
+ * au hack id_objet = 0-id_auteur
+ * Il faut aussi que les documents aient ete actives sur les objets concernes
+ * ou que ce soit un article, sur lequel on peut toujours uploader des images
+ *
+ * http://doc.spip.org/@autoriser_joindredocument_dist
+ *
+ * @return bool
+ */
 function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 	return
-		autoriser('modifier', $type, $id, $qui, $opt)
-		OR (
-			$type == 'article'
-			AND $id<0
-			AND abs($id) == $qui['id_auteur']
-			AND autoriser('ecrire', $type, $id, $qui, $opt)
+		(autoriser('modifier', $type, $id, $qui, $opt)
+			OR (
+				$id<0
+				AND abs($id) == $qui['id_auteur']
+				AND autoriser('ecrire', $type, $id, $qui, $opt)
+			)
+		)
+		AND
+		(
+			$type=='article' OR in_array(table_objet_sql($type),explode(',',$GLOBALS['meta']['documents_objets']))
 		);
 }
 
