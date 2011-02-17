@@ -155,6 +155,7 @@ function medias_declarer_tables_objets_sql($tables){
 		'rechercher_champs' => array(
 			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
 		),
+		'champs_versionnes' => array('id_vignette', 'titre', 'descriptif', 'hauteur', 'largeur', 'mode','distant'),
 	);
 
 	// recherche jointe sur les documents pour les articles et rubriques
