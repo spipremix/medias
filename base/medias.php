@@ -151,8 +151,14 @@ function medias_declarer_tables_objets_sql($tables){
 		'info_nb_objets' => 'medias:des_documents',
 		'titre' => "titre, fichier AS surnom, '' AS lang",
 		'date' => 'date',
+		'rechercher_champs' => array(
+			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
+		),
 	);
 
+	// recherche jointe sur les documents pour les articles et rubriques
+	$tables['spip_articles']['rechercher_jointures']['document'] = array('titre' => 2, 'descriptif' => 1);
+	$tables['spip_rubriques']['rechercher_jointures']['document'] = array('titre' => 2, 'descriptif' => 1);
 	return $tables;
 }
 
