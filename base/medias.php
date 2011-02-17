@@ -143,6 +143,7 @@ function medias_declarer_tables_objets_sql($tables){
 	  'type_surnoms' => array(),
 		'url_voir' => 'document_edit',
 		'url_edit' => 'document_edit',
+		'page'=>'',
 		'texte_retour' => 'icone_retour',
 		'texte_objets' => 'medias:objet_documents',
 		'texte_modifier' => 'medias:info_modifier_document',
