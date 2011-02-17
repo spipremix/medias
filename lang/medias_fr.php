@@ -111,7 +111,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// O
 	'objet_documents'=>'Documents',
-	
+	'objet_document'=>'Document',
+
 	// P
 	'par_id' => 'ID',
 	'par_date' => 'Date',

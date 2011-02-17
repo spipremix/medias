@@ -146,6 +146,7 @@ function medias_declarer_tables_objets_sql($tables){
 		'page'=>'',
 		'texte_retour' => 'icone_retour',
 		'texte_objets' => 'medias:objet_documents',
+		'texte_objet' => 'medias:objet_document',
 		'texte_modifier' => 'medias:info_modifier_document',
 		'info_aucun_objet'=> 'medias:aucun_document',
 		'info_1_objet' => 'medias:un_document',
