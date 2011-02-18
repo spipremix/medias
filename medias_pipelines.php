@@ -101,11 +101,12 @@ function medias_afficher_complement_objet($flux){
 }
 
 function medias_affiche_gauche($flux){
-	if ($table = preg_replace(",_edit$,","",$flux['args']['exec'])
-		AND $type = objet_type($table)
-		AND $id_table_objet = id_table_objet($type)
+	if ($en_cours = trouver_objet_exec($flux['args']['exec'])
+		AND $en_cours['edition'] // page edition uniquement
+		AND $type = $en_cours['type']
+		AND $id_table_objet = $en_cours['id_table_objet']
 		AND ($id = intval($flux['args'][$id_table_objet]) OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
-	  AND (autoriser('joindredocument',$type,$id))){
+	  AND autoriser('joindredocument',$type,$id)){
 		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document',array('objet'=>$type,'id_objet'=>$id));
 	}
 
