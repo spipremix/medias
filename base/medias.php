@@ -151,7 +151,7 @@ function medias_declarer_tables_objets_sql($tables){
 		'info_aucun_objet'=> 'medias:aucun_document',
 		'info_1_objet' => 'medias:un_document',
 		'info_nb_objets' => 'medias:des_documents',
-		'titre' => "titre, fichier AS surnom, '' AS lang",
+		'titre' => "CASE WHEN length(titre)>0 THEN titre ELSE fichier END as titre, '' AS lang",
 		'date' => 'date',
 		'rechercher_champs' => array(
 			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
