@@ -1,9 +1,8 @@
-#SET{editable,#ENV{editable,oui}|=={non}|non}
-
+#SET{editable,#ENV{editable,' '}|oui}
 <div class="galerie[ media-(#ENV{media,''})]">
 	<B_galerie>
 	
-	<h2>[(#GRAND_TOTAL|singulier_ou_pluriel{#VAL{medias:un_}|concat{#ENV{media,document}},#VAL{medias:des_}|concat{#ENV{media,document},s}})]</h2>
+	<h3>[(#GRAND_TOTAL|singulier_ou_pluriel{#VAL{medias:un_}|concat{#ENV{media,document}},#VAL{medias:des_}|concat{#ENV{media,document},s}})]</h3>
 	<div class='pagination tri'>
 		[(#TRI{'<',#CHEMIN{images/tri_asc-16.png}|balise_img{<:medias:par_tri_croissant:>}}) |]
 		[(#TRI{'>',#CHEMIN{images/tri_desc-16.png}|balise_img{<:medias:par_tri_decroissant:>}}) |]
@@ -42,10 +41,10 @@
 		<td class="logo">
 		#SET{fichier,#DISTANT|=={oui}|?{#FICHIER,#FICHIER|basename}}
 		[(#MEDIA|=={image}|oui)[
-			<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#GET{fichier})"]>(#LOGO_DOCUMENT{apercu,250,100}|inserer_attribut{alt,[(#TITRE|couper{60}|texte_backend)]})</a>
+			(#LOGO_DOCUMENT{apercu,200,100}|inserer_attribut{alt,[(#TITRE|couper{60}|texte_backend)]})
 		]]
 		[(#MEDIA|=={image}|non)[<div class="#EDIT{vignette} resize-250">
-			<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#GET{fichier})"]>(#LOGO_DOCUMENT{auto,250,100}|inserer_attribut{alt,[(#TITRE|couper{60}|texte_backend)]})</a>
+			(#LOGO_DOCUMENT{auto,200,100}|inserer_attribut{alt,[(#TITRE|couper{60}|texte_backend)]})
 		</div>]]
 		<div class="fichier">#GET{fichier}</div>
 		</td>
@@ -59,7 +58,7 @@
 			<a href='#' onclick="jQuery(this).next().show();$(this).hide();return false;">[(#TOTAL_BOUCLE|singulier_ou_pluriel{medias:une_utilisation,medias:des_utilisations})]</a><div style='display: none;'>
 			]
 			<BOUCLE_liens(documents_liens){id_document}{'<br />'}>
-			[(#ID_OBJET|lien_objet{#OBJET})]
+			[(#ID_OBJET|lien_objet{#OBJET}|inserer_attribut{target,_blank})]
 			</BOUCLE_liens>
 			[(#TOTAL_BOUCLE|>{1}|oui)</div>]
 			</B_liens>
@@ -70,23 +69,14 @@
 			[<p class="credits #EDIT{credits}">(#CREDITS)</p>]
 		</td>
 		<td>
-		[(#REM) Utilisation de la galerie en mode portfolio, avec renvoi vers l'edition]
-		[(#GET{editable})
-		[(#AUTORISER{modifier,document,#ID_DOCUMENT})&#91;<a href='#URL_ECRIRE{document_edit,id_document=#ID_DOCUMENT}'><:bouton_modifier:></a>&#93;]
-		[<span class='supprimer'>(#AUTORISER{supprimer,document,#ID_DOCUMENT})[(#BOUTON_ACTION{<:medias:bouton_supprimer:>,#URL_ACTION_AUTEUR{supprimer_document,#ID_DOCUMENT,#SELF},ajax,'','',[(function(){jQuery("##ENV{iddoc,media}(#ID_DOCUMENT)").animateRemove();return true;})()]})]</span>]
-		]
-		[(#PIPELINE{document_desc_actions,#ARRAY{args,#ARRAY{id_document,#ID_DOCUMENT,position,galerie},data,''}})]
+		[(#REM) Utilisation de la galerie en mode selecteur, avec un bouton choix qui appelle une fonction js passee en argument]
+		[<span class="choisir"><input type="submit" onclick="(#ENV{selectfunc,''})([(#ID_DOCUMENT)]);return false;" value="<:bouton_choisir|attribut_html:>" /></span>]
 		</td>
 	</tr>
 	</BOUCLE_galerie>
 	</table>
 	[<p class="pagination">(#PAGINATION{prive})</p>]
-	#SET{nb_orphelins,#GRAND_TOTAL}
 	</B_galerie>
-	<h2>[(#VAL{medias:aucun_}|concat{#ENV{media,document}}|_T)]</h2>
+	<h3>[(#VAL{medias:aucun_}|concat{#ENV{media,document}}|_T)]</h3>
 	<//B_galerie>
-	[(#ENV{orphelins}|et{#AUTORISER{supprimer,orphelins,'',#SESSION{id_auteur}}})
-	[(#INCLURE{fond=prive/squelettes/inclure/bouton-supprimer-orphelins,env,nb_orphelins=#GET{nb_orphelins}})]
-	]
-	</B_docs_supprimables>
 </div><!--#galerie-->

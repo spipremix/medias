@@ -40,20 +40,14 @@
 			<label for='refdoc_joindre#GET{domid}'><:medias:label_refdoc_joindre:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{refdoc_joindre})</span>
 			]<input class='text' type="text" name="refdoc_joindre" value='#ENV{refdoc_joindre}' id="refdoc_joindre#GET{domid}"/>
+			<input class='submit' type="button" name="parcourir" value="<:medias:bouton_parcourir:>"
+				onclick="jQuery.modalboxload('#URL_ECRIRE{popin-choisir_document,var_zajax=contenu&selectfunc=mediaselect#GET{domid}}',{autoResize: true});"
+			/>
 		</li>
 	</ul>
-	<p class='boutons'><input class='submit' type="button" name="parcourir" value="<:medias:bouton_parcourir:>"
-		onclick="jQuery.modalboxload(
-			'#URL_ECRIRE{portfolio,selectfunc=mediaselect#GET{domid}}',
-			{autoResize: true}
-		);"
-	/></p>
-	<script type="text/javascript">
-		function mediaselect#GET{domid}(id){
-			jQuery.modalboxclose();
-			jQuery("#refdoc_joindre#GET{domid}").attr('value','doc'+id).focus();
-		};
-	</script>
+	<script type="text/javascript">/*<!\[CDATA\[*/
+	function mediaselect#GET{domid}(id){jQuery.modalboxclose();jQuery("#refdoc_joindre#GET{domid}").attr('value','doc'+id).focus();jQuery('#joindre_mediatheque#GET{domid}>.boutons input').get(0).click();}
+	/*\]\]>*/</script>
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
 			<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>

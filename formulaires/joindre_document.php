@@ -59,7 +59,7 @@ function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=
 	 //AND !$vignette_de_doc		# pas pour une vignette (NB: la ligne precedente suffit, mais si on la supprime il faut conserver ce test-ci)
 	 AND $GLOBALS['flag_upload']
 	 ) {
-		include_spip('inc/actions');
+		include_spip('inc/documents');
 		if ($dir = determine_upload('documents')) {
 			// quels sont les docs accessibles en ftp ?
 			$valeurs['_options_upload_ftp'] = joindre_options_upload_ftp($dir, $mode);

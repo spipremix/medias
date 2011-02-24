@@ -1,6 +1,6 @@
 #SET{self,#SELF|parametre_url{debut_galerie,''}}
 #SET{self,#GET{self}|parametre_url{extension,''}}
-#SET{editable,#ENV{editable,' '}|oui}
+#SET{editable,#ENV{editable,oui}|=={non}|non}
 
 <div class='onglets_simple'>
 <ul class='medias'>
@@ -11,14 +11,14 @@
 	<//B_comptem>
 </BOUCLE_medias>
 </ul>
-<div class='nettoyeur'></div>
+<div class="nettoyeur"></div>
 </div>
 
 [(#ENV{id_document}|oui)
 <a class='annule_filtre' href='[(#GET{self}|parametre_url{id_document,''})]' title="<:medias:tout_voir|attribut_html:>">[(#CHEMIN{images/annuler-recherche.png}|balise_img|inserer_attribut{alt,<:medias:tout_voir:>})]</a>
 ]
 
-<div class='onglets_simple second'>
+<div class='onglets_simple second clearfix'>
 <ul class='statut'>
 [<li class='first'>(#GET{self}|parametre_url{statut,''}|lien_ou_expose{<:medias:documents_tous:>,#ENV{statut,.*}|=={.*},ajax})</li>]
 [<li>(#GET{self}|parametre_url{statut,publie}|lien_ou_expose{<:medias:documents_publies:>,#ENV{statut}|=={publie},ajax})</li>]
@@ -41,7 +41,6 @@
 [<li class='first'>(#GET{self}|parametre_url{sanstitre,''}|lien_ou_expose{<:medias:documents_tous:>,#ENV{sanstitre,''}|=={''},ajax})</li>]
 [<li>(#GET{self}|parametre_url{sanstitre,'1'}|lien_ou_expose{<:info_sans_titre:>,#ENV{sanstitre,''}|=={'1'},ajax})</li>]
 </ul>
-<div class='nettoyeur'></div>
 </div>
 
 <B_types>
@@ -57,7 +56,7 @@
 <div class='nettoyeur'></div>
 #FORMULAIRE_RECHERCHE_ECRIRE{#GET{self},ajax}
 
-<INCLURE{fond=prive/squelettes/inclure/mediatheque-galerie,ajax=documents,env}>
+<INCLURE{fond=#ENV{galerie,prive/squelettes/inclure/mediatheque-galerie},ajax=documents,env}>
 
 <div class='nettoyeur'></div>
 [(#GET{editable})
