@@ -29,13 +29,6 @@ function medias_declarer_tables_interfaces($interfaces) {
 	
 	$interfaces['table_date']['types_documents']='date';
 
-	// TODO : dynamiser en fonction de la configuration
-	$interfaces['tables_jointures']['spip_articles'][]= 'documents_liens';
-	$interfaces['tables_jointures']['spip_documents'][]= 'documents_liens';
-	$interfaces['tables_jointures']['spip_documents'][]= 'types_documents';
-
-	$interfaces['tables_jointures']['spip_rubriques'][]= 'documents_liens';
-
 	$interfaces['table_des_traitements']['FICHIER']['documents']= 'get_spip_doc(%s)';
 
 	return $interfaces;
@@ -49,34 +42,6 @@ function medias_declarer_tables_interfaces($interfaces) {
  * @return array
  */
 function medias_declarer_tables_principales($tables_principales) {
-
-	$spip_documents = array(
-			"id_document"	=> "bigint(21) NOT NULL",
-			"id_vignette"	=> "bigint(21) DEFAULT '0' NOT NULL",
-			"extension"	=> "VARCHAR(10) DEFAULT '' NOT NULL",
-			"titre"	=> "text DEFAULT '' NOT NULL",
-			"date"	=> "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
-			"descriptif"	=> "text DEFAULT '' NOT NULL",
-			"fichier"	=> "text NOT NULL DEFAULT ''",
-			"taille"	=> "integer",
-			"largeur"	=> "integer",
-			"hauteur"	=> "integer",
-			"mode"	=> "varchar(10) DEFAULT 'document' NOT NULL",
-			"distant"	=> "VARCHAR(3) DEFAULT 'non'",
-			"statut" => "varchar(10) DEFAULT '0' NOT NULL",
-			"credits" => "varchar(255) DEFAULT '' NOT NULL",
-			"date_publication" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
-			"brise" => "tinyint DEFAULT 0",
-			"maj"	=> "TIMESTAMP");
-
-	$spip_documents_key = array(
-			"PRIMARY KEY"	=> "id_document",
-			"KEY id_vignette"	=> "id_vignette",
-			"KEY mode"	=> "mode",
-			"KEY extension"	=> "extension");
-	$spip_documents_join = array(
-			"id_document"=>"id_document",
-			"extension"=>"extension");
 
 	$spip_types_documents = array(
 			"extension"	=> "varchar(10) DEFAULT '' NOT NULL",
@@ -92,8 +57,6 @@ function medias_declarer_tables_principales($tables_principales) {
 			"PRIMARY KEY"	=> "extension",
 			"KEY inclus"	=> "inclus");
 
-	$tables_principales['spip_documents'] =
-		array('field' => &$spip_documents,  'key' => &$spip_documents_key, 'join' => &$spip_documents_join);
 	$tables_principales['spip_types_documents']	=
 		array('field' => &$spip_types_documents, 'key' => &$spip_types_documents_key);
 
@@ -153,11 +116,44 @@ function medias_declarer_tables_objets_sql($tables){
 		'info_nb_objets' => 'medias:des_documents',
 		'titre' => "CASE WHEN length(titre)>0 THEN titre ELSE fichier END as titre, '' AS lang",
 		'date' => 'date',
+		'field' => array(
+			"id_document"	=> "bigint(21) NOT NULL",
+			"id_vignette"	=> "bigint(21) DEFAULT '0' NOT NULL",
+			"extension"	=> "VARCHAR(10) DEFAULT '' NOT NULL",
+			"titre"	=> "text DEFAULT '' NOT NULL",
+			"date"	=> "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
+			"descriptif"	=> "text DEFAULT '' NOT NULL",
+			"fichier"	=> "text NOT NULL DEFAULT ''",
+			"taille"	=> "integer",
+			"largeur"	=> "integer",
+			"hauteur"	=> "integer",
+			"mode"	=> "varchar(10) DEFAULT 'document' NOT NULL",
+			"distant"	=> "VARCHAR(3) DEFAULT 'non'",
+			"statut" => "varchar(10) DEFAULT '0' NOT NULL",
+			"credits" => "varchar(255) DEFAULT '' NOT NULL",
+			"date_publication" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
+			"brise" => "tinyint DEFAULT 0",
+			"maj"	=> "TIMESTAMP"
+		),
+		'key' => array(
+			"PRIMARY KEY"	=> "id_document",
+			"KEY id_vignette"	=> "id_vignette",
+			"KEY mode"	=> "mode",
+			"KEY extension"	=> "extension"
+		),
+		'join' => array(
+			"id_document"=>"id_document",
+			"extension"=>"extension"
+		),
+		'tables_jointures' => array('types_documents'),
 		'rechercher_champs' => array(
 			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
 		),
 		'champs_versionnes' => array('id_vignette', 'titre', 'descriptif', 'hauteur', 'largeur', 'mode','distant'),
 	);
+
+	// jointures sur les forum pour tous les objets
+	$tables[]['tables_jointures'][]= 'documents_liens';
 
 	// recherche jointe sur les documents pour les articles et rubriques
 	$tables['spip_articles']['rechercher_jointures']['document'] = array('titre' => 2, 'descriptif' => 1);
