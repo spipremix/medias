@@ -77,21 +77,27 @@ function insert_document() {
 
 /**
  * Enregistre une revision de document.
- * $c est un contenu (par defaut on prend le contenu via _request())
+ * $set est un contenu (par defaut on prend le contenu via _request())
  *
  * @param int $id_document
- * @param array $c
+ * @param array $set
  */
-function document_set ($id_document, $c=false) {
+function document_set ($id_document, $set=false) {
 
+	include_spip('inc/modifier');
 	// champs normaux
-	$champs = array();
-	foreach (array(
-		'titre', 'descriptif', 'date', 'taille', 'largeur','hauteur','mode','credits',
-		'fichier','distant','extension', 'id_vignette',
-	  ) as $champ)
-		if (($a = _request($champ,$c)) !== null)
-			$champs[$champ] = $a;
+	$champs = collecter_requests(
+		// white list
+		array(
+		 'titre', 'descriptif', 'date', 'taille', 'largeur','hauteur','mode','credits',
+		 'fichier','distant','extension', 'id_vignette',
+		),
+		// black list
+		array('parents', 'ajout_parents'),
+		// donnees eventuellement fournies
+		$set
+	);
+
 
 	// Si le document est publie, invalider les caches et demander sa reindexation
 	$t = sql_getfetsel("statut", "spip_documents", 'id_document='.intval($id_document));
@@ -106,7 +112,6 @@ function document_set ($id_document, $c=false) {
 		$ancien_fichier = sql_getfetsel('fichier','spip_documents','id_document='.intval($id_document));
 	}
 
-	include_spip('inc/modifier');
 	modifier_contenu('document', $id_document,
 		array(
 			'invalideur' => $invalideur,
@@ -123,7 +128,8 @@ function document_set ($id_document, $c=false) {
 
 	// Changer le statut du document ?
 	// le statut n'est jamais fixe manuellement mais decoule de celui des objets lies
-	if(instituer_document($id_document,array('parents'=>_request('parents',$c),'ajout_parents'=>_request('ajout_parents',$c)))) {
+	$champs = collecter_requests(array('parents','ajouts_parents'),array(),$set);
+	if(instituer_document($id_document,$champs)) {
 
 		//
 		// Post-modifications
