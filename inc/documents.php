@@ -188,9 +188,7 @@ function affiche_raccourci_doc($doc, $id, $align) {
 
 	if ($align) {
 		$pipe = "|$align";
-
-		if ($GLOBALS['browser_barre'])
-			$onclick = "\nondblclick=\"barre_inserer('\\x3C$doc$id$pipe&gt;', $('textarea[name=texte]')[0]);\"\ntitle=\"". str_replace('&amp;', '&', entites_html(_T('double_clic_inserer_doc')))."\"";
+		$onclick = "\nondblclick=\"barre_inserer('\\x3C$doc$id$pipe&gt;', $('textarea[name=texte]')[0]);\"\ntitle=\"". str_replace('&amp;', '&', entites_html(_T('double_clic_inserer_doc')))."\"";
 	} else {
 		$align='center';
 	}
