@@ -17,7 +17,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * Dissocier un document
  * $arg fournit les arguments de la fonction dissocier_document
  * sous la forme
- * $document-$objet-$id_objet-suppr-safe
+ * $id_objet-$objet-$document-suppr-safe
  *
  * 4eme arg : suppr = true, false sinon
  * 5eme arg : safe = true, false sinon
@@ -28,9 +28,17 @@ function action_dissocier_document_dist(){
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
 
-	$arg = explode('-',$arg);
+	// attention au cas ou id_objet est negatif !
+	if (strncmp($arg,'-',1)==0){
+		$arg = explode('-',substr($arg,1));
+		list($id_objet, $objet, $document) = $arg;
+		$id_objet = -$id_objet;
+	}
+	else {
+		$arg = explode('-',$arg);
+		list($id_objet, $objet, $document) = $arg;
+	}
 
-	list($id_objet, $objet, $document) = $arg;
 	$suppr=false;
 	if (count($arg)>3 AND $arg[3]=='suppr')
 		$suppr = true;
