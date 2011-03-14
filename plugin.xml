@@ -42,6 +42,11 @@
 		<inclure>medias_pipelines.php</inclure>
 	</pipeline>
 	<pipeline>
+		<nom>objet_compte_enfants</nom>
+		<inclure>medias_pipelines.php</inclure>
+	</pipeline>
+	
+	<pipeline>
 		<nom>header_prive</nom>
 		<action>modalbox_insert_head</action>
 		<inclure>modalbox/modalbox_pipelines.php</inclure>
