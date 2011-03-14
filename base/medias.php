@@ -116,6 +116,7 @@ function medias_declarer_tables_objets_sql($tables){
 		'info_nb_objets' => 'medias:des_documents',
 		'titre' => "CASE WHEN length(titre)>0 THEN titre ELSE fichier END as titre, '' AS lang",
 		'date' => 'date',
+		'principale'=>'oui',
 		'field' => array(
 			"id_document"	=> "bigint(21) NOT NULL",
 			"id_vignette"	=> "bigint(21) DEFAULT '0' NOT NULL",

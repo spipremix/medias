@@ -18,7 +18,7 @@ function joindre_determiner_mode($mode,$id_document,$objet){
 			$mode = sql_getfetsel('mode','spip_documents','id_document='.intval($id_document));
 		if (!in_array($mode,array('choix','document','image'))){
 			$mode='choix';
-			if ($objet AND $GLOBALS['meta']["documents_$objet"]=='non')
+			if ($objet AND !in_array(table_objet_sql($objet),explode(',',$GLOBALS['meta']["documents_objets"])))
 				$mode = 'image';
 		}
 	}
