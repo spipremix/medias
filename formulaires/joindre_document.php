@@ -180,6 +180,10 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		foreach ($nouveaux_doc as $doc) {
 			if (!is_numeric($doc))
 				$messages_erreur[] = $doc;
+			// cas qui devrait etre traite en amont
+			elseif(!$doc){
+				$messages_erreur[] = _T('medias:erreur_insertion_document_base',array('fichier'=>'<em>???</em>'));
+			}
 			else{
 				if (!$ancre)
 					$ancre = $doc;

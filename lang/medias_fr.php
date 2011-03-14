@@ -72,6 +72,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image',
 	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@',
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette',
+	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es',
 	
 	// F
 	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes',

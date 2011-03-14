@@ -180,9 +180,13 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	include_spip('action/editer_document');
 	// Installer le document dans la base
 	if (!$id_document){
-		$id_document = insert_document();
-		spip_log ("ajout du document ".$file['tmp_name']." ".$file['name']."  (M '$mode' T '$objet' L '$id_objet' D '$id_document')");
+		if ($id_document = insert_document())
+			spip_log ("ajout du document ".$file['tmp_name']." ".$file['name']."  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",'medias');
+		else
+			spip_log ("Echec insert_document() du document ".$file['tmp_name']." ".$file['name']."  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",'medias'._LOG_ERREUR);
 	}
+	if (!$id_document)
+		return _T('medias:erreur_insertion_document_base',array('fichier'=>"<em>".$file['name']."</em>"));
 	
 	document_set($id_document,$champs);
 
