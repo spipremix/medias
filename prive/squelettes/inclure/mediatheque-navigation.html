@@ -15,7 +15,7 @@
 </div>
 
 [(#ENV{id_document}|oui)
-<a class='annule_filtre' href='[(#GET{self}|parametre_url{id_document,''})]' title="<:medias:tout_voir|attribut_html:>">[(#CHEMIN{images/annuler-recherche.png}|balise_img|inserer_attribut{alt,<:medias:tout_voir:>})]</a>
+<a class='annule_filtre' href='[(#GET{self}|parametre_url{id_document,''})]' title="<:medias:tout_voir|attribut_html:>">[(#CHEMIN_IMAGE{fermer-16.png}|balise_img|inserer_attribut{alt,<:medias:tout_voir:>})]</a>
 ]
 
 <div class='onglets_simple second clearfix'>

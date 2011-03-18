@@ -1,11 +1,11 @@
 [(#ENV{ajouter}|=={oui}|oui)
 <div class='nettoyeur'></div>
-<a href='[(#SELF|parametre_url{ajouter,non})]' class='ajax bouton_fermer'>[(#CHEMIN{images/frame-close.png}|balise_img)]</a>
+<a href='[(#SELF|parametre_url{ajouter,non})]' class='ajax bouton_fermer'>[(#CHEMIN_IMAGE{fermer-16.png}|balise_img)]</a>
 <div class="ajax">
 	#FORMULAIRE_JOINDRE_DOCUMENT{new,#ENV{id_objet,0},#ENV{objet,''}}
 </div>
 <div class='nettoyeur'></div>
 ]
 [(#ENV{ajouter}|=={oui}|non)
-[(#SELF|parametre_url{ajouter,oui}|icone{<:medias:icone_creer_document:>,#CHEMIN{images/document-24.png},#LANG_RIGHT,creer.gif,ajax})]
+[(#SELF|parametre_url{ajouter,oui}|icone{<:medias:icone_creer_document:>,#CHEMIN_IMAGE{document-24.png},#LANG_RIGHT,creer.gif,ajax})]
 ]

@@ -5,8 +5,8 @@
 	
 	<h2>[(#GRAND_TOTAL|singulier_ou_pluriel{#VAL{medias:un_}|concat{#ENV{media,document}},#VAL{medias:des_}|concat{#ENV{media,document},s}})]</h2>
 	<div class='pagination tri'>
-		[(#TRI{'<',#CHEMIN{images/tri_asc-16.png}|balise_img{<:medias:par_tri_croissant:>}}) |]
-		[(#TRI{'>',#CHEMIN{images/tri_desc-16.png}|balise_img{<:medias:par_tri_decroissant:>}}) |]
+		[(#TRI{'>',#CHEMIN_IMAGE{tri-asc-16.png}|balise_img{<:medias:par_tri_croissant:>}}) |]
+		[(#TRI{'<',#CHEMIN_IMAGE{tri-desc-16.png}|balise_img{<:medias:par_tri_decroissant:>}}) |]
 		[(#TRI{id_document,<:medias:par_id:>}) |]
 		[(#TRI{date,<:medias:par_date:>}) |]
 		[(#TRI{taille,<:medias:par_taille:>}) |]
@@ -29,9 +29,9 @@
 	<tr class="[(#ENV{media}|non)[ media-(#MEDIA)]]" id="#ENV{iddoc,media}#ID_DOCUMENT">
 		<td class='infos'>
 		[(#DISTANT|=={oui}|non)#SET{missing,#FICHIER|file_exists|non}]
-		[(#ENV{media}|non|et{#MEDIA|!={file}})[(#CHEMIN{images/media-#MEDIA|concat{-32.png}}|balise_img|inserer_attribut{alt,#VAL{medias:media_#MEDIA}|_T}|inserer_attribut{title,#VAL{medias:media_#MEDIA}|_T})]]
-		[(#GET{missing}|oui)<img src='#CHEMIN{images/document-manquant-24.png}' width='22' height='22' alt='<:medias:fichier_manquant:>' />]
-		[(#DISTANT|=={oui}|oui)<img src='#CHEMIN{images/document-distant-24.png}' width='22' height='22' alt='<:medias:fichier_distant:>' />]
+		[(#ENV{media}|non|et{#MEDIA|!={file}})[(#CHEMIN_IMAGE{media-#MEDIA|concat{-32.png}}|balise_img|inserer_attribut{alt,#VAL{medias:media_#MEDIA}|_T}|inserer_attribut{title,#VAL{medias:media_#MEDIA}|_T})]]
+		[(#GET{missing}|oui)<img src='#CHEMIN_IMAGE{document-manquant-24.png}' width='22' height='22' alt='<:medias:fichier_manquant:>' />]
+		[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{document-distant-24.png}' width='22' height='22' alt='<:medias:fichier_distant:>' />]
 		</td>
 		<td class="id">
 			<strong>#ID_DOCUMENT</strong>
