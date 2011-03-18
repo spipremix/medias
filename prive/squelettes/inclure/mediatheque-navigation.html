@@ -7,7 +7,7 @@
 [<li>(#GET{self}|parametre_url{media,''}|lien_ou_expose{<:medias:tous_les_medias:>,#ENV{media,''}|=={''},ajax})</li>]
 <BOUCLE_medias(DATA){liste image,audio,video,file}>
 	<BOUCLE_comptem(DOCUMENTS){id_rubrique ?}{id_article ?}{id_breve ?}{id_document ?}{recherche ?}{statut==.*}{media=#VALEUR} />
-	[<li class='#MEDIA'>(#GET{self}|parametre_url{media,#VALEUR}|lien_ou_expose{#VAL{medias:media_}|concat{#VALEUR}|_T|concat{' (',#TOTAL_BOUCLE,')'},#ENV{media}|=={#VALEUR},ajax})</li>]
+	[<li class='#VALEUR'>(#GET{self}|parametre_url{media,#VALEUR}|lien_ou_expose{#VAL{medias:media_}|concat{#VALEUR}|_T|concat{' (',#TOTAL_BOUCLE,')'},#ENV{media}|=={#VALEUR},ajax})</li>]
 	<//B_comptem>
 </BOUCLE_medias>
 </ul>
