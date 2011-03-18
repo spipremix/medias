@@ -1,7 +1,7 @@
 <plugin>
 	<nom>Medias</nom>
 	<auteur>Collectif SPIP, Cedric Morin &amp; Romy Duhem-Verdiere pour la mediatheque</auteur>
-	<icon>images/portfolio-64.png</icon>
+	<icon>prive/themes/spip/images/portfolio-64.png</icon>
 	<version>2.0.0</version>
 	<version_base>0.12.0</version_base>
 	<etat>test</etat>
