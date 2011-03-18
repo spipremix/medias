@@ -30,8 +30,8 @@
 		<td class='infos'>
 		[(#DISTANT|=={oui}|non)#SET{missing,#FICHIER|file_exists|non}]
 		[(#ENV{media}|non|et{#MEDIA|!={file}})[(#CHEMIN_IMAGE{media-#MEDIA|concat{-32.png}}|balise_img|inserer_attribut{alt,#VAL{medias:media_#MEDIA}|_T}|inserer_attribut{title,#VAL{medias:media_#MEDIA}|_T})]]
-		[(#GET{missing}|oui)<img src='#CHEMIN_IMAGE{document-manquant-24.png}' width='22' height='22' alt='<:medias:fichier_manquant:>' />]
-		[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{document-distant-24.png}' width='22' height='22' alt='<:medias:fichier_distant:>' />]
+		[(#GET{missing}|oui)<img src='#CHEMIN_IMAGE{document-manquant-24.png}' width='24' height='24' alt='<:medias:fichier_manquant:>' />]
+		[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{document-distant-24.png}' width='24' height='24' alt='<:medias:fichier_distant:>' />]
 		</td>
 		<td class="id">
 			<strong>#ID_DOCUMENT</strong>

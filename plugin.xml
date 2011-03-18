@@ -4,7 +4,7 @@
 	<icon>images/portfolio-64.png</icon>
 	<version>2.0.0</version>
 	<version_base>0.12.0</version_base>
-	<etat>dev</etat>
+	<etat>test</etat>
 	<description>Gestion des medias de SPIP</description>
 	<install>base/medias.php</install>
 	<fonctions>medias_fonctions.php</fonctions>
