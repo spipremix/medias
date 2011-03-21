@@ -37,11 +37,12 @@ function action_supprimer_document_dist($id_document=0) {
 	}
 
 	spip_log("Suppression du document $id_document (".$doc['fichier'].")");
+	include_spip('action/editer_liens');
 
 	// Si c'est un document ayant une vignette, supprimer aussi la vignette
 	if ($doc['id_vignette']) {
 		action_supprimer_document_dist($doc['id_vignette']);
-		sql_delete('spip_documents_liens', 'id_document='.$doc['id_vignette']);
+		objet_dissocier(array('document'=>$doc['id_vignette']),'*');
 	}
 	// Si c'est un document ayant des documents annexes (sous-titre, ...)
 	// les supprimer aussi
@@ -51,10 +52,8 @@ function action_supprimer_document_dist($id_document=0) {
   }
 
 	// dereferencer dans la base
-  sql_delete('spip_documents_liens', 'id_document='.intval($id_document));
+  objet_dissocier(array('document'=>$id_document),'*');
 	sql_delete('spip_documents', 'id_document='.intval($id_document));
-	// securite
-	sql_delete('spip_documents_liens', 'id_document='.intval($id_document));
 
 
 	// Supprimer le fichier si le doc est local,

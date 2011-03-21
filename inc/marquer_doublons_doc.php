@@ -21,10 +21,11 @@ $GLOBALS['medias_liste_champs'][] = 'chapo';
 // http://doc.spip.org/@marquer_doublons_documents
 function inc_marquer_doublons_doc_dist($champs,$id,$type,$id_table_objet,$table_objet,$spip_table_objet, $desc=array(), $serveur=''){
 	$champs_selection=array();
-		foreach ($GLOBALS['medias_liste_champs'] as $champs_choisis) {
-			if ( isset($champs[$champs_choisis]) )
+
+	foreach ($GLOBALS['medias_liste_champs'] as $champs_choisis) {
+		if ( isset($champs[$champs_choisis]) )
 			array_push($champs_selection,$champs_choisis);
-		}
+	}
 	if (count($champs_selection) == 0)
 		return;
 	if (!$desc){
@@ -34,13 +35,14 @@ function inc_marquer_doublons_doc_dist($champs,$id,$type,$id_table_objet,$table_
 	$load = "";
 	// charger le champ manquant en cas de modif partielle de l	'objet
 	// seulement si le champ existe dans la table demande
-	
-		foreach ($champs_selection as $champs_a_parcourir) {
-			if (isset($desc['field'][$champs_a_parcourir])) {
+
+	$champs_a_traiter = "";
+	foreach ($champs_selection as $champs_a_parcourir) {
+		if (isset($desc['field'][$champs_a_parcourir])) {
 			$load = $champs_a_parcourir;
 			$champs_a_traiter .= $champs[$champs_a_parcourir];
-			}
-		}	
+		}
+	}
 
 	if ($load){
 		$champs[$load] = "";
@@ -50,19 +52,18 @@ function inc_marquer_doublons_doc_dist($champs,$id,$type,$id_table_objet,$table_
 	}
 	include_spip('inc/texte');
 	include_spip('base/abstract_sql');
+	include_spip('action/editer_liens');
 	$GLOBALS['doublons_documents_inclus'] = array();
 	traiter_modeles($champs_a_traiter,true); // detecter les doublons
-	sql_updateq("spip_documents_liens", array("vu" => 'non'), "id_objet=$id AND objet=".sql_quote($type));
+	objet_qualifier_liens(array('document'=>'*'),array($type=>$id),array('vu'=>'non'));
 	if (count($GLOBALS['doublons_documents_inclus'])){
 		// on repasse par une requete sur spip_documents pour verifier que les documents existent bien !
-		$in_liste = sql_in('id_document',
-			$GLOBALS['doublons_documents_inclus']);
-		$res = sql_select("id_document", "spip_documents", $in_liste);
-		while ($row = sql_fetch($res)) {
-			// Creer le lien s'il n'existe pas deja
-			sql_insertq("spip_documents_liens", array('id_objet'=>$id, 'objet'=>$type, 'id_document' => $row['id_document'], 'vu' => 'oui'));
-			sql_updateq("spip_documents_liens", array("vu" => 'oui'), "id_objet=$id AND objet=".sql_quote($type)." AND id_document=" . $row['id_document']);
-		}
+		$in_liste = sql_in('id_document',$GLOBALS['doublons_documents_inclus']);
+		$res = sql_allfetsel("id_document", "spip_documents", $in_liste);
+		$res = array_map('reset',$res);
+		// Creer le lien s'il n'existe pas deja
+		objet_associer(array('document'=>$res),array($type=>$id),array('vu'=>'oui'));
+		objet_qualifier_liens(array('document'=>$res),array($type=>$id),array('vu'=>'oui'));
 	}
 }
 

@@ -68,7 +68,8 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 		return false;
 
 	// D'abord on ne supprime pas, on dissocie
-	sql_delete("spip_documents_liens", "id_objet=".intval($id_objet)." AND objet=".sql_quote($objet)." AND id_document=".$id_document);
+	include_spip('action/editer_liens');
+	objet_dissocier(array('document'=>$id_document),array($objet=>$id_objet));
 
 	// Si c'est une vignette, l'eliminer du document auquel elle appartient
 	// cas tordu peu probable

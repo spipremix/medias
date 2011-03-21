@@ -35,7 +35,14 @@ function medias_post_insertion($flux){
 		# rattrapper les documents associes a cet objet nouveau
 		# ils ont un id = 0-id_auteur
 		$id_objet = $flux['args']['id_objet'];
-		sql_updateq("spip_documents_liens", array("id_objet" => $id_objet), array("id_objet = ".(0-$id_auteur),"objet=".sql_quote($objet)));
+		# utiliser l'api editer_lien pour les appels aux pipeline edition_lien
+		include_spip('action/editer_liens');
+		$liens = objet_trouver_liens(array('document'=>'*'),array($objet=>0-$id_auteur));
+		foreach($liens as $lien){
+			objet_associer(array('document'=>$lien['document']),array($objet=>$id_objet),$lien);
+		}
+		// un simple delete pour supprimer les liens temporaires
+		sql_delete("spip_documents_liens", array("id_objet = ".(0-$id_auteur),"objet=".sql_quote($objet)));
 	}
 
   return $flux;

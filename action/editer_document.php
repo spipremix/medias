@@ -219,25 +219,32 @@ function medias_revision_document_parents($id_document, $parents=null, $ajout=fa
 		return;
 	
 	$insertions = array();
-	$cond = array();
+	$objets_parents = array(); // array('article'=>array(12,23))
+	
 	// au format objet|id_objet
 	foreach($parents as $p){
 		$p = explode('|',$p);
-		if (preg_match('/^[a-z0-9_]+$/i', $objet=$p[0])){ // securite
-			$insertions[] = array('id_document'=>$id_document,'objet'=>$p[0],'id_objet'=>$p[1]);
-			$cond[] = "(id_objet=".intval($p[1])." AND objet=".sql_quote($p[0]).")";
+		if (preg_match('/^[a-z0-9_]+$/i', $objet=$p[0])
+		  AND $p[1]=intval($p[1])){ // securite
+			$objets_parents[$p[0]][] = $p[1];
 		}
 	}
+	
+	include_spip('action/editer_liens');
+	// les liens actuels
+	$liens = objet_trouver_liens(array('document'=>$id_document),'*');
+	$deja_parents = array();
+	// si ce n'est pas un ajout, il faut supprimer les liens actuels qui ne sont pas dans $objets_parents
 	if (!$ajout){
-		// suppression des parents obsoletes
-		$cond_notin = "id_document=".intval($id_document).(count($cond)?" AND NOT(".implode(") AND NOT(",$cond).")":"");
-		#$cond_in = "id_document=".intval($id_document).(count($cond)?" AND (".implode(" OR (",$cond).")":"");
-		sql_delete("spip_documents_liens", $cond_notin);
+		foreach($liens as $k=>$lien)
+			if (!isset($objets_parents[$lien['objet']]) OR !in_array($lien['id_objet'],$objets_parents[$lien['objet']])) {
+				objet_dissocier(array('document'=>$id_document),array($lien['objet']=>$lien['id_objet']));
+				unset($liens[$k]);
+			}
+			else $deja_parents[$lien['objet']][] = $lien['id_objet'];
 	}
 
-	foreach($insertions as $ins){
-		if (!sql_countsel('spip_documents_liens','id_document='.intval($ins['id_document'])." AND id_objet=".intval($ins['id_objet'])." AND objet=".sql_quote($ins['objet'])))
-			sql_insertq('spip_documents_liens',$ins);
-	}
+	objet_associer(array('document'=>$id_document),$objets_parents);
+
 }
 ?>
