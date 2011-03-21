@@ -101,6 +101,7 @@ function medias_declarer_tables_objets_surnoms($surnoms) {
 }
 
 function medias_declarer_tables_objets_sql($tables){
+	$tables['spip_articles']['champs_versionnes'][] = 'jointure_documents';
 	$tables['spip_documents'] = array(
 		'table_objet_surnoms'=>array('doc','img','emb'),
 	  'type_surnoms' => array(),
