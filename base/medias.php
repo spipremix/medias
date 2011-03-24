@@ -334,17 +334,22 @@ function medias_install($action,$prefix,$version_cible){
 }
 
 
+/**
+ * Optimiser la base de donnee en supprimant les liens orphelins
+ *
+ * @param int $n
+ * @return int
+ */
 function medias_optimiser_base_disparus($flux){
-	//
-	// Documents
-	//
 
 	include_spip('action/editer_liens');
-	// optimiser les liens de tous les documents vers des objets effaces
+	// optimiser les liens morts :
+	// entre documents vers des objets effaces
+	// depuis des documents effaces
 	$flux['data'] += objet_optimiser_liens(array('document'=>'*'),'*');
 	// on ne nettoie volontairement pas automatiquement les documents orphelins
-	
+
 	return $flux;
-  
 }
+
 ?>

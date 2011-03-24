@@ -26,6 +26,10 @@
 		<inclure>base/medias.php</inclure>
 	</pipeline>
 	<pipeline>
+		<nom>optimiser_base_disparus</nom>
+		<inclure>base/medias.php</inclure>
+	</pipeline>
+	<pipeline>
 		<nom>post_insertion</nom>
 		<inclure>medias_pipelines.php</inclure>
 	</pipeline>
@@ -45,6 +49,7 @@
 		<nom>objet_compte_enfants</nom>
 		<inclure>medias_pipelines.php</inclure>
 	</pipeline>
+
 
 	<pipeline>
 		<nom>autoriser</nom>
