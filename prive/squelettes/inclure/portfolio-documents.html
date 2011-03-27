@@ -53,13 +53,13 @@ var multifile='[(#CHEMIN{javascript/jquery.multifile.js}|texte_script)]';
 if (window.jQuery) jQuery('#navigation .box.info').ajaxReload();]
 function check_reload_page(){
 	var reload = false;
-	if($('#illustrations').length && !$('#illustrations .item.document').length){
+	if($('#illustrations').length && !$('#illustrations .item').length){
 		$('#illustrations').remove();reload = true;
 	}
-	if($('#portfolio').length && !$('#portfolio .item.document').length){
+	if($('#portfolio').length && !$('#portfolio .item').length){
 		$('#portfolio').remove();reload = true;
 	}
-	if($('#documents').length && !$('#documents .item.document').length){
+	if($('#documents').length && !$('#documents .item').length){
 		$('#documents').remove();reload = true;
 	}
 	if (reload) {
