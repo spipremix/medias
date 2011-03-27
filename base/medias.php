@@ -238,80 +238,65 @@ function medias_check_statuts($affiche = false){
 }
 
 function medias_upgrade($nom_meta_base_version,$version_cible){
-	$current_version = 0.0;
-	if (   (!isset($GLOBALS['meta'][$nom_meta_base_version]) )
-			|| (($current_version = $GLOBALS['meta'][$nom_meta_base_version])!=$version_cible)){
-		if (spip_version_compare($current_version,'0.1.0','<')){
-			include_spip('base/create');
-			maj_tables(array('spip_documents','spip_documents_liens','spip_types_documents'));
-			creer_base_types_doc();
-			ecrire_meta($nom_meta_base_version,$current_version=$version_cible,'non');
-		}
-		if (spip_version_compare($current_version,'0.2.0','<')){
-			include_spip('base/abstract_sql');
-			sql_alter("TABLE spip_documents ADD statut varchar(10) DEFAULT '0' NOT NULL");
-			ecrire_meta($nom_meta_base_version,$current_version="0.2",'non');
-		}
-		if (spip_version_compare($current_version,'0.3.0','<')){
-			include_spip('base/abstract_sql');
-			// ajouter un champ
-			sql_alter("TABLE spip_documents ADD date_publication datetime DEFAULT '0000-00-00 00:00:00' NOT NULL");
-			// vider le cache des descriptions de tables
-			$trouver_table = charger_fonction('trouver_table','base');
-			$trouver_table(false);
-			// ecrire la version pour ne plus passer la
-			ecrire_meta($nom_meta_base_version,$current_version="0.3.0",'non');
-		}
-		if (spip_version_compare($current_version,'0.4.0','<')){
-			// recalculer tous les statuts en tenant compte de la date de publi des articles...
-			echo "Mise a jour des statuts de documents...";
-			medias_check_statuts(true);
-			ecrire_meta($nom_meta_base_version,$current_version="0.4.0",'non');
-		}
-		if (spip_version_compare($current_version,'0.5.0','<')){
-			include_spip('base/abstract_sql');
-			// ajouter un champ
-			sql_alter("TABLE spip_documents ADD brise tinyint DEFAULT 0");
-			// vider le cache des descriptions de tables
-			$trouver_table = charger_fonction('trouver_table','base');
-			$trouver_table(false);
-			ecrire_meta($nom_meta_base_version,$current_version="0.5.0",'non');
-		}
-		if (spip_version_compare($current_version,'0.6.0','<')){
-			include_spip('base/abstract_sql');
-			sql_alter("TABLE spip_types_documents ADD media varchar(10) DEFAULT 'file' NOT NULL");
-			creer_base_types_doc();
-			ecrire_meta($nom_meta_base_version,$current_version="0.6.0",'non');
-		}
-		if (spip_version_compare($current_version,'0.7.0','<')){
-			include_spip('base/abstract_sql');
-			sql_alter("TABLE spip_documents ADD credits varchar(255) DEFAULT '' NOT NULL");
-			ecrire_meta($nom_meta_base_version,$current_version="0.7.0",'non');
-		}
-		if (spip_version_compare($current_version,'0.10.0','<')){
-			// Augmentation de la taille du champ fichier pour permettre les URL longues
-			include_spip('base/abstract_sql');
-			sql_alter("TABLE spip_documents CHANGE fichier fichier TEXT NOT NULL DEFAULT ''");
-			ecrire_meta($nom_meta_base_version,$current_version="0.10.0",'non');
-		}
-		if (version_compare($current_version,'0.11.0','<')){
-			// Passage du mode en varchar
-			include_spip('base/abstract_sql');
-			sql_alter("TABLE spip_documents CHANGE mode mode varchar(10) DEFAULT 'document' NOT NULL");
-			ecrire_meta($nom_meta_base_version,$current_version="0.11.0",'non');
-		}
-		if (version_compare($current_version,'0.12.0','<')){
-			// generalisation des metas documents_article et documents_rubriques
-			$config = array();
-			if (isset($GLOBALS['meta']['documents_article']) AND $GLOBALS['meta']['documents_article']!=='non')
-				$config[] = 'spip_articles';
-			if (isset($GLOBALS['meta']['documents_rubrique']) AND $GLOBALS['meta']['documents_rubrique']!=='non')
-				$config[] = 'spip_rubriques';
-			ecrire_meta('documents_objets',implode(',',$config));
-			ecrire_meta($nom_meta_base_version,$current_version="0.12.0",'non');
-		}
+	if (!isset($GLOBALS['meta'][$nom_meta_base_version])){
+		$trouver_table = charger_fonction('trouver_table','base');
+		if ($desc = $trouver_table('spip_documents'))
+			ecrire_meta($nom_meta_base_version,'0.1.0');
 	}
+
+	$maj = array();
+	$maj['create'] = array(
+		array('maj_tables',array('spip_documents','spip_documents_liens','spip_types_documents')),
+		array('creer_base_types_doc')
+	);
+	$maj['0.2.0'] = array(
+		array('sql_alter',"TABLE spip_documents ADD statut varchar(10) DEFAULT '0' NOT NULL"),
+	);
+	$maj['0.3.0'] = array(
+		array('sql_alter',"TABLE spip_documents ADD date_publication datetime DEFAULT '0000-00-00 00:00:00' NOT NULL"),
+	);
+	$maj['0.4.0'] = array(
+		// recalculer tous les statuts en tenant compte de la date de publi des articles...
+		array('medias_check_statuts',true),
+	);
+	$maj['0.5.0'] = array(
+		array('sql_alter',"TABLE spip_documents ADD brise tinyint DEFAULT 0"),
+	);
+	$maj['0.6.0'] = array(
+		array('sql_alter',"TABLE spip_types_documents ADD media varchar(10) DEFAULT 'file' NOT NULL"),
+		array('creer_base_types_doc'),
+	);
+	$maj['0.7.0'] = array(
+		array('sql_alter',"TABLE spip_documents ADD credits varchar(255) DEFAULT '' NOT NULL"),
+	);
+	$maj['0.10.0'] = array(
+		array('sql_alter',"TABLE spip_documents CHANGE fichier fichier TEXT NOT NULL DEFAULT ''"),
+	);
+	$maj['0.11.0'] = array(
+		array('sql_alter',"TABLE spip_documents CHANGE mode mode varchar(10) DEFAULT 'document' NOT NULL"),
+	);
+	$maj['0.11.0'] = array(
+		array('sql_alter',"TABLE spip_documents CHANGE mode mode varchar(10) DEFAULT 'document' NOT NULL"),
+	);
+	$maj['0.12.0'] = array(
+		array('medias_maj_meta_documents'),
+	);
+	$maj['0.13.0'] = array(
+		array('creer_base_types_doc'),
+	);
+	include_spip('base/upgrade');
+	maj_plugin($nom_meta_base_version, $version_cible, $maj);
+
 	medias_check_statuts();
+}
+
+function medias_maj_meta_documents(){
+	$config = array();
+	if (isset($GLOBALS['meta']['documents_article']) AND $GLOBALS['meta']['documents_article']!=='non')
+		$config[] = 'spip_articles';
+	if (isset($GLOBALS['meta']['documents_rubrique']) AND $GLOBALS['meta']['documents_rubrique']!=='non')
+		$config[] = 'spip_rubriques';
+	ecrire_meta('documents_objets',implode(',',$config));
 }
 
 function medias_install($action,$prefix,$version_cible){

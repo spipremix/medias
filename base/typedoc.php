@@ -22,7 +22,6 @@ $tables_images = array(
 
 		       // Autres images (peuvent utiliser le tag <img>)
 		       'bmp' => 'BMP',
-		       'tif' => 'TIFF'
 		       );
 
 // Multimedia (peuvent utiliser le tag <embed>)
@@ -65,6 +64,7 @@ $tables_sequences = array(
 			'spx' => 'Ogg Speex',
 			'svg' => 'Scalable Vector Graphics',
 			'swf' => 'Flash',
+			'tif' => 'TIFF',
 			'wav' => 'WAV',
 			'webm' => 'WebM',
 			'wmv' => 'Windows Media',
