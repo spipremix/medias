@@ -75,6 +75,10 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	// cas tordu peu probable
 	sql_updateq("spip_documents", array('id_vignette' => 0), "id_vignette=".$id_document);
 
+	// verifier son statut apres une suppression de lien
+	include_spip('action/editer_document');
+	instituer_document($id_document);
+
 	pipeline('post_edition',
 		array(
 			'args' => array(

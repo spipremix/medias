@@ -163,7 +163,7 @@ function instituer_document($id_document,$champs=array()){
 	$date_publication_ancienne = $row['date_publication'];
 	if (is_null($statut)){
 		$statut = 'prepa';
-	
+
 		$trouver_table = charger_fonction('trouver_table','base');
 		$res = sql_select('id_objet,objet','spip_documents_liens',"objet!='document' AND id_document=".intval($id_document));
 		// dans 10 ans, ca nous fera un bug a corriger vers 2018
@@ -180,7 +180,9 @@ function instituer_document($id_document,$champs=array()){
 			}
 			$id_table = id_table_objet($row['objet']);
 			$row2 = sql_fetsel('statut'.($table=='spip_articles'?",date":""),$table,$id_table.'='.intval($row['id_objet']));
-			if ($row2['statut']=='publie'){
+			if ($row2['statut']=='publie'
+				// cas particulier des rubriques qui sont publiees des qu'elles contiennent un document !
+			  OR $row['objet']=='rubrique'){
 				$statut = 'publie';
 				// si ce n'est pas un article, c'est donc deja publie, on met la date a 0
 				if (!$row2['date']){
@@ -199,8 +201,16 @@ function instituer_document($id_document,$champs=array()){
 			return false;
 	}
 	if ($statut!==$statut_ancien
-	OR $date_publication!=$date_publication_ancienne){
+	  OR $date_publication!=$date_publication_ancienne){
 		sql_updateq('spip_documents',array('statut'=>$statut,'date_publication'=>$date_publication),'id_document='.intval($id_document));
+		if ($statut!==$statut_ancien){
+			$publier_rubriques = sql_allfetsel('id_objet','spip_documents_liens',"objet='rubrique' AND id_document=".intval($id_document));
+			if (count($publier_rubriques)){
+				include_spip('inc/rubriques');
+				foreach($publier_rubriques as $r)
+					calculer_rubriques_if($r['id_objet'],array('statut'=>$statut),$statut_ancien,false);
+			}
+		}
 		return true;
 	}
 	return false;
