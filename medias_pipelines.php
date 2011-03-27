@@ -140,9 +140,9 @@ function medias_objet_compte_enfants($flux){
 	  AND $id=intval($flux['args']['id_objet'])) {
 		// juste les publies ?
 		if (array_key_exists('statut', $flux['args']) and ($flux['args']['statut'] == 'publie')) {
-			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document', "L.objet=".sql_quote($objet)."AND Lid_objet=".intval($id)." AND (D.statut='publie')");
+			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document', "L.objet=".sql_quote($objet)."AND L.id_objet=".intval($id)." AND (D.statut='publie')");
 		} else {
-			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document', "L.objet=".sql_quote($objet)."AND Lid_objet=".intval($id)." AND (D.statut='publie' OR D.statut='prepa')");
+			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document', "L.objet=".sql_quote($objet)."AND L.id_objet=".intval($id)." AND (D.statut='publie' OR D.statut='prepa')");
 		}
 	}
 	return $flux;
