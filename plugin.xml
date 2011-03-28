@@ -22,6 +22,10 @@
 		<inclure>base/medias.php</inclure>
 	</pipeline>
 	<pipeline>
+		<nom>declarer_tables_objets_surnoms</nom>
+		<inclure>base/medias.php</inclure>
+	</pipeline>
+	<pipeline>
 		<nom>declarer_tables_objets_sql</nom>
 		<inclure>base/medias.php</inclure>
 	</pipeline>

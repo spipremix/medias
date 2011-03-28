@@ -95,7 +95,7 @@ function medias_declarer_tables_auxiliaires($tables_auxiliaires) {
  */
 function medias_declarer_tables_objets_surnoms($surnoms) {
 	$surnoms['type_document'] = "types_documents"; # hum
-	$surnoms['extension'] = "types_documents"; # hum
+	#$surnoms['extension'] = "types_documents"; # hum
 	#$surnoms['type'] = "types_documents"; # a ajouter pour id_table_objet('type')=='extension' ?
 	return $surnoms;
 }
