@@ -61,6 +61,7 @@
 	</pipeline>
 	<pipeline><nom>document_desc_actions</nom><action></action></pipeline>
 	<pipeline><nom>editer_document_actions</nom><action></action></pipeline>
+	<pipeline><nom>renseigner_document_distant</nom><action></action></pipeline>
 
 	<bouton id='documents' parent='bando_edition'>
 		<titre>medias:documents</titre>
