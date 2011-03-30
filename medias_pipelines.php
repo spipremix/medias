@@ -64,16 +64,14 @@ function medias_post_edition($flux){
 	}
 	// si on institue un objet, mettre ses documents lies a jour
 	elseif ($flux['args']['table']!=='spip_documents'){
-		$type = $flux['args']['type'];
+		$type = isset($flux['args']['type'])?$flux['args']['type']:objet_type($flux['args']['table']);
 		// verifier d'abord les doublons !
 		include_spip('inc/autoriser');
 		if (autoriser('autoassocierdocument',$type,$flux['args']['id_objet'])){
-			spip_log("autoassocier $type OK",'dbg'._LOG_ERREUR);
+			$table_objet = isset($flux['args']['table_objet'])?$flux['args']['table_objet']:table_objet($flux['args']['table'],$flux['args']['serveur']);
 			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc','inc');
-			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$flux['args']['type'],id_table_objet($flux['args']['type'], $flux['args']['serveur']),$flux['args']['table_objet'],$flux['args']['spip_table_objet'], '', $flux['args']['serveur']);
+			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$type,id_table_objet($type, $flux['args']['serveur']),$table_objet,$flux['args']['table'], '', $flux['args']['serveur']);
 		}
-		else
-			spip_log("autoassocier $type NIET",'dbg'._LOG_ERREUR);
 
 		if($flux['args']['operation']=='instituer' OR isset($flux['data']['statut'])){
 			include_spip('base/abstract_sql');
