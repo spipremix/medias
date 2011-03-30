@@ -11,9 +11,9 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
-function inc_verifier_document_mode_vignette_dist($infos){
+function inc_verifier_document_mode_image_dist($infos){
 
-	// Si on veut uploader une vignette, il faut qu'elle ait ete bien lue
+	// Si on veut uploader une image, il faut qu'elle ait ete bien lue
 	if ($infos['inclus'] != 'image')
 		return _T('medias:erreur_format_fichier_image',array('nom'=> $infos['fichier'])); #SVG
 

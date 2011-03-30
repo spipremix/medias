@@ -131,8 +131,8 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 			$champs['titre'] = preg_replace(',\.([^.]+)$,', '', $titre);
 		}
 
-		if (!$fichier = fixer_fichier_upload($file))
-			return ("Impossible de telecharger le fichier");
+		if (!is_array($fichier = fixer_fichier_upload($file, $mode)))
+			return is_string($fichier)?$fichier:_T("erreur_upload_type_interdit",array('nom'=>$file['name']));
 		
 		$champs['inclus'] = $fichier['inclus'];
 		$champs['extension'] = $fichier['extension'];
@@ -241,24 +241,40 @@ function corriger_extension($ext) {
 /**
  * Verifie la possibilite d'uploader une extension
  * renvoie un tableau descriptif si l'extension est acceptee
- * une chaine 'zip' si il faut zipper
- * false si l'extension est refusee
+ * avec un index 'autozip' si il faut zipper
+ * false ou message d'erreur si l'extension est refusee
+ * Verifie aussi si l'extension est autorisee pour le mode demande
+ * si on connait le mode a ce moment la
  * 
  */
-function verifier_upload_autorise($source){
+function verifier_upload_autorise($source, $mode=''){
+	$infos = array('fichier'=>$source);
+	$res = false;
 	if (preg_match(",\.([^.]+)$,", $source, $match)
 	  AND $ext = $match[1]){
 		
 	  $ext = corriger_extension(strtolower($ext));
-		if ($row = sql_fetsel("extension,inclus", "spip_types_documents", "extension=" . sql_quote($ext) . " AND upload='oui'"))
-			return $row;
+		if ($res = sql_fetsel("extension,inclus,media", "spip_types_documents", "extension=" . sql_quote($ext) . " AND upload='oui'"))
+			$infos = array_merge($infos,$res);
 	}
-		
-	if (sql_countsel("spip_types_documents", "extension='zip' AND upload='oui'"))
-		return 'zip';
+	if (!$res){
+		if ($res = sql_fetsel("extension,inclus,media", "spip_types_documents", "extension='zip' AND upload='oui'")){
+			$infos = array_merge($infos,$res);
+			$res['autozip'] = true;
+		}
+	}
+	if ($mode AND $res){
+		// verifier en fonction du mode si une fonction est proposee
+		if ($verifier_document_mode = charger_fonction("verifier_document_mode_".$mode,"inc",true)){
+			$check = $verifier_document_mode($infos); // true ou message d'erreur sous forme de chaine
+			if ($check!==true)
+				$res = $check;
+		}
+	}
 
-	spip_log("Extension $ext interdite a l'upload");
-	return false;
+	if (!$res OR is_string($res));
+		spip_log("Upload $source interdit ($res)",_LOG_INFO_IMPORTANTE);
+	return $res;
 }
 
 
@@ -273,53 +289,55 @@ function verifier_upload_autorise($source){
  * @param array $file //format $_FILES
  * @return array
  */
-function fixer_fichier_upload($file){
+function fixer_fichier_upload($file, $mode=''){
 
-	if (is_array($row=verifier_upload_autorise($file['name']))) {
-		$row['fichier'] = copier_document($row['extension'], $file['name'], $file['tmp_name']);
-		return $row;
-	}
-	// creer un zip comme demande
-	// pour encapsuler un fichier dont l'extension n'est pas supportee
-	elseif($row==='zip'){
-		
-		$row = array('extension'=>'zip','inclus'=>false);
-
-		$ext = 'zip';
-		if (!$tmp_dir = tempnam(_DIR_TMP, 'tmp_upload'))
-			return false;
-	
-		spip_unlink($tmp_dir);
-		@mkdir($tmp_dir);
-		
-		include_spip('inc/charset');
-		$tmp = $tmp_dir.'/'.translitteration($file['name']);
-		
-		$file['name'] .= '.zip'; # conserver l'extension dans le nom de fichier, par exemple toto.js => toto.js.zip
-
-		// deplacer le fichier tmp_name dans le dossier tmp
-		deplacer_fichier_upload($file['tmp_name'], $tmp, true);
-		
-		include_spip('inc/pclzip');
-		$source = _DIR_TMP . basename($tmp_dir) . '.zip';
-		$archive = new PclZip($source);
-		
-		$v_list = $archive->create($tmp,
-				PCLZIP_OPT_REMOVE_PATH, $tmp_dir,
-				PCLZIP_OPT_ADD_PATH, '');
-		
-		effacer_repertoire_temporaire($tmp_dir);
-		if (!$v_list) {
-			spip_log("Echec creation du zip ");
-			return false;
+	if (is_array($row=verifier_upload_autorise($file['name'], $mode))) {
+		if (!isset($row['autozip'])){
+			$row['fichier'] = copier_document($row['extension'], $file['name'], $file['tmp_name']);
+			return $row;
 		}
+		// creer un zip comme demande
+		// pour encapsuler un fichier dont l'extension n'est pas supportee
+		else{
 		
-		$row['fichier']  = copier_document($row['extension'], $file['name'], $source);
-		spip_unlink($source);
-		return $row;
+			unset($row['autozip']);
+
+			$ext = 'zip';
+			if (!$tmp_dir = tempnam(_DIR_TMP, 'tmp_upload'))
+				return false;
+
+			spip_unlink($tmp_dir);
+			@mkdir($tmp_dir);
+
+			include_spip('inc/charset');
+			$tmp = $tmp_dir.'/'.translitteration($file['name']);
+
+			$file['name'] .= '.'.$ext; # conserver l'extension dans le nom de fichier, par exemple toto.js => toto.js.zip
+
+			// deplacer le fichier tmp_name dans le dossier tmp
+			deplacer_fichier_upload($file['tmp_name'], $tmp, true);
+
+			include_spip('inc/pclzip');
+			$source = _DIR_TMP . basename($tmp_dir) . '.'.$ext;
+			$archive = new PclZip($source);
+
+			$v_list = $archive->create($tmp,
+					PCLZIP_OPT_REMOVE_PATH, $tmp_dir,
+					PCLZIP_OPT_ADD_PATH, '');
+
+			effacer_repertoire_temporaire($tmp_dir);
+			if (!$v_list) {
+				spip_log("Echec creation du zip ");
+				return false;
+			}
+
+			$row['fichier']  = copier_document($row['extension'], $file['name'], $source);
+			spip_unlink($source);
+			return $row;
+		}
 	}
-	
-	return false;
+	else
+		return $row; // retourner le message d'erreur
 }
 
 /**
@@ -335,9 +353,6 @@ function verifier_taille_document_acceptable($infos){
 		if (_DOC_MAX_SIZE > 0
 		 AND $infos['taille'] > _DOC_MAX_SIZE*1024)
 			return _T('medias:info_doc_max_poids', array('maxi' => taille_en_octets(_DOC_MAX_SIZE*1024), 'actuel' => taille_en_octets($infos['taille'])));
-
-		if ($infos['mode'] == 'image')
-			return _T('medias:erreur_format_fichier_image',array('nom'=> $infos['fichier']));
 	}
 	
 	// si c'est une image

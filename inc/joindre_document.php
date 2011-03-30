@@ -47,7 +47,7 @@ function joindre_trouver_fichier_envoye(){
 						if (!($test['error'] == 4)){
 							if (is_string($err = joindre_upload_error($test['error'])))
 								return $err; // un erreur upload
-							if (!verifier_upload_autorise($test['name']))
+							if (!is_array(verifier_upload_autorise($test['name'])))
 								return _T('medias:erreur_upload_type_interdit',array('nom'=>$test['name']));
 							$files[]=$test;
 						}
@@ -58,7 +58,7 @@ function joindre_trouver_fichier_envoye(){
 					if (!($file['error'] == 4)){
 						if (is_string($err = joindre_upload_error($file['error'])))
 							return $err; // un erreur upload
-						if (!verifier_upload_autorise($file['name']))
+						if (!is_array(verifier_upload_autorise($file['name'])))
 							return _T('medias:erreur_upload_type_interdit',array('nom'=>$file['name']));
 						$files[]=$file;
 					}
