@@ -16,12 +16,12 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 function medias_autoriser(){}
 
 
-function autoriser_portfolio_administrer_dist($faire,$quoi,$id,$qui,$options) {
+function autoriser_mediatheque_administrer_dist($faire,$quoi,$id,$qui,$options) {
 	return $qui['statut'] == '0minirezo';
 }
 
 function autoriser_documents_bouton_dist($faire,$quoi,$id,$qui,$options) {
-	return autoriser('administrer','portfolio',$id,$qui,$options);
+	return autoriser('administrer','mediatheque',$id,$qui,$options);
 }
 
 /**
@@ -108,21 +108,22 @@ function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
 	static $m = array();
 
-  if (isset($m[$id]))
-	  return $m[$id];
+	$q=$qui['id_auteur'];
+  if (isset($m[$q][$id]))
+	  return $m[$q][$id];
   $s = sql_getfetsel("statut", "spip_documents", "id_document=".intval($id));
 	// les admins ont le droit de modifier tous les documents existants
 	if ($qui['statut'] == '0minirezo'
 	AND !$qui['restreint'])
 		return is_string($s)?true:false;
 
-	if (!isset($m[$id])) {
+	if (!isset($m[$q][$id])) {
 		// un document non publie peut etre modifie par tout le monde (... ?)
 		if ($s AND $s!=='publie')
-			$m[$id] = true;
+			$m[$q][$id] = true;
 	}
 
-	if (!isset($m[$id])) {
+	if (!isset($m[$q][$id])) {
 		$interdit = false;
 
 		$s = sql_select("id_objet,objet", "spip_documents_liens", "id_document=".sql_quote($id));
@@ -133,10 +134,10 @@ function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
 			}
 		}
 
-		$m[$id] = ($interdit?false:true);
+		$m[$q][$id] = ($interdit?false:true);
 	}
 
-	return $m[$id];
+	return $m[$q][$id];
 }
 
 
