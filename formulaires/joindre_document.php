@@ -194,12 +194,12 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		if (count($messages_erreur))
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
 		if ($nb_docs){
-			$res['message_ok'] = singulier_ou_pluriel($nb_docs,'medias:document_installe_succes','medias:nb_documents_installe_succes').$js;
+			$res['message_ok'] = singulier_ou_pluriel($nb_docs,'medias:document_installe_succes','medias:nb_documents_installe_succes');
 		}
 		if ($ancre)
 			$res['redirect'] = "#doc$ancre";
 	}
-	if (isset($res['message_ok'])){
+	if ($nb_docs OR isset($res['message_ok'])){
 		$callback = "";
 		if ($ancre)
 			$callback .= "jQuery('#doc$ancre a.editbox').eq(0).focus();";
@@ -209,7 +209,10 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		}
 		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents',{callback:function(){ $callback }});});";
 		$js = "<script type='text/javascript'>$js</script>";
-	  $res['message_ok'] .= $js;
+		if (isset($res['message_erreur']))
+			$res['message_erreur'].= $js;
+		else
+	    $res['message_ok'] .= $js;
 	}
 
 	return $res;
