@@ -62,7 +62,10 @@
 [(#GET{editable})
 <div class='actions'>
 [(#ENV{brise,0}|oui)
-[(#URL_ACTION_AUTEUR{verifier_documents_brises,'1',#GET{self}}|lien_ou_expose{<:medias:verifier_documents_brises:>,0,ajax})]
+	[(#URL_ACTION_AUTEUR{verifier_documents_brises,'1',#GET{self}}|lien_ou_expose{<:medias:verifier_documents_brises:>,0,ajax})]
+]
+[(#ENV{orphelins,0}|oui)
+	[(#URL_ACTION_AUTEUR{verifier_documents_liens,'*',#GET{self}}|lien_ou_expose{<:medias:verifier_documents_inutilises:>,0,ajax})]
 ]
 [
 (#INCLURE{fond=prive/squelettes/inclure/ajouter-documents}{env}{ajax})

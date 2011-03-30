@@ -16,20 +16,17 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * Verifier tous les fichiers brises
  *
  */
-function action_verifier_documents_brises_dist() {
+function action_verifier_documents_liens_dist($id_document=null) {
 
-	$securiser_action = charger_fonction('securiser_action', 'inc');
-	$arg = $securiser_action();
-
-	include_spip('inc/autoriser');
-	if (autoriser('administrer','mediatheque')) {
-		include_spip('inc/documents');
-		$res = sql_select('fichier,brise,id_document','spip_documents',"distant='non'");
-		while ($row = sql_fetch($res)){
-			if (($brise = !@file_exists(get_spip_doc($row['fichier'])))!=$row['brise'])
-				sql_updateq('spip_documents',array('brise'=>$brise),'id_document='.intval($row['id_document']));
-		}
+	if (is_null($id_document)){
+		$securiser_action = charger_fonction('securiser_action', 'inc');
+		$id_document = $securiser_action();
 	}
+
+	$id_document = ($id_document=='*')?'*':intval($id_document);
+	include_spip('action/editer_liens');
+	objet_optimiser_liens(array('document'=>$id_document),'*');
+
 }
 
 ?>
