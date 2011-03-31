@@ -30,31 +30,26 @@ function renseigner_source_distante($source){
 	include_spip('inc/distant');
 	// on passe la source dans le pipeline, le premier plugin
 	// qui est capable de renseigner complete
-	// et enleve l'entree source
+	// fichier et mode + tous les autres champs a son gout
 	// ex : oembed
 	$a = pipeline('renseigner_document_distant',array('source'=>$source));
+
 	// si la source est encore la, en revenir a la
 	// methode traditionnelle : chargement de l'url puis analyse
-	if (!isset($a['fichier'])){
+	if (!isset($a['fichier']) OR !isset($a['mode'])){
 		if (!$a = recuperer_infos_distantes($a['source'])) {
 			return _T('medias:erreur_chemin_distant',array('nom'=>$source));
 		}
 		# NB: dans les bonnes conditions (fichier autorise et pas trop gros)
 		# $a['fichier'] est une copie locale du fichier
 		unset($a['body']);
+		$a['distant'] = 'oui';
+		$a['mode'] = 'document';
+		$a['fichier'] = set_spip_doc($source);
 	}
 
-	// completer les entrees manquantes
-	$infos[$source] = array_merge(
-		array(
-		'distant'=>'oui',
-		'mode'=>'document',
-		'fichier'=>set_spip_doc($source),
-		),
-		$a);
-
 	// stocker pour la seconde demande
-	return $infos[$source];
+	return $infos[$source] = $a;
 }
 
 /**
