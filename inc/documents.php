@@ -29,7 +29,7 @@ if (!defined('CHARSET_JOINT')) define('CHARSET_JOINT', 'iso-8859-1');
 function contenu_document($arg, $charset='')
 {
 	if (is_numeric($arg)) {
-		$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=".sql_quote($arg));
+		$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=".intval($arg));
 		if (!$r) return '';
 		$f = $r['fichier'];
 		$f = ($r['distant'] =='oui') ? _DIR_RACINE . copie_locale($f) : get_spip_doc($f);
@@ -60,7 +60,7 @@ function generer_url_document_dist($id_document, $args='', $ancre='') {
 	include_spip('inc/autoriser');
 	if (!autoriser('voir', 'document', $id_document)) return '';
 
-	$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=".sql_quote($id_document));
+	$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=".intval($id_document));
 
 	if (!$r) return '';
 

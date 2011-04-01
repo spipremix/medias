@@ -126,7 +126,7 @@ function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
 	if (!isset($m[$q][$id])) {
 		$interdit = false;
 
-		$s = sql_select("id_objet,objet", "spip_documents_liens", "id_document=".sql_quote($id));
+		$s = sql_select("id_objet,objet", "spip_documents_liens", "id_document=".intval($id));
 		while ($t = sql_fetch($s)) {
 			if (!autoriser('modifier', $t['objet'], $t['id_objet'], $qui, $opt)) {
 				$interdit = true;
