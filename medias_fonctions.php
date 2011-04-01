@@ -62,24 +62,6 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
 		array_unshift($boucle->where,array("'IN'", "'$id_table.mode'", "'(\\'image\\',\\'document\\')'"));
 	}
 
-	// Pour une boucle generique (DOCUMENTS) sans critere de lien, verifier
-	// qu notre document est lie a un element publie
-	// (le critere {tout} permet de les afficher tous quand meme)
-	// S'il y a un critere de lien {id_article} par exemple, on zappe
-	// ces complications (et tant pis si la boucle n'a pas prevu de
-	// verification du statut de l'article)
-	if (!isset($boucle->modificateur['tout'])
-	AND !isset($boucle->modificateur['criteres']['statut'])
-	) {
-		if ($GLOBALS['var_preview']) {
-			array_unshift($boucle->where,"'($id_table.statut IN (\"publie\",\"prop\",\"prepa\"))'");
-		} else {
-			if ($GLOBALS['meta']["post_dates"] == 'non')
-				array_unshift($boucle->where,"quete_condition_postdates('$id_table" . ".date_publication',"._q($boucle->serveur).")");
-			array_unshift($boucle->where,"'(($id_table.statut = \"publie\"))'");
-		}
-	}
-
 	return calculer_boucle($id_boucle, $boucles);
 }
 

@@ -147,6 +147,15 @@ function medias_declarer_tables_objets_sql($tables){
 			"id_document"=>"id_document",
 			"extension"=>"extension"
 		),
+		'statut'=> array(
+			array(
+				'champ' => 'statut',
+				'publie' => 'publie',
+				'previsu' => 'publie,prop,prepa',
+				'post_date' => 'date_publication',
+				'exception' => array('statut','tout')
+			)
+		),
 		'tables_jointures' => array('types_documents'),
 		'rechercher_champs' => array(
 			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
@@ -162,7 +171,6 @@ function medias_declarer_tables_objets_sql($tables){
 	$tables['spip_rubriques']['rechercher_jointures']['document'] = array('titre' => 2, 'descriptif' => 1);
 	return $tables;
 }
-
 
 /**
  * Creer la table des types de document
