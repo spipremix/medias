@@ -241,7 +241,7 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	if (!isset($GLOBALS['meta'][$nom_meta_base_version])){
 		$trouver_table = charger_fonction('trouver_table','base');
 		if ($desc = $trouver_table('spip_documents')
-		  AND !isset($desc['statut']))
+		  AND !isset($desc['field']['statut']))
 			ecrire_meta($nom_meta_base_version,'0.1.0');
 	}
 
