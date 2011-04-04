@@ -20,7 +20,7 @@
 	  	<li class='editer_parent[ (#ENV**{erreurs}|table_valeur{parents}|oui)erreur]'>
 	    	<label for="parents"><:medias:label_parents:></label>[
 	    	<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{parents})</span>
-	    	]<INCLURE{fond=formulaires/selecteur/articles}{selected=#ENV{parents}}{name=parents}{rubriques=1}{articles=1}>
+	    	]<INCLURE{fond=formulaires/selecteur/articles, selected=#ENV{parents}, name=parents, rubriques=1, articles=1} />
 	  	</li>
 			[<li class="editer_fichier[ (#ENV**{erreurs}|table_valeur{fichier}|oui)erreur]">
 				<label for="fichier"><:medias:label_fichier:></label>[
@@ -33,7 +33,7 @@
 				&#91;<a href='#' onclick='jQuery("#changer_fichier_document").toggle("fast");return false;'><:bouton_changer:></a>&#93;
 				</p>
 				<div id='changer_fichier_document' style='display:none;'>
-				[(#INCLURE{fond=formulaires/inc-upload_document}{env}{joindre_upload=oui})]
+				[(#INCLURE{fond=formulaires/inc-upload_document, env, joindre_upload=oui})]
 				</div>
 	    </li>]
 	  	<li class="editer_apercu">

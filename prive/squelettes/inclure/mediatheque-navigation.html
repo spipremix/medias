@@ -56,7 +56,7 @@
 <div class='nettoyeur'></div>
 #FORMULAIRE_RECHERCHE_ECRIRE{#GET{self},ajax}
 
-<INCLURE{fond=#ENV{galerie,prive/squelettes/inclure/mediatheque-galerie},ajax=documents,env}>
+<INCLURE{fond=#ENV{galerie,prive/squelettes/inclure/mediatheque-galerie},ajax=documents,env} />
 
 <div class='nettoyeur'></div>
 [(#GET{editable})
@@ -68,7 +68,7 @@
 	[(#URL_ACTION_AUTEUR{verifier_documents_liens,'*',#GET{self}}|lien_ou_expose{<:medias:verifier_documents_inutilises:>,0,ajax})]
 ]
 [
-(#INCLURE{fond=prive/squelettes/inclure/ajouter-documents}{env}{ajax})
+(#INCLURE{fond=prive/squelettes/inclure/ajouter-documents, env, ajax})
 ]
 </div>]
 
