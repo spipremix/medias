@@ -238,7 +238,7 @@ function joindre_decrire_contenu_zip($zip) {
 	$fichiers = array();
 	$erreurs = array();
 	foreach ($list as $file) {
-		if (is_array(verifier_upload_autorise($f = $file['stored_filename'])))
+		if (accepte_fichier_upload($f = $file['stored_filename']))
 			$fichiers[$f] = $file;
 		else
 			// pas de message pour les dossiers et fichiers caches
@@ -298,4 +298,32 @@ function fixer_extension_document($doc) {
 	return array($extension,$name);
 }
 }
+
+//
+// Gestion des fichiers ZIP
+//
+// http://doc.spip.org/@accepte_fichier_upload
+
+function accepte_fichier_upload ($f) {
+	if (!preg_match(",.*__MACOSX/,", $f)
+	AND !preg_match(",^\.,", basename($f))) {
+	include_spip('action/ajouter_documents');
+		$ext = corriger_extension((strtolower(substr(strrchr($f, "."), 1))));
+		return sql_countsel('spip_types_documents', "extension=" . sql_quote($ext) . " AND upload='oui'");
+	}
+}
+
+# callback pour le deballage d'un zip telecharge
+# http://www.phpconcept.net/pclzip/man/en/?options-pclzip_cb_pre_extractfunction
+// http://doc.spip.org/@callback_deballe_fichier
+
+function callback_deballe_fichier($p_event, &$p_header) {
+	if (accepte_fichier_upload($p_header['filename'])) {
+		$p_header['filename'] = _tmp_dir . basename($p_header['filename']);
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
 ?>
