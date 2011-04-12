@@ -238,7 +238,7 @@ function joindre_decrire_contenu_zip($zip) {
 	$fichiers = array();
 	$erreurs = array();
 	foreach ($list as $file) {
-		if (is_array(verifier_upload_autorise(($f = $file['stored_filename'])))
+		if (is_array(verifier_upload_autorise($f = $file['stored_filename'])))
 			$fichiers[$f] = $file;
 		else
 			// pas de message pour les dossiers et fichiers caches
