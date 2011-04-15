@@ -18,34 +18,24 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  *
  * @return unknown
  */
-function action_editer_document_dist() {
+function action_editer_document_dist($arg=null) {
 
-	$securiser_action = charger_fonction('securiser_action', 'inc');
-	$arg = $securiser_action();
+	if (is_null($arg)){
+		$securiser_action = charger_fonction('securiser_action', 'inc');
+		$arg = $securiser_action();
+	}
 
 	// Envoi depuis le formulaire de creation d'un document
 	if (!$id_document = intval($arg)) {
-		$id_document = insert_document();
+		$id_document = document_inserer();
 	}
 
-	if ($id_document = intval($id_document)) {
-		document_set($id_document);
-	}
-	// Erreur
-	else{
-		include_spip('inc/headers');
-		redirige_url_ecrire();
-	}
+	if (!$id_document)
+		return array(0,''); // erreur
 
-	if (_request('redirect')) {
-		$redirect = parametre_url(urldecode(_request('redirect')),
-			'id_document', $id_document, '&');
-			
-		include_spip('inc/headers');
-		redirige_par_entete($redirect);
-	}
-	else 
-		return array($id_document,'');
+	$err = document_modifier($id_document);
+
+	return array($id_document,$err);
 }
 
 /**
@@ -53,7 +43,7 @@ function action_editer_document_dist() {
  *
  * @return unknown
  */
-function insert_document() {
+function document_inserer() {
 
 	$champs = array(
 		'statut' => 'prop',
@@ -70,7 +60,16 @@ function insert_document() {
 		)
 	);
 	$id_document = sql_insertq("spip_documents", $champs);
-	
+	pipeline('post_insertion',
+		array(
+			'args' => array(
+				'table' => 'spip_documents',
+				'id_objet' => $id_document
+			),
+			'data' => $champs
+		)
+	);
+
 	return $id_document;
 }
 
@@ -82,7 +81,7 @@ function insert_document() {
  * @param int $id_document
  * @param array $set
  */
-function document_set ($id_document, $set=false) {
+function document_modifier($id_document, $set=false) {
 
 	include_spip('inc/modifier');
 	// champs normaux
@@ -129,7 +128,7 @@ function document_set ($id_document, $set=false) {
 	// Changer le statut du document ?
 	// le statut n'est jamais fixe manuellement mais decoule de celui des objets lies
 	$champs = collecter_requests(array('parents','ajouts_parents'),array(),$set);
-	if(instituer_document($id_document,$champs)) {
+	if(document_instituer($id_document,$champs)) {
 
 		//
 		// Post-modifications
@@ -149,7 +148,7 @@ function document_set ($id_document, $set=false) {
  *
  * @param int $id_document
  */
-function instituer_document($id_document,$champs=array()){
+function document_instituer($id_document,$champs=array()){
 	
 	$statut=isset($champs['statut'])?$champs['statut']:null;
 	$date_publication = isset($champs['date_publication'])?$champs['date_publication']:null;
@@ -257,4 +256,20 @@ function medias_revision_document_parents($id_document, $parents=null, $ajout=fa
 	objet_associer(array('document'=>$id_document),$objets_parents);
 
 }
+
+
+// obsoletes
+function insert_document() {
+	return document_inserer();
+}
+function document_set($id_document, $set=false) {
+	return document_modifier($id_document, $set);
+}
+function instituer_document($id_document,$champs=array()){
+	return document_instituer($id_document,$champs);
+}
+function revision_document($id_document, $c=false) {
+	return document_modifier($id_document,$c);
+}
+
 ?>

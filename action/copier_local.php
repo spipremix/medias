@@ -68,7 +68,7 @@ function action_copier_local_post($id_document) {
 		
 		// ajouter l'origine du document aux credits
 		include_spip('action/editer_document');
-		document_set($id_document,array('credits'=>($row['credits']?$row['credits'].', ':'').$source));
+		document_modifier($id_document,array('credits'=>($row['credits']?$row['credits'].', ':'').$source));
 		return true;
 		
 	} else {

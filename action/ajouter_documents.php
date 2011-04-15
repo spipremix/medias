@@ -188,7 +188,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	if (!$id_document)
 		return _T('medias:erreur_insertion_document_base',array('fichier'=>"<em>".$file['name']."</em>"));
 	
-	document_set($id_document,$champs);
+	document_modifier($id_document,$champs);
 
 	// permettre aux plugins de faire des modifs a l'ajout initial
 	// ex EXIF qui tourne les images si necessaire

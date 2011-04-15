@@ -27,7 +27,7 @@ function action_supprimer_document_dist($id_document=0) {
 	// si c'etait une vignette, modifier le document source !
 	if ($source = sql_getfetsel('id_document', 'spip_documents', 'id_vignette='.intval($id_document))){
 		include_spip('action/editer_document');
-		document_set($source,array("id_vignette" => 0));
+		document_modifier($source,array("id_vignette" => 0));
 	}
 
 	include_spip('inc/documents');

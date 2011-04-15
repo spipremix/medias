@@ -153,7 +153,7 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 			// lier le parent en plus
 			$champs = array('ajout_parents' => array("$objet|$id_objet"));
 			include_spip('action/editer_document');
-			document_set($refdoc_joindre,$champs);
+			document_modifier($refdoc_joindre,$champs);
 			set_request('refdoc_joindre',''); // vider la saisie
 			$ancre = $refdoc_joindre;
 			$sel[] = $refdoc_joindre;
