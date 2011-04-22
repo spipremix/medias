@@ -15,9 +15,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * Vignette pour les documents lies
  * rechercher les fichiers d'icone au format png pour l'extension demandee
  *
- * on cherche vignettes/ext.png dans le path
- * prive/vignettes/ext.png
- *
+ * on cherche prive/vignettes/ext.png dans le path
  *
  * @param string $ext
  * @param bool $size
@@ -33,15 +31,7 @@ function inc_vignette_dist($ext, $size=true, $loop = true) {
 	// dans les vignettes persos, ou dans les vignettes standard
 	if (
 	# installation dans un dossier /vignettes personnel, par exemple /squelettes/vignettes
-	!@file_exists($v = find_in_path("vignettes/".$ext.".png"))
-	#AND !@file_exists($v = find_in_path("vignettes/".$ext.".gif"))
-	# dans /icones (n'existe plus)
-	#AND !@file_exists($v = _DIR_IMG_ICONES . $ext.'.png')
-	#AND !@file_exists($v = _DIR_IMG_ICONES . $ext.'.gif')
-	# icones standard
-	AND !@file_exists($v = _DIR_IMG_ICONES_DIST . $ext.'.png')
-	# cas d'une install dans un repertoire "applicatif"...
-	AND !@file_exists(_ROOT_IMG_ICONES_DIST . $v)
+	!$v = find_in_path("prive/vignettes/".$ext.".png")
 	)
 		if ($loop){
 			$f = charger_fonction('vignette','inc');
@@ -52,7 +42,8 @@ function inc_vignette_dist($ext, $size=true, $loop = true) {
 
 	if (!$size) return $v;
 
-	if ($size = @getimagesize($v)) {
+	$largeur = $hauteur = 0;
+	if ($v AND $size = @getimagesize($v)) {
 		$largeur = $size[0];
 		$hauteur = $size[1];
 	}
