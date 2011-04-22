@@ -305,8 +305,8 @@ $tables_mime = array(
 		'audio/x-mpeg' => 'audio/mpeg',
 		'audio/x-musepack' => 'audio/musepack',
 		'audio/webm' => 'video/webm',
-		'video/mp4' => 'application/mp4',
 		'video/flv' => 'video/x-flv',
+		'video/mp4' => 'application/mp4'
 	);
 
 ?>
