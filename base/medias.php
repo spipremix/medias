@@ -290,7 +290,7 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	$maj['0.12.0'] = array(
 		array('medias_maj_meta_documents'),
 	);
-	$maj['0.13.0'] = array(
+	$maj['0.14.0'] = array(
 		array('creer_base_types_doc'),
 	);
 	include_spip('base/upgrade');

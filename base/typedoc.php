@@ -27,6 +27,7 @@ $tables_images = array(
 // Multimedia (peuvent utiliser le tag <embed>)
 
 $tables_sequences = array(
+			'aac' => 'MPEG4 Audio',
 			'aiff' => 'AIFF',
 			'anx' => 'Annodex',
 			'axa' => 'Annodex Audio',
@@ -67,7 +68,8 @@ $tables_sequences = array(
 			'tif' => 'TIFF',
 			'wav' => 'WAV',
 			'webm' => 'WebM',
-			'wmv' => 'Windows Media',
+			'wma' => 'Windows Media Audio',
+			'wmv' => 'Windows Media Video',
 			'3gp' => '3rd Generation Partnership Project'
 		);
 
@@ -167,6 +169,7 @@ $tables_mime = array(
 		'tif' => 'image/tiff',
 
 		// Multimedia (peuvent utiliser le tag <embed>)
+		'aac' => 'audio/mp4a-latm',
 		'aiff' => 'audio/x-aiff',
 		'asf' => 'video/x-ms-asf',
 		'avi' => 'video/x-msvideo',
@@ -207,6 +210,7 @@ $tables_mime = array(
 		'swf' => 'application/x-shockwave-flash',
 		'wav' => 'audio/x-wav',
 		'webm' => 'video/webm',
+		'wma' => 'audio/x-ms-wma',
 		'wmv' => 'video/x-ms-wmv',
 		'3gp' => 'video/3gpp',
 
@@ -296,13 +300,13 @@ $tables_mime = array(
 
 
 	$mime_alias = array (
-		'audio/x-mpeg' => 'audio/mpeg',
-		'audio/webm' => 'video/webm',
-		'audio/x-musepack' => 'audio/musepack',
 		'application/x-ogg' => 'application/ogg',
+		'audio/3gpp' => 'video/3gpp',
+		'audio/x-mpeg' => 'audio/mpeg',
+		'audio/x-musepack' => 'audio/musepack',
+		'audio/webm' => 'video/webm',
 		'video/mp4' => 'application/mp4',
 		'video/flv' => 'video/x-flv',
-		'audio/3gpp' => 'video/3gpp'
 	);
 
 ?>
