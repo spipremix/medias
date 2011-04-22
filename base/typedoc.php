@@ -122,19 +122,21 @@ $tables_documents = array(
 			'zip' => 'Zip',
 
 			// open document format
-			'odt' => 'opendocument text',
-			'ods' => 'opendocument spreadsheet',
-			'odp' => 'opendocument presentation',
-			'odg' => 'opendocument graphics',
+			
+			'odb' => 'opendocument database',			
 			'odc' => 'opendocument chart',
 			'odf' => 'opendocument formula',
-			'odb' => 'opendocument database',
-			'odi' => 'opendocument image',
-			'odm' => 'opendocument text-master',
-			'ott' => 'opendocument text-template',
-			'ots' => 'opendocument spreadsheet-template',
+			'odg' => 'opendocument graphics',
+			'odi' => 'opendocument image',	
+			'odm' => 'opendocument text-master',			
+			'odp' => 'opendocument presentation',
+			'ods' => 'opendocument spreadsheet',
+			'odt' => 'opendocument text',
+			'otg' => 'opendocument graphics-template',			
 			'otp' => 'opendocument presentation-template',
-			'otg' => 'opendocument graphics-template',
+			'ots' => 'opendocument spreadsheet-template',			
+			'ott' => 'opendocument text-template',
+
 
 			// Open XML File Formats
 			'docm' => 'Word',
