@@ -1,159 +1,186 @@
 <?php
-
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// extrait automatiquement de http://www.spip.net/trad-lang/
+// ** ne pas modifier le fichier **
+
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'aucun_audio' => 'No hay banda sonora',
 	'aucun_document' => 'No hay documento',
-	'aucun_file'=>'No hay documento',
-	'aucun_image'=>'No hay imagen',
-	'aucun_audio'=>'No hay banda sonora',
-	'aucun_video'=>'No hay secuencia',
-	'aucune_utilisation'=>'Este documento no se utiliza',
+	'aucun_file' => 'No hay documento',
+	'aucun_image' => 'No hay imagen',
+	'aucun_video' => 'No hay secuencia',
+	'aucune_utilisation' => 'Este documento no se utiliza',
 	'aucune_vignette' => 'No hay miniatura',
 
-	
 	// B
-	'bouton_copier_local'=>'Copia en el sitio',
-	'bouton_download_depuis'=>'depuis&nbsp;:',
-	'bouton_download_local' => 'Mi PC',
-	'bouton_download_par_mediatheque' => 'la biblioteca de medios',
-	'bouton_download_par_ftp' => 'el servidor',
-	'bouton_download_sur_le_web' => 'internet',
+	'bouton_ajouter_document' => 'Añadir un documento',
+	'bouton_ajouter_image' => 'Añadir una imagen',
+	'bouton_ajouter_image_document' => 'Añadir una imagen o un documento',
 	'bouton_attacher_document' => 'Adjuntar',
+	'bouton_copier_local' => 'Copia en el sitio',
+	'bouton_download_depuis' => 'depuis&nbsp;:',
+	'bouton_download_local' => 'Mi PC',
+	'bouton_download_par_ftp' => 'el servidor',
+	'bouton_download_par_mediatheque' => 'la biblioteca de medios',
+	'bouton_download_sur_le_web' => 'internet',
 	'bouton_enlever_document' => 'Separar',
 	'bouton_enlever_supprimer_document' => 'Eliminar',
+	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer le document ?', # NEW
 	'bouton_modifier_document' => 'Editar',
 	'bouton_parcourir' => 'Navegar..',
 	'bouton_refresh_document' => 'Actualizar el documento',
-	'bouton_remplacer_image' => 'Sustituir esto imagen',
 	'bouton_remplacer_document' => 'Sustituir este documento',
+	'bouton_remplacer_image' => 'Sustituir esto imagen',
 	'bouton_remplacer_image_document' => 'Sustituye por una imagen o documento',
 	'bouton_supprimer' => 'Eliminar',
 	'bouton_supprimer_tous_orphelins' => 'Eliminar todos documentos no utilizados',
 	'bouton_supprimer_tous_orphelins_confirmation' => '&iquest;Est&aacute;s seguro que quieres eliminar @nb@ no utilizados?',
 	'bouton_upload' => 'Descargar',
-	
+
 	// D
-	'documents'=> 'Gesti&oacute;n de los documentos',
-	'documents_distants'=> 'Remoto',
-	'documents_locaux'=> 'Local',
-	'documents_non_publies'=> 'Inedito',
-	'documents_publies'=> 'Publicado',
-	'documents_tous'=> 'Todo',
-	'documents_brises' => 'Bris&eacute;s',
-	'documents_orphelins' => 'No utilizados',
-	'descriptif'=>'Descripci�n',
-	'des_documents'=>'@nb@ documentos',
-	'des_files'=>'@nb@ documentos',
-	'des_images'=>'@nb@ im&#225;genes',
-	'des_audios'=>'@nb@ bandas sonoras',
-	'des_videos'=>'@nb@ secuencias',
-	'des_utilisations'=>'@nb@ usos',
-	'document_installe_succes' => 'El archivo ha sido cargado',
-	'document_copie_locale_succes' => '	El archivo ha sido copiado en el sitio',
-	'nb_documents_installe_succes' => '@nb@ los archivos cargados con exito',
-	'document_vu' => 'Introducido en el texto',
+	'des_audios' => '@nb@ bandas sonoras',
+	'des_documents' => '@nb@ documentos',
+	'des_files' => '@nb@ documentos',
+	'des_images' => '@nb@ im&#225;genes',
+	'des_utilisations' => '@nb@ usos',
+	'des_videos' => '@nb@ secuencias',
+	'descriptif' => 'Descripci�n',
 	'document_attache_succes' => 'El documento ha sido a&#241;adido',
-	
+	'document_copie_locale_succes' => '	El archivo ha sido copiado en el sitio',
+	'document_installe_succes' => 'El archivo ha sido cargado',
+	'document_vu' => 'Introducido en el texto',
+	'documents' => 'Gesti&oacute;n de los documentos',
+	'documents_brises' => 'Bris&eacute;s',
+	'documents_distants' => 'Remoto',
+	'documents_locaux' => 'Local',
+	'documents_non_publies' => 'Inedito',
+	'documents_orphelins' => 'No utilizados',
+	'documents_publies' => 'Publicado',
+	'documents_tous' => 'Todo',
+	'double_clic_inserer_doc' => 'Haga doble clic para insertar este atajo en el texto',
+
 	// E
-	'erreur_indiquez_un_fichier'=>'Especifique un archivo!',
-	'erreur_aucun_document'=>'Este documento no existe en la biblioteca de medios',
-	'erreur_aucun_fichier'=>'No se encontraron archivos',
-	'erreur_upload_type_interdit'=> "	La descarga de archivos de tipo @nom@ no permitido",
-	'erreur_chemin_ftp'=>'El archivo especificado no se encuentra en el servidor',
+	'entree_dimensions' => 'Dimensiones',
+	'entree_titre_document' => 'Título del documento',
+	'entree_titre_image' => 'Título de la imagen',
+	'erreur_aucun_document' => 'Este documento no existe en la biblioteca de medios',
+	'erreur_aucun_fichier' => 'No se encontraron archivos',
 	'erreur_chemin_distant' => 'El archivo remoto @nom@ no se encontr�',
+	'erreur_chemin_ftp' => 'El archivo especificado no se encuentra en el servidor',
 	'erreur_copie_fichier' => 'No se puede copiar el archivo @nom@',
 	'erreur_format_fichier_image' => 'El formato de @nom@ no es adecuado para una imagen',
+	'erreur_indiquez_un_fichier' => 'Especifique un archivo!',
+	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
+	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
+	'erreur_upload_type_interdit' => '	La descarga de archivos de tipo @nom@ no permitido',
 	'erreur_upload_vignette' => 'Error al cargar miniatura @nom@',
-	
+	'erreurs' => '@nb@ erreurs', # NEW
+	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
+
 	// F
-	'format_date_incorrect' => 'La fecha o la hora son incorrectas',
 	'fichier_modifie' => 'El archivo ha sido modificado. Haga clic en Guardar.',
-	
+	'format_date_incorrect' => 'La fecha o la hora son incorrectas',
+
 	// I
 	'icone_creer_document' => 'A&#241;adir documento',
 	'id' => 'ID',
-	'infos'=>'Informaci&#243;n T&#233;cnica',
-	'info_modifier_document'=>'Editar el documento',
-	'info_heure' => 'Tiempo',
-	'info_largeur' => 'Anchura',
-	'info_hauteur' => 'Altura',
-	'info_gauche_numero_document'=>'DOCUMENTO N&#218;MERO',
-	'info_statut_document'=> 'Este documento es&nbsp;:',
-	'info_illustrations' => 'Illustrator',
+	'image_tourner_180' => 'Rotación de 180°',
+	'image_tourner_droite' => 'Rotación de 90° a la derecha',
+	'image_tourner_gauche' => 'Rotación de 90° a la izquierda',
 	'info_doc_max_poids' => 'Los documentos deber&#225;n ser inferior a @maxi@ (este archivo se @actuel@).',
+	'info_document' => 'Documento',
+	'info_document_indisponible' => 'Este documento no está disponible',
+	'info_documents' => 'Documentos',
+	'info_gauche_numero_document' => 'DOCUMENTO N&#218;MERO',
+	'info_hauteur' => 'Altura',
+	'info_heure' => 'Tiempo',
+	'info_illustrations' => 'Illustrator',
 	'info_image_max_poids' => 'Las im&#225;genes deben ser necesariamente menos @maxi@ (este archivo se @actuel@).',
+	'info_inclusion_directe' => 'Inclusión directa:',
+	'info_inclusion_vignette' => 'Inclusión del icono',
+	'info_installer_tous_documents' => 'Instalar todos los documentos',
+	'info_largeur' => 'Anchura',
+	'info_logo_max_taille' => 'Los logos deben obligatoriamente medir menos de @maxi@ (el archivo mide @actuel@).',
+	'info_modifier_document' => 'Editar el documento',
+	'info_portfolio' => 'Portafolio',
+	'info_referencer_doc_distant' => 'Referenciar un documento de Internet :',
+	'info_statut_document' => 'Este documento es&nbsp;:',
+	'info_telecharger' => 'Subir desde tu equipo:',
+	'infos' => 'Informaci&#243;n T&#233;cnica',
+	'item_autoriser_selectionner_date_en_ligne' => 'Permitir la modificación de la fecha de cada documento',
+	'item_non_autoriser_selectionner_date_en_ligne' => 'La fecha de los documentos es la de subida al sitio web',
 
 	// L
-	'logo' => 'Logo',
-	'label_refdoc_joindre' => 'Documento n&#250;mero',
-	'label_parents' => 'Este documento est&#225; relacionado con',
+	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
+	'label_apercu' => 'Aper&ccedil;u',
+	'label_caracteristiques' => 'Caracter&#237;sticas',
+	'label_credits' => 'Cr&#233;ditos',
 	'label_fichier' => 'Archivo',
 	'label_fichier_vignette' => 'Miniatura',
-	'label_caracteristiques' => 'Caracter&#237;sticas',
-	'label_apercu' => 'Aper&ccedil;u',
-	'label_credits' => 'Cr&#233;ditos',
+	'label_parents' => 'Este documento est&#225; relacionado con',
+	'label_refdoc_joindre' => 'Documento n&#250;mero',
 	'lien_tout_enlever' => 'Quitar todo',
-	
+	'logo' => 'Logo',
+
 	// M
 	'media_audio' => 'Bandas sonoras',
-	'media_video' => 'Secuencias',
-	'media_image' => 'Im&#225;genes',
 	'media_file' => 'Otro',
+	'media_image' => 'Im&#225;genes',
+	'media_video' => 'Secuencias',
+
+	// N
+	'nb_documents_installe_succes' => '@nb@ los archivos cargados con exito',
 
 	// O
-	'objet_documents'=>'Documentos',
-	
+	'objet_document' => 'Document', # NEW
+	'objet_documents' => 'Documentos',
+
 	// P
-	'par_id' => 'ID',
 	'par_date' => 'Fecha',
-	'par_taille' => 'Pesa',
-	'par_largeur' => 'Anchura',
 	'par_hauteur' => 'Altura',
+	'par_id' => 'ID',
+	'par_largeur' => 'Anchura',
+	'par_taille' => 'Pesa',
 	'par_titre' => 'Titulo',
-	
+
 	// T
-	'tous_les_medias'=>'Todos los medios',
-	
+	'texte_documents_joints' => 'Puedes autorizar el añadir documentos (archivos de ofimática, imágenes,
+ multimedia, etc.) a los artículos y/o las secciones. Después, estos archivos
+ pueden referenciarse en el artículo,
+ o mostrarse por separado.<p>',
+	'texte_documents_joints_2' => 'Este ajuste no impide la inserción de imágenes directamente en los artículos.',
+	'titre_documents_joints' => 'Documentos adjuntos',
+	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
+	'tous_les_medias' => 'Todos los medios',
+	'tout_dossier_upload' => 'Toda la carpeta @upload@',
+
 	// U
+	'un_audio' => '1 banda sonora',
 	'un_document' => '1 documento',
-	'un_file'=>'1 documento',
-	'un_image'=>'1 imagen',
-	'un_audio'=>'1 banda sonora',
-	'un_video'=>'1 secuencia',
-	'une_utilisation'=>'1 usar',
+	'un_file' => '1 documento',
+	'un_image' => '1 imagen',
+	'un_video' => '1 secuencia',
+	'une_utilisation' => '1 usar',
+	'upload_fichier_zip' => 'Archivo ZIP',
+	'upload_fichier_zip_texte' => 'El archivo que te propones instalar es un archivo Zip.',
+	'upload_fichier_zip_texte2' => 'Este archivo puede ser:',
 	'upload_info_mode_document' => 'Enviar a el portfolio',
 	'upload_info_mode_image' => 'Eliminar del portfolio',
-	
-	//
-	'verifier_documents_brises' => 'Compruebe los archivos que faltan',
-	'vignette_supprimee' => 'La miniatura se ha eliminado',
+	'upload_limit' => 'Este archivo es demasiado grande para el servidor; el tamaño máximo autorizado en <i>upload</i> es de @max@.',
+	'upload_zip_conserver' => 'Conservar el archivo tras la extracción',
+	'upload_zip_decompacter' => 'descomprimido y cada elemento que contiene instalado en el sitio. Los archivos que se van a instalar en el sitio son:',
+	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
+	'upload_zip_telquel' => 'instalado tal cual, como archivo Zip comprimido;',
+	'upload_zip_titrer' => 'Titular como el nombre de los archivos',
 
-	
-/*	'affichage' => 'Affichage :',
-	'attr_alt' => 'Pas de balise alt ?? ',
-	'conteneur' => 'Conteneur :',
-	'fichier_introuvable' => 'Fichier introuvable',
-	'filtrer' => 'Filtrer :',
-	'info_breve' => 'Breve ',
-	'info_breves' => 'Breves',
-	'info_doc' => 'Cette page r&eacute;capitule la liste de tous vos documents. Pour modifier les informations de chaque document, suivez le lien vers la page de sa rubrique.',
-	'info_reparer' => 'Cette page reconstitue les liens entre documents et articles dans lequel ils sont ins&eacute;r&eacute;s par un tag <code><imgxx> <docxx> ou <embxx></code>',
-	'info_rubrique' => 'Rubrique ',
-	'lien_ajoute' => 'lien ajout&eacute;',
-	'mis_jour_liens' => 'Liens mis a jour',
-	'mis_jour_tailles' => 'Mettre les tailles a jour',
-	'par' => 'Par @numero@',
-	'portfolio' => 'Portfolio',
-	'reparer_liens' => 'Reparer les liens',
-	'info_syndication' => 'Syndication',
-	'sans_titre_descriptif' => 'Sans titre ni descriptif',
-	'taille_erronee' => 'Taille erron&eacute;e',
-	'type' => 'Type :',
-	'tous' => 'Tous',
-	'tous_doc'  => 'Tous vos documents',
-	'tous_docs'  => 'Tous les Documents'*/
+	// V
+	'verifier_documents_brises' => 'Compruebe los archivos que faltan',
+	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
+	'vignette_supprimee' => 'La miniatura se ha eliminado'
 );
+
 ?>
