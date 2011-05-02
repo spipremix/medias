@@ -33,7 +33,7 @@ function erreur_upload_trop_gros() {
 	$msg = 		"<p>"
 		.taille_en_octets($_SERVER["CONTENT_LENGTH"])
 		.'<br />'
-		._T('upload_limit',
+		._T('medias:upload_limit',
 		array('max' => ini_get('upload_max_filesize')))
 		."</p>";
 	

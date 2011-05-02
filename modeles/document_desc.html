@@ -10,9 +10,9 @@
 	<div class="item #MODE vu_#VU statut_#STATUT[(#DISTANT|=={oui}|oui)distant]" id="doc#ID_DOCUMENT">
 		[(#EXTENSION|match{gif|png|jpg}|oui) #SET{id,#ID_VIGNETTE|?{#ID_VIGNETTE,#ID_DOCUMENT}}
 		<div class="tourner">
-			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-gauche-12.png}|balise_img{<:medias:tourner_90L:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',-90'},#SELF},ajax})]
-			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-droite-12.png}|balise_img{<:medias:tourner_90R:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',90'},#SELF},ajax})]
-			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-180-12.png}|balise_img{<:medias:tourner_180:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',180'},#SELF},ajax})]
+			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-gauche-12.png}|balise_img{<:medias:image_tourner_gauche:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',-90'},#SELF},ajax})]
+			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-droite-12.png}|balise_img{<:medias:image_tourner_droite:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',90'},#SELF},ajax})]
+			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-180-12.png}|balise_img{<:medias:image_tourner_180:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',180'},#SELF},ajax})]
 		</div>]
 		[(#LOGO_DOCUMENT{#URL_DOCUMENT,60,60})]
 		<h4 class="titrem">

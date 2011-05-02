@@ -78,7 +78,7 @@ function action_acceder_document_dist() {
 		http_status(404);
 		include_spip('inc/minipres');
 		echo minipres(_T('erreur').' 404',
-			_T('info_document_indisponible'));
+			_T('medias:info_document_indisponible'));
 		break;
 
 	default:

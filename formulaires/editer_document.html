@@ -13,7 +13,7 @@
 	  <div style="position:absolute;left:-10000px;"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></div>
 	  <ul>
 	    <li class="editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
-		    <label for="titre">[(#ENV{mode}|=={document}|?{<:entree_titre_document:>,<:entree_titre_image:>})]</label>[
+		    <label for="titre">[(#ENV{mode}|=={document}|?{<:medias:entree_titre_document:>,<:medias:entree_titre_image:>})]</label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{titre})</span>
 				]<input type='text' class='text' name='titre' id='titre' value="[(#ENV**{titre,''})]" />
 	    </li>
@@ -40,9 +40,9 @@
 		  	<label><:medias:label_apercu:></label>
 		  	[(#ENV{apercu}|oui)
 				<div class="tourner">
-					<input class="image" type="image" name="tournerL90" src="#CHEMIN_IMAGE{tourner-gauche-12.png}" alt="<:medias:tourner_90L:>" />
-					<input class="image" type="image" name="tournerR90" src="#CHEMIN_IMAGE{tourner-droite-12.png}" alt="<:medias:tourner_90R:>" />
-					<input class="image" type="image" name="tourner180" src="#CHEMIN_IMAGE{tourner-180-12.png}" alt="<:medias:tourner_180:>" />
+					<input class="image" type="image" name="tournerL90" src="#CHEMIN_IMAGE{tourner-gauche-12.png}" alt="<:medias:image_tourner_gauche:>" />
+					<input class="image" type="image" name="tournerR90" src="#CHEMIN_IMAGE{tourner-droite-12.png}" alt="<:medias:image_tourner_droite:>" />
+					<input class="image" type="image" name="tourner180" src="#CHEMIN_IMAGE{tourner-180-12.png}" alt="<:medias:image_tourner_180:>" />
 				</div>
 				[<a href='#ENV{apercu}'>(#ENV{apercu}|image_reduire{300,200})</a>]
 				]
@@ -78,7 +78,7 @@
 	    </li>
 	    [(#ENV{_editer_dimension})
 	    <li class="editer_dimensions[ (#ENV**{erreurs}|table_valeur{dimensions}|oui)erreur]">
-				<label><:entree_dimensions:></label>[
+				<label><:medias:entree_dimensions:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{dimensions})</span>
 				]
 				<span class='choix largeur'>

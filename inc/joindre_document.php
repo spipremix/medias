@@ -155,15 +155,15 @@ function joindre_upload_error($error) {
 
 		# on peut affiner les differents messages d'erreur
 		case 1: /* UPLOAD_ERR_INI_SIZE */
-			$msg = _T('upload_limit',
+			$msg = _T('medias:upload_limit',
 			array('max' => ini_get('upload_max_filesize')));
 			break;
 		case 2: /* UPLOAD_ERR_FORM_SIZE */
-			$msg = _T('upload_limit',
+			$msg = _T('medias:upload_limit',
 			array('max' => ini_get('upload_max_filesize')));
 			break;
 		case 3: /* UPLOAD_ERR_PARTIAL  */
-			$msg = _T('upload_limit',
+			$msg = _T('medias:upload_limit',
 			array('max' => ini_get('upload_max_filesize')));
 			break;
 		

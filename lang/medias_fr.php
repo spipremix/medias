@@ -77,6 +77,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// F
 	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes',
 	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.',
+	'fichier_distant' => 'Fichier distant',
+	'fichier_manquant' => 'Fichier manquant',
 	
 	// I
 	'icone_creer_document' => 'Ajouter un document',
@@ -125,6 +127,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'tous_les_medias'=>'Tous les medias',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@',
+	'tout_voir' => 'Tout voir',
 	
 	// U
 	'un_document' => '1 document',

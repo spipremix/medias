@@ -260,7 +260,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 			  if (!in_array($ledossier, $dirs)) {
 				$texte_upload[] = "\n<option value=\"$ledossier\">"
 				. str_repeat("&nbsp;",$k) 
-				._T('tout_dossier_upload', array('upload' => $ledossier))
+				._T('medias:tout_dossier_upload', array('upload' => $ledossier))
 				."</option>";
 				$dirs[]= $ledossier;
 			  }
@@ -277,7 +277,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 	$texte = join('', $texte_upload);
 	if (count($texte_upload)>1) {
 		$texte = "\n<option value=\"/\" style='font-weight: bold;'>"
-				._T('info_installer_tous_documents')
+				._T('medias:info_installer_tous_documents')
 				."</option>" . $texte;
 	}
 

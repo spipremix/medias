@@ -28,9 +28,9 @@ function medias_raccourcis_doc($id_document,$titre,$descriptif,$inclus,$largeur,
 			AND ($type_inclus == "embed" OR $type_inclus == "image")
 			AND $largeur > 0 AND $hauteur > 0) {
 			$raccourci =
-			  "<span>"._T('info_inclusion_vignette')."</span>"
+			  "<span>"._T('medias:info_inclusion_vignette')."</span>"
 			. $raccourci
-			. "<span>"._T('info_inclusion_directe')."</span>"
+			. "<span>"._T('medias:info_inclusion_directe')."</span>"
 			. affiche_raccourci_doc('emb', $id_document, 'left')
 			. affiche_raccourci_doc('emb', $id_document, 'center')
 			. affiche_raccourci_doc('emb', $id_document, 'right');
