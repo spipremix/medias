@@ -71,7 +71,7 @@
 
 	<chemin dir="" />
 	<chemin dir="squelettes" />
-	<necessite id="SPIP" version="[2.3.0-dev;]" />
+	<necessite id="SPIP" version="[3.0.0-dev;]" />
 	<utilise id="Z" version="[1.2.1;]" />
 	<utilise id="mediabox" version="[0.5.0;]" />
 	<categorie>multimedia</categorie>
