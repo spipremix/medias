@@ -166,7 +166,12 @@ function joindre_upload_error($error) {
 			$msg = _T('medias:upload_limit',
 			array('max' => ini_get('upload_max_filesize')));
 			break;
-		
+		case 6: /* UPLOAD_ERR_NO_TMP_DIR  */
+			$msg = _T('medias:erreur_dossier_tmp_manquant');
+			break;
+		case 7: /* UPLOAD_ERR_CANT_WRITE */
+			$msg = _T('medias:erreur_ecriture_fichier');
+
 		default: /* autre */
 			if (!$msg)
 			$msg = _T('pass_erreur').' '. $error
