@@ -72,6 +72,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_chemin_distant' => 'El archivo remoto @nom@ no se encontr�',
 	'erreur_chemin_ftp' => 'El archivo especificado no se encuentra en el servidor',
 	'erreur_copie_fichier' => 'No se puede copiar el archivo @nom@',
+	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
+	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
 	'erreur_format_fichier_image' => 'El formato de @nom@ no es adecuado para una imagen',
 	'erreur_indiquez_un_fichier' => 'Especifique un archivo!',
 	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
@@ -82,6 +84,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
 
 	// F
+	'fichier_distant' => 'Fichier distant', # NEW
+	'fichier_manquant' => 'Fichier manquant', # NEW
 	'fichier_modifie' => 'El archivo ha sido modificado. Haga clic en Guardar.',
 	'format_date_incorrect' => 'La fecha o la hora son incorrectas',
 
@@ -157,6 +161,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
 	'tous_les_medias' => 'Todos los medios',
 	'tout_dossier_upload' => 'Toda la carpeta @upload@',
+	'tout_voir' => 'Tout voir', # NEW
 
 	// U
 	'un_audio' => '1 banda sonora',

@@ -82,9 +82,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreurs_voir' => 'Voir les @nb@ erreurs',
 
 	// F
-	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.',
 	'fichier_distant' => 'Fichier distant',
 	'fichier_manquant' => 'Fichier manquant',
+	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.',
 	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes',
 
 	// I

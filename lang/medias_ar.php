@@ -73,6 +73,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_chemin_distant' => '&#1604;&#1605; &#1610;&#1578;&#1605; &#1575;&#1604;&#1593;&#1579;&#1608;&#1585; &#1593;&#1604;&#1609; &#1575;&#1604;&#1605;&#1604;&#1601; &#1575;&#1604;&#1576;&#1593;&#1610;&#1583; @nom@',
 	'erreur_chemin_ftp' => '&#1604;&#1605; &#1610;&#1578;&#1605; &#1575;&#1604;&#1593;&#1579;&#1608;&#1585; &#1593;&#1576;&#1609; &#1575;&#1604;&#1605;&#1604;&#1601; &#1575;&#1604;&#1605;&#1581;&#1583;&#1583; &#1601;&#1610; &#1575;&#1604;&#1582;&#1575;&#1583;&#1605;',
 	'erreur_copie_fichier' => '&#1604;&#1575; &#1610;&#1605;&#1603;&#1606; &#1606;&#1587;&#1582; &#1575;&#1604;&#1605;&#1604;&#1601; @nom@',
+	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
+	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
 	'erreur_format_fichier_image' => '&#1604;&#1575; &#1610;&#1606;&#1575;&#1587;&#1576; &#1578;&#1606;&#1587;&#1610;&#1602; @nom@ &#1605;&#1604;&#1601; &#1589;&#1608;&#1585;&#1577;',
 	'erreur_indiquez_un_fichier' => '&#1578;&#1581;&#1583;&#1610;&#1583; &#1605;&#1604;&#1601;!',
 	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
@@ -83,6 +85,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
 
 	// F
+	'fichier_distant' => 'Fichier distant', # NEW
+	'fichier_manquant' => 'Fichier manquant', # NEW
 	'fichier_modifie' => '&#1578;&#1605; &#1578;&#1593;&#1583;&#1610;&#1604; &#1607;&#1584;&#1575; &#1575;&#1604;&#1605;&#1587;&#1578;&#1606;&#1583;. &#1571;&#1606;&#1602;&#1585; &#1593;&#1604;&#1609; &#1581;&#1601;&#1592;.',
 	'format_date_incorrect' => '&#1575;&#1604;&#1578;&#1575;&#1585;&#1610;&#1582; &#1575;&#1608; &#1575;&#1604;&#1608;&#1602;&#1578; &#1594;&#1610;&#1585; &#1589;&#1581;&#1610;&#1581;&#1610;&#1606;',
 
@@ -158,6 +162,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
 	'tous_les_medias' => '&#1603;&#1604; &#1575;&#1604;&#1608;&#1587;&#1575;&#1574;&#1591;',
 	'tout_dossier_upload' => 'كامل الدليل @upload@',
+	'tout_voir' => 'Tout voir', # NEW
 
 	// U
 	'un_audio' => '1 &#1588;&#1585;&#1610;&#1591; &#1589;&#1608;&#1578;&#1610;',

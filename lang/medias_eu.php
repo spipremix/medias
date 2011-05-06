@@ -72,6 +72,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_chemin_distant' => 'Le fichier distant @nom@ n\'a pas pu &ecirc;tre trouv&eacute;', # NEW
 	'erreur_chemin_ftp' => 'Le fichier indiqu&eacute; n\'a pas &eacute;t&eacute; trouv&eacute; sur le serveur', # NEW
 	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@', # NEW
+	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
+	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image', # NEW
 	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !', # NEW
 	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
@@ -82,6 +84,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
 
 	// F
+	'fichier_distant' => 'Fichier distant', # NEW
+	'fichier_manquant' => 'Fichier manquant', # NEW
 	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.', # NEW
 	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes', # NEW
 
@@ -154,6 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
 	'tous_les_medias' => 'Tous les medias', # NEW
 	'tout_dossier_upload' => 'Karpeta osoa @upload@',
+	'tout_voir' => 'Tout voir', # NEW
 
 	// U
 	'un_audio' => '1 bande son', # NEW

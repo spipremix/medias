@@ -72,6 +72,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_chemin_distant' => 'Die Datei @nom@ konnte nicht &uuml;ber das Netz erreicht werden.',
 	'erreur_chemin_ftp' => 'Die angegebene Datei wurde nicht auf dem Server gefunden.',
 	'erreur_copie_fichier' => 'Die Datei @nom@ konnte nicht kopiert werden.',
+	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
+	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
 	'erreur_format_fichier_image' => 'Das Format von @nom@ ist nicht als Bild geeeignet.',
 	'erreur_indiquez_un_fichier' => 'Geben sie eine Datei an!',
 	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
@@ -82,6 +84,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreurs_voir' => '@nb@ Fehler ansehen',
 
 	// F
+	'fichier_distant' => 'Fichier distant', # NEW
+	'fichier_manquant' => 'Fichier manquant', # NEW
 	'fichier_modifie' => 'Die Datei wurde ge&auml;ndert. Klicken sie hier zum Speichern.',
 	'format_date_incorrect' => 'Datum oder Uhrzeit sind falsch.',
 
@@ -154,6 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_documents_edit' => 'Dokument bearbeiten: @titre@',
 	'tous_les_medias' => 'Alle Medien',
 	'tout_dossier_upload' => 'Das ganze Verzeichnis @upload@',
+	'tout_voir' => 'Tout voir', # NEW
 
 	// U
 	'un_audio' => '1 Ton',
