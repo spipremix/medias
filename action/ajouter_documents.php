@@ -234,6 +234,9 @@ function corriger_extension($ext) {
 		case 'tiff':
 			$ext='tif';
 			break;
+		case 'mpeg':
+			$ext='mpg';
+			break;
 	}
 	return $ext;
 }
