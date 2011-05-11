@@ -72,20 +72,20 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_chemin_distant' => 'Die Datei @nom@ konnte nicht &uuml;ber das Netz erreicht werden.',
 	'erreur_chemin_ftp' => 'Die angegebene Datei wurde nicht auf dem Server gefunden.',
 	'erreur_copie_fichier' => 'Die Datei @nom@ konnte nicht kopiert werden.',
-	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
-	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
+	'erreur_dossier_tmp_manquant' => 'Es fehlt ein temporäres Verzeichnis zum Übertragen der Dateien',
+	'erreur_ecriture_fichier' => 'Fehler beim Speichern der Datei',
 	'erreur_format_fichier_image' => 'Das Format von @nom@ ist nicht als Bild geeeignet.',
 	'erreur_indiquez_un_fichier' => 'Geben sie eine Datei an!',
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
-	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
+	'erreur_insertion_document_base' => 'Das Dokument @fichier@kann nicht in der Datenbank erfasst werden.',
+	'erreur_suppression_vignette' => 'Fehler beim Löschen des Thumbnails',
 	'erreur_upload_type_interdit' => 'Die &Uuml;bertragung von Dokumenten mit dem Namen @nom@ ist nicht erlaubt.',
 	'erreur_upload_vignette' => 'Fehler beim Laden des Miniaturbilds @nom@',
 	'erreurs' => '@nb@ Fehler',
 	'erreurs_voir' => '@nb@ Fehler ansehen',
 
 	// F
-	'fichier_distant' => 'Fichier distant', # NEW
-	'fichier_manquant' => 'Fichier manquant', # NEW
+	'fichier_distant' => 'Externe Datei',
+	'fichier_manquant' => 'Datei fehlt',
 	'fichier_modifie' => 'Die Datei wurde ge&auml;ndert. Klicken sie hier zum Speichern.',
 	'format_date_incorrect' => 'Datum oder Uhrzeit sind falsch.',
 
@@ -119,7 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'Das Datum der Dokumente entspricht dem Zeitpunkt des Uploads.',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
+	'label_activer_document_objets' => 'Dokumente für die Inhalte freischalten:',
 	'label_apercu' => 'Vorschau',
 	'label_caracteristiques' => 'Eigenschaften',
 	'label_credits' => 'Beteiligte',
@@ -140,7 +140,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'nb_documents_installe_succes' => '@nb@ Dateien wurden erfolgreich &uuml;bertragen.',
 
 	// O
-	'objet_document' => 'Document', # NEW
+	'objet_document' => 'Dokument',
 	'objet_documents' => 'Dokumente',
 
 	// P
@@ -158,7 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_documents_edit' => 'Dokument bearbeiten: @titre@',
 	'tous_les_medias' => 'Alle Medien',
 	'tout_dossier_upload' => 'Das ganze Verzeichnis @upload@',
-	'tout_voir' => 'Tout voir', # NEW
+	'tout_voir' => 'Alle anzeigen',
 
 	// U
 	'un_audio' => '1 Ton',
@@ -181,7 +181,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// V
 	'verifier_documents_brises' => 'Fehlende Dateien pr&uuml;fen',
-	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
+	'verifier_documents_inutilises' => 'Links der Dokumente prüfen',
 	'vignette_supprimee' => 'Das MIniaturbild wurde gel&ouml;scht.'
 );
 
