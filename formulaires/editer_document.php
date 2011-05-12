@@ -141,6 +141,9 @@ function formulaires_editer_document_traiter_dist($id_document='new', $id_parent
 			$traiter = charger_fonction('traiter','formulaires/joindre_document');
 			$res2 = $traiter($id_document);
 		}
+		// on annule les saisies largeur/hauteur : l'upload a pu charger les siens
+		set_request('largeur');
+		set_request('hauteur');
 	}
 	else{
 		// regarder si une demande de rotation a eu lieu
