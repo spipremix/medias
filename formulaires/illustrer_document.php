@@ -61,11 +61,10 @@ function formulaires_illustrer_document_traiter_dist($id_document){
 		include_spip('inc/joindre_document');
 		$files = joindre_trouver_fichier_envoye();
 
-		$ajoute = action_ajouter_documents_dist($id_vignette,$files,'',0,'vignette');
+		$ajoute = $ajouter_documents($id_vignette,$files,'',0,'vignette');
 
-
-		if (is_int(reset($ajoute))){
-			$id_vignette = reset($ajoute);
+		if (is_numeric(reset($ajoute))
+		  AND $id_vignette = reset($ajoute)){
 			include_spip('action/editer_document');
 			document_modifier($id_document,array("id_vignette" => $id_vignette,'mode'=>'document'));
 			$res['message_ok'] = _T('medias:document_installe_succes');

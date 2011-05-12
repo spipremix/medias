@@ -21,10 +21,10 @@
 		<:medias:bouton_download_depuis:>
 		<:medias:bouton_download_local:>
 		[(#ENV{mediatheque,''}|oui)
-		| <a href='#' onclick="change_methode('mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
+		| <a href='#' onclick="change_methode('#GET{domid}','mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
 		[(#ENV{proposer_ftp,''}|oui)
-		| <a href='#' onclick="change_methode('ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
-		| <a href='#' onclick="change_methode('distant');return false;"><:medias:bouton_download_sur_le_web:></a>
+		| <a href='#' onclick="change_methode('#GET{domid}','ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
+		| <a href='#' onclick="change_methode('#GET{domid}','distant');return false;"><:medias:bouton_download_sur_le_web:></a>
 	</div>
 	<p class='boutons'><input class='submit' type="submit" name="joindre_upload" value="<:medias:bouton_upload:>"/></p>
 </div>[
@@ -50,11 +50,11 @@
 	/*\]\]>*/</script>
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
-			<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>
+			<a href='#' onclick="change_methode('#GET{domid}','upload');return false;"><:medias:bouton_download_local:></a>
 		| <:medias:bouton_download_par_mediatheque:>
 		[(#ENV{proposer_ftp,''}|oui)
-		| <a href='#' onclick="change_methode('ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
-		| <a href='#' onclick="change_methode('distant');return false;"><:medias:bouton_download_sur_le_web:></a>
+		| <a href='#' onclick="change_methode('#GET{domid}','ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
+		| <a href='#' onclick="change_methode('#GET{domid}','distant');return false;"><:medias:bouton_download_sur_le_web:></a>
 	</div>
 	<p class='boutons'><input class='submit' type="submit" name="joindre_mediatheque" value="<:medias:bouton_attacher_document:>"/></p>
 </div>
@@ -83,11 +83,11 @@
 	]
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
-		<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>
+		<a href='#' onclick="change_methode('#GET{domid}','upload');return false;"><:medias:bouton_download_local:></a>
 		[(#ENV{mediatheque,''}|oui)
-		| <a href='#' onclick="change_methode('mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
+		| <a href='#' onclick="change_methode('#GET{domid}','mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
 		| <:medias:bouton_download_par_ftp:>
-		| <a href='#' onclick="change_methode('distant');return false;"><:medias:bouton_download_sur_le_web:></a>
+		| <a href='#' onclick="change_methode('#GET{domid}','distant');return false;"><:medias:bouton_download_sur_le_web:></a>
 	</div>
 	<p class='boutons'>
 		[(#ENV*{_options_upload_ftp}|oui)
@@ -111,11 +111,11 @@
 	</ul>
 	<div class='sourceup'>
 		<:medias:bouton_download_depuis:>
-			<a href='#' onclick="change_methode('upload');return false;"><:medias:bouton_download_local:></a>
+			<a href='#' onclick="change_methode('#GET{domid}','upload');return false;"><:medias:bouton_download_local:></a>
 		[(#ENV{mediatheque,''}|oui)
-		| <a href='#' onclick="change_methode('mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
+		| <a href='#' onclick="change_methode('#GET{domid}','mediatheque');return false;"><:medias:bouton_download_par_mediatheque:></a>]
 		[(#ENV{proposer_ftp,''}|oui)
-		| <a href='#' onclick="change_methode('ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
+		| <a href='#' onclick="change_methode('#GET{domid}','ftp');return false;"><:medias:bouton_download_par_ftp:></a>]
 		| <:medias:bouton_download_sur_le_web:>
 	</div>
 	<p class='boutons'><input class='submit' type="submit" name="joindre_distant" value="<:bouton_choisir:>"/></p>
@@ -129,15 +129,15 @@
 
 <script type='text/javascript'>/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
 if (window.jQuery){
-function change_methode(methode){
-	var id = "#joindre_"+methode+"#GET{domid}";
+function change_methode(domid,methode){
+	var id = "#joindre_"+methode+domid;
 	if (jQuery(id).is(':hidden')) {
-		jQuery('div.joindre_mode#GET{domid}:visible').slideUp('fast');
+		jQuery('div.joindre_mode'+domid+':visible').slideUp('fast');
 		jQuery(id).slideDown('fast');
 	}
 	// placer en haut du formulaire les boutons submit par defaut correspondant a la methode active
-	jQuery("#defaultsubmit#GET{domid}").html('').append(jQuery(id).find('.boutons').eq(-1).find('input').clone(true));
+	jQuery("#defaultsubmit"+domid).html('').append(jQuery(id).find('.boutons').eq(-1).find('input').clone(true));
 }
-jQuery(function(){change_methode('#GET{methode}');});
+jQuery(function(){change_methode('#GET{domid}','#GET{methode}');});
 }
 /*#EVAL{chr(93)}[(#EVAL{chr(93)})]>*/</script>
