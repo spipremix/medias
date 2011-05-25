@@ -24,9 +24,11 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * 
  * @return void
  */
-function action_dissocier_document_dist(){
-	$securiser_action = charger_fonction('securiser_action', 'inc');
-	$arg = $securiser_action();
+function action_dissocier_document_dist($arg=null){
+	if(is_null($arg)){
+		$securiser_action = charger_fonction('securiser_action', 'inc');
+		$arg = $securiser_action();
+	}
 
 	// attention au cas ou id_objet est negatif !
 	if (strncmp($arg,'-',1)==0){
