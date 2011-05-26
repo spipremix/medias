@@ -76,19 +76,80 @@ function lien_objet($id,$type,$longueur=80,$connect=NULL){
 	return "<a href='$url' class='$type'>".couper($titre,$longueur)."</a>";
 }
 
+/**
+ * critere {orphelins} selectionne les documents sans liens avec un objet editorial
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
 function critere_DOCUMENTS_orphelins_dist($idb, &$boucles, $crit) {
 
 	$boucle = &$boucles[$idb];
-	$quoi = '@$Pile[0]["orphelins"]';
 	$cond = $crit->cond;
 	$not = $crit->not?"":"NOT";
 
 	$select = sql_get_select("DISTINCT id_document","spip_documents_liens as oooo");
 	$where = "'".$boucle->id_table.".id_document $not IN ($select)'";
-	if ($cond)
-		$where = "($quoi)?$where:''";
+	if ($cond){
+		$_quoi = '@$Pile[0]["orphelins"]';
+		$where = "($_quoi)?$where:''";
+	}
 
 	$boucle->where[]= $where;
 }
 
+/**
+ * critere {portrait} qui selectionne
+ * - les documents dont les dimensions sont connues
+ * - les documents dont la hauteur est superieure a la largeur
+ *
+ * {!portrait} exclus ces documents
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
+function critere_DOCUMENTS_portrait_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$table = $boucle->id_table;
+	$not = ($crit->not?"NOT ":"");
+	$boucle->where[] = "'$not($table.largeur>0 AND $table.hauteur > $table.largeur)'";
+}
+
+/**
+ * critere {paysage} qui selectionne
+ * - les documents dont les dimensions sont connues
+ * - les documents dont la hauteur est inferieure a la largeur
+ *
+ * {!paysage} exclus ces documents
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
+function critere_DOCUMENTS_paysage_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$table = $boucle->id_table;
+	$not = ($crit->not?"NOT ":"");
+	$boucle->where[] = "'$not($table.largeur>0 AND $table.largeur > $table.hauteur)'";
+}
+
+/**
+ * critere {carre} qui selectionne
+ * - les documents dont les dimensions sont connues
+ * - les documents dont la hauteur est egale a la largeur
+ *
+ * {!carre} exclus ces documents
+ *
+ * @param string $idb
+ * @param object $boucles
+ * @param object $crit
+ */
+function critere_DOCUMENTS_carre_dist($idb, &$boucles, $crit) {
+	$boucle = &$boucles[$idb];
+	$table = $boucle->id_table;
+	$not = ($crit->not?"NOT ":"");
+	$boucle->where[] = "'$not($table.largeur>0 AND $table.largeur = $table.hauteur)'";
+}
 ?>
