@@ -53,8 +53,11 @@ function inc_marquer_doublons_doc_dist($champs,$id,$type,$id_table_objet,$table_
 	include_spip('inc/texte');
 	include_spip('base/abstract_sql');
 	include_spip('action/editer_liens');
+	include_spip('base/objets');
+	$modeles = lister_tables_objets_sql('spip_documents');
+	$modeles = $modeles['modeles'];
 	$GLOBALS['doublons_documents_inclus'] = array();
-	traiter_modeles($champs_a_traiter,true); // detecter les doublons
+	traiter_modeles($champs_a_traiter,$modeles); // detecter les doublons
 	objet_qualifier_liens(array('document'=>'*'),array($type=>$id),array('vu'=>'non'));
 	if (count($GLOBALS['doublons_documents_inclus'])){
 		// on repasse par une requete sur spip_documents pour verifier que les documents existent bien !

@@ -161,6 +161,7 @@ function medias_declarer_tables_objets_sql($tables){
 			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
 		),
 		'champs_versionnes' => array('id_vignette', 'titre', 'descriptif', 'hauteur', 'largeur', 'mode','distant'),
+		'modeles' => array('document','doc','img','emb','image','video','text','audio','application'),
 	);
 
 	// jointures sur les forum pour tous les objets
