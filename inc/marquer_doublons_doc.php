@@ -57,7 +57,7 @@ function inc_marquer_doublons_doc_dist($champs,$id,$type,$id_table_objet,$table_
 	$modeles = lister_tables_objets_sql('spip_documents');
 	$modeles = $modeles['modeles'];
 	$GLOBALS['doublons_documents_inclus'] = array();
-	traiter_modeles($champs_a_traiter,$modeles); // detecter les doublons
+	traiter_modeles($champs_a_traiter,array('documents'=>$modeles)); // detecter les doublons
 	objet_qualifier_liens(array('document'=>'*'),array($type=>$id),array('vu'=>'non'));
 	if (count($GLOBALS['doublons_documents_inclus'])){
 		// on repasse par une requete sur spip_documents pour verifier que les documents existent bien !
