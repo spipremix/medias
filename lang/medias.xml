@@ -32,7 +32,9 @@
 	<langue code="eu" />
 	<langue code="fa" />
 	<langue code="fon" />
-	<langue code="fr_tu" />
+	<langue code="fr_tu">
+		<traducteur nom="beatnick" />
+	</langue>
 	<langue code="gl" />
 	<langue code="hac" />
 	<langue code="he" />
