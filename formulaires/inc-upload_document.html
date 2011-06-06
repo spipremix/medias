@@ -11,7 +11,7 @@
 (#REM) Formulaire d'upload de fichier
 ]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={upload}|non)none-js]' id='joindre_upload#GET{domid}'>
 	<ul>
-		<li class='editer_fichier_upload[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]'>
+		<li class='editer editer_fichier_upload[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]'>
 			<label for='fichier_upload#GET{domid}'><:medias:info_telecharger:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier_upload})</span>
 			]<input class='file multi' type="file" name="fichier_upload[]" value='#ENV{fichier_upload}' id="fichier_upload#GET{domid}" size='14' />
@@ -36,7 +36,7 @@
 ][(#ENV{mediatheque,''}|oui)
 <div class='joindre_mode#GET{domid}[(#GET{methode}|=={mediatheque}|non)none-js]' id='joindre_mediatheque#GET{domid}'>
 	<ul>
-		<li class='editer_refdoc_joindre[ (#ENV**{erreurs}|table_valeur{refdoc_joindre}|oui)erreur]'>
+		<li class='editer editer_refdoc_joindre[ (#ENV**{erreurs}|table_valeur{refdoc_joindre}|oui)erreur]'>
 			<label for='refdoc_joindre#GET{domid}'><:medias:label_refdoc_joindre:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{refdoc_joindre})</span>
 			]<input class='text' type="text" name="refdoc_joindre" value='#ENV{refdoc_joindre}' id="refdoc_joindre#GET{domid}"/>
@@ -68,7 +68,7 @@
 <div class='joindre_mode#GET{domid}[(#GET{methode}|=={ftp}|non)none-js]' id='joindre_ftp#GET{domid}'>
 	[
 	<ul>
-		<li class='editer_cheminftp[ (#ENV**{erreurs}|table_valeur{cheminftp}|oui)erreur]'>
+		<li class='editer editer_cheminftp[ (#ENV**{erreurs}|table_valeur{cheminftp}|oui)erreur]'>
 			<label for='cheminftp#GET{domid}'>[(#VAL{info_selectionner_fichier}|_T{#ARRAY{upload,#ENV*{_dir_upload_ftp}}})]</label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{cheminftp})</span>
 			]<select name='cheminftp' id='cheminftp#GET{domid}' size='1'>
@@ -103,7 +103,7 @@
 (#REM) Formulaire pour document distant
 ]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={distant}|non)none-js]' id='joindre_distant#GET{domid}'>
 	<ul>
-		<li class='editer_url[ (#ENV**{erreurs}|table_valeur{url}|oui)erreur]'>
+		<li class='editer editer_url[ (#ENV**{erreurs}|table_valeur{url}|oui)erreur]'>
 			<label for='url#GET{domid}'><:medias:info_referencer_doc_distant:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{url})</span>
 			]<input class='text' type="text" name="url" value='#ENV{url}' id="url#GET{domid}"/>

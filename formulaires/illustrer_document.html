@@ -5,7 +5,7 @@
 	<form action="#ENV{action}#formulaire_illustrer_document-#ENV{id,new}" method="post" enctype='multipart/form-data'><div>
 		[(#ACTION_FORMULAIRE{#ENV{action}})]
 		<ul>
-			<li class="editer_fichier[ (#ENV**{erreurs}|table_valeur{fichier}|oui)erreur]">
+			<li class="editer editer_fichier[ (#ENV**{erreurs}|table_valeur{fichier}|oui)erreur]">
 				<label for="fichier"><:medias:label_fichier_vignette:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier})</span>
 				][

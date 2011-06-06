@@ -12,17 +12,17 @@
 		]
 	  <div style="position:absolute;left:-10000px;"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></div>
 	  <ul>
-	    <li class="editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
+	    <li class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
 		    <label for="titre">[(#ENV{mode}|=={document}|?{<:medias:entree_titre_document:>,<:medias:entree_titre_image:>})]</label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{titre})</span>
 				]<input type='text' class='text' name='titre' id='titre' value="[(#ENV**{titre,''})]" />
 	    </li>
-	  	<li class='editer_parent[ (#ENV**{erreurs}|table_valeur{parents}|oui)erreur]'>
+	  	<li class='editer editer_parent[ (#ENV**{erreurs}|table_valeur{parents}|oui)erreur]'>
 	    	<label for="parents"><:medias:label_parents:></label>[
 	    	<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{parents})</span>
 	    	]<INCLURE{fond=formulaires/selecteur/articles, selected=#ENV{parents}, name=parents, rubriques=1, articles=1} />
 	  	</li>
-			[<li class="editer_fichier[ (#ENV**{erreurs}|table_valeur{fichier}|oui)erreur]">
+			[<li class="editer editer_fichier[ (#ENV**{erreurs}|table_valeur{fichier}|oui)erreur]">
 				<label for="fichier"><:medias:label_fichier:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier})</span>
 				]
@@ -36,7 +36,7 @@
 				[(#INCLURE{fond=formulaires/inc-upload_document, env, joindre_upload=oui})]
 				</div>
 	    </li>]
-	  	<li class="editer_apercu">
+	  	<li class="editer editer_apercu">
 		  	<label><:medias:label_apercu:></label>
 		  	[(#ENV{apercu}|oui)
 				<div class="tourner">
@@ -48,7 +48,7 @@
 				]
 		  	[(#ENV{apercu}|non)[(#MODELE{doc,id_document=#ENV{id_document,''},hauteur=200,largeur=300}|extraire_balise{a})]]
 	  	</li>
-	  	<li class="editer_infos">
+	  	<li class="editer editer_infos">
 		  	<label><:medias:label_caracteristiques:></label>
 		  	[<span class='type'>(#ENV{type_document}) - </span>]
 				<span class='taille'>[(#LARGEUR|ou{#HAUTEUR}|oui)[(#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#LARGEUR,hauteur_vignette,#HAUTEUR}})] - 
@@ -56,12 +56,12 @@
 				[(#ENV{_taille_modif}|oui)<div class='taille_modifiee'><:medias:fichier_modifie:><br />[(#ENV{_largeur_modif}|ou{#ENV{_hauteur_modif}}|oui)[(#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#ENV{_largeur_modif},hauteur_vignette,#ENV{_hauteur_modif}}})] -
 				][(#ENV{_taille_modif}|taille_en_octets|texte_backend)]</div>]
 	  	</li>
-			<li class="editer_descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)erreur]">
+			<li class="editer editer_descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)erreur]">
 				<label for="descriptif"><:info_description:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{descriptif})</span>
 				]<textarea name='descriptif' id='descriptif'[ lang='(#LANGUE)'] rows='2' cols='40'>[(#ENV**{descriptif})]</textarea>
 	    </li>
-	    <li class="editer_date[ (#ENV**{erreurs}|table_valeur{saisie_date}|oui)erreur][ (#ENV**{erreurs}|table_valeur{saisie_heure}|oui)erreur]">
+	    <li class="editer editer_date[ (#ENV**{erreurs}|table_valeur{saisie_date}|oui)erreur][ (#ENV**{erreurs}|table_valeur{saisie_heure}|oui)erreur]">
 				<label for="saisie_date" class='date'><:date:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{saisie_date})</span>
 				]<input type='text' class='text date' name='saisie_date' id='saisie_date' size="10" maxlength="10" value="[(#ENV{saisie_date})]" />
@@ -71,13 +71,13 @@
 					<input type='text' class='text heure' name='saisie_heure' id='heure' size="5" maxlength="5" value="[(#ENV{saisie_heure})]" />
 				</span>
 	    </li>
-	    <li class="editer_credits[ (#ENV**{erreurs}|table_valeur{credits}|oui)erreur]">
+	    <li class="editer editer_credits[ (#ENV**{erreurs}|table_valeur{credits}|oui)erreur]">
 		    <label for="credits"><:medias:label_credits:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{credits})</span>
 				]<input type='text' class='text' name='credits' id='credits' value="#ENV**{credits,''}" />
 	    </li>
 	    [(#ENV{_editer_dimension})
-	    <li class="editer_dimensions[ (#ENV**{erreurs}|table_valeur{dimensions}|oui)erreur]">
+	    <li class="editer editer_dimensions[ (#ENV**{erreurs}|table_valeur{dimensions}|oui)erreur]">
 				<label><:medias:entree_dimensions:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{dimensions})</span>
 				]

@@ -2,7 +2,7 @@
 	<div class='explication'><:medias:upload_fichier_zip_texte:></div>
 	<input type='hidden' name='chemin_zip' value='#ENV{chemin_zip}' />
 	<ul>
-		<li class='editer_options_upload_zip[ (#ENV*{erreurs_fichier_zip}|oui)erreur]'>[
+		<li class='editer editer_options_upload_zip[ (#ENV*{erreurs_fichier_zip}|oui)erreur]'>[
 			<div class='erreur_message'><ul>(#ENV*{erreurs_fichier_zip}|joindre_liste_erreurs_to_li)</ul></div>
 		]
 		<label><:medias:upload_fichier_zip_texte2:></label>
@@ -20,7 +20,7 @@
 				</ol>
 			</label>
 			<ul>
-				<li class='editer_options_deballe_zip' id='editer_options_deballe_zip'>
+				<li class='editer editer_options_deballe_zip' id='editer_options_deballe_zip'>
 					<div class='choix'>
 						<input type='checkbox' name='options_deballe_zip_conserver' id='options_deballe_zip_conserver' value='1' />
 						<label for='options_deballe_zip_conserver'><:medias:upload_zip_conserver:></label>
