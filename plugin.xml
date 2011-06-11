@@ -5,6 +5,7 @@
 	<version>2.0.1</version>
 	<version_base>0.14.0</version_base>
 	<etat>test</etat>
+	<slogan>Gestion des medias dans SPIP</slogan>
 	<description>Gestion des medias de SPIP</description>
 	<install>base/medias.php</install>
 	<fonctions>medias_fonctions.php</fonctions>
