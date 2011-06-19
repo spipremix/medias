@@ -174,10 +174,8 @@ function document_instituer($id_document,$champs=array()){
 		include_spip('base/objets');
 		while($row = sql_fetch($res)){
 			if (
-				// si pas de champ statut, c'est un objet publie, donc c'est bon
-				!isset($desc['field']['statut'])
 				// cas particulier des rubriques qui sont publiees des qu'elles contiennent un document !
-			  OR $row['objet']=='rubrique'
+			  $row['objet']=='rubrique'
 				// ou si objet publie selon sa declaration
 			  OR objet_test_si_publie($row['objet'],$row['id_objet'])){
 				$statut = 'publie';
