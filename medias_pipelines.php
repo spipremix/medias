@@ -60,7 +60,7 @@ function medias_post_edition($flux){
 	if($flux['args']['operation']=='ajouter_document'){
 		include_spip('action/editer_document');
 		// mettre a jour le statut si necessaire
-		instituer_document($flux['args']['id_objet']);
+		document_instituer($flux['args']['id_objet']);
 	}
 	// si on institue un objet, mettre ses documents lies a jour
 	elseif ($flux['args']['table']!=='spip_documents'){
@@ -80,7 +80,7 @@ function medias_post_edition($flux){
 			include_spip('action/editer_document');
 			foreach($docs as $id_document)
 				// mettre a jour le statut si necessaire
-				instituer_document($id_document);
+				document_instituer($id_document);
 		}
 	}
 	else {

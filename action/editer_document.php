@@ -16,7 +16,8 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 /**
  * Action editer_document
  *
- * @return unknown
+ * @param int $arg
+ * @return array
  */
 function action_editer_document_dist($arg=null) {
 
@@ -41,7 +42,7 @@ function action_editer_document_dist($arg=null) {
 /**
  * Creer un nouveau document
  *
- * @return unknown
+ * @return int
  */
 function document_inserer() {
 
@@ -79,7 +80,7 @@ function document_inserer() {
  * $set est un contenu (par defaut on prend le contenu via _request())
  *
  * @param int $id_document
- * @param array $set
+ * @param array|bool $set
  */
 function document_modifier($id_document, $set=false) {
 
@@ -147,6 +148,8 @@ function document_modifier($id_document, $set=false) {
  * si on trouve un element joint sans champ statut ou avec un statut='publie' alors le doc est publie aussi
  *
  * @param int $id_document
+ * @param array $champs
+ * @return bool
  */
 function document_instituer($id_document,$champs=array()){
 	
@@ -168,33 +171,27 @@ function document_instituer($id_document,$champs=array()){
 		// dans 10 ans, ca nous fera un bug a corriger vers 2018
 		// penser a ouvrir un ticket d'ici la :p
 		$date_publication=time()+10*365*24*3600;
+		include_spip('base/objets');
 		while($row = sql_fetch($res)){
-			$table = table_objet_sql($row['objet']);
-			$desc = $trouver_table($table);
-			// si pas de champ statut, c'est un objet publie, donc c'est bon
-			if (!isset($desc['field']['statut'])){
+			if (
+				// si pas de champ statut, c'est un objet publie, donc c'est bon
+				!isset($desc['field']['statut'])
+				// cas particulier des rubriques qui sont publiees des qu'elles contiennent un document !
+			  OR $row['objet']=='rubrique'
+				// ou si objet publie selon sa declaration
+			  OR objet_test_si_publie($row['objet'],$row['id_objet'])){
 				$statut = 'publie';
 				$date_publication=0;
 				continue;
 			}
-			$id_table = id_table_objet($row['objet']);
-			$row2 = sql_fetsel('statut'.($table=='spip_articles'?",date":""),$table,$id_table.'='.intval($row['id_objet']));
-			if ($row2['statut']=='publie'
-				// cas particulier des rubriques qui sont publiees des qu'elles contiennent un document !
-			  OR $row['objet']=='rubrique'){
-				$statut = 'publie';
-				// si ce n'est pas un article, c'est donc deja publie, on met la date a 0
-				if (!$row2['date']){
-					$date_publication=0;
-					continue;
-				}
-				else {
-					$date_publication = min($date_publication,strtotime($row2['date']));
-				}
+			// si pas publie, et article, il faut checker la date de post-publi eventuelle
+			elseif ($row['objet']=='article'
+			  AND $row2 = sql_fetsel('date','spip_articles','id_article='.intval($row['id_objet'])." AND statut='publie'")){
+				$date_publication = min($date_publication,strtotime($row2['date']));
 			}
 		}
 		$date_publication = date('Y-m-d H:i:s',$date_publication);
-		if ($statut=='publie' AND $statut_ancien=='publie' AND $date_publie==$date_publication_ancienne)
+		if ($statut=='publie' AND $statut_ancien=='publie' AND $date_publication==$date_publication_ancienne)
 			return false;
 		if ($statut!='publie' AND $statut_ancien!='publie' AND $statut_ancien!='0')
 			return false;
@@ -220,8 +217,9 @@ function document_instituer($id_document,$champs=array()){
  * Revision des parents d'un document
  * chaque parent est liste au format objet|id_objet
  *
- * @param unknown_type $id_document
- * @param unknown_type $parents
+ * @param int $id_document
+ * @param array $parents
+ * @param bool $ajout
  */
 function medias_revision_document_parents($id_document, $parents=null, $ajout=false){
 	if (!is_array($parents))

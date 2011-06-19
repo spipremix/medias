@@ -79,7 +79,7 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 
 	// verifier son statut apres une suppression de lien
 	include_spip('action/editer_document');
-	instituer_document($id_document);
+	document_instituer($id_document);
 
 	pipeline('post_edition',
 		array(

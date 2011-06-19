@@ -180,7 +180,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	include_spip('action/editer_document');
 	// Installer le document dans la base
 	if (!$id_document){
-		if ($id_document = insert_document())
+		if ($id_document = document_inserer())
 			spip_log ("ajout du document ".$file['tmp_name']." ".$file['name']."  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",'medias');
 		else
 			spip_log ("Echec insert_document() du document ".$file['tmp_name']." ".$file['name']."  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",'medias'._LOG_ERREUR);
