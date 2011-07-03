@@ -8,184 +8,184 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Aucune bande son', # NEW
-	'aucun_document' => 'Aucun document', # NEW
-	'aucun_file' => 'Aucun document', # NEW
-	'aucun_image' => 'Aucune image', # NEW
-	'aucun_video' => 'Aucune s&eacute;quence', # NEW
-	'aucune_utilisation' => 'Ce document n\'est pas utilis&eacute;', # NEW
-	'aucune_vignette' => 'Aucune vignette', # NEW
+	'aucun_audio' => 'Žiaden zvuk',
+	'aucun_document' => 'Žiaden dokument',
+	'aucun_file' => 'Žiaden súbor',
+	'aucun_image' => 'Žiaden obrázok',
+	'aucun_video' => 'Žiadne video',
+	'aucune_utilisation' => 'Tento dokument sa nepoužíva.',
+	'aucune_vignette' => 'Žiadna miniatúra',
 
 	// B
-	'bouton_ajouter_document' => 'PRIDAŤ DOKUMENT', # MODIF
-	'bouton_ajouter_image' => '<MODIF>Pridať obrázok',
-	'bouton_ajouter_image_document' => 'Add an image or a document',
-	'bouton_attacher_document' => 'Attacher', # NEW
-	'bouton_copier_local' => 'Copier dans le site', # NEW
-	'bouton_download_depuis' => 'depuis&nbsp;:', # NEW
-	'bouton_download_local' => 'mon ordinateur', # NEW
-	'bouton_download_par_ftp' => 'le serveur', # NEW
-	'bouton_download_par_mediatheque' => 'la mediath&egrave;que', # NEW
-	'bouton_download_sur_le_web' => 'internet', # NEW
-	'bouton_enlever_document' => 'Detacher', # NEW
-	'bouton_enlever_supprimer_document' => 'Supprimer', # NEW
-	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer le document ?', # NEW
-	'bouton_modifier_document' => 'Modifier', # NEW
-	'bouton_parcourir' => 'Parcourir...', # NEW
-	'bouton_refresh_document' => 'Rafraichir le document', # NEW
-	'bouton_remplacer_document' => 'Remplacer ce document', # NEW
-	'bouton_remplacer_image' => 'Remplacer cette image', # NEW
-	'bouton_remplacer_image_document' => 'Remplacer par une image ou un document', # NEW
-	'bouton_supprimer' => 'Supprimer', # NEW
-	'bouton_supprimer_tous_orphelins' => 'Supprimer tous les orphelins', # NEW
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer @nb@ orphelins ?', # NEW
-	'bouton_upload' => 'T&eacute;l&eacute;charger', # NEW
+	'bouton_ajouter_document' => 'Pridať dokument',
+	'bouton_ajouter_image' => 'Pridať obrázok',
+	'bouton_ajouter_image_document' => 'Pridať obrázok alebo dokument',
+	'bouton_attacher_document' => 'Pripojiť',
+	'bouton_copier_local' => 'Skopírovať na stránku',
+	'bouton_download_depuis' => 'od:',
+	'bouton_download_local' => 'môj počítač',
+	'bouton_download_par_ftp' => 'server',
+	'bouton_download_par_mediatheque' => 'knižnica multimédií',
+	'bouton_download_sur_le_web' => 'internet',
+	'bouton_enlever_document' => 'Zrušiť odkaz',
+	'bouton_enlever_supprimer_document' => 'Odstrániť',
+	'bouton_enlever_supprimer_document_confirmation' => 'Má sa tento dokument odstrániť?',
+	'bouton_modifier_document' => 'Zmeniť',
+	'bouton_parcourir' => 'Prehľadávať...',
+	'bouton_refresh_document' => 'Obnoviť dokument',
+	'bouton_remplacer_document' => 'Nahradiť tento dokument',
+	'bouton_remplacer_image' => 'Nahradiť tento obrázok',
+	'bouton_remplacer_image_document' => 'Nahradiť obrázkom alebo dokumentom',
+	'bouton_supprimer' => 'Odstrániť',
+	'bouton_supprimer_tous_orphelins' => 'Odstrániť všetky, ktoré sa nepoužívajú',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Naozaj chcete odstrániť @nb@ nepoužívaných objektov?',
+	'bouton_upload' => 'Nahrať',
 
 	// D
-	'des_audios' => '@nb@ bandes sons', # NEW
-	'des_documents' => '@nb@ documents', # NEW
-	'des_files' => '@nb@ documents', # NEW
-	'des_images' => '@nb@ images', # NEW
-	'des_utilisations' => '@nb@ utilisations', # NEW
-	'des_videos' => '@nb@ s&eacute;quences', # NEW
-	'descriptif' => 'Description', # NEW
-	'document_attache_succes' => 'Le document a bien &eacute;t&eacute; ajout&eacute;', # NEW
-	'document_copie_locale_succes' => 'Le fichier a bien &eacute;t&eacute; copi&eacute; dans le site', # NEW
-	'document_installe_succes' => 'Le fichier a bien &eacute;t&eacute; charg&eacute;', # NEW
-	'document_vu' => 'Ins&eacute;r&eacute; dans le texte', # NEW
-	'documents' => 'Mediath&egrave;que', # NEW
-	'documents_brises' => 'Bris&eacute;s', # NEW
-	'documents_distants' => 'Distants', # NEW
-	'documents_locaux' => 'Locaux', # NEW
-	'documents_non_publies' => 'Non publi&eacute;s', # NEW
-	'documents_orphelins' => 'Inutilis&eacute;s', # NEW
-	'documents_publies' => 'Publi&eacute;s', # NEW
-	'documents_tous' => 'Tous', # NEW
-	'double_clic_inserer_doc' => 'Double-click to insert this shortcut in the text',
+	'des_audios' => '@nb@ zvukov',
+	'des_documents' => '@nb@ dokumentov',
+	'des_files' => '@nb@ súborov',
+	'des_images' => '@nb@ obrázkov',
+	'des_utilisations' => '@nb@ použití',
+	'des_videos' => '@nb@ videí',
+	'descriptif' => 'Popis',
+	'document_attache_succes' => 'Dokument bol úspešne pridaný',
+	'document_copie_locale_succes' => 'Súbor bol úspešne skopírovaný na stránku',
+	'document_installe_succes' => 'Súbor sa úspešne nahral',
+	'document_vu' => 'Vložiť do textu',
+	'documents' => 'Knižnica multimédií',
+	'documents_brises' => 'Pokazené',
+	'documents_distants' => 'Vzdialené',
+	'documents_locaux' => 'Miestne',
+	'documents_non_publies' => 'Nepublikované',
+	'documents_orphelins' => 'Nepoužívané',
+	'documents_publies' => 'Publikované',
+	'documents_tous' => 'Všetky',
+	'double_clic_inserer_doc' => 'Ak chcete do textu vložiť túto klávesovú skratku, dvakrát kliknite',
 
 	// E
 	'entree_dimensions' => 'Veľkosť:',
 	'entree_titre_document' => 'Názov dokumentu:',
 	'entree_titre_image' => 'Názov obrázku:',
-	'erreur_aucun_document' => 'Ce document n\'existe pas dans la mediath&egrave;que', # NEW
-	'erreur_aucun_fichier' => 'Aucun fichier n\'a &eacute;t&eacute; trouv&eacute;', # NEW
-	'erreur_chemin_distant' => 'Le fichier distant @nom@ n\'a pas pu &ecirc;tre trouv&eacute;', # NEW
-	'erreur_chemin_ftp' => 'Le fichier indiqu&eacute; n\'a pas &eacute;t&eacute; trouv&eacute; sur le serveur', # NEW
-	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@', # NEW
+	'erreur_aucun_document' => 'Tento dokument v knižnici multimédií neexistuje',
+	'erreur_aucun_fichier' => 'Žiaden súbor sa nenašiel',
+	'erreur_chemin_distant' => 'Nepodarilo sa nájsť vzdialený súbor @nom@',
+	'erreur_chemin_ftp' => 'Uvedený súbor sa na serveri nenašiel',
+	'erreur_copie_fichier' => 'Nepodarilo sa skopírovať súbor @nom@',
 	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
 	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
-	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image', # NEW
-	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !', # NEW
+	'erreur_format_fichier_image' => 'Formát súboru @nom@ nie je vhodný pre obrázok',
+	'erreur_indiquez_un_fichier' => 'Uveďte súbor!',
 	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
-	'erreur_upload_type_interdit' => 'Le telechargement des fichiers du type de @nom@ n\'est pas autoris&eacute;', # NEW
-	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@', # NEW
+	'erreur_upload_type_interdit' => 'Sťahovanie súborov typu @nom@ nie je povolené',
+	'erreur_upload_vignette' => 'Chyba pri načítavaní miniatúry @nom@',
 	'erreurs' => '@nb@ erreurs', # NEW
 	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
 
 	// F
 	'fichier_distant' => 'Fichier distant', # NEW
 	'fichier_manquant' => 'Fichier manquant', # NEW
-	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.', # NEW
-	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes', # NEW
+	'fichier_modifie' => 'Súbor bol zmenený. Kliknite na tlačidlo Uložiť.',
+	'format_date_incorrect' => 'Dátum alebo čas nie je správny',
 
 	// I
-	'icone_creer_document' => 'Ajouter un document', # NEW
-	'id' => 'ID', # NEW
+	'icone_creer_document' => 'Pridať dokument',
+	'id' => 'Č.',
 	'image_tourner_180' => 'Otočiť o 180°',
 	'image_tourner_droite' => 'Otočiť o 90° doprava',
-	'image_tourner_gauche' => 'Otočiť o 90° doleva',
-	'info_doc_max_poids' => 'Les documents doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).', # NEW
+	'image_tourner_gauche' => 'Otočiť o 90° doľava',
+	'info_doc_max_poids' => 'Dokumenty musia mať nevyhnutne menej ako @maxi@ (tento súbor má @actuel@).',
 	'info_document' => 'Dokument',
-	'info_document_indisponible' => 'This document is unavailable', # MODIF
+	'info_document_indisponible' => 'Tento dokument je nedostupný',
 	'info_documents' => 'Dokumenty',
-	'info_gauche_numero_document' => 'DOCUMENT NUM&Eacute;RO', # NEW
-	'info_hauteur' => 'Hauteur', # NEW
-	'info_heure' => 'Heure', # NEW
-	'info_illustrations' => 'Illustrations', # NEW
-	'info_image_max_poids' => 'Les images doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).', # NEW
+	'info_gauche_numero_document' => 'DOKUMENT ČÍSLO',
+	'info_hauteur' => 'Výška',
+	'info_heure' => 'Čas',
+	'info_illustrations' => 'Ilustrácie',
+	'info_image_max_poids' => 'Obrázky musia mať nevyhnutne menej ako @maxi@ (tento súbor má @actuel@).',
 	'info_inclusion_directe' => 'Direct inclusion:',
-	'info_inclusion_vignette' => 'Include vignette:',
-	'info_installer_tous_documents' => 'Install all the documents', # MODIF
-	'info_largeur' => 'Largeur', # NEW
-	'info_logo_max_taille' => 'Logo nesmí být větší než @maxi@ (tento soubor má velikost @actuel@).', # NEW
-	'info_modifier_document' => 'Modifier le document', # NEW
-	'info_portfolio' => 'Portfolio', # MODIF
-	'info_referencer_doc_distant' => 'Reference a document on the internet:',
-	'info_statut_document' => 'Ce document est&nbsp;:', # NEW
-	'info_telecharger' => 'Upload from your computer:',
-	'infos' => 'Infos techniques', # NEW
-	'item_autoriser_selectionner_date_en_ligne' => 'Allow changes to the date of each document', # MODIF
-	'item_non_autoriser_selectionner_date_en_ligne' => 'The date of a document is the date it was added to the site', # MODIF
+	'info_inclusion_vignette' => 'Zaradiť miniatúru:',
+	'info_installer_tous_documents' => 'Nainštalovať všetky dokumenty',
+	'info_largeur' => 'Šírka',
+	'info_logo_max_taille' => 'Logá musia mať menej ako @maxi@ (tento súbor má @actuel@).',
+	'info_modifier_document' => 'Zmeniť dokument',
+	'info_portfolio' => 'Portfólio',
+	'info_referencer_doc_distant' => 'Vytvoriť odkaz na dokument na internete:',
+	'info_statut_document' => 'Tento dokument je:',
+	'info_telecharger' => 'Nahrať z počítača:',
+	'infos' => 'Technické údaje',
+	'item_autoriser_selectionner_date_en_ligne' => 'Povoliť zmeniť dátum každého dokumentu',
+	'item_non_autoriser_selectionner_date_en_ligne' => 'Dátum dokumentu je deň, keď bol pridaný na stránku',
 
 	// L
 	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
-	'label_apercu' => 'Aper&ccedil;u', # NEW
-	'label_caracteristiques' => 'Caract&eacute;ristiques', # NEW
-	'label_credits' => 'Cr&eacute;dits', # NEW
-	'label_fichier' => 'Fichier', # NEW
-	'label_fichier_vignette' => 'Vignette', # NEW
-	'label_parents' => 'Ce document est li&eacute; &agrave;', # NEW
-	'label_refdoc_joindre' => 'Document num&eacute;ro', # NEW
-	'lien_tout_enlever' => 'Tout enlever', # NEW
-	'logo' => 'Logo', # NEW
+	'label_apercu' => 'Prehľad',
+	'label_caracteristiques' => 'Funkcie',
+	'label_credits' => 'Poďakovanie',
+	'label_fichier' => 'Súbor',
+	'label_fichier_vignette' => 'Miniatúra',
+	'label_parents' => 'Tento dokument je prepojený s',
+	'label_refdoc_joindre' => 'Dokument číslo',
+	'lien_tout_enlever' => 'Odstrániť všetko',
+	'logo' => 'Logo',
 
 	// M
-	'media_audio' => 'Bandes sons', # NEW
-	'media_file' => 'Autres', # NEW
-	'media_image' => 'Images', # NEW
-	'media_video' => 'S&eacute;quences', # NEW
+	'media_audio' => 'Zvuky',
+	'media_file' => 'Ostatné',
+	'media_image' => 'Obrázky',
+	'media_video' => 'Videá',
 
 	// N
-	'nb_documents_installe_succes' => '@nb@ fichiers charg&eacute;s avec succ&egrave;s', # NEW
+	'nb_documents_installe_succes' => '@nb@ súborov sa úspešne nahralo',
 
 	// O
 	'objet_document' => 'Document', # NEW
 	'objet_documents' => 'Documents', # NEW
 
 	// P
-	'par_date' => 'Date', # NEW
-	'par_hauteur' => 'Hauteur', # NEW
-	'par_id' => 'ID', # NEW
-	'par_largeur' => 'Largeur', # NEW
-	'par_taille' => 'Poids', # NEW
-	'par_titre' => 'Titre', # NEW
+	'par_date' => 'Dátum',
+	'par_hauteur' => 'Výška',
+	'par_id' => 'Č.',
+	'par_largeur' => 'Šírka',
+	'par_taille' => 'Šírka',
+	'par_titre' => 'Názov',
 
 	// T
-	'texte_documents_joints' => 'Vous pouvez autoriser l\'ajout de documents (fichiers bureautiques, images,
- multimédia, etc.) aux articles et/ou aux rubriques. Ces fichiers
- peuvent ensuite être référencés dans
- l\'article, ou affichés séparément.', # MODIF
-	'texte_documents_joints_2' => 'This setting does not stop the insertion of images directly in the articles.',
-	'titre_documents_joints' => 'Attached documents', # MODIF
+	'texte_documents_joints' => 'Môžete povoliť pridávanie dokumentov (súborov z práce, obrázkov
+ multimédií, atď.) k článkom a/lebo rubrikám. Na tieto súbory
+ sa dá potom odkazovať
+v článku alebo môžu byť zobrazené samostatne.',
+	'texte_documents_joints_2' => 'Toto nastavenie nezabráni priamemu vkladaniu obrázkov do článkov.',
+	'titre_documents_joints' => 'Pripojené dokumenty',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
-	'tous_les_medias' => 'Tous les medias', # NEW
-	'tout_dossier_upload' => 'The whole @upload@ directory', # MODIF
+	'tous_les_medias' => 'Všetky multimédiá',
+	'tout_dossier_upload' => 'Celý priečinok @upload@',
 	'tout_voir' => 'Tout voir', # NEW
 
 	// U
-	'un_audio' => '1 bande son', # NEW
-	'un_document' => '1 document', # NEW
-	'un_file' => '1 document', # NEW
-	'un_image' => '1 image', # NEW
-	'un_video' => '1 s&eacute;quence', # NEW
-	'une_utilisation' => '1 utilisation', # NEW
+	'un_audio' => '1 zvuk',
+	'un_document' => '1 dokument',
+	'un_file' => '1 súbor',
+	'un_image' => '1 obrázok',
+	'un_video' => '1 video',
+	'une_utilisation' => '1 použitie',
 	'upload_fichier_zip' => 'Súbor ZIP',
-	'upload_fichier_zip_texte' => 'The file you are intending to install is a ZIP file.', # MODIF
-	'upload_fichier_zip_texte2' => 'This file can be:',
-	'upload_info_mode_document' => 'D&eacute;poser dans le portfolio', # NEW
-	'upload_info_mode_image' => 'Retirer du portfolio', # NEW
-	'upload_limit' => 'This file is too big for the server; the maximum size allowed for <i>upload</i> is @max@.',
-	'upload_zip_conserver' => 'Keep the archive file after extracting its contents',
-	'upload_zip_decompacter' => 'decompressed and each file it contains will be installed on the site. The files which will be installed are:',
+	'upload_fichier_zip_texte' => 'Súbor, ktorý sa chcete nainštalovať je súbor ZIP.',
+	'upload_fichier_zip_texte2' => 'Tento súbor môže byť:',
+	'upload_info_mode_document' => 'Poslať do portfólia',
+	'upload_info_mode_image' => 'Odstrániť z portfólia',
+	'upload_limit' => 'Tento súbor je pre server príliš veľký, maximálna povolená veľkosť na <i>nahrávanie</i> je @max@.',
+	'upload_zip_conserver' => 'Ponechať si archívny súbor po rozbalení jeho obsahu',
+	'upload_zip_decompacter' => 'rozbalené a každý súbor, ktorý obsahuje, bude nainštalovaný na stránku. Nainštalované budú tieto súbory:',
 	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
-	'upload_zip_telquel' => 'installed as is, as a ZIP file;',
-	'upload_zip_titrer' => 'Add titles according to the filenames', # MODIF
+	'upload_zip_telquel' => 'nainštalovaný tak ako je, ako súbor ZIP,',
+	'upload_zip_titrer' => 'Pridať názvy podľa názvov súborov',
 
 	// V
-	'verifier_documents_brises' => 'V&eacute;rifier les fichiers manquants', # NEW
+	'verifier_documents_brises' => 'Skontrolovať chýbajúce súbory',
 	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
-	'vignette_supprimee' => 'La vignette a &eacute;t&eacute; supprim&eacute;e' # NEW
+	'vignette_supprimee' => 'Miniatúra bola odstránená'
 );
 
 ?>

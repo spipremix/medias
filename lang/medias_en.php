@@ -12,8 +12,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'aucun_document' => 'No document',
 	'aucun_file' => 'No document',
 	'aucun_image' => 'No image',
-	'aucun_video' => 'No video',
-	'aucune_utilisation' => 'This document isn\'t used.',
+	'aucun_video' => 'No video', # MODIF
+	'aucune_utilisation' => 'This document isn\'t used.', # MODIF
 	'aucune_vignette' => 'No thumbnail',
 
 	// B
@@ -22,10 +22,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_ajouter_image_document' => 'Add an image or a document',
 	'bouton_attacher_document' => 'Attach',
 	'bouton_copier_local' => 'Copy on the site',
-	'bouton_download_depuis' => 'from:',
+	'bouton_download_depuis' => 'from:', # MODIF
 	'bouton_download_local' => 'my computer',
 	'bouton_download_par_ftp' => 'the server',
-	'bouton_download_par_mediatheque' => 'media library',
+	'bouton_download_par_mediatheque' => 'media library', # MODIF
 	'bouton_download_sur_le_web' => 'internet',
 	'bouton_enlever_document' => 'Unlink',
 	'bouton_enlever_supprimer_document' => 'Delete',
@@ -38,8 +38,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_remplacer_image_document' => 'Replace by an image or a document',
 	'bouton_supprimer' => 'Delete',
 	'bouton_supprimer_tous_orphelins' => 'Delete all unused',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Do you really want to delete @nb@ unused?',
-	'bouton_upload' => 'Upload',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Do you really want to delete @nb@ unused?', # MODIF
+	'bouton_upload' => 'Upload', # MODIF
 
 	// D
 	'des_audios' => '@nb@ sounds',
@@ -47,19 +47,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_files' => '@nb@ documents',
 	'des_images' => '@nb@ images',
 	'des_utilisations' => '@nb@ uses',
-	'des_videos' => '@nb@ videos',
+	'des_videos' => '@nb@ videos', # MODIF
 	'descriptif' => 'Description',
-	'document_attache_succes' => 'The document was successfully added',
-	'document_copie_locale_succes' => 'The file was successfully copied on the site',
-	'document_installe_succes' => 'The file was successfully uploaded',
-	'document_vu' => 'Insert in text',
-	'documents' => 'Media library',
-	'documents_brises' => 'Broken',
+	'document_attache_succes' => 'The document was successfully added', # MODIF
+	'document_copie_locale_succes' => 'The file was successfully copied on the site', # MODIF
+	'document_installe_succes' => 'The file was successfully uploaded', # MODIF
+	'document_vu' => 'Insert in text', # MODIF
+	'documents' => 'Media library', # MODIF
+	'documents_brises' => 'Broken', # MODIF
 	'documents_distants' => 'Remote',
 	'documents_locaux' => 'Local',
-	'documents_non_publies' => 'Unpublished',
-	'documents_orphelins' => 'Unused',
-	'documents_publies' => 'Published',
+	'documents_non_publies' => 'Unpublished', # MODIF
+	'documents_orphelins' => 'Unused', # MODIF
+	'documents_publies' => 'Published', # MODIF
 	'documents_tous' => 'All',
 	'double_clic_inserer_doc' => 'Double-click to insert this shortcut in the text',
 
@@ -67,10 +67,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Size:',
 	'entree_titre_document' => 'Document title:',
 	'entree_titre_image' => 'Image title:',
-	'erreur_aucun_document' => 'This document doesn\'t exist in the media library',
-	'erreur_aucun_fichier' => 'No file was found',
-	'erreur_chemin_distant' => 'The remote file @nom@ could not be found',
-	'erreur_chemin_ftp' => 'The specified file was not found on server',
+	'erreur_aucun_document' => 'This document doesn\'t exist in the media library', # MODIF
+	'erreur_aucun_fichier' => 'No file was found', # MODIF
+	'erreur_chemin_distant' => 'The remote file @nom@ could not be found', # MODIF
+	'erreur_chemin_ftp' => 'The specified file was not found on server', # MODIF
 	'erreur_copie_fichier' => 'Unable to copy the file @nom@',
 	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
 	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
@@ -78,7 +78,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_indiquez_un_fichier' => 'Specify a file!',
 	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
-	'erreur_upload_type_interdit' => 'Downloading files of type @nom@ is not allowed',
+	'erreur_upload_type_interdit' => 'Downloading files of type @nom@ is not allowed', # MODIF
 	'erreur_upload_vignette' => 'Error loading thumbnail @nom@',
 	'erreurs' => '@nb@ erreurs', # NEW
 	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
@@ -86,7 +86,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// F
 	'fichier_distant' => 'Fichier distant', # NEW
 	'fichier_manquant' => 'Fichier manquant', # NEW
-	'fichier_modifie' => 'The file has been modified. Click save button.',
+	'fichier_modifie' => 'The file has been modified. Click save button.', # MODIF
 	'format_date_incorrect' => 'The date or time are incorrect',
 
 	// I
@@ -99,7 +99,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_document' => 'Document',
 	'info_document_indisponible' => 'This document is not available',
 	'info_documents' => 'Documents',
-	'info_gauche_numero_document' => 'DOCUMENT NUMBER',
+	'info_gauche_numero_document' => 'DOCUMENT NUMBER', # MODIF
 	'info_hauteur' => 'Height',
 	'info_heure' => 'Time',
 	'info_illustrations' => 'Illustrations',
@@ -112,7 +112,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_document' => 'Modify the document',
 	'info_portfolio' => 'Portfolio',
 	'info_referencer_doc_distant' => 'Reference a document on Internet:',
-	'info_statut_document' => 'This document is:',
+	'info_statut_document' => 'This document is:', # MODIF
 	'info_telecharger' => 'Upload from your computer:',
 	'infos' => 'Technical infos',
 	'item_autoriser_selectionner_date_en_ligne' => 'Allow changes to the date of each document',
@@ -120,13 +120,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
-	'label_apercu' => 'Overview',
-	'label_caracteristiques' => 'Features',
-	'label_credits' => 'Credits',
+	'label_apercu' => 'Overview', # MODIF
+	'label_caracteristiques' => 'Features', # MODIF
+	'label_credits' => 'Credits', # MODIF
 	'label_fichier' => 'File',
 	'label_fichier_vignette' => 'Thumbnail',
-	'label_parents' => 'This document is linked to',
-	'label_refdoc_joindre' => 'Document number',
+	'label_parents' => 'This document is linked to', # MODIF
+	'label_refdoc_joindre' => 'Document number', # MODIF
 	'lien_tout_enlever' => 'Remove all',
 	'logo' => 'Logo',
 
@@ -134,10 +134,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_audio' => 'Sounds',
 	'media_file' => 'Other',
 	'media_image' => 'Images',
-	'media_video' => 'Videos',
+	'media_video' => 'Videos', # MODIF
 
 	// N
-	'nb_documents_installe_succes' => '@nb@ files successfully uploaded',
+	'nb_documents_installe_succes' => '@nb@ files successfully uploaded', # MODIF
 
 	// O
 	'objet_document' => 'Document', # NEW
@@ -168,12 +168,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'un_document' => '1 document',
 	'un_file' => '1 document',
 	'un_image' => '1 image',
-	'un_video' => '1 video',
+	'un_video' => '1 video', # MODIF
 	'une_utilisation' => '1 use',
 	'upload_fichier_zip' => 'ZIP file',
 	'upload_fichier_zip_texte' => 'The file you are intending to install is a ZIP file.',
 	'upload_fichier_zip_texte2' => 'This file can be:',
-	'upload_info_mode_document' => 'Send to portfolio',
+	'upload_info_mode_document' => 'Send to portfolio', # MODIF
 	'upload_info_mode_image' => 'Remove from portfolio',
 	'upload_limit' => 'This file is too big for the server; the maximum size allowed for <i>upload</i> is @max@.',
 	'upload_zip_conserver' => 'Keep the archive file after extracting its contents',
@@ -183,9 +183,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Add titles according to the filenames',
 
 	// V
-	'verifier_documents_brises' => 'Check missing files',
+	'verifier_documents_brises' => 'Check missing files', # MODIF
 	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
-	'vignette_supprimee' => 'The thumbnail has been deleted'
+	'vignette_supprimee' => 'The thumbnail has been deleted' # MODIF
 );
 
 ?>
