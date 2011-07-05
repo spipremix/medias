@@ -2,7 +2,7 @@
 	<nom>Medias</nom>
 	<auteur>Collectif SPIP, Cedric Morin &amp; Romy Duhem-Verdiere pour la mediatheque</auteur>
 	<icon>prive/themes/spip/images/portfolio-64.png</icon>
-	<version>2.0.2</version>
+	<version>2.0.3</version>
 	<version_base>0.14.0</version_base>
 	<etat>test</etat>
 	<slogan>Gestion des medias dans SPIP</slogan>

@@ -309,11 +309,17 @@ function joindre_liste_contenu_tailles_archive($files) {
 
 
 function joindre_liste_erreurs_to_li($erreurs){
+	if (count($erreurs)==1)
+		return "<p>".reset($erreurs)."</p>";
+
+
 	$res = implode("</li><li>",$erreurs);
-	if (strlen($res)) $res = "<li>$res</li>";
+	if (strlen($res)) $res = "<li>$res</li></ul>";
 	if (count($erreurs)>4){
-		$res = "<li><span style='cursor:pointer;' onclick='jQuery(this).siblings(\"ul\").toggle();return false;'>"._T("medias:erreurs_voir",array('nb'=>count($erreurs)))."</span><ul style='display:none;'>".$res."</ul></li>";
+		$res = "<p style='cursor:pointer;' onclick='jQuery(this).siblings(\"ul\").toggle();return false;'>"._T("medias:erreurs_voir",array('nb'=>count($erreurs)))."</p><ul class=\"spip none-js\">".$res."</ul>";
 	}
+	else
+		$res = "<ul class=\"spip\">$res</ul>";
 	return $res;
 }
 
