@@ -65,8 +65,8 @@ function medias_declarer_tables_principales($tables_principales) {
 
 /**
  * Table des liens documents-objets spip_documents_liens
- * @param  $tables_auxiliaires
- * @return
+ * @param array $tables_auxiliaires
+ * @return array
  */
 function medias_declarer_tables_auxiliaires($tables_auxiliaires) {
 
