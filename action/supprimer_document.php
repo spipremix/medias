@@ -69,7 +69,8 @@ function action_supprimer_document_dist($id_document=0) {
 	pipeline('post_edition',
 		array(
 			'args' => array(
-				'operation' => 'supprimer_document',
+				'operation' => 'supprimer_document', // compat v<=2
+				'action' => 'supprimer_document',
 				'table' => 'spip_documents',
 				'id_objet' => $id_document
 			),

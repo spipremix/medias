@@ -57,7 +57,7 @@ function medias_configurer_liste_metas($config){
 
 function medias_post_edition($flux){
 	// si on ajoute un document, mettre son statut a jour
-	if($flux['args']['operation']=='ajouter_document'){
+	if($flux['args']['action']=='ajouter_document'){
 		include_spip('action/editer_document');
 		// mettre a jour le statut si necessaire
 		document_instituer($flux['args']['id_objet']);
@@ -73,7 +73,7 @@ function medias_post_edition($flux){
 			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$type,id_table_objet($type, $flux['args']['serveur']),$table_objet,$flux['args']['table'], '', $flux['args']['serveur']);
 		}
 
-		if($flux['args']['operation']=='instituer' OR isset($flux['data']['statut'])){
+		if($flux['args']['action']=='instituer' OR isset($flux['data']['statut'])){
 			include_spip('base/abstract_sql');
 			$id = $flux['args']['id_objet'];
 			$docs = array_map('reset',sql_allfetsel('id_document','spip_documents_liens','id_objet='.intval($id).' AND objet='.sql_quote($type)));

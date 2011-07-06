@@ -84,7 +84,8 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	pipeline('post_edition',
 		array(
 			'args' => array(
-				'operation' => 'delier_document',
+				'operation' => 'delier_document', // compat v<=2
+				'action' => 'delier_document',
 				'table' => 'spip_documents',
 				'id_objet' => $id_document,
 				'objet' => $objet,
