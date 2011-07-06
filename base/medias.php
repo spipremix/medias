@@ -21,12 +21,13 @@ function medias_declarer_tables_interfaces($interfaces) {
 	$interfaces['table_des_tables']['documents']='documents';
 	$interfaces['table_des_tables']['types_documents']='types_documents';
 
-	$interfaces['exceptions_des_tables']['documents']['type_document']=array('types_documents'
-	, 'titre');
+	$interfaces['exceptions_des_tables']['documents']['type_document']=array('types_documents', 'titre');
 	$interfaces['exceptions_des_tables']['documents']['extension_document']=array('types_documents', 'extension');
 	$interfaces['exceptions_des_tables']['documents']['mime_type']=array('types_documents', 'mime_type');
 	$interfaces['exceptions_des_tables']['documents']['media']=array('types_documents', 'media');
-	
+
+	$interfaces['exceptions_des_jointures']['spip_documents']['id_forum']=array('spip_documents_liens','id_forum');
+
 	$interfaces['table_date']['types_documents']='date';
 
 	$interfaces['table_des_traitements']['FICHIER']['documents']= 'get_spip_doc(%s)';
