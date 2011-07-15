@@ -22,22 +22,22 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_ajouter_image_document' => 'Pridať obrázok alebo dokument',
 	'bouton_attacher_document' => 'Pripojiť',
 	'bouton_copier_local' => 'Skopírovať na stránku',
-	'bouton_download_depuis' => 'od:',
-	'bouton_download_local' => 'môj počítač',
-	'bouton_download_par_ftp' => 'server',
-	'bouton_download_par_mediatheque' => 'knižnica multimédií',
-	'bouton_download_sur_le_web' => 'internet',
-	'bouton_enlever_document' => 'Zrušiť odkaz',
+	'bouton_download_depuis' => 'z(o):',
+	'bouton_download_local' => 'môjho počítača',
+	'bouton_download_par_ftp' => 'servera',
+	'bouton_download_par_mediatheque' => 'knižnice multimédií',
+	'bouton_download_sur_le_web' => 'internetu',
+	'bouton_enlever_document' => 'Zrušiť prepojenie',
 	'bouton_enlever_supprimer_document' => 'Odstrániť',
-	'bouton_enlever_supprimer_document_confirmation' => 'Má sa tento dokument odstrániť?',
-	'bouton_modifier_document' => 'Zmeniť',
+	'bouton_enlever_supprimer_document_confirmation' => 'Chcete odstrániť tento dokument?',
+	'bouton_modifier_document' => 'Upraviť',
 	'bouton_parcourir' => 'Prehľadávať...',
 	'bouton_refresh_document' => 'Obnoviť dokument',
 	'bouton_remplacer_document' => 'Nahradiť tento dokument',
 	'bouton_remplacer_image' => 'Nahradiť tento obrázok',
 	'bouton_remplacer_image_document' => 'Nahradiť obrázkom alebo dokumentom',
 	'bouton_supprimer' => 'Odstrániť',
-	'bouton_supprimer_tous_orphelins' => 'Odstrániť všetky, ktoré sa nepoužívajú',
+	'bouton_supprimer_tous_orphelins' => 'Odstrániť všetky nepoužívané',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Naozaj chcete odstrániť @nb@ nepoužívaných objektov?',
 	'bouton_upload' => 'Nahrať',
 
@@ -66,32 +66,32 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'entree_dimensions' => 'Veľkosť:',
 	'entree_titre_document' => 'Názov dokumentu:',
-	'entree_titre_image' => 'Názov obrázku:',
+	'entree_titre_image' => 'Názov obrázka:',
 	'erreur_aucun_document' => 'Tento dokument v knižnici multimédií neexistuje',
 	'erreur_aucun_fichier' => 'Žiaden súbor sa nenašiel',
 	'erreur_chemin_distant' => 'Nepodarilo sa nájsť vzdialený súbor @nom@',
 	'erreur_chemin_ftp' => 'Uvedený súbor sa na serveri nenašiel',
 	'erreur_copie_fichier' => 'Nepodarilo sa skopírovať súbor @nom@',
-	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
-	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
+	'erreur_dossier_tmp_manquant' => 'V dočasnom priečinku chýbajú súbory na stiahnutie',
+	'erreur_ecriture_fichier' => 'Chyba pri zápise súboru na disk',
 	'erreur_format_fichier_image' => 'Formát súboru @nom@ nie je vhodný pre obrázok',
 	'erreur_indiquez_un_fichier' => 'Uveďte súbor!',
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
-	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
+	'erreur_insertion_document_base' => 'Dokument @fichier@ sa nepodarilo uložiť do databázy súborov',
+	'erreur_suppression_vignette' => 'Chyba pri odstraňovaní miniatúry',
 	'erreur_upload_type_interdit' => 'Sťahovanie súborov typu @nom@ nie je povolené',
 	'erreur_upload_vignette' => 'Chyba pri načítavaní miniatúry @nom@',
-	'erreurs' => '@nb@ erreurs', # NEW
-	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
+	'erreurs' => '@nb@ chýb',
+	'erreurs_voir' => 'Pozrite sa na @nb@ chýb',
 
 	// F
-	'fichier_distant' => 'Fichier distant', # NEW
-	'fichier_manquant' => 'Fichier manquant', # NEW
+	'fichier_distant' => 'Vzdialený súbor',
+	'fichier_manquant' => 'Chýbajúci súbor',
 	'fichier_modifie' => 'Súbor bol zmenený. Kliknite na tlačidlo Uložiť.',
 	'format_date_incorrect' => 'Dátum alebo čas nie je správny',
 
 	// I
 	'icone_creer_document' => 'Pridať dokument',
-	'id' => 'Č.',
+	'id' => 'ID',
 	'image_tourner_180' => 'Otočiť o 180°',
 	'image_tourner_droite' => 'Otočiť o 90° doprava',
 	'image_tourner_gauche' => 'Otočiť o 90° doľava',
@@ -104,28 +104,28 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_heure' => 'Čas',
 	'info_illustrations' => 'Ilustrácie',
 	'info_image_max_poids' => 'Obrázky musia mať nevyhnutne menej ako @maxi@ (tento súbor má @actuel@).',
-	'info_inclusion_directe' => 'Direct inclusion:',
+	'info_inclusion_directe' => 'Priame zaradenie:',
 	'info_inclusion_vignette' => 'Zaradiť miniatúru:',
 	'info_installer_tous_documents' => 'Nainštalovať všetky dokumenty',
 	'info_largeur' => 'Šírka',
 	'info_logo_max_taille' => 'Logá musia mať menej ako @maxi@ (tento súbor má @actuel@).',
-	'info_modifier_document' => 'Zmeniť dokument',
+	'info_modifier_document' => 'Upraviť dokument',
 	'info_portfolio' => 'Portfólio',
-	'info_referencer_doc_distant' => 'Vytvoriť odkaz na dokument na internete:',
+	'info_referencer_doc_distant' => 'Odkázať na dokument na internete:',
 	'info_statut_document' => 'Tento dokument je:',
-	'info_telecharger' => 'Nahrať z počítača:',
+	'info_telecharger' => 'Nahrať z vášho počítača:',
 	'infos' => 'Technické údaje',
 	'item_autoriser_selectionner_date_en_ligne' => 'Povoliť zmeniť dátum každého dokumentu',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'Dátum dokumentu je deň, keď bol pridaný na stránku',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
-	'label_apercu' => 'Prehľad',
+	'label_activer_document_objets' => 'Zaradiť dokumenty do obsahu:',
+	'label_apercu' => 'Ukážka',
 	'label_caracteristiques' => 'Funkcie',
-	'label_credits' => 'Poďakovanie',
+	'label_credits' => 'Autori',
 	'label_fichier' => 'Súbor',
 	'label_fichier_vignette' => 'Miniatúra',
-	'label_parents' => 'Tento dokument je prepojený s',
+	'label_parents' => 'Tento dokument je prepojený s prvkom',
 	'label_refdoc_joindre' => 'Dokument číslo',
 	'lien_tout_enlever' => 'Odstrániť všetko',
 	'logo' => 'Logo',
@@ -140,15 +140,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'nb_documents_installe_succes' => '@nb@ súborov sa úspešne nahralo',
 
 	// O
-	'objet_document' => 'Document', # NEW
-	'objet_documents' => 'Documents', # NEW
+	'objet_document' => 'Dokument',
+	'objet_documents' => 'Dokumenty',
 
 	// P
 	'par_date' => 'Dátum',
 	'par_hauteur' => 'Výška',
-	'par_id' => 'Č.',
+	'par_id' => 'ID',
 	'par_largeur' => 'Šírka',
-	'par_taille' => 'Šírka',
+	'par_taille' => 'Veľkosť',
 	'par_titre' => 'Názov',
 
 	// T
@@ -158,10 +158,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 v článku alebo môžu byť zobrazené samostatne.',
 	'texte_documents_joints_2' => 'Toto nastavenie nezabráni priamemu vkladaniu obrázkov do článkov.',
 	'titre_documents_joints' => 'Pripojené dokumenty',
-	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
+	'titre_page_documents_edit' => 'Upraviť dokument: @titre@',
 	'tous_les_medias' => 'Všetky multimédiá',
 	'tout_dossier_upload' => 'Celý priečinok @upload@',
-	'tout_voir' => 'Tout voir', # NEW
+	'tout_voir' => 'Zobraziť všetko',
 
 	// U
 	'un_audio' => '1 zvuk',
@@ -171,20 +171,20 @@ v článku alebo môžu byť zobrazené samostatne.',
 	'un_video' => '1 video',
 	'une_utilisation' => '1 použitie',
 	'upload_fichier_zip' => 'Súbor ZIP',
-	'upload_fichier_zip_texte' => 'Súbor, ktorý sa chcete nainštalovať je súbor ZIP.',
+	'upload_fichier_zip_texte' => 'Súbor, ktorý sa chcete nainštalovať, je súbor ZIP.',
 	'upload_fichier_zip_texte2' => 'Tento súbor môže byť:',
 	'upload_info_mode_document' => 'Poslať do portfólia',
 	'upload_info_mode_image' => 'Odstrániť z portfólia',
 	'upload_limit' => 'Tento súbor je pre server príliš veľký, maximálna povolená veľkosť na <i>nahrávanie</i> je @max@.',
 	'upload_zip_conserver' => 'Ponechať si archívny súbor po rozbalení jeho obsahu',
-	'upload_zip_decompacter' => 'rozbalené a každý súbor, ktorý obsahuje, bude nainštalovaný na stránku. Nainštalované budú tieto súbory:',
-	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
-	'upload_zip_telquel' => 'nainštalovaný tak ako je, ako súbor ZIP,',
+	'upload_zip_decompacter' => 'rozbalený a každý súbor, ktorý obsahuje, bude nainštalovaný na stránku. Nainštalované budú tieto súbory:',
+	'upload_zip_mode_document' => 'Všetky obrázky dať do portfólia',
+	'upload_zip_telquel' => 'nainštalovaný tak, ako je, ako súbor ZIP,',
 	'upload_zip_titrer' => 'Pridať názvy podľa názvov súborov',
 
 	// V
 	'verifier_documents_brises' => 'Skontrolovať chýbajúce súbory',
-	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
+	'verifier_documents_inutilises' => 'Skontrolovať prepojenia dokumentov',
 	'vignette_supprimee' => 'Miniatúra bola odstránená'
 );
 

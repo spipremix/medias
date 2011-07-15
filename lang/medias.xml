@@ -42,7 +42,6 @@
 	<langue code="hu" />
 	<langue code="id" />
 	<langue code="is" />
-	<langue code="it" />
 	<langue code="it_fem" />
 	<langue code="ja" />
 	<langue code="km" />
@@ -74,7 +73,6 @@
 	<langue code="ru" />
 	<langue code="sk">
 		<traducteur nom="jaro" />
-		<traducteur nom="maieul" />
 	</langue>
 	<langue code="sq" />
 	<langue code="sv" />
