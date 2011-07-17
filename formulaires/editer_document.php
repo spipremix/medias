@@ -73,10 +73,10 @@ function formulaires_editer_document_charger_dist($id_document='new', $id_parent
 // Choix par defaut des options de presentation
 function documents_edit_config($row)
 {
-	global $spip_ecran, $spip_lang;
+	global $spip_lang;
 
 	$config = $GLOBALS['meta'];
-	$config['lignes'] = ($spip_ecran == "large")? 8 : 5;
+	$config['lignes'] = 8;
 	$config['langue'] = $spip_lang;
 
 	$config['restreint'] = ($row['statut'] == 'publie');
