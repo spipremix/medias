@@ -20,13 +20,13 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param int $id
  * @param string $args
  * @param string $ancre
- * @param string $statut
+ * @param string $public
  * @param string $connect
  * @return string
  *
  * http://doc.spip.org/@generer_url_ecrire_document
  */
-function urls_generer_url_ecrire_document_dist($id, $args='', $ancre='', $public, $connect='') {
+function urls_generer_url_ecrire_document_dist($id, $args='', $ancre='', $public=null, $connect='') {
 	include_spip('inc/documents');
 	return generer_url_document_dist($id);
 }
