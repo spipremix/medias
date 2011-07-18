@@ -13,7 +13,7 @@
 <div class="liste_items documents" id="illustrations">
 [<p class="pagination">(#PAGINATION)</p>]
 <BOUCLE_illustrations(DOCUMENTS documents_liens types_documents){inclus=image}{mode=image}{id_objet}{objet}{par num titre,date,id_document}{pagination 50}{statut?}>
-	#MODELE{document_desc,id_document,id_objet,objet,ajax}
+	#MODELE{document_desc,id_document,id_objet,objet}
 </BOUCLE_illustrations>
 [(#BOUTON_ACTION{<:medias:lien_tout_enlever:>,#URL_ACTION_AUTEUR{dissocier_document,#ID_OBJET-#OBJET-I/image,#SELF|ancre_url{illustrations}},'ajax tout_supprimer'})]
 </div>
@@ -26,7 +26,7 @@
 <div class="liste_items documents" id="portfolio">
 [<p class="pagination">(#PAGINATION)</p>]
 <BOUCLE_portfolio(DOCUMENTS documents_liens types_documents){inclus=image}{mode=document}{id_objet}{objet}{par num titre,date,id_document}{pagination 50}{statut?}>
-	#MODELE{document_desc,id_document,id_objet,objet,ajax}
+	#MODELE{document_desc,id_document,id_objet,objet}
 </BOUCLE_portfolio>
 [(#BOUTON_ACTION{<:medias:lien_tout_enlever:>,#URL_ACTION_AUTEUR{dissocier_document,#ID_OBJET-#OBJET-I/document,#SELF|ancre_url{portfolio}},'ajax tout_supprimer'})]
 </div>
@@ -39,7 +39,7 @@
 <div class="liste_items documents" id="documents">
 [<p class="pagination">(#PAGINATION)</p>]
 <BOUCLE_documents(DOCUMENTS documents_liens types_documents){inclus!=image}{mode!=vignette}{id_objet}{objet}{par num titre,date,id_document}{pagination 50}{statut?}>
-	#MODELE{document_desc,id_document,id_objet,objet,ajax}
+	#MODELE{document_desc,id_document,id_objet,objet}
 </BOUCLE_documents>
 [(#BOUTON_ACTION{<:medias:lien_tout_enlever:>,#URL_ACTION_AUTEUR{dissocier_document,#ID_OBJET-#OBJET-D/document,#SELF|ancre_url{documents}},'ajax tout_supprimer'})]
 </div>

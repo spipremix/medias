@@ -5,7 +5,6 @@
   Distribue sous licence GPL
 
 ]
-#CACHE{3600*100}
 <BOUCLE_docslies(DOCUMENTS documents_liens types_documents){id_document}{id_objet}{objet}{statut?}>
 	<div class="item #MODE vu_#VU statut_#STATUT[(#DISTANT|=={oui}|oui)distant]" id="doc#ID_DOCUMENT">
 		[(#EXTENSION|match{gif|png|jpg}|oui) #SET{id,#ID_VIGNETTE|?{#ID_VIGNETTE,#ID_DOCUMENT}}
