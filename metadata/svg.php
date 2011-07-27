@@ -11,9 +11,13 @@
 \***************************************************************************/
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
+include_spip('inc/autoriser');
 
 /**
  * Determiner les dimensions d'un svg, et enlever ses scripts si necessaire
+ * on utilise safehtml qui n'est pas apropriee pour ca en attendant mieux
+ * cf http://www.slideshare.net/x00mario/the-image-that-called-me
+ * http://heideri.ch/svgpurifier/SVGPurifier/index.php
  *
  * @param string $file
  * @return array
@@ -24,10 +28,10 @@ function medata_svg_dist($file){
 
 	$texte = spip_file_get_contents($file);
 
-	// Securite si pas admin : virer les scripts et les references externes
+	// Securite si pas autorise : virer les scripts et les references externes
 	// sauf si on est en mode javascript 'ok' (1), cf. inc_version
 	if ($GLOBALS['filtrer_javascript'] < 1
-	AND $GLOBALS['visiteur_session']['statut'] != '0minirezo') {
+	  AND !autoriser('televerser','script')) {
 		include_spip('inc/texte');
 		$new = trim(safehtml($texte));
 		// petit bug safehtml
