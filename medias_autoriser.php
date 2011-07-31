@@ -20,7 +20,7 @@ function autoriser_mediatheque_administrer_dist($faire,$quoi,$id,$qui,$options) 
 	return $qui['statut'] == '0minirezo';
 }
 
-function autoriser_documents_bouton_dist($faire,$quoi,$id,$qui,$options) {
+function autoriser_documents_menu_dist($faire,$quoi,$id,$qui,$options) {
 	return autoriser('administrer','mediatheque',$id,$qui,$options);
 }
 
