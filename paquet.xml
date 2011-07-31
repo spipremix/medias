@@ -1,9 +1,9 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.1.0"
+	version="2.2.0"
 	etat="test"
-	compatibilite="[3.0.0-dev;["
+	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/portfolio-32.png"
 	schema="0.14.0"
 >	
@@ -12,8 +12,7 @@
 	<!-- Gestion des medias dans SPIP -->
 
 	<auteur>Collectif SPIP</auteur>
-	<auteur>Cedric Morin</auteur>
-	<credit>Romy Duhem-Verdiere pour la mediatheque</credit>
+	<credit>C&#233;dric Morin, Romy Duhem-Verdi&#232;re pour la m&#233;diath&#232;que</credit>
 
 	<traduire module="medias" reference="fr" gestionnaire="salvatore" />
 
@@ -36,7 +35,7 @@
 	<utilise nom="Z" compatibilite="[1.2.1;[" />
 	<utilise nom="mediabox" compatibilite="[0.5.0;[" />
 
-	<menu nom="documents" titre="medias:documents" parent="bando_edition" icone="images/portfolio-16.png" action="mediatheque" />
+	<menu nom="documents" titre="medias:info_documents" parent="bando_edition" icone="images/portfolio-16.png" action="mediatheque" />
 
 	<chemin path="squelettes" />
 	<chemin path="" />
