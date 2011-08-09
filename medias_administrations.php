@@ -88,6 +88,9 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	$maj['0.14.0'] = array(
 		array('creer_base_types_doc'),
 	);
+	$maj['0.15.0'] = array(
+		array('creer_base_types_doc'),
+	);
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 

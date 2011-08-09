@@ -27,9 +27,13 @@ $tables_images = array(
 // Multimedia (peuvent utiliser le tag <embed>)
 
 $tables_sequences = array(
-			'aac' => 'MPEG4 Audio',
+			'aac' => 'Advanced Audio Coding',
+			'ac3' => 'AC-3 Compressed Audio',
+			'aifc' => 'Compressed AIFF Audio',
 			'aiff' => 'AIFF',
+			'amr' => 'Adaptive Multi-Rate Audio',
 			'anx' => 'Annodex',
+			'ape' => 'Monkey\'s Audio File',
 			'axa' => 'Annodex Audio',
 			'axv' => 'Annodex Video',
 			'asf' => 'Windows Media',
@@ -41,10 +45,13 @@ $tables_sequences = array(
 			'f4v' => 'Video for Adobe Flash Player',
 			'flac' => 'Free Lossless Audio Codec',
 			'flv' => 'Flash Video',
-			'm4v' => 'MPEG4 Video',
+			'm2p' => 'MPEG-PS',
+			'm2ts' => 'BDAV MPEG-2 Transport Stream',
 			'm4a' => 'MPEG4 Audio',
 			'm4b' => 'MPEG4 Audio',
 			'm4p' => 'MPEG4 Audio',
+			'm4r' => 'iPhone Ringtone',
+			'm4v' => 'MPEG4 Video',
 			'mid' => 'Midi',
 			'mng' => 'MNG',
 			'mka' => 'Matroska Audio',
@@ -54,6 +61,7 @@ $tables_sequences = array(
 			'mp4' => 'MPEG4',
 			'mpc' => 'Musepack',
 			'mpg' => 'MPEG',
+			'mts' => 'AVCHD MPEG-2 transport stream',
 			'oga' => 'Ogg Audio',
 			'ogg' => 'Ogg Vorbis',
 			'ogv' => 'Ogg Video',
@@ -66,10 +74,12 @@ $tables_sequences = array(
 			'svg' => 'Scalable Vector Graphics',
 			'swf' => 'Flash',
 			'tif' => 'TIFF',
+			'ts' => 'MPEG transport stream',
 			'wav' => 'WAV',
 			'webm' => 'WebM',
 			'wma' => 'Windows Media Audio',
 			'wmv' => 'Windows Media Video',
+			'3ga' => '3GP Audio File',
 			'3gp' => '3rd Generation Partnership Project'
 		);
 
@@ -169,10 +179,14 @@ $tables_mime = array(
 		// Autres images (peuvent utiliser le tag <img>)
 		'bmp' => 'image/x-ms-bmp', // pas enregistre par IANA, variante: image/bmp
 		'tif' => 'image/tiff',
-
+		
 		// Multimedia (peuvent utiliser le tag <embed>)
 		'aac' => 'audio/mp4a-latm',
+		'ac3' => 'audio/x-aac',
+		'aifc' => 'audio/x-aifc',
 		'aiff' => 'audio/x-aiff',
+		'amr' => 'audio/amr',
+		'ape' => 'audio/x-monkeys-audio',
 		'asf' => 'video/x-ms-asf',
 		'avi' => 'video/x-msvideo',
 		'anx' => 'application/annodex',
@@ -185,9 +199,12 @@ $tables_mime = array(
 		'f4v' => 'video/mp4',
 		'flac' => 'audio/x-flac',
 		'flv' => 'video/x-flv',
+		'm2p' => 'video/MP2P',
+		'm2ts' => 'video/MP2T',
 		'm4a' => 'audio/mp4a-latm',
 		'm4b' => 'audio/mp4a-latm',
 		'm4p' => 'audio/mp4a-latm',
+		'm4r' => 'audio/aac',
 		'm4u' => 'video/vnd.mpegurl',
 		'm4v' => 'video/x-m4v',
 		'mid' => 'audio/midi',
@@ -199,6 +216,7 @@ $tables_mime = array(
 		'mp4' => 'application/mp4',
 		'mpc' => 'audio/x-musepack',
 		'mpg' => 'video/mpeg',
+		'mts' => 'video/MP2T',
 		'oga' => 'audio/ogg',
 		'ogg' => 'audio/ogg',
 		'ogv' => 'video/ogg',
@@ -210,11 +228,13 @@ $tables_mime = array(
 		'spx' => 'audio/ogg',
 		'svg' => 'image/svg+xml',
 		'swf' => 'application/x-shockwave-flash',
+		'ts' => 'video/MP2T',
 		'wav' => 'audio/x-wav',
 		'webm' => 'video/webm',
 		'wma' => 'audio/x-ms-wma',
 		'wmv' => 'video/x-ms-wmv',
 		'3gp' => 'video/3gpp',
+		'3ga' => 'audio/3ga',
 
 		// Documents varies
 		'ai' => 'application/illustrator',
