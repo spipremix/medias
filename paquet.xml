@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.2.0"
+	version="2.2.1"
 	etat="test"
 	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -28,6 +28,7 @@
 	<pipeline nom="afficher_complement_objet" inclure="medias_pipelines.php" />
 	<pipeline nom="objet_compte_enfants" inclure="medias_pipelines.php" />
 	<pipeline nom="autoriser" inclure="medias_autoriser.php" />
+	<pipeline nom="boite_infos" inclure="medias_pipelines.php" />
 	<pipeline nom="document_desc_actions" />
 	<pipeline nom="editer_document_actions" />
 	<pipeline nom="renseigner_document_distant" />

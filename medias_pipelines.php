@@ -152,3 +152,21 @@ function medias_objet_compte_enfants($flux){
 	}
 	return $flux;
 }
+
+/**
+ * Afficher le nombre de documents dans chaque rubrique
+ *
+ * @param array $flux
+ * @return array
+ */
+function medias_boite_infos($flux){
+	if ($flux['args']['type']=='rubrique'
+	  AND $id_rubrique = $flux['args']['id']){
+		if ($nb = sql_countsel('spip_documents_liens',"objet='rubrique' AND id_objet=".intval($id_rubrique))){
+			$nb = "<div>". singulier_ou_pluriel($nb, "medias:un_document", "medias:des_documents") . "</div>";
+			if ($p = strpos($flux['data'],"<!--nb_elements-->"))
+				$flux['data'] = substr_replace($flux['data'],$nb,$p,0);
+		}
+	}
+	return $flux;
+}
