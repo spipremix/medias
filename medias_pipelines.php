@@ -48,6 +48,18 @@ function medias_post_insertion($flux){
   return $flux;
 }
 
+/**
+ * Configuration des contenus
+ * @param array $flux
+ * @return array
+ */
+function medias_affiche_milieu($flux){
+	if ($flux["args"]["exec"] == "configurer_contenu") {
+		$flux["data"] .=  recuperer_fond('prive/squelettes/inclure/configurer',array('configurer'=>'configurer_documents'));
+	}
+	return $flux;
+}
+
 function medias_configurer_liste_metas($config){
 	$config['documents_objets'] = '';
 	$config['documents_date'] = 'non';
