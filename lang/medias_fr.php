@@ -136,6 +136,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// N
 	'nb_documents_installe_succes' => '@nb@ fichiers charg&eacute;s avec succ&egrave;s',
+	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s',
 
 	// O
 	'objet_document' => 'Document',

@@ -149,16 +149,24 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 	$ancre = '';
 	// on joint un document deja dans le site
 	if (_request('joindre_mediatheque')){
-		if ($refdoc_joindre = intval(preg_replace(',^(doc|document|img),','',_request('refdoc_joindre')))){
-			// lier le parent en plus
-			$champs = array('ajout_parents' => array("$objet|$id_objet"));
-			include_spip('action/editer_document');
-			document_modifier($refdoc_joindre,$champs);
-			set_request('refdoc_joindre',''); // vider la saisie
-			$ancre = $refdoc_joindre;
-			$sel[] = $refdoc_joindre;
-			$res['message_ok'] = _T('medias:document_attache_succes');
+		$refdoc_joindre = _request('refdoc_joindre');
+		$refdoc_joindre = strtr($refdoc_joindre,";,-","   ");
+		$refdoc_joindre = explode(" ",$refdoc_joindre);
+		include_spip('action/editer_document');
+		foreach($refdoc_joindre as $j){
+			if ($j = intval(preg_replace(',^(doc|document|img),','',$j))){
+				// lier le parent en plus
+				$champs = array('ajout_parents' => array("$objet|$id_objet"));
+				document_modifier($j,$champs);
+				if (!$ance)
+					$ancre = $j;
+				$sel[] = $j;
+				$res['message_ok'] = _T('medias:document_attache_succes');
+			}
 		}
+		if ($sel)
+			$res['message_ok'] = singulier_ou_pluriel(count($sel),'medias:document_attache_succes','medias:nb_documents_attache_succes');
+		set_request('refdoc_joindre',''); // vider la saisie
 	}
 	// sinon c'est un upload
 	else {
@@ -190,18 +198,17 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 				if (!$ancre)
 					$ancre = $doc;
 				$sel[] = $doc;
-				$nb_docs++;
 			}
 		}
 		if (count($messages_erreur))
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
-		if ($nb_docs){
-			$res['message_ok'] = singulier_ou_pluriel($nb_docs,'medias:document_installe_succes','medias:nb_documents_installe_succes');
+		if ($sel){
+			$res['message_ok'] = singulier_ou_pluriel(count($sel),'medias:document_installe_succes','medias:nb_documents_installe_succes');
 		}
 		if ($ancre)
 			$res['redirect'] = "#doc$ancre";
 	}
-	if ($nb_docs OR isset($res['message_ok'])){
+	if (count($sel) OR isset($res['message_ok'])){
 		$callback = "";
 		if ($ancre)
 			$callback .= "jQuery('#doc$ancre a.editbox').eq(0).focus();";
