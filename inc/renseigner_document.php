@@ -12,15 +12,14 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
-include_spip('inc/ajouter_documents'); // a enlever apres nettoyage du core
-
 /**
  * recuperer les infos distantes d'une url,
  * et renseigner pour une insertion en base
  * utilise une variable static car appellee plusieurs fois au cours du meme hit
  * (verification puis traitement)
  *
- * @param unknown_type $source
+ * @param string $source
+ * @return string
  */
 function renseigner_source_distante($source){
 	static $infos = array();
@@ -55,9 +54,9 @@ function renseigner_source_distante($source){
 /**
  * Renseigner les informations de taille et dimenssion d'une image
  *
- * @param <type> $fichier
- * @param <type> $ext
- * @return <type>
+ * @param string $fichier
+ * @param string $ext
+ * @return array
  */
 function renseigner_taille_dimension_image($fichier,$ext){
 

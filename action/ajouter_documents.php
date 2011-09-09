@@ -14,7 +14,6 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 
 include_spip('inc/getdocument');
 include_spip('inc/documents');
-include_spip('inc/ajouter_documents'); // compat core
 include_spip('inc/choisir_mode_document'); // compat core
 include_spip('inc/renseigner_document');
 
