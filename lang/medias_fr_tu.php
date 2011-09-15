@@ -137,6 +137,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_video' => 'Séquences',
 
 	// N
+	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
 	'nb_documents_installe_succes' => '@nb@ fichiers chargés avec succès',
 
 	// O
