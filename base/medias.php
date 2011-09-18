@@ -187,6 +187,8 @@ function creer_base_types_doc($serveur='') {
 	include_spip('base/typedoc');
 	include_spip('base/abstract_sql');
 
+	$insertions = array();
+	
 	foreach ($tables_mime as $extension => $type_mime) {
 		if (isset($tables_images[$extension])) {
 			$titre = $tables_images[$extension];
@@ -212,17 +214,27 @@ function creer_base_types_doc($serveur='') {
 		  $media = "audio";
 	  elseif (preg_match(",^video/,",$type_mime) OR in_array($type_mime,array('application/ogg','application/x-shockwave-flash','application/mp4')))
 		  $media = "video";
-	  
-		// Init ou Re-init ==> replace pas insert
-		sql_replace('spip_types_documents',
-			array('mime_type' => $type_mime,
-				'titre' => $titre,
-				'inclus' => $inclus,
-				'extension' => $extension,
-				'media' => $media,
-				'upload' => 'oui'
-			),
-			'', $serveur);
+
+	  $insertions[] = array(
+		'mime_type' => $type_mime,
+		'titre' => $titre,
+		'inclus' => $inclus,
+		'extension' => $extension,
+		'media' => $media,
+		'upload' => 'oui'
+		);
+	}
+
+	if ($insertions) {
+		
+		// Re-init : replace
+		if (sql_countsel('spip_types_documents')) {
+			sql_replace_multi('spip_types_documents', $insertions, '', $serveur);
+		// Init : insert
+		} else {
+			sql_insertq_multi('spip_types_documents', $insertions, '', $serveur);
+		}
+		
 	}
 }
 
