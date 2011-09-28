@@ -89,6 +89,7 @@ function joindre_trouver_fichier_envoye(){
 		$path = _request('cheminftp');
 		if (!$path || strstr($path, '..')) return _T('medias:erreur_indiquez_un_fichier');
 		
+		include_spip('inc/documents');	
 		include_spip('inc/actions');
 		$upload = determine_upload();
 		if ($path != '/' AND $path != './') $upload .= $path;
