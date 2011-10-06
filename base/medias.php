@@ -127,7 +127,7 @@ function medias_declarer_tables_objets_sql($tables){
 			"date"	=> "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"descriptif"	=> "text DEFAULT '' NOT NULL",
 			"fichier"	=> "text NOT NULL DEFAULT ''",
-			"taille"	=> "integer",
+			"taille"	=> "bigint",
 			"largeur"	=> "integer",
 			"hauteur"	=> "integer",
 			"mode"	=> "varchar(10) DEFAULT 'document' NOT NULL",
