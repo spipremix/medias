@@ -6,6 +6,8 @@
  *
  */
 
+if (!defined('_ECRIRE_INC_VERSION')) return;
+
 define('_BOUTON_MODE_IMAGE', true);
 
 include_spip('inc/documents'); // pour la fonction affiche_raccourci_doc

@@ -1,5 +1,7 @@
 <?php
 
+if (!defined('_ECRIRE_INC_VERSION')) return;
+
 /**
  * Trouver le fond pour embarquer un document avec un mime_type donne
  * text_html
