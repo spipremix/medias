@@ -112,12 +112,13 @@ function document_modifier($id_document, $set=false) {
 		$ancien_fichier = sql_getfetsel('fichier','spip_documents','id_document='.intval($id_document));
 	}
 
-	modifier_contenu('document', $id_document,
+	if ($err = objet_modifier_champs('document', $id_document,
 		array(
 			'invalideur' => $invalideur,
 			'indexation' => $indexation
 		),
-		$champs);
+		$champs))
+		return $err;
 
 	// nettoyer l'ancien fichier si necessaire
 	if ($champs['fichier'] // un plugin a pu interdire la modif du fichier en virant le champ
