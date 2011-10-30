@@ -96,6 +96,9 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	$maj['0.15.1'] = array(
 		array('sql_alter',"TABLE spip_documents CHANGE taille taille bigint"),
 	);
+	$maj['0.16.0'] = array(
+		array('creer_base_types_doc'),
+	);
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 
