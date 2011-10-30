@@ -15,14 +15,14 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 global $tables_images, $tables_sequences, $tables_documents, $tables_mime, $mime_alias;
 
 $tables_images = array(
-		       // Images reconnues par PHP
-		       'jpg' => 'JPEG',
-		       'png' => 'PNG',
-		       'gif' => 'GIF',
+			// Images reconnues par PHP
+			'jpg' => 'JPEG',
+			'png' => 'PNG',
+			'gif' => 'GIF',
 
-		       // Autres images (peuvent utiliser le tag <img>)
-		       'bmp' => 'BMP',
-		       );
+			// Autres images (peuvent utiliser le tag <img>)
+			'bmp' => 'BMP',
+			);
 
 // Multimedia (peuvent utiliser le tag <embed>)
 
@@ -124,7 +124,7 @@ $tables_documents = array(
 			'tgz' => 'TGZ',
 			'torrent' => 'BitTorrent',
 			'ttf' => 'TTF Font',
-			'txt' => 'texte',
+			'txt' => 'Texte',
 			'xcf' => 'GIMP multi-layer',
 			'xspf' => 'XSPF',
 			'xls' => 'Excel',
@@ -133,19 +133,19 @@ $tables_documents = array(
 
 			// open document format
 			
-			'odb' => 'opendocument database',			
-			'odc' => 'opendocument chart',
-			'odf' => 'opendocument formula',
-			'odg' => 'opendocument graphics',
-			'odi' => 'opendocument image',	
-			'odm' => 'opendocument text-master',			
-			'odp' => 'opendocument presentation',
-			'ods' => 'opendocument spreadsheet',
-			'odt' => 'opendocument text',
-			'otg' => 'opendocument graphics-template',			
-			'otp' => 'opendocument presentation-template',
-			'ots' => 'opendocument spreadsheet-template',			
-			'ott' => 'opendocument text-template',
+			'odb' => 'OpenDocument Database',
+			'odc' => 'OpenDocument Chart',
+			'odf' => 'OpenDocument Formula',
+			'odg' => 'OpenDocument Graphics',
+			'odi' => 'OpenDocument Image',
+			'odm' => 'OpenDocument Text-master',
+			'odp' => 'OpenDocument Presentation',
+			'ods' => 'OpenDocument Spreadsheet',
+			'odt' => 'OpenDocument Text',
+			'otg' => 'OpenDocument Graphics-template',
+			'otp' => 'OpenDocument Presentation-template',
+			'ots' => 'OpenDocument Spreadsheet-template',
+			'ott' => 'OpenDocument Text-template',
 
 
 			// Open XML File Formats
