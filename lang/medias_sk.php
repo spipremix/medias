@@ -137,7 +137,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_video' => 'Videá',
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
+	'nb_documents_attache_succes' => '@nb@ dokumentov bolo pridaných',
 	'nb_documents_installe_succes' => '@nb@ súborov sa úspešne nahralo',
 
 	// O
