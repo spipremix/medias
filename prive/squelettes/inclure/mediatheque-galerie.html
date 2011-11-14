@@ -54,6 +54,7 @@
 			[<div class="dimensions">(#LARGEUR|?{[(#LARGEUR)[ x (#HAUTEUR) pixels]],''})</div>]
 			[<div class="taille">(#TAILLE|taille_en_octets)</div>]
 			[<div class="date">(#DATE|affdate{d/m/Y})</div>]
+			[(#PIPELINE{afficher_metas_document,#ARRAY{args,#ARRAY{'quoi','galerie','id_document',#ID_DOCUMENT},data,''}})]
 			<B_liens>
 			[(#TOTAL_BOUCLE|>{1}|oui)
 			<a href='#' onclick="jQuery(this).next().show();$(this).hide();return false;">[(#TOTAL_BOUCLE|singulier_ou_pluriel{medias:une_utilisation,medias:des_utilisations})]</a><div style='display: none;'>

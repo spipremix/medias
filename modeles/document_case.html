@@ -19,7 +19,8 @@
 				[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-gauche-12.png}|balise_img{<:medias:image_tourner_gauche:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',-90'},#SELF},ajax})]
 				[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-droite-12.png}|balise_img{<:medias:image_tourner_droite:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',90'},#SELF},ajax})]
 				[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-180-12.png}|balise_img{<:medias:image_tourner_180:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',180'},#SELF},ajax})]
-			</div>]
+			</div>
+			]
 			[(#LOGO_DOCUMENT{#URL_DOCUMENT}|image_reduire{150,150})]
 			<BOUCLE_type_doc(TYPES_DOCUMENTS){extension}>
 			[(#MODE|=={document}|oui)<div class="type">
@@ -43,6 +44,7 @@
 				<//B_compte>
 				[(#PIPELINE{document_desc_actions,#ARRAY{args,#ARRAY{id_document,#ID_DOCUMENT,position,document_case},data,''}})]
 			</div>
+			[(#PIPELINE{afficher_metas_document,#ARRAY{args,#ARRAY{'quoi','document_case','id_document',#ID_DOCUMENT},data,''}})]
 		</div>
 	</div>
 </BOUCLE_docslies>

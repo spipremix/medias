@@ -56,6 +56,7 @@
 				][(#TAILLE|taille_en_octets|texte_backend)]</span>
 				[(#ENV{_taille_modif}|oui)<div class='taille_modifiee'><:medias:fichier_modifie:><br />[(#ENV{_largeur_modif}|ou{#ENV{_hauteur_modif}}|oui)[(#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#ENV{_largeur_modif},hauteur_vignette,#ENV{_hauteur_modif}}})] -
 				][(#ENV{_taille_modif}|taille_en_octets|texte_backend)]</div>]
+				[(#PIPELINE{afficher_metas_document,#ARRAY{args,#ARRAY{'quoi','editer_document','id_document',#ENV{id_document}},data,''}})]
 	  	</li>
 			<li class="editer editer_descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)erreur]">
 				<label for="descriptif"><:info_description:></label>[
