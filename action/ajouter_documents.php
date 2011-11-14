@@ -257,7 +257,7 @@ function corriger_extension($ext) {
 function verifier_upload_autorise($source, $mode=''){
 	$infos = array('fichier'=>$source);
 	$res = false;
-	if (preg_match(",\.([^.]+)$,", $source, $match)
+	if (preg_match(",\.([a-z0-9]+)(\?.*)?$,i", $source, $match)
 	  AND $ext = $match[1]){
 		
 	  $ext = corriger_extension(strtolower($ext));
