@@ -35,8 +35,10 @@ function formulaires_editer_document_charger_dist($id_document='new', $id_parent
 	// en fonction du format
 	$valeurs['_editer_dimension'] = autoriser('tailler','document',$id_document)?' ':'';
 
-	// type du document
-	$valeurs['type_document'] = sql_getfetsel('titre as type_document','spip_types_documents','extension='.sql_quote($valeurs['extension']));
+	// type du document et inclusion
+	$row = sql_fetsel('titre as type_document,inclus','spip_types_documents','extension='.sql_quote($valeurs['extension']));
+	$valeurs['type_document'] = $row['type_document'];
+	$valeurs['_inclus'] = $row['inclus'];
 	if (in_array($valeurs['extension'],array('jpg','gif','png'))){
 		$valeurs['apercu'] = get_spip_doc($valeurs['fichier']);
 	}

@@ -47,7 +47,13 @@
 				</div>
 				[<a href='#ENV{apercu}'>(#ENV{apercu}|image_reduire{300,200})</a>]
 				]
-		  	[(#ENV{apercu}|non)[(#MODELE{doc,id_document=#ENV{id_document,''},hauteur=200,largeur=300}|extraire_balise{a})]]
+		  	[(#ENV{apercu}|non)
+					[(#ENV{_inclus}|=={embed}|?{
+						[(#MODELE{emb,id_document=#ENV{id_document,''},hauteur=200,largeur=300})]
+						,
+						[(#MODELE{doc,id_document=#ENV{id_document,''},hauteur=200,largeur=300}|extraire_balise{a})]
+						})]
+				]
 	  	</li>
 	  	<li class="editer editer_infos">
 		  	<label><:medias:label_caracteristiques:></label>
