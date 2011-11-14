@@ -133,7 +133,8 @@ function medias_maj_meta_documents(){
 function medias_peuple_media_document(){
 	$res = sql_select("DISTINCT extension","spip_documents","media=".sql_quote('?'));
 	while($row = sql_fetch($res)){
-		$media = sql_getfetsel('media_defaut','spip_types_documents','extension='.sql_quote($row['extension']));
+		// attention ici c'est encore le champ media, car on le renomme juste apres
+		$media = sql_getfetsel('media','spip_types_documents','extension='.sql_quote($row['extension']));
 		sql_updateq('spip_documents',array('media'=>$media),"media=".sql_quote('?').' AND extension='.sql_quote($row['extension']));
 		if (time() >= _TIME_OUT)
 			return;
