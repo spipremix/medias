@@ -75,7 +75,7 @@ function documents_edit_config($row)
 {
 	global $spip_lang;
 
-	$config = $GLOBALS['meta'];
+	$config = array();//$GLOBALS['meta'];
 	$config['lignes'] = 8;
 	$config['langue'] = $spip_lang;
 
