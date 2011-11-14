@@ -90,7 +90,7 @@ function document_modifier($id_document, $set=false) {
 		// white list
 		array(
 		 'titre', 'descriptif', 'date', 'taille', 'largeur','hauteur','mode','credits',
-		 'fichier','distant','extension', 'id_vignette',
+		 'fichier','distant','extension', 'id_vignette', 'media',
 		),
 		// black list
 		array('parents', 'ajout_parents'),

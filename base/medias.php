@@ -25,7 +25,7 @@ function medias_declarer_tables_interfaces($interfaces) {
 	$interfaces['exceptions_des_tables']['documents']['type_document']=array('types_documents', 'titre');
 	$interfaces['exceptions_des_tables']['documents']['extension_document']=array('types_documents', 'extension');
 	$interfaces['exceptions_des_tables']['documents']['mime_type']=array('types_documents', 'mime_type');
-	$interfaces['exceptions_des_tables']['documents']['media']=array('types_documents', 'media');
+	$interfaces['exceptions_des_tables']['documents']['media_document']=array('types_documents', 'media');
 
 	$interfaces['exceptions_des_jointures']['spip_documents']['id_forum']=array('spip_documents_liens','id_forum');
 	$interfaces['exceptions_des_jointures']['spip_documents']['vu']=array('spip_documents_liens', 'vu');
@@ -52,7 +52,7 @@ function medias_declarer_tables_principales($tables_principales) {
 			"mime_type"	=> "varchar(100) DEFAULT '' NOT NULL",
 			"inclus"	=> "ENUM('non', 'image', 'embed') DEFAULT 'non'  NOT NULL",
 			"upload"	=> "ENUM('oui', 'non') DEFAULT 'oui'  NOT NULL",
-			"media" => "varchar(10) DEFAULT 'file' NOT NULL",
+			"media_defaut" => "varchar(10) DEFAULT 'file' NOT NULL",
 			"maj"	=> "TIMESTAMP");
 
 	$spip_types_documents_key = array(
@@ -131,6 +131,7 @@ function medias_declarer_tables_objets_sql($tables){
 			"taille"	=> "bigint",
 			"largeur"	=> "integer",
 			"hauteur"	=> "integer",
+			"media" => "varchar(10) DEFAULT 'file' NOT NULL",
 			"mode"	=> "varchar(10) DEFAULT 'document' NOT NULL",
 			"distant"	=> "VARCHAR(3) DEFAULT 'non'",
 			"statut" => "varchar(10) DEFAULT '0' NOT NULL",
@@ -221,7 +222,7 @@ function creer_base_types_doc($serveur='') {
 		'titre' => $titre,
 		'inclus' => $inclus,
 		'extension' => $extension,
-		'media' => $media,
+		'media_defaut' => $media,
 		'upload' => 'oui'
 		);
 	}

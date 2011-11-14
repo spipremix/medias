@@ -99,6 +99,19 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	$maj['0.16.0'] = array(
 		array('creer_base_types_doc'),
 	);
+
+	$maj['1.0.0'] = array(
+		// on cree le champ en defaut '?' pour reperer les nouveaux a peupler
+		array('sql_alter',"TABLE spip_documents ADD media varchar(10) DEFAULT '?' NOT NULL"),
+		array('medias_peuple_media_document'),
+		// puis on retablit le bon defaut
+		array('sql_alter',"TABLE spip_documents CHANGE media media varchar(10) DEFAULT 'file' NOT NULL"),
+	);
+	$maj['1.0.1'] = array(
+		// puis on retablit le bon defaut
+		array('sql_alter',"TABLE spip_types_documents CHANGE media media_defaut varchar(10) DEFAULT 'file' NOT NULL"),
+	);
+
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 
@@ -115,6 +128,16 @@ function medias_maj_meta_documents(){
 	if (isset($GLOBALS['meta']['documents_rubrique']) AND $GLOBALS['meta']['documents_rubrique']!=='non')
 		$config[] = 'spip_rubriques';
 	ecrire_meta('documents_objets',implode(',',$config));
+}
+
+function medias_peuple_media_document(){
+	$res = sql_select("DISTINCT extension","spip_documents","media=".sql_quote('?'));
+	while($row = sql_fetch($res)){
+		$media = sql_getfetsel('media_defaut','spip_types_documents','extension='.sql_quote($row['extension']));
+		sql_updateq('spip_documents',array('media'=>$media),"media=".sql_quote('?').' AND extension='.sql_quote($row['extension']));
+		if (time() >= _TIME_OUT)
+			return;
+	}
 }
 
 /*

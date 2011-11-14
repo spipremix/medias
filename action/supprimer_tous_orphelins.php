@@ -23,10 +23,8 @@ function action_supprimer_tous_orphelins() {
 	list($media,$distant,$statut,$sanstitre) = explode('/',$arg);
 	
 	//critere sur le media
-	if($media) {
-		$select = sql_get_select("extension","spip_types_documents as nnnn","media=".sql_quote($media));
-		$where[] = "spip_documents.extension IN ($select)";
-	}
+	if($media)
+		$select = "media=".sql_quote($media);
 
 	//critere sur le distant
 	if($distant)

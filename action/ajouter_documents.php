@@ -161,6 +161,11 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		unset($champs['inclus']);
 		$champs['fichier'] = set_spip_doc($champs['fichier']);
 	}
+
+	// si le media est pas renseigne, le faire, en fonction de l'extension
+	if (!isset($champs['media'])){
+		$champs['media'] = sql_getfetsel('media_defaut','spip_types_documents','extension='.sql_quote($champs['extension']));
+	}
 	
 	// lier le parent si necessaire
 	if ($id_objet=intval($id_objet) AND $objet)
@@ -256,11 +261,11 @@ function verifier_upload_autorise($source, $mode=''){
 	  AND $ext = $match[1]){
 		
 	  $ext = corriger_extension(strtolower($ext));
-		if ($res = sql_fetsel("extension,inclus,media", "spip_types_documents", "extension=" . sql_quote($ext) . " AND upload='oui'"))
+		if ($res = sql_fetsel("extension,inclus,media_defaut as media", "spip_types_documents", "extension=" . sql_quote($ext) . " AND upload='oui'"))
 			$infos = array_merge($infos,$res);
 	}
 	if (!$res){
-		if ($res = sql_fetsel("extension,inclus,media", "spip_types_documents", "extension='zip' AND upload='oui'")){
+		if ($res = sql_fetsel("extension,inclus,media_defaut as media", "spip_types_documents", "extension='zip' AND upload='oui'")){
 			$infos = array_merge($infos,$res);
 			$res['autozip'] = true;
 		}

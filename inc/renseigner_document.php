@@ -82,7 +82,7 @@ function renseigner_taille_dimension_image($fichier,$ext){
 		$meta = $metadata($fichier);
 	}
   else {
-	  $media = sql_getfetsel('media','spip_types_documents','extension='.sql_quote($ext));
+	  $media = sql_getfetsel('media_defaut','spip_types_documents','extension='.sql_quote($ext));
 	  if ($metadata = charger_fonction($media,"metadata",true)){
 		  $meta = $metadata($fichier);
 	  }
