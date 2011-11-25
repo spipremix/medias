@@ -8,10 +8,21 @@
 	[<:medias:info_modifier_document:>
 	<h1>(#INFO_TITRE{document,#ID_DOCUMENT}|sinon{#INFO_FICHIER*{document,#ID_DOCUMENT}})</h1>]
 </div>
-<div class="ajax">
-#FORMULAIRE_EDITER_DOCUMENT{#ID_DOCUMENT,#ENV{parent,''},#ENV{redirect,''},#ENV{lier_trad}}
+<div class="formedit">
+	<div class="ajax"><b class="reloaded"></b>
+	#FORMULAIRE_EDITER_DOCUMENT{#ID_DOCUMENT,#ENV{parent,''},#ENV{redirect,''},#ENV{lier_trad}}
+	</div>
 </div>
 <div class="ajax">
 #FORMULAIRE_ILLUSTRER_DOCUMENT{#ID_DOCUMENT}
 </div>
 </div>
+<script type="text/javascript">
+function reload_chemin(){
+	if (!jQuery('.formedit').find('.ajax>.reloaded:first').length){
+		jQuery('.formedit').find('.ajax').eq(0).prepend('<b class="reloaded"></b>');
+		jQuery('#chemin').find('>:first').ajaxReload();
+	}
+}
+onAjaxLoad(reload_chemin);
+</script>
