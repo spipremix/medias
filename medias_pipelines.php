@@ -121,7 +121,7 @@ function medias_afficher_complement_objet($flux){
 		$documenter_objet = charger_fonction('documenter_objet','inc');
 		$flux['data'] .= $documenter_objet($id,$type);
 	}
-	return $flux['data'];
+	return $flux;
 }
 
 function medias_affiche_gauche($flux){
