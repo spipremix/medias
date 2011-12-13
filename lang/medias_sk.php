@@ -28,7 +28,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_par_mediatheque' => 'knižnice multimédií',
 	'bouton_download_sur_le_web' => 'internetu',
 	'bouton_enlever_document' => 'Zrušiť prepojenie',
-	'bouton_enlever_supprimer_document' => 'Supprimer', # NEW
+	'bouton_enlever_supprimer_document' => 'Odstrániť',
 	'bouton_enlever_supprimer_document_confirmation' => 'Chcete odstrániť tento dokument?',
 	'bouton_modifier_document' => 'Upraviť',
 	'bouton_parcourir' => 'Prehľadávať...',
@@ -39,16 +39,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'Odstrániť',
 	'bouton_supprimer_tous_orphelins' => 'Odstrániť všetky nepoužívané',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Naozaj chcete odstrániť @nb@ nepoužívaných objektov?',
-	'bouton_upload' => 'Télécharger', # NEW
+	'bouton_upload' => 'Nahrať',
 
 	// D
 	'des_audios' => '@nb@ zvukov',
-	'des_documents' => '@nb@ documents', # NEW
-	'des_files' => '@nb@ documents', # NEW
+	'des_documents' => '@nb@ dokumentov',
+	'des_files' => '@nb@ súborov',
 	'des_images' => '@nb@ obrázkov',
-	'des_utilisations' => '@nb@ utilisations', # NEW
+	'des_utilisations' => '@nb@ použití',
 	'des_videos' => '@nb@ videí',
-	'descriptif' => 'Description', # NEW
+	'descriptif' => 'Popis',
 	'document_attache_succes' => 'Dokument bol úspešne pridaný',
 	'document_copie_locale_succes' => 'Súbor bol úspešne skopírovaný na stránku',
 	'document_installe_succes' => 'Súbor sa úspešne nahral',
@@ -120,8 +120,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'label_activer_document_objets' => 'Zaradiť dokumenty do obsahu:',
-	'label_apercu' => 'Aperçu', # NEW
-	'label_caracteristiques' => 'Caractéristiques', # NEW
+	'label_apercu' => 'Ukážka',
+	'label_caracteristiques' => 'Funkcie',
 	'label_credits' => 'Autori',
 	'label_fichier' => 'Súbor',
 	'label_fichier_vignette' => 'Miniatúra',
