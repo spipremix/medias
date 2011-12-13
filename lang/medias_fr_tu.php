@@ -1,6 +1,6 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// extrait automatiquement de http://www.spip.net/trad-lang/
+// extrait automatiquement de http://trad.spip.org
 // ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -137,7 +137,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_video' => 'Séquences',
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
+	'nb_documents_attache_succes' => '@nb@ documents ont bien été ajoutés',
 	'nb_documents_installe_succes' => '@nb@ fichiers chargés avec succès',
 
 	// O
@@ -177,7 +177,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Déposer dans le portfolio',
 	'upload_info_mode_image' => 'Retirer du portfolio',
 	'upload_limit' => 'Ce fichier est trop gros pour le serveur ; la taille maximum autorisée en <i>upload</i> est de @max@.',
-	'upload_zip_conserver' => 'Conserver l’archive apr&egrave;s extraction',
+	'upload_zip_conserver' => 'Conserver l’archive après extraction',
 	'upload_zip_decompacter' => 'décompressé et chaque élément qu\'il contient installé sur le site. Les fichiers qui seront alors installés sur le site sont :',
 	'upload_zip_mode_document' => 'Déposer toutes les images dans le portfolio',
 	'upload_zip_telquel' => 'installé tel quel, en tant qu\'archive compressée Zip ;',

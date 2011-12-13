@@ -1,6 +1,6 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// extrait automatiquement de http://www.spip.net/trad-lang/
+// extrait automatiquement de http://trad.spip.org
 // ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -29,7 +29,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_sur_le_web' => 'internet',
 	'bouton_enlever_document' => 'Unlink',
 	'bouton_enlever_supprimer_document' => 'Delete',
-	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer le document ?', # NEW
+	'bouton_enlever_supprimer_document_confirmation' => 'Are you sure you want to delete the document ?',
 	'bouton_modifier_document' => 'Modify',
 	'bouton_parcourir' => 'Browse...',
 	'bouton_refresh_document' => 'Refresh document',
@@ -39,7 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'Delete',
 	'bouton_supprimer_tous_orphelins' => 'Delete all unused',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Do you really want to delete @nb@ unused?',
-	'bouton_upload' => 'Upload',
+	'bouton_upload' => 'Download',
 
 	// D
 	'des_audios' => '@nb@ sounds',
@@ -72,20 +72,20 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_chemin_distant' => 'The remote file @nom@ could not be found',
 	'erreur_chemin_ftp' => 'The specified file was not found on the server',
 	'erreur_copie_fichier' => 'Unable to copy the file @nom@',
-	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
-	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
+	'erreur_dossier_tmp_manquant' => 'A temporrary folder is missing to download the files',
+	'erreur_ecriture_fichier' => 'Error writing the file to disk',
 	'erreur_format_fichier_image' => 'The format of @nom@ is not suitable for an image',
 	'erreur_indiquez_un_fichier' => 'Specify a file!',
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
-	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
+	'erreur_insertion_document_base' => 'Unable to save the document @fichier@ in the database',
+	'erreur_suppression_vignette' => 'Error when deleting the thumbnail',
 	'erreur_upload_type_interdit' => 'Uploading files of type @nom@ is not allowed',
 	'erreur_upload_vignette' => 'Error loading thumbnail @nom@',
-	'erreurs' => '@nb@ erreurs', # NEW
-	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
+	'erreurs' => '@nb@ errors',
+	'erreurs_voir' => 'See the @nb@ errors',
 
 	// F
-	'fichier_distant' => 'Fichier distant', # NEW
-	'fichier_manquant' => 'Fichier manquant', # NEW
+	'fichier_distant' => 'Remote file',
+	'fichier_manquant' => 'File missing',
 	'fichier_modifie' => 'The file has been modified. Click the save button.',
 	'format_date_incorrect' => 'The date or time are incorrect',
 
@@ -119,7 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'The date of a document is the day it was added to the site',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
+	'label_activer_document_objets' => 'Enable documents for the contents :',
 	'label_apercu' => 'Preview',
 	'label_caracteristiques' => 'Specifications',
 	'label_credits' => 'Credits',
@@ -137,12 +137,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_video' => 'Videos',
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
+	'nb_documents_attache_succes' => '@nb@ documents have been added',
 	'nb_documents_installe_succes' => '@nb@ files successfully uploaded',
 
 	// O
-	'objet_document' => 'Document', # NEW
-	'objet_documents' => 'Documents', # NEW
+	'objet_document' => 'Document',
+	'objet_documents' => 'Documents',
 
 	// P
 	'par_date' => 'Date',
@@ -159,10 +159,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
  the article or displayed separately.',
 	'texte_documents_joints_2' => 'This setting does not prevent the direct inclusion of images in articles.',
 	'titre_documents_joints' => 'Attached documents',
-	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
+	'titre_page_documents_edit' => 'Edit the document : @titre@',
 	'tous_les_medias' => 'All media',
 	'tout_dossier_upload' => 'The whole @upload@ directory',
-	'tout_voir' => 'Tout voir', # NEW
+	'tout_voir' => 'Show all',
 
 	// U
 	'un_audio' => '1 sound',
@@ -179,13 +179,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_limit' => 'This file is too big for the server; the maximum size allowed for <i>upload</i> is @max@.',
 	'upload_zip_conserver' => 'Keep the archive file after extracting its contents',
 	'upload_zip_decompacter' => 'decompressed and each file it contains will be installed on the site. The files which will be installed are:',
-	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
+	'upload_zip_mode_document' => 'Place all images in the portfolio',
 	'upload_zip_telquel' => 'installed as is, as a ZIP file;',
 	'upload_zip_titrer' => 'Add titles according to the filenames',
 
 	// V
 	'verifier_documents_brises' => 'Check missing files',
-	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
+	'verifier_documents_inutilises' => 'Check for documents links',
 	'vignette_supprimee' => 'The thumbnail has been deleted'
 );
 

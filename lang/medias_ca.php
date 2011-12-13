@@ -1,6 +1,6 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// extrait automatiquement de http://www.spip.net/trad-lang/
+// extrait automatiquement de http://trad.spip.org
 // ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -76,9 +76,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_ecriture_fichier' => 'Error durant l\'escriptura del fitxer al disc',
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image', # NEW
 	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !', # NEW
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
+	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de données', # NEW
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
-	'erreur_upload_type_interdit' => 'Le telechargement des fichiers du type de @nom@ n\'est pas autoris&eacute;', # NEW
+	'erreur_upload_type_interdit' => 'Le telechargement des fichiers du type de @nom@ n\'est pas autorisé', # NEW
 	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@', # NEW
 	'erreurs' => '@nb@ erreurs', # NEW
 	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
@@ -86,7 +86,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// F
 	'fichier_distant' => 'Fichier distant', # NEW
 	'fichier_manquant' => 'Fichier manquant', # NEW
-	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.', # NEW
+	'fichier_modifie' => 'Le fichier a été modifié. Cliquez sur enregistrer.', # NEW
 	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes', # NEW
 
 	// I
@@ -99,7 +99,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_document' => 'Document',
 	'info_document_indisponible' => 'Aquest document no està disponible',
 	'info_documents' => 'Documents',
-	'info_gauche_numero_document' => 'DOCUMENT NUM&Eacute;RO', # NEW
+	'info_gauche_numero_document' => 'DOCUMENT NUMÉRO', # NEW
 	'info_hauteur' => 'Hauteur', # NEW
 	'info_heure' => 'Heure', # NEW
 	'info_illustrations' => 'Illustrations', # NEW
@@ -112,21 +112,21 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_document' => 'Modifier le document', # NEW
 	'info_portfolio' => 'Carpeta',
 	'info_referencer_doc_distant' => 'Referenciar un document a Internet :',
-	'info_statut_document' => 'Ce document est&nbsp;:', # NEW
+	'info_statut_document' => 'Ce document est :', # NEW
 	'info_telecharger' => 'Carregar des del vostre ordinador:',
 	'infos' => 'Infos techniques', # NEW
 	'item_autoriser_selectionner_date_en_ligne' => 'Permitir la modificación de la fecha de cada documento',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'La data dels documents és la de quan han estat afegits al lloc',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
-	'label_apercu' => 'Aper&ccedil;u', # NEW
-	'label_caracteristiques' => 'Caract&eacute;ristiques', # NEW
-	'label_credits' => 'Cr&eacute;dits', # NEW
+	'label_activer_document_objets' => 'Activer les documents pour les contenus :', # NEW
+	'label_apercu' => 'Aperçu', # NEW
+	'label_caracteristiques' => 'Caractéristiques', # NEW
+	'label_credits' => 'Crédits', # NEW
 	'label_fichier' => 'Fichier', # NEW
 	'label_fichier_vignette' => 'Vignette', # NEW
-	'label_parents' => 'Ce document est li&eacute; &agrave;', # NEW
-	'label_refdoc_joindre' => 'Document num&eacute;ro', # NEW
+	'label_parents' => 'Ce document est lié à', # NEW
+	'label_refdoc_joindre' => 'Document numéro', # NEW
 	'lien_tout_enlever' => 'Tout enlever', # NEW
 	'logo' => 'Logo', # NEW
 
@@ -134,11 +134,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_audio' => 'Bandes sons', # NEW
 	'media_file' => 'Autres', # NEW
 	'media_image' => 'Images', # NEW
-	'media_video' => 'S&eacute;quences', # NEW
+	'media_video' => 'Séquences', # NEW
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
-	'nb_documents_installe_succes' => '@nb@ fichiers charg&eacute;s avec succ&egrave;s', # NEW
+	'nb_documents_attache_succes' => '@nb@ documents ont bien été ajoutés', # NEW
+	'nb_documents_installe_succes' => '@nb@ fichiers chargés avec succès', # NEW
 
 	// O
 	'objet_document' => 'Document', # NEW
@@ -166,24 +166,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'un_document' => '1 document', # NEW
 	'un_file' => '1 document', # NEW
 	'un_image' => '1 image', # NEW
-	'un_video' => '1 s&eacute;quence', # NEW
+	'un_video' => '1 séquence', # NEW
 	'une_utilisation' => '1 utilisation', # NEW
 	'upload_fichier_zip' => 'Fitxer ZIP',
 	'upload_fichier_zip_texte' => 'El fitxer que voleu instal·lar és un fitxer Zip.',
 	'upload_fichier_zip_texte2' => 'El fitxer pot ser:',
-	'upload_info_mode_document' => 'D&eacute;poser dans le portfolio', # NEW
+	'upload_info_mode_document' => 'Déposer dans le portfolio', # NEW
 	'upload_info_mode_image' => 'Retirer du portfolio', # NEW
 	'upload_limit' => 'El fitxer és massa gran pel servidor; la   mida màxima autoritzada en <i>upload</i> és de @max@.',
 	'upload_zip_conserver' => 'Conservar l\'arxiu desprès de l\'extracció',
 	'upload_zip_decompacter' => 'descomprimit i cada element que conté instal·lat en el lloc Web. Els fitxers que llavors seran instal·lat en el lloc Web són:',
-	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
+	'upload_zip_mode_document' => 'Déposer toutes les images dans le portfolio', # NEW
 	'upload_zip_telquel' => 'instal·lat tal qual, com a arxiu comprimit Zip;',
 	'upload_zip_titrer' => 'Titular segons el nom dels fitxers',
 
 	// V
-	'verifier_documents_brises' => 'V&eacute;rifier les fichiers manquants', # NEW
-	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
-	'vignette_supprimee' => 'La vignette a &eacute;t&eacute; supprim&eacute;e' # NEW
+	'verifier_documents_brises' => 'Vérifier les fichiers manquants', # NEW
+	'verifier_documents_inutilises' => 'Vérifier les liens des documents', # NEW
+	'vignette_supprimee' => 'La vignette a été supprimée' # NEW
 );
 
 ?>
