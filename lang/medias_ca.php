@@ -135,6 +135,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_file' => 'Autres', # NEW
 	'media_image' => 'Images', # NEW
 	'media_video' => 'Séquences', # NEW
+	'miniature_automatique_active' => 'SPIP génèrera automatiquement une miniature de l\'image', # NEW
 
 	// N
 	'nb_documents_attache_succes' => '@nb@ documents ont bien été ajoutés', # NEW

@@ -136,6 +136,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_file' => 'مستندات أخرى',
 	'media_image' => 'صور',
 	'media_video' => 'مقطع فيديو',
+	'miniature_automatique_active' => 'SPIP génèrera automatiquement une miniature de l\'image', # NEW
 
 	// N
 	'nb_documents_attache_succes' => 'تمت فعلاً إضافة @nb@ مستند',

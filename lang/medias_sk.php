@@ -135,6 +135,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_file' => 'Ostatné',
 	'media_image' => 'Obrázky',
 	'media_video' => 'Videá',
+	'miniature_automatique_active' => 'SPIP automaticky vytvorí miniatúru obrázka',
 
 	// N
 	'nb_documents_attache_succes' => '@nb@ dokumentov bolo pridaných',

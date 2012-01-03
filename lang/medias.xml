@@ -13,6 +13,7 @@
 		<traducteur nom="squonk" />
 	</langue>
 	<langue code="es" />
+	<langue code="fr" />
 	<langue code="fr_tu">
 		<traducteur nom="beatnick" />
 	</langue>
