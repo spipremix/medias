@@ -1,18 +1,13 @@
 <?php
-
-// Ceci est un fichier langue de SPIP -- This is a SPIP language file
-// Fichier produit par PlugOnet
-// Module: paquet-medias
-// Langue: fr
-// Date: 30-07-2011 15:01:37
-// Items: 2
-
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// Fichier source, a modifier dans svn://zone.spip.org/spip-zone/_core_/plugins/medias/lang/
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
-// M
+	// M
 	'medias_description' => 'Gestion des medias de SPIP',
-	'medias_slogan' => 'Gestion des medias dans SPIP',
+	'medias_slogan' => 'Gestion des medias dans SPIP'
 );
+
 ?>
