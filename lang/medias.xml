@@ -1,16 +1,16 @@
 <traduction module="medias" gestionnaire="salvatore" url="http://trad.spip.org" source="svn://zone.spip.org/spip-zone/_core_/plugins/medias/lang/" reference="fr">
 	<langue code="ar">
-		<traducteur nom="kandalaft" />
+		<traducteur nom="George" />
 	</langue>
 	<langue code="ca">
 		<traducteur nom="merce" />
 	</langue>
 	<langue code="de">
-		<traducteur nom="klaus" />
+		<traducteur nom="klaus++" />
 	</langue>
 	<langue code="en">
-		<traducteur nom="kandalaft" />
-		<traducteur nom="squonk" />
+		<traducteur nom="George" />
+		<traducteur nom="sQuonk" />
 		<traducteur nom="kent1" />
 	</langue>
 	<langue code="es" />
