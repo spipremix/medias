@@ -6,7 +6,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Aucune bande son',
+	'aucun_audio' => 'Aucune bande-son',
 	'aucun_document' => 'Aucun document',
 	'aucun_file' => 'Aucun document',
 	'aucun_image' => 'Aucune image',
@@ -23,24 +23,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'depuis :',
 	'bouton_download_local' => 'mon ordinateur',
 	'bouton_download_par_ftp' => 'le serveur',
-	'bouton_download_par_mediatheque' => 'la mediathèque',
+	'bouton_download_par_mediatheque' => 'la médiathèque',
 	'bouton_download_sur_le_web' => 'internet',
-	'bouton_enlever_document' => 'Detacher',
+	'bouton_enlever_document' => 'Détacher',
 	'bouton_enlever_supprimer_document' => 'Supprimer',
-	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous sûr de vouloir supprimer le document ?',
+	'bouton_enlever_supprimer_document_confirmation' => 'Êtes-vous sûr de vouloir supprimer le document ?',
 	'bouton_modifier_document' => 'Modifier',
-	'bouton_parcourir' => 'Parcourir...',
-	'bouton_refresh_document' => 'Rafraichir le document',
+	'bouton_parcourir' => 'Parcourir…',
+	'bouton_refresh_document' => 'Rafraîchir le document',
 	'bouton_remplacer_document' => 'Remplacer ce document',
 	'bouton_remplacer_image' => 'Remplacer cette image',
 	'bouton_remplacer_image_document' => 'Remplacer par une image ou un document',
 	'bouton_supprimer' => 'Supprimer',
 	'bouton_supprimer_tous_orphelins' => 'Supprimer tous les orphelins',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Etes-vous sûr de vouloir supprimer @nb@ orphelins ?',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Êtes-vous sûr de vouloir supprimer @nb@ orphelins ?',
 	'bouton_upload' => 'Télécharger',
 
 	// D
-	'des_audios' => '@nb@ bandes sons',
+	'des_audios' => '@nb@ bandes-son',
 	'des_documents' => '@nb@ documents',
 	'des_files' => '@nb@ documents',
 	'des_images' => '@nb@ images',
@@ -51,7 +51,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_copie_locale_succes' => 'Le fichier a bien été copié dans le site',
 	'document_installe_succes' => 'Le fichier a bien été chargé',
 	'document_vu' => 'Inséré dans le texte',
-	'documents' => 'Mediathèque',
+	'documents' => 'Médiathèque',
 	'documents_brises' => 'Brisés',
 	'documents_distants' => 'Distants',
 	'documents_locaux' => 'Locaux',
@@ -65,7 +65,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Dimensions :',
 	'entree_titre_document' => 'Titre du document :',
 	'entree_titre_image' => 'Titre de l\'image :',
-	'erreur_aucun_document' => 'Ce document n\'existe pas dans la mediathèque',
+	'erreur_aucun_document' => 'Ce document n\'existe pas dans la médiathèque',
 	'erreur_aucun_fichier' => 'Aucun fichier n\'a été trouvé',
 	'erreur_chemin_distant' => 'Le fichier distant @nom@ n\'a pas pu être trouvé',
 	'erreur_chemin_ftp' => 'Le fichier indiqué n\'a pas été trouvé sur le serveur',
@@ -129,7 +129,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'logo' => 'Logo',
 
 	// M
-	'media_audio' => 'Bandes sons',
+	'media_audio' => 'Bandes-son',
 	'media_file' => 'Autres',
 	'media_image' => 'Images',
 	'media_video' => 'Séquences',
@@ -152,19 +152,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titre',
 
 	// T
-	'texte_documents_joints' => 'Vous pouvez autoriser l\'ajout de documents (fichiers bureautiques, images,
- multimédia, etc.) aux articles et/ou aux rubriques. Ces fichiers
- peuvent ensuite être référencés dans
- l\'article, ou affichés séparément.</p>',
+	'texte_documents_joints' => 'Vous pouvez autoriser l\'ajout de documents (fichiers bureautiques, images, multimédia, etc.) aux articles et/ou aux rubriques. Ces fichiers peuvent ensuite être référencés dans l\'article, ou affichés séparément.</p>',
 	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas l\'insertion d\'images directement dans les articles.',
 	'titre_documents_joints' => 'Documents joints',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@',
-	'tous_les_medias' => 'Tous les medias',
+	'tous_les_medias' => 'Tous les médias',
 	'tout_dossier_upload' => 'Tout le dossier @upload@',
 	'tout_voir' => 'Tout voir',
 
 	// U
-	'un_audio' => '1 bande son',
+	'un_audio' => '1 bande-son',
 	'un_document' => '1 document',
 	'un_file' => '1 document',
 	'un_image' => '1 image',
@@ -176,7 +173,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Déposer dans le portfolio',
 	'upload_info_mode_image' => 'Retirer du portfolio',
 	'upload_limit' => 'Ce fichier est trop gros pour le serveur ; la taille maximum autorisée en <i>upload</i> est de @max@.',
-	'upload_zip_conserver' => 'Conserver l’archive après extraction',
+	'upload_zip_conserver' => 'Conserver l\'archive après extraction',
 	'upload_zip_decompacter' => 'décompressé et chaque élément qu\'il contient installé sur le site. Les fichiers qui seront alors installés sur le site sont :',
 	'upload_zip_mode_document' => 'Déposer toutes les images dans le portfolio',
 	'upload_zip_telquel' => 'installé tel quel, en tant qu\'archive compressée Zip ;',
