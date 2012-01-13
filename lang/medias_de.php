@@ -8,7 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Kein Ton',
+	'aucun_audio' => 'Kein Ton', # MODIF
 	'aucun_document' => 'Kein Dokument',
 	'aucun_file' => 'Keine Datei',
 	'aucun_image' => 'Kein Bild',
@@ -25,24 +25,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'Von:',
 	'bouton_download_local' => 'Mein Computer',
 	'bouton_download_par_ftp' => 'FTP-Server',
-	'bouton_download_par_mediatheque' => 'Mediathek',
+	'bouton_download_par_mediatheque' => 'Mediathek', # MODIF
 	'bouton_download_sur_le_web' => 'Internet',
-	'bouton_enlever_document' => 'Entfernen',
+	'bouton_enlever_document' => 'Entfernen', # MODIF
 	'bouton_enlever_supprimer_document' => 'Löschen',
-	'bouton_enlever_supprimer_document_confirmation' => 'Wollen sie dieses Dokument wirklich löschen?',
+	'bouton_enlever_supprimer_document_confirmation' => 'Wollen sie dieses Dokument wirklich löschen?', # MODIF
 	'bouton_modifier_document' => 'Bearbeiten',
-	'bouton_parcourir' => 'Durchsuchen...',
-	'bouton_refresh_document' => 'Dokument neu laden',
+	'bouton_parcourir' => 'Durchsuchen...', # MODIF
+	'bouton_refresh_document' => 'Dokument neu laden', # MODIF
 	'bouton_remplacer_document' => 'Dieses Dokument ersetzen',
 	'bouton_remplacer_image' => 'Dieses Bild ersetzen',
 	'bouton_remplacer_image_document' => 'Durch ein Dokument oder Bild ersetzen',
 	'bouton_supprimer' => 'Löschen',
 	'bouton_supprimer_tous_orphelins' => 'Löschen alle dokument ungenutzt',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Wollen Sie wirklich bis @nb@ unbenutzte l�schen ?',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Wollen Sie wirklich bis @nb@ unbenutzte l�schen ?', # MODIF
 	'bouton_upload' => 'Übertragen',
 
 	// D
-	'des_audios' => '@nb@ Töne',
+	'des_audios' => '@nb@ Töne', # MODIF
 	'des_documents' => '@nb@ Dokumente',
 	'des_files' => '@nb@ Dokumente',
 	'des_images' => '@nb@ Bilder',
@@ -53,7 +53,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_copie_locale_succes' => 'Die Datei wurde erfolgreich in auf den Server übertragen.',
 	'document_installe_succes' => 'Die Datei wurde erfolgreich übertragen',
 	'document_vu' => 'In den Text eingefügt.',
-	'documents' => 'Mediathek',
+	'documents' => 'Mediathek', # MODIF
 	'documents_brises' => 'Beschädigt',
 	'documents_distants' => 'Externe',
 	'documents_locaux' => 'Lokale',
@@ -67,7 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Grössenangaben:',
 	'entree_titre_document' => 'Titel des Dokuments:',
 	'entree_titre_image' => 'Titel des Bilds:',
-	'erreur_aucun_document' => 'Dieses Dokument ist nicht in der Mediathek vorhanden.',
+	'erreur_aucun_document' => 'Dieses Dokument ist nicht in der Mediathek vorhanden.', # MODIF
 	'erreur_aucun_fichier' => 'Es wurde kein Dokument gefunden.',
 	'erreur_chemin_distant' => 'Die Datei @nom@ konnte nicht über das Netz erreicht werden.',
 	'erreur_chemin_ftp' => 'Die angegebene Datei wurde nicht auf dem Server gefunden.',
@@ -131,7 +131,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'logo' => 'Logo',
 
 	// M
-	'media_audio' => 'Töne',
+	'media_audio' => 'Töne', # MODIF
 	'media_file' => 'Andere',
 	'media_image' => 'Bilder',
 	'media_video' => 'Videos',
@@ -154,16 +154,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titel',
 
 	// T
-	'texte_documents_joints' => 'Sie können die Zuordnung von Dokumenten (Office-Dokumente, Bilder, Multimedia-Dateien, etc.) zu Artikeln und/oder Rubriken erlauben. Diese Dokumente können anschliessend innerhalb von Artikeln verlinkt oder separat angezeigt werden.<p>',
+	'texte_documents_joints' => 'Sie können die Zuordnung von Dokumenten (Office-Dokumente, Bilder, Multimedia-Dateien, etc.) zu Artikeln und/oder Rubriken erlauben. Diese Dokumente können anschliessend innerhalb von Artikeln verlinkt oder separat angezeigt werden.<p>', # MODIF
 	'texte_documents_joints_2' => 'Diese Einstellung widerspricht nicht dem Einfügen von Bildern in Artikel.',
 	'titre_documents_joints' => 'beigefügte Dokumente',
 	'titre_page_documents_edit' => 'Dokument bearbeiten: @titre@',
-	'tous_les_medias' => 'Alle Medien',
+	'tous_les_medias' => 'Alle Medien', # MODIF
 	'tout_dossier_upload' => 'Das ganze Verzeichnis @upload@',
 	'tout_voir' => 'Alle anzeigen',
 
 	// U
-	'un_audio' => '1 Ton',
+	'un_audio' => '1 Ton', # MODIF
 	'un_document' => '1 Dokument',
 	'un_file' => '1 Dokument',
 	'un_image' => '1 Bild',
@@ -175,7 +175,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Im Portfolio ablegen',
 	'upload_info_mode_image' => 'Aus dem Portfolio entfernen',
 	'upload_limit' => 'Datei zu gross zum Hochladen. Maximale <i>upload</i>-Grösse: @max@.',
-	'upload_zip_conserver' => 'Archiv nach Entpacken beibehalten',
+	'upload_zip_conserver' => 'Archiv nach Entpacken beibehalten', # MODIF
 	'upload_zip_decompacter' => 'Das ZIP-Archiv auspacken. Diese Dateien werden dann auf dem Server installiert:',
 	'upload_zip_mode_document' => 'Alle Bilder im Portfolio ablegen',
 	'upload_zip_telquel' => 'Das ZIP-Archiv als eine Archivdatei installieren.',

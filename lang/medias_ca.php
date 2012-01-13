@@ -8,7 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'No hi ha banda sonora',
+	'aucun_audio' => 'No hi ha banda sonora', # MODIF
 	'aucun_document' => 'Cap document',
 	'aucun_file' => 'Cap document',
 	'aucun_image' => 'Cap imatge',
@@ -25,24 +25,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'des de:',
 	'bouton_download_local' => 'el meu ordinador',
 	'bouton_download_par_ftp' => 'el servidor',
-	'bouton_download_par_mediatheque' => 'la mediateca',
+	'bouton_download_par_mediatheque' => 'la mediateca', # MODIF
 	'bouton_download_sur_le_web' => 'Internet',
-	'bouton_enlever_document' => 'Separar',
+	'bouton_enlever_document' => 'Separar', # MODIF
 	'bouton_enlever_supprimer_document' => 'Suprimir',
-	'bouton_enlever_supprimer_document_confirmation' => 'Esteu segur que voleu suprimir el document?',
+	'bouton_enlever_supprimer_document_confirmation' => 'Esteu segur que voleu suprimir el document?', # MODIF
 	'bouton_modifier_document' => 'Modificar',
-	'bouton_parcourir' => 'Examinar...',
-	'bouton_refresh_document' => 'Actualitzar el document',
+	'bouton_parcourir' => 'Examinar...', # MODIF
+	'bouton_refresh_document' => 'Actualitzar el document', # MODIF
 	'bouton_remplacer_document' => 'Substituir aquest document',
 	'bouton_remplacer_image' => 'Substituir aquesta imatge',
 	'bouton_remplacer_image_document' => 'Substituir per una imatge o un document',
 	'bouton_supprimer' => 'Suprimir',
 	'bouton_supprimer_tous_orphelins' => 'Suprimir tots els orfes',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Esteu segur de voler suprimir @nb@ orfes?',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Esteu segur de voler suprimir @nb@ orfes?', # MODIF
 	'bouton_upload' => 'Descarregar',
 
 	// D
-	'des_audios' => '@nb@ bandes sonores',
+	'des_audios' => '@nb@ bandes sonores', # MODIF
 	'des_documents' => '@nb@ documents',
 	'des_files' => '@nb@ documents',
 	'des_images' => '@nb@ imatges',
@@ -53,7 +53,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_copie_locale_succes' => 'El fitxer s\'ha copiat al lloc correctament',
 	'document_installe_succes' => 'El fitxer s\'ha carregat correctament',
 	'document_vu' => 'Inserir al text',
-	'documents' => 'Mediateca',
+	'documents' => 'Mediateca', # MODIF
 	'documents_brises' => 'Trencats',
 	'documents_distants' => 'Distants',
 	'documents_locaux' => 'Locals',
@@ -67,7 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Dimensions:',
 	'entree_titre_document' => 'Títol del document:',
 	'entree_titre_image' => 'Títol de la imatge:',
-	'erreur_aucun_document' => 'Aquest document no existeix a la mediateca',
+	'erreur_aucun_document' => 'Aquest document no existeix a la mediateca', # MODIF
 	'erreur_aucun_fichier' => 'No s\'ha trobat cap fitxer',
 	'erreur_chemin_distant' => 'El fitxer distant @nom@ no s\'ha pogut trobar',
 	'erreur_chemin_ftp' => 'El fitxer indicat no s\'ha trobat al servidor',
@@ -154,7 +154,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titre', # NEW
 
 	// T
-	'texte_documents_joints' => 'Es pot permetre afegir documents (fitxers ofimàtics, imatges, multimèdia, etc.) als articles i/o a les seccions. Aquests fitxers poden estar referenciats a dins l\'article, o mostrats separadament.</p>',
+	'texte_documents_joints' => 'Es pot permetre afegir documents (fitxers ofimàtics, imatges, multimèdia, etc.) als articles i/o a les seccions. Aquests fitxers poden estar referenciats a dins l\'article, o mostrats separadament.</p>', # MODIF
 	'texte_documents_joints_2' => 'Aquesta regla no impideix pas l\'inserció d\'imatges directament als articles.',
 	'titre_documents_joints' => 'Documents adjunts',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
@@ -175,7 +175,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Déposer dans le portfolio', # NEW
 	'upload_info_mode_image' => 'Retirer du portfolio', # NEW
 	'upload_limit' => 'El fitxer és massa gran pel servidor; la   mida màxima autoritzada en <i>upload</i> és de @max@.',
-	'upload_zip_conserver' => 'Conservar l\'arxiu desprès de l\'extracció',
+	'upload_zip_conserver' => 'Conservar l\'arxiu desprès de l\'extracció', # MODIF
 	'upload_zip_decompacter' => 'descomprimit i cada element que conté instal·lat en el lloc Web. Els fitxers que llavors seran instal·lat en el lloc Web són:',
 	'upload_zip_mode_document' => 'Déposer toutes les images dans le portfolio', # NEW
 	'upload_zip_telquel' => 'instal·lat tal qual, com a arxiu comprimit Zip;',

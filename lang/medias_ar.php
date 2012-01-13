@@ -8,7 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'لا يوجد ملفات صوت',
+	'aucun_audio' => 'لا يوجد ملفات صوت', # MODIF
 	'aucun_document' => 'لا يوجد مستندات',
 	'aucun_file' => 'لا يوجد مستندات',
 	'aucun_image' => 'لا يوجد صور',
@@ -26,24 +26,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'منذ:',
 	'bouton_download_local' => 'جهازي',
 	'bouton_download_par_ftp' => 'جهاز الخدمة',
-	'bouton_download_par_mediatheque' => 'مكتبة المستندات',
+	'bouton_download_par_mediatheque' => 'مكتبة المستندات', # MODIF
 	'bouton_download_sur_le_web' => 'شبكة إنترنت',
-	'bouton_enlever_document' => 'إزالة الربط',
+	'bouton_enlever_document' => 'إزالة الربط', # MODIF
 	'bouton_enlever_supprimer_document' => 'حذف',
-	'bouton_enlever_supprimer_document_confirmation' => 'هل تريد فعلاً حذف المستند؟',
+	'bouton_enlever_supprimer_document_confirmation' => 'هل تريد فعلاً حذف المستند؟', # MODIF
 	'bouton_modifier_document' => 'تعديل',
-	'bouton_parcourir' => 'عرض...',
-	'bouton_refresh_document' => 'تحديث المستند',
+	'bouton_parcourir' => 'عرض...', # MODIF
+	'bouton_refresh_document' => 'تحديث المستند', # MODIF
 	'bouton_remplacer_document' => 'تبديل هذا المستند',
 	'bouton_remplacer_image' => 'تبديل هذه الصورة',
 	'bouton_remplacer_image_document' => 'استبدال بصورة إو مستند',
 	'bouton_supprimer' => 'حذف',
 	'bouton_supprimer_tous_orphelins' => 'حذف كل المستندات غير المستخدمة',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'هل تريد فعلاً حذف @nb@ مستند غير مستخدم؟',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'هل تريد فعلاً حذف @nb@ مستند غير مستخدم؟', # MODIF
 	'bouton_upload' => 'تحميل',
 
 	// D
-	'des_audios' => '@nb@ ملف صوت',
+	'des_audios' => '@nb@ ملف صوت', # MODIF
 	'des_documents' => '@nb@ مستند',
 	'des_files' => '@nb@ مستند',
 	'des_images' => '@nb@ صورة',
@@ -54,7 +54,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_copie_locale_succes' => 'لقد تم فعلاً نسخ الملف في الموقع',
 	'document_installe_succes' => 'لقد تم فعلاً تحميل الملف',
 	'document_vu' => 'مدرج في النص',
-	'documents' => 'مكتبة المستندات',
+	'documents' => 'مكتبة المستندات', # MODIF
 	'documents_brises' => 'رابط مكسور',
 	'documents_distants' => 'بعيدة',
 	'documents_locaux' => 'محلية',
@@ -68,7 +68,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'الحجم:',
 	'entree_titre_document' => 'اسم المستند:',
 	'entree_titre_image' => 'اسم الصورة:',
-	'erreur_aucun_document' => 'لا وجود لهذا المستند في المكتبة',
+	'erreur_aucun_document' => 'لا وجود لهذا المستند في المكتبة', # MODIF
 	'erreur_aucun_fichier' => 'لم يتم العثور على أي ملف',
 	'erreur_chemin_distant' => 'لم يتم العثور على الملف البعيد @nom@',
 	'erreur_chemin_ftp' => 'لم يتم العثور على الملف المحدد في الخادم',
@@ -132,7 +132,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'logo' => 'شعار',
 
 	// M
-	'media_audio' => 'شريط صوتي',
+	'media_audio' => 'شريط صوتي', # MODIF
 	'media_file' => 'مستندات أخرى',
 	'media_image' => 'صور',
 	'media_video' => 'مقطع فيديو',
@@ -158,16 +158,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints' => 'يمكنك السماح بإضافة مستندات (ملفات مكتبية، صور،
 وسائط متعددة، الخ.) الى المقالات و/او الأقسام. ويمكن حينها
 ان يتم ادراج هذه الملفات في
-المقال او عرضها منفصلة.',
+المقال او عرضها منفصلة.', # MODIF
 	'texte_documents_joints_2' => 'هذا الإعداد لا يمنع إدراج الصور مباشرة في المقالات.',
 	'titre_documents_joints' => 'المستندات المرفقة',
 	'titre_page_documents_edit' => 'تعديل المستند: @titre@',
-	'tous_les_medias' => 'كل الوسائط',
+	'tous_les_medias' => 'كل الوسائط', # MODIF
 	'tout_dossier_upload' => 'كامل الدليل @upload@',
 	'tout_voir' => 'عرض الكل',
 
 	// U
-	'un_audio' => '1 شريط صوتي',
+	'un_audio' => '1 شريط صوتي', # MODIF
 	'un_document' => '1 مستند',
 	'un_file' => '1 مستند',
 	'un_image' => '1 صورة',
@@ -179,7 +179,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'وضع في صالة العرض',
 	'upload_info_mode_image' => 'إزالة من صالة العرض',
 	'upload_limit' => 'هذا الملف كبير جداً لجهاز الخدمة. الحجم الاقصى المسموح به خلال <i>التحميل</i> هو @max@. ',
-	'upload_zip_conserver' => 'الحفاظ على الملف المضغوط بعد سحب المحتوى',
+	'upload_zip_conserver' => 'الحفاظ على الملف المضغوط بعد سحب المحتوى', # MODIF
 	'upload_zip_decompacter' => 'غير مضغوط و كل عنصر يحتويه مثبت في الموقع. الملفات التي سيتم تثبيتها في الموقع هي:',
 	'upload_zip_mode_document' => 'وضع كل الصور في صالة العرض',
 	'upload_zip_telquel' => 'مثبت كما هو على شكل ملف ZIP مضغوط.',

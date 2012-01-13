@@ -8,7 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'No hay banda sonora',
+	'aucun_audio' => 'No hay banda sonora', # MODIF
 	'aucun_document' => 'No hay documento',
 	'aucun_file' => 'No hay documento',
 	'aucun_image' => 'No hay imagen',
@@ -25,24 +25,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'depuis :', # NEW
 	'bouton_download_local' => 'Mi PC',
 	'bouton_download_par_ftp' => 'el servidor',
-	'bouton_download_par_mediatheque' => 'la biblioteca de medios',
+	'bouton_download_par_mediatheque' => 'la biblioteca de medios', # MODIF
 	'bouton_download_sur_le_web' => 'internet',
-	'bouton_enlever_document' => 'Separar',
+	'bouton_enlever_document' => 'Separar', # MODIF
 	'bouton_enlever_supprimer_document' => 'Eliminar',
 	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous sûr de vouloir supprimer le document ?', # NEW
 	'bouton_modifier_document' => 'Editar',
-	'bouton_parcourir' => 'Navegar..',
-	'bouton_refresh_document' => 'Actualizar el documento',
+	'bouton_parcourir' => 'Navegar..', # MODIF
+	'bouton_refresh_document' => 'Actualizar el documento', # MODIF
 	'bouton_remplacer_document' => 'Sustituir este documento',
 	'bouton_remplacer_image' => 'Sustituir esto imagen',
 	'bouton_remplacer_image_document' => 'Sustituye por una imagen o documento',
 	'bouton_supprimer' => 'Eliminar',
 	'bouton_supprimer_tous_orphelins' => 'Eliminar todos documentos no utilizados',
-	'bouton_supprimer_tous_orphelins_confirmation' => '¿Estás seguro que quieres eliminar @nb@ no utilizados?',
+	'bouton_supprimer_tous_orphelins_confirmation' => '¿Estás seguro que quieres eliminar @nb@ no utilizados?', # MODIF
 	'bouton_upload' => 'Descargar',
 
 	// D
-	'des_audios' => '@nb@ bandas sonoras',
+	'des_audios' => '@nb@ bandas sonoras', # MODIF
 	'des_documents' => '@nb@ documentos',
 	'des_files' => '@nb@ documentos',
 	'des_images' => '@nb@ imágenes',
@@ -53,7 +53,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_copie_locale_succes' => '	El archivo ha sido copiado en el sitio',
 	'document_installe_succes' => 'El archivo ha sido cargado',
 	'document_vu' => 'Introducido en el texto',
-	'documents' => 'Gestión de los documentos',
+	'documents' => 'Gestión de los documentos', # MODIF
 	'documents_brises' => 'Brisés', # NEW
 	'documents_distants' => 'Remoto',
 	'documents_locaux' => 'Local',
@@ -67,7 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Dimensiones',
 	'entree_titre_document' => 'Título del documento',
 	'entree_titre_image' => 'Título de la imagen',
-	'erreur_aucun_document' => 'Este documento no existe en la biblioteca de medios',
+	'erreur_aucun_document' => 'Este documento no existe en la biblioteca de medios', # MODIF
 	'erreur_aucun_fichier' => 'No se encontraron archivos',
 	'erreur_chemin_distant' => 'El archivo remoto @nom@ no se encontr�',
 	'erreur_chemin_ftp' => 'El archivo especificado no se encuentra en el servidor',
@@ -131,7 +131,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'logo' => 'Logo',
 
 	// M
-	'media_audio' => 'Bandas sonoras',
+	'media_audio' => 'Bandas sonoras', # MODIF
 	'media_file' => 'Otro',
 	'media_image' => 'Imágenes',
 	'media_video' => 'Secuencias',
@@ -157,16 +157,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints' => 'Puedes autorizar el añadir documentos (archivos de ofimática, imágenes,
  multimedia, etc.) a los artículos y/o las secciones. Después, estos archivos
  pueden referenciarse en el artículo,
- o mostrarse por separado.<p>',
+ o mostrarse por separado.<p>', # MODIF
 	'texte_documents_joints_2' => 'Este ajuste no impide la inserción de imágenes directamente en los artículos.',
 	'titre_documents_joints' => 'Documentos adjuntos',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
-	'tous_les_medias' => 'Todos los medios',
+	'tous_les_medias' => 'Todos los medios', # MODIF
 	'tout_dossier_upload' => 'Toda la carpeta @upload@',
 	'tout_voir' => 'Tout voir', # NEW
 
 	// U
-	'un_audio' => '1 banda sonora',
+	'un_audio' => '1 banda sonora', # MODIF
 	'un_document' => '1 documento',
 	'un_file' => '1 documento',
 	'un_image' => '1 imagen',
@@ -178,7 +178,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Enviar a el portfolio',
 	'upload_info_mode_image' => 'Eliminar del portfolio',
 	'upload_limit' => 'Este archivo es demasiado grande para el servidor; el tamaño máximo autorizado en <i>upload</i> es de @max@.',
-	'upload_zip_conserver' => 'Conservar el archivo tras la extracción',
+	'upload_zip_conserver' => 'Conservar el archivo tras la extracción', # MODIF
 	'upload_zip_decompacter' => 'descomprimido y cada elemento que contiene instalado en el sitio. Los archivos que se van a instalar en el sitio son:',
 	'upload_zip_mode_document' => 'Déposer toutes les images dans le portfolio', # NEW
 	'upload_zip_telquel' => 'instalado tal cual, como archivo Zip comprimido;',
