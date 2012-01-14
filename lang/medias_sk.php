@@ -8,11 +8,11 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Žiaden zvuk', # MODIF
+	'aucun_audio' => 'Žiadna zvuková stopa',
 	'aucun_document' => 'Žiaden dokument',
-	'aucun_file' => 'Žiaden súbor',
+	'aucun_file' => 'Žiaden dokument',
 	'aucun_image' => 'Žiaden obrázok',
-	'aucun_video' => 'Žiadne video',
+	'aucun_video' => 'Žiadne videosekvencie',
 	'aucune_utilisation' => 'Tento dokument sa nepoužíva.',
 	'aucune_vignette' => 'Žiadna miniatúra',
 
@@ -25,35 +25,35 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'z(o):',
 	'bouton_download_local' => 'môjho počítača',
 	'bouton_download_par_ftp' => 'servera',
-	'bouton_download_par_mediatheque' => 'knižnice multimédií', # MODIF
+	'bouton_download_par_mediatheque' => 'do knižnice multimédií',
 	'bouton_download_sur_le_web' => 'internetu',
-	'bouton_enlever_document' => 'Zrušiť prepojenie', # MODIF
+	'bouton_enlever_document' => 'Zrušiť prepojenie',
 	'bouton_enlever_supprimer_document' => 'Odstrániť',
-	'bouton_enlever_supprimer_document_confirmation' => 'Chcete odstrániť tento dokument?', # MODIF
+	'bouton_enlever_supprimer_document_confirmation' => 'Chcete odstrániť dokument?',
 	'bouton_modifier_document' => 'Upraviť',
-	'bouton_parcourir' => 'Prehľadávať...', # MODIF
-	'bouton_refresh_document' => 'Obnoviť dokument', # MODIF
+	'bouton_parcourir' => 'Prehľadať...',
+	'bouton_refresh_document' => 'Obnoviť dokument',
 	'bouton_remplacer_document' => 'Nahradiť tento dokument',
 	'bouton_remplacer_image' => 'Nahradiť tento obrázok',
 	'bouton_remplacer_image_document' => 'Nahradiť obrázkom alebo dokumentom',
 	'bouton_supprimer' => 'Odstrániť',
 	'bouton_supprimer_tous_orphelins' => 'Odstrániť všetky nepoužívané',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Naozaj chcete odstrániť @nb@ nepoužívaných objektov?', # MODIF
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Určite chcete odstrániť @nb@ osamotených objektov?',
 	'bouton_upload' => 'Nahrať',
 
 	// D
-	'des_audios' => '@nb@ zvukov', # MODIF
+	'des_audios' => '@nb@ zvukových stôp',
 	'des_documents' => '@nb@ dokumentov',
 	'des_files' => '@nb@ súborov',
 	'des_images' => '@nb@ obrázkov',
 	'des_utilisations' => '@nb@ použití',
-	'des_videos' => '@nb@ videí',
+	'des_videos' => '@nb@ videosekvencií',
 	'descriptif' => 'Popis',
 	'document_attache_succes' => 'Dokument bol úspešne pridaný',
 	'document_copie_locale_succes' => 'Súbor bol úspešne skopírovaný na stránku',
 	'document_installe_succes' => 'Súbor sa úspešne nahral',
 	'document_vu' => 'Vložiť do textu',
-	'documents' => 'Knižnica multimédií', # MODIF
+	'documents' => 'Knižnica multimédií',
 	'documents_brises' => 'Pokazené',
 	'documents_distants' => 'Vzdialené',
 	'documents_locaux' => 'Miestne',
@@ -67,7 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Veľkosť:',
 	'entree_titre_document' => 'Názov dokumentu:',
 	'entree_titre_image' => 'Názov obrázka:',
-	'erreur_aucun_document' => 'Tento dokument v knižnici multimédií neexistuje', # MODIF
+	'erreur_aucun_document' => 'Tento dokument v knižnici multimédií neexistuje',
 	'erreur_aucun_fichier' => 'Žiaden súbor sa nenašiel',
 	'erreur_chemin_distant' => 'Nepodarilo sa nájsť vzdialený súbor @nom@',
 	'erreur_chemin_ftp' => 'Uvedený súbor sa na serveri nenašiel',
@@ -131,10 +131,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'logo' => 'Logo',
 
 	// M
-	'media_audio' => 'Zvuky', # MODIF
+	'media_audio' => 'Zvukové stopy',
 	'media_file' => 'Ostatné',
 	'media_image' => 'Obrázky',
-	'media_video' => 'Videá',
+	'media_video' => 'Videosekvencie',
 	'miniature_automatique_active' => 'SPIP automaticky vytvorí miniatúru obrázka',
 
 	// N
@@ -154,19 +154,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Názov',
 
 	// T
-	'texte_documents_joints' => 'Môžete povoliť pridávanie dokumentov (súborov z práce, obrázkov
- multimédií, atď.) k článkom a/lebo rubrikám. Na tieto súbory
- sa dá potom odkazovať
-v článku alebo môžu byť zobrazené samostatne.', # MODIF
+	'texte_documents_joints' => 'Môžete povoliť pridávanie dokumentov (súborov z práce, obrázkov
+ multimédií, atď.) k článkom a/lebo rubrikám. Na tieto súbory
+ môžete potom 
+v článku odkazovať alebo môžu byť zobrazené samostatne.',
 	'texte_documents_joints_2' => 'Toto nastavenie nezabráni priamemu vkladaniu obrázkov do článkov.',
 	'titre_documents_joints' => 'Pripojené dokumenty',
 	'titre_page_documents_edit' => 'Upraviť dokument: @titre@',
-	'tous_les_medias' => 'Všetky multimédiá', # MODIF
+	'tous_les_medias' => 'Všetky multimédiá',
 	'tout_dossier_upload' => 'Celý priečinok @upload@',
 	'tout_voir' => 'Zobraziť všetko',
 
 	// U
-	'un_audio' => '1 zvuk', # MODIF
+	'un_audio' => '1 zvuková stopa',
 	'un_document' => '1 dokument',
 	'un_file' => '1 súbor',
 	'un_image' => '1 obrázok',
@@ -178,9 +178,9 @@ v článku alebo môžu byť zobrazené samostatne.', # MODIF
 	'upload_info_mode_document' => 'Poslať do portfólia',
 	'upload_info_mode_image' => 'Odstrániť z portfólia',
 	'upload_limit' => 'Tento súbor je pre server príliš veľký, maximálna povolená veľkosť na <i>nahrávanie</i> je @max@.',
-	'upload_zip_conserver' => 'Ponechať si archívny súbor po rozbalení jeho obsahu', # MODIF
+	'upload_zip_conserver' => 'Ponechať si súbor archívu aj po rozbalení jeho obsahu',
 	'upload_zip_decompacter' => 'rozbalený a každý súbor, ktorý obsahuje, bude nainštalovaný na stránku. Nainštalované budú tieto súbory:',
-	'upload_zip_mode_document' => 'Všetky obrázky dať do portfólia',
+	'upload_zip_mode_document' => 'Všetky obrázky zaradiť do portfólia',
 	'upload_zip_telquel' => 'nainštalovaný tak, ako je, ako súbor ZIP,',
 	'upload_zip_titrer' => 'Pridať názvy podľa názvov súborov',
 

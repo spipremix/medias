@@ -8,7 +8,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'No sound', # MODIF
+	'aucun_audio' => 'No sound',
 	'aucun_document' => 'No document',
 	'aucun_file' => 'No document',
 	'aucun_image' => 'No image',
@@ -25,24 +25,24 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_depuis' => 'from:',
 	'bouton_download_local' => 'my computer',
 	'bouton_download_par_ftp' => 'the server',
-	'bouton_download_par_mediatheque' => 'media library', # MODIF
+	'bouton_download_par_mediatheque' => 'media library',
 	'bouton_download_sur_le_web' => 'internet',
-	'bouton_enlever_document' => 'Unlink', # MODIF
+	'bouton_enlever_document' => 'Unlink',
 	'bouton_enlever_supprimer_document' => 'Delete',
-	'bouton_enlever_supprimer_document_confirmation' => 'Are you sure you want to delete the document ?', # MODIF
+	'bouton_enlever_supprimer_document_confirmation' => 'Are you sure you want to delete the document ?',
 	'bouton_modifier_document' => 'Modify',
-	'bouton_parcourir' => 'Browse...', # MODIF
-	'bouton_refresh_document' => 'Refresh document', # MODIF
+	'bouton_parcourir' => 'Browse...',
+	'bouton_refresh_document' => 'Refresh document',
 	'bouton_remplacer_document' => 'Replace this document',
 	'bouton_remplacer_image' => 'Replace this image',
 	'bouton_remplacer_image_document' => 'Replace by an image or a document',
 	'bouton_supprimer' => 'Delete',
 	'bouton_supprimer_tous_orphelins' => 'Delete all unused',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Do you really want to delete @nb@ unused?', # MODIF
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Do you really want to delete @nb@ orphans documents?',
 	'bouton_upload' => 'Upload',
 
 	// D
-	'des_audios' => '@nb@ sounds', # MODIF
+	'des_audios' => '@nb@ sounds',
 	'des_documents' => '@nb@ documents',
 	'des_files' => '@nb@ documents',
 	'des_images' => '@nb@ images',
@@ -53,7 +53,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_copie_locale_succes' => 'The file was successfully copied to the site',
 	'document_installe_succes' => 'The file was successfully uploaded',
 	'document_vu' => 'Inserted in text',
-	'documents' => 'Media library', # MODIF
+	'documents' => 'Media library',
 	'documents_brises' => 'Broken',
 	'documents_distants' => 'Remote',
 	'documents_locaux' => 'Local',
@@ -67,7 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_dimensions' => 'Size:',
 	'entree_titre_document' => 'Document title:',
 	'entree_titre_image' => 'Image title:',
-	'erreur_aucun_document' => 'This document doesn\'t exist in the media library', # MODIF
+	'erreur_aucun_document' => 'This document doesn\'t exist in the media library',
 	'erreur_aucun_fichier' => 'No file was found',
 	'erreur_chemin_distant' => 'The remote file @nom@ could not be found',
 	'erreur_chemin_ftp' => 'The specified file was not found on the server',
@@ -131,7 +131,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'logo' => 'Logo',
 
 	// M
-	'media_audio' => 'Sounds', # MODIF
+	'media_audio' => 'Sounds',
 	'media_file' => 'Other',
 	'media_image' => 'Images',
 	'media_video' => 'Videos',
@@ -157,16 +157,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints' => 'You can allow the addition of documents (office files, images,
  multimedia, etc.) to articles and/or sections. These files
  may then be referenced in
- the article or displayed separately.', # MODIF
+ the article or displayed separately.',
 	'texte_documents_joints_2' => 'This setting does not prevent the direct inclusion of images in articles.',
 	'titre_documents_joints' => 'Attached documents',
 	'titre_page_documents_edit' => 'Edit the document : @titre@',
-	'tous_les_medias' => 'All media', # MODIF
+	'tous_les_medias' => 'All media',
 	'tout_dossier_upload' => 'The whole @upload@ directory',
 	'tout_voir' => 'Show all',
 
 	// U
-	'un_audio' => '1 sound', # MODIF
+	'un_audio' => '1 sound',
 	'un_document' => '1 document',
 	'un_file' => '1 document',
 	'un_image' => '1 image',
@@ -178,7 +178,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Send to portfolio',
 	'upload_info_mode_image' => 'Remove from portfolio',
 	'upload_limit' => 'This file is too big for the server; the maximum size allowed for <i>upload</i> is @max@.',
-	'upload_zip_conserver' => 'Keep the archive file after extracting its contents', # MODIF
+	'upload_zip_conserver' => 'Keep the archive file after extracting its contents',
 	'upload_zip_decompacter' => 'decompressed and each file it contains will be installed on the site. The files which will be installed are:',
 	'upload_zip_mode_document' => 'Place all images in the portfolio',
 	'upload_zip_telquel' => 'installed as is, as a ZIP file;',
