@@ -34,6 +34,7 @@
 	<pipeline nom="editer_document_actions" />
 	<pipeline nom="renseigner_document_distant" />
 	<pipeline nom="afficher_metas_document" action="" />
+	<pipeline nom="ieconfig_metas" inclure="medias_ieconfig.php" />
 
 	<utilise nom="Z" compatibilite="[1.2.1;[" />
 	<utilise nom="mediabox" compatibilite="[0.5.0;[" />
