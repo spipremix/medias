@@ -18,6 +18,8 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  *
  * http://doc.spip.org/@action_changer_mode_document_dist
  *
+ * @param int $id_document
+ * @param string $mode
  * @return void
  */
 function action_changer_mode_document_dist($id_document=null, $mode=null){
@@ -33,18 +35,20 @@ function action_changer_mode_document_dist($id_document=null, $mode=null){
 		}
 	}
 
-	if ($id_document)
+	if ($id_document
+		AND include_spip('inc/autoriser')
+	  AND autoriser('modifier','document',$id_document))
 		action_changer_mode_document_post($id_document, $mode);
 }
 
 // http://doc.spip.org/@action_changer_mode_document_post
-function action_changer_mode_document_post($id_document, $mode)
-{
+function action_changer_mode_document_post($id_document, $mode){
 	// - id_document le doc a modifier
 	// - mode le mode a lui donner
 	if ($id_document = intval($id_document)
 	AND in_array($mode, array('vignette', 'image', 'document'))) {
-		sql_updateq('spip_documents', array('mode'=>$mode), 'id_document='.$id_document);
+		include_spip('action/editer_document');
+		document_modifier($id_document,array('mode'=>$mode));
 	}
 }
 ?>
