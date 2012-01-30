@@ -24,5 +24,8 @@ function reload_chemin(){
 		jQuery('#chemin').find('>:first').ajaxReload();
 	}
 }
-onAjaxLoad(reload_chemin);
+jQuery(function(){
+	if (jQuery('body.document_edit').length)
+		onAjaxLoad(reload_chemin);
+});
 </script>
