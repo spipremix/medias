@@ -80,7 +80,10 @@ function medias_declarer_tables_auxiliaires($tables_auxiliaires) {
 
 	$spip_documents_liens_key = array(
 			"PRIMARY KEY"		=> "id_document,id_objet,objet",
-			"KEY id_document"	=> "id_document");
+			"KEY id_document"	=> "id_document",
+			"KEY id_objet"	=> "id_objet",
+			"KEY objet"	=> "objet",
+	);
 
 	$tables_auxiliaires['spip_documents_liens'] = array(
 		'field' => &$spip_documents_liens,

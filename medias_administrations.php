@@ -112,6 +112,12 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 		array('sql_alter',"TABLE spip_types_documents CHANGE media media_defaut varchar(10) DEFAULT 'file' NOT NULL"),
 	);
 
+	$maj['1.1.0'] = array(
+		array('sql_alter',"TABLE spip_documents_liens ADD id_objet (id_objet)"),
+		array('sql_alter',"TABLE spip_documents_liens ADD objet (objet)"),
+	);
+
+
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 
