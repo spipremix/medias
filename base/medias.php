@@ -192,8 +192,16 @@ function creer_base_types_doc($serveur='') {
 	include_spip('base/typedoc');
 	include_spip('base/abstract_sql');
 
+	// charger en memoire tous les types deja definis pour limiter les requettes
+	$rows = sql_allfetsel('mime_type,titre,inclus,extension,media_defaut,upload,descriptif','spip_types_documents','','','','','',$serveur);
+	$deja = array();
+	foreach ($rows as $k=>$row){
+		$deja[$row['extension']] = &$rows[$k];
+	}
+
 	$insertions = array();
-	
+	$updates = array();
+
 	foreach ($tables_mime as $extension => $type_mime) {
 		if (isset($tables_images[$extension])) {
 			$titre = $tables_images[$extension];
@@ -220,27 +228,32 @@ function creer_base_types_doc($serveur='') {
 	  elseif (preg_match(",^video/,",$type_mime) OR in_array($type_mime,array('application/ogg','application/x-shockwave-flash','application/mp4')))
 		  $media = "video";
 
-	  $insertions[] = array(
-		'mime_type' => $type_mime,
-		'titre' => $titre,
-		'inclus' => $inclus,
-		'extension' => $extension,
-		'media_defaut' => $media,
-		'upload' => 'oui'
-		);
+		$set = array(
+						'mime_type' => $type_mime,
+						'titre' => $titre,
+						'inclus' => $inclus,
+						'extension' => $extension,
+						'media_defaut' => $media,
+						'upload' => 'oui',
+						'descriptif' => '',
+					);
+		if (!isset($deja[$extension])){
+			$insertions[] = $set;
+		}
+		elseif (array_diff($deja[$extension],$set)){
+			$updates[$extension] = $set;
+		}
 	}
 
-	if ($insertions) {
-		
-		// Re-init : replace
-		if (sql_countsel('spip_types_documents')) {
-			sql_replace_multi('spip_types_documents', $insertions, '', $serveur);
-		// Init : insert
-		} else {
-			sql_insertq_multi('spip_types_documents', $insertions, '', $serveur);
+	if (count($updates)){
+		foreach ($updates as $extension=>$set){
+			sql_updateq('spip_types_documents',$set,'extension='.sql_quote($extension));
 		}
-		
 	}
+
+	if ($insertions)
+		sql_insertq_multi('spip_types_documents', $insertions, '', $serveur);
+
 }
 
 
