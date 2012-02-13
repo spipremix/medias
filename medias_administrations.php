@@ -116,9 +116,13 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 		array('sql_alter',"TABLE spip_documents_liens ADD id_objet (id_objet)"),
 		array('sql_alter',"TABLE spip_documents_liens ADD objet (objet)"),
 	);
+	$maj['1.1.1'] = array(
+		array('creer_base_types_doc'),
+	);
 
 
 	include_spip('base/upgrade');
+	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 
 	medias_check_statuts();
