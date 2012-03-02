@@ -141,13 +141,16 @@ p.actions {clear:both;}
 #portfolios .item .tourner {display:block;float:#GET{right};}
 #portfolios .item .tourner button {border:1px solid #999;padding:0;display:block;float:#GET{left};margin-#GET{left}:4px;}
 
-#portfolios .item .spip_logos {margin-#GET{left}:-80px;float:#GET{left};display:inline;position:relative;}
+#portfolios .item .spip_logos {margin-#GET{left}:-80px;float:#GET{left};}
+.ie6 #portfolios .item .spip_logos {display:inline;position:relative;}
 #portfolios .item .titrem {margin:0 0 5px;font-size:1em;}
 #portfolios .item .titrem .fichier {font-weight:normal;font-size:0.9em;font-style:italic;}
 #portfolios .item .titrem .titre {display:block;font-size:1.1em;}
 #portfolios .item .infos {display:block;float:#GET{left};}
 #portfolios .item div.mode {display:block;float:#GET{right};clear:#GET{right};margin-top:-1.5em;position:relative;padding:0.2em 0.2em 0;padding-#GET{right}:0;}
-#portfolios .item .actions {display:block;float:#GET{right};clear:#GET{right};font-size:x-small;position:relative;}
+#portfolios .item .actions {display:block;float:#GET{right};clear:#GET{right};position:relative;}
+#portfolios .item div.mode,#portfolios .item .actions,
+#portfolios .item div.mode button,#portfolios .item .actions button {font-size:x-small;}
 
 #portfolios .item .actions > *,
 #portfolios .item .tourner,
