@@ -164,7 +164,7 @@ function medias_declarer_tables_objets_sql($tables){
 		),
 		'tables_jointures' => array('types_documents'),
 		'rechercher_champs' => array(
-			'titre' => 3, 'descriptif' => 1, 'fichier' => 1
+			'titre' => 3, 'descriptif' => 1, 'fichier' => 1, 'credits' => 1,
 		),
 		'champs_versionnes' => array('id_vignette', 'titre', 'descriptif', 'hauteur', 'largeur', 'mode','distant'),
 		'modeles' => array('document','doc','img','emb','image','video','text','audio','application'),
