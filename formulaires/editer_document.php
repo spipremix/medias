@@ -141,11 +141,17 @@ function formulaires_editer_document_traiter_dist($id_document='new', $id_parent
 		else {
 			// liberer le nom de l'ancien fichier pour permettre le remplacement par un fichier du meme nom
 			if ($ancien_fichier = sql_getfetsel('fichier','spip_documents','id_document='.intval($id_document))
-				AND @file_exists($f = get_spip_doc($ancien_fichier))){
-				spip_unlink($f);
+				AND @file_exists($rename = get_spip_doc($ancien_fichier))){
+				@rename($rename,"$rename--.old");
+				#spip_unlink($f);
 			}
 			$traiter = charger_fonction('traiter','formulaires/joindre_document');
 			$res2 = $traiter($id_document);
+			if (isset($res2['message_erreur'])){
+				$res['message_erreur'] = $res2['message_erreur'];
+				// retablir le fichier !
+				@rename("$rename--.old",$rename);
+			}
 		}
 		// on annule les saisies largeur/hauteur : l'upload a pu charger les siens
 		set_request('largeur');
