@@ -117,7 +117,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'La date des documents est celle de leur ajout sur le site',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus :',
+	'label_activer_document_objets' => 'Activer le téléversement pour les contenus :',
 	'label_apercu' => 'Aperçu',
 	'label_caracteristiques' => 'Caractéristiques',
 	'label_credits' => 'Crédits',
@@ -152,8 +152,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titre',
 
 	// T
-	'texte_documents_joints' => 'Vous pouvez autoriser l\'ajout de documents (fichiers bureautiques, images, multimédia, etc.) aux articles et/ou aux rubriques. Ces fichiers peuvent ensuite être référencés dans l\'article, ou affichés séparément.</p>',
-	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas l\'insertion d\'images directement dans les articles.',
+	'texte_documents_joints' => 'Vous pouvez activer l\'interface d\'ajout de documents (fichiers bureautiques, images, multimédia, etc.) aux articles, rubriques et autres. Ces fichiers peuvent ensuite être référencés dans le texte, ou affichés séparément.</p>',
+	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas le téléversement d\'images dans les articles ni l\'insertion de document directement dans les textes des contenus.',
 	'titre_documents_joints' => 'Documents joints',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@',
 	'tous_les_medias' => 'Tous les médias',
