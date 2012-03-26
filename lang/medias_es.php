@@ -158,7 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
  multimedia, etc.) a los artículos y/o las secciones. Después, estos archivos
  pueden referenciarse en el artículo,
  o mostrarse por separado.<p>', # MODIF
-	'texte_documents_joints_2' => 'Este ajuste no impide la inserción de imágenes directamente en los artículos.',
+	'texte_documents_joints_2' => 'Este ajuste no impide la inserción de imágenes directamente en los artículos.', # MODIF
 	'titre_documents_joints' => 'Documentos adjuntos',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
 	'tous_les_medias' => 'Todos los medios', # MODIF

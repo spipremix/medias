@@ -1,6 +1,6 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// extrait automatiquement de http://www.spip.net/trad-lang/
+// extrait automatiquement de http://trad.spip.org/tradlang_module/medias?lang_cible=fa
 // ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -8,182 +8,183 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Aucune bande son', # NEW
-	'aucun_document' => 'Aucun document', # NEW
-	'aucun_file' => 'Aucun document', # NEW
-	'aucun_image' => 'Aucune image', # NEW
-	'aucun_video' => 'Aucune s&eacute;quence', # NEW
-	'aucune_utilisation' => 'Ce document n\'est pas utilis&eacute;', # NEW
-	'aucune_vignette' => 'Aucune vignette', # NEW
+	'aucun_audio' => 'بدون تراك صدا',
+	'aucun_document' => 'بدون سند',
+	'aucun_file' => 'بدون سند ',
+	'aucun_image' => 'بدون تصوير',
+	'aucun_video' => 'بدون سكانس',
+	'aucune_utilisation' => 'از اين سند استفاده نمي‌شود',
+	'aucune_vignette' => 'بدون صورتك',
 
 	// B
 	'bouton_ajouter_document' => 'يك سند اضافه كنيد',
 	'bouton_ajouter_image' => 'يك تصوير اضافه كنيد',
 	'bouton_ajouter_image_document' => 'اضافه كردن يك تصوير يا يك سند',
-	'bouton_attacher_document' => 'Attacher', # NEW
-	'bouton_copier_local' => 'Copier dans le site', # NEW
-	'bouton_download_depuis' => 'depuis&nbsp;:', # NEW
-	'bouton_download_local' => 'mon ordinateur', # NEW
-	'bouton_download_par_ftp' => 'le serveur', # NEW
-	'bouton_download_par_mediatheque' => 'la mediath&egrave;que', # NEW
-	'bouton_download_sur_le_web' => 'internet', # NEW
-	'bouton_enlever_document' => 'Detacher', # NEW
-	'bouton_enlever_supprimer_document' => 'Supprimer', # NEW
-	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer le document ?', # NEW
-	'bouton_modifier_document' => 'Modifier', # NEW
-	'bouton_parcourir' => 'Parcourir...', # NEW
-	'bouton_refresh_document' => 'Rafraichir le document', # NEW
-	'bouton_remplacer_document' => 'Remplacer ce document', # NEW
-	'bouton_remplacer_image' => 'Remplacer cette image', # NEW
-	'bouton_remplacer_image_document' => 'Remplacer par une image ou un document', # NEW
-	'bouton_supprimer' => 'Supprimer', # NEW
-	'bouton_supprimer_tous_orphelins' => 'Supprimer tous les orphelins', # NEW
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer @nb@ orphelins ?', # NEW
-	'bouton_upload' => 'T&eacute;l&eacute;charger', # NEW
+	'bouton_attacher_document' => 'پيوست',
+	'bouton_copier_local' => 'كپي در سايت',
+	'bouton_download_depuis' => 'از :',
+	'bouton_download_local' => 'كامپيوتر من',
+	'bouton_download_par_ftp' => 'سرور',
+	'bouton_download_par_mediatheque' => 'آرشيورسانه',
+	'bouton_download_sur_le_web' => 'اينترنت',
+	'bouton_enlever_document' => 'تفكيك',
+	'bouton_enlever_supprimer_document' => 'حذف',
+	'bouton_enlever_supprimer_document_confirmation' => 'حتماً مي‌خواهيد اين سند را حذف كنيد؟',
+	'bouton_modifier_document' => 'اصلاح',
+	'bouton_parcourir' => 'طي كردن. . . ',
+	'bouton_refresh_document' => 'تازه ‌سازي',
+	'bouton_remplacer_document' => 'جايگزين كردن اين سند',
+	'bouton_remplacer_image' => 'جايگزين كردن اين تصوير',
+	'bouton_remplacer_image_document' => 'جايگزين كردن با اين تصوير يا اين سند ',
+	'bouton_supprimer' => 'حذف',
+	'bouton_supprimer_tous_orphelins' => 'حذف تمام سطر‌هاي يتيم',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'آيا حتماً مي‌خواهيد @nb@ سطر يتيم را حذف كنيد؟‌',
+	'bouton_upload' => 'بارگذاري',
 
 	// D
-	'des_audios' => '@nb@ bandes sons', # NEW
-	'des_documents' => '@nb@ documents', # NEW
-	'des_files' => '@nb@ documents', # NEW
-	'des_images' => '@nb@ images', # NEW
-	'des_utilisations' => '@nb@ utilisations', # NEW
-	'des_videos' => '@nb@ s&eacute;quences', # NEW
-	'descriptif' => 'Description', # NEW
-	'document_attache_succes' => 'Le document a bien &eacute;t&eacute; ajout&eacute;', # NEW
-	'document_copie_locale_succes' => 'Le fichier a bien &eacute;t&eacute; copi&eacute; dans le site', # NEW
-	'document_installe_succes' => 'Le fichier a bien &eacute;t&eacute; charg&eacute;', # NEW
-	'document_vu' => 'Ins&eacute;r&eacute; dans le texte', # NEW
-	'documents' => 'Mediath&egrave;que', # NEW
-	'documents_brises' => 'Bris&eacute;s', # NEW
-	'documents_distants' => 'Distants', # NEW
-	'documents_locaux' => 'Locaux', # NEW
-	'documents_non_publies' => 'Non publi&eacute;s', # NEW
-	'documents_orphelins' => 'Inutilis&eacute;s', # NEW
-	'documents_publies' => 'Publi&eacute;s', # NEW
-	'documents_tous' => 'Tous', # NEW
+	'des_audios' => '@nb@ تراك صدا',
+	'des_documents' => '@nb@ سند',
+	'des_files' => '@nb@ سند',
+	'des_images' => '@nb@ تصوير',
+	'des_utilisations' => '@nb@ استفاده',
+	'des_videos' => '@nb@ سكانس',
+	'descriptif' => 'توصيف ',
+	'document_attache_succes' => 'سند افزوده شده',
+	'document_copie_locale_succes' => 'اين پرونده داخل سايت كپي شده است',
+	'document_installe_succes' => 'اين پرونده بارگذاري شده است',
+	'document_vu' => 'گنجاندن در متن ',
+	'documents' => 'آرشيو رسانه',
+	'documents_brises' => 'شكسته‌ها',
+	'documents_distants' => 'راه دور',
+	'documents_locaux' => 'مقدمات',
+	'documents_non_publies' => 'منتشر نشده‌ها',
+	'documents_orphelins' => 'اسفتاده‌ نشده',
+	'documents_publies' => 'منشر شده',
+	'documents_tous' => 'همه',
 	'double_clic_inserer_doc' => 'براى گنجاندن اين راه كوتاه در متن, دوبار كليك كنيد.',
 
 	// E
 	'entree_dimensions' => ': ابعاد',
 	'entree_titre_document' => ': عنوان سند',
 	'entree_titre_image' => ': عنوان تصوير',
-	'erreur_aucun_document' => 'Ce document n\'existe pas dans la mediath&egrave;que', # NEW
-	'erreur_aucun_fichier' => 'Aucun fichier n\'a &eacute;t&eacute; trouv&eacute;', # NEW
-	'erreur_chemin_distant' => 'Le fichier distant @nom@ n\'a pas pu &ecirc;tre trouv&eacute;', # NEW
-	'erreur_chemin_ftp' => 'Le fichier indiqu&eacute; n\'a pas &eacute;t&eacute; trouv&eacute; sur le serveur', # NEW
-	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@', # NEW
-	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
-	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
-	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image', # NEW
-	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !', # NEW
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
-	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
-	'erreur_upload_type_interdit' => 'Le telechargement des fichiers du type de @nom@ n\'est pas autoris&eacute;', # NEW
-	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@', # NEW
-	'erreurs' => '@nb@ erreurs', # NEW
-	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
+	'erreur_aucun_document' => 'اين سند در آرشيو رسانه نيست',
+	'erreur_aucun_fichier' => 'هيچ پرونده‌اي يافت نشده ',
+	'erreur_chemin_distant' => 'پرونده‌ي دور @nom@ يافت نشده ',
+	'erreur_chemin_ftp' => 'پرونده‌ي مورد نظر روي سرور يافت نشده',
+	'erreur_copie_fichier' => 'كپي كردن پرونده‌ي  @nom@ روي جايگزين نهايي آن غيرممكن است',
+	'erreur_dossier_tmp_manquant' => 'يك پوشه موقت براي بارگذاري اين پرونده‌ها نيست',
+	'erreur_ecriture_fichier' => 'خطا نوشتن پرونده روي ديسك',
+	'erreur_format_fichier_image' => 'فرمت  @nom@ براي تصوير مناسب نيست',
+	'erreur_indiquez_un_fichier' => 'يك پرونده را مشخص كنيد!',
+	'erreur_insertion_document_base' => 'ثبت سند  @fichier@در پايگاه داده‌هاي سرور ممكن نيست ',
+	'erreur_suppression_vignette' => 'خطاي حذف صورتك‌ها',
+	'erreur_upload_type_interdit' => 'بارگذاري  پرونده‌هاي نوع @nom@ مجاز نيست  ',
+	'erreur_upload_vignette' => 'خطاي بارگذاري صورتك‌هاي  @nom@',
+	'erreurs' => '@nb@ خطا  ',
+	'erreurs_voir' => 'ديدن @nb@ خطا',
 
 	// F
-	'fichier_distant' => 'Fichier distant', # NEW
-	'fichier_manquant' => 'Fichier manquant', # NEW
-	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.', # NEW
-	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes', # NEW
+	'fichier_distant' => 'پرونده‌ي راه دور',
+	'fichier_manquant' => 'پرونده‌ي ناقص',
+	'fichier_modifie' => 'پرونده اصلاح شده است. روي ثبت كليك كنيد.',
+	'format_date_incorrect' => 'تاريخ يا ساعت درست نيستند',
 
 	// I
-	'icone_creer_document' => 'Ajouter un document', # NEW
-	'id' => 'ID', # NEW
+	'icone_creer_document' => 'افزودن يك سند',
+	'id' => 'آي.دي',
 	'image_tourner_180' => 'چرخش °١٨٠ ',
 	'image_tourner_droite' => 'چرخش ٩٠ درجه به راست',
 	'image_tourner_gauche' => 'چرخش ٩٠ درجه به چپ',
-	'info_doc_max_poids' => 'Les documents doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).', # NEW
+	'info_doc_max_poids' => 'سندها الزاماً بايد كم‌تر از @maxi@ باشند. (اين پرونده @actuel@ است(  ',
 	'info_document' => 'سند',
 	'info_document_indisponible' => 'این سند موجود نمیباشد',
 	'info_documents' => 'اسناد',
-	'info_gauche_numero_document' => 'DOCUMENT NUM&Eacute;RO', # NEW
-	'info_hauteur' => 'Hauteur', # NEW
-	'info_heure' => 'Heure', # NEW
-	'info_illustrations' => 'Illustrations', # NEW
-	'info_image_max_poids' => 'Les images doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).', # NEW
+	'info_gauche_numero_document' => 'شماره‌ي سند',
+	'info_hauteur' => 'بلندي',
+	'info_heure' => 'ساعت',
+	'info_illustrations' => 'ترسيم‌ها',
+	'info_image_max_poids' => 'تصويرها بايد الزام كم‌تر از @maxi@ باشند(اين پرونده @actuel@ است).',
 	'info_inclusion_directe' => ': گنجاندن مستقيم',
 	'info_inclusion_vignette' => ': گنجاندن تصاوير كوچك شده',
 	'info_installer_tous_documents' => 'تمام اسناد را مستقر كنيد',
-	'info_largeur' => 'Largeur', # NEW
+	'info_largeur' => 'درازا',
 	'info_logo_max_taille' => 'لوگوها بايد كمتر از @maxi@ باشند(اين فايل است)',
-	'info_modifier_document' => 'Modifier le document', # NEW
+	'info_modifier_document' => 'اصلاح سند ',
 	'info_portfolio' => 'كارنامه',
 	'info_referencer_doc_distant' => 'يك پرونده را در اينترنت ضبط كنيد:',
-	'info_statut_document' => 'Ce document est&nbsp;:', # NEW
+	'info_statut_document' => 'اين سند :',
 	'info_telecharger' => ':با رايانه خودتان بارگذارى كنيد',
-	'infos' => 'Infos techniques', # NEW
+	'infos' => ' نمايش اطلاعات روي تمام بخش‌ها (اگرمي‌خواهيد استفاده‌ي متفاوتي از آن بشود)',
 	'item_autoriser_selectionner_date_en_ligne' => 'دادن اجازه‌ي اصلاح تاريخ هر سند',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'تاريخ سند‌ها تاريخ افزوده شدن‌ آن‌ها به سايت است',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
-	'label_apercu' => 'Aper&ccedil;u', # NEW
-	'label_caracteristiques' => 'Caract&eacute;ristiques', # NEW
-	'label_credits' => 'Cr&eacute;dits', # NEW
-	'label_fichier' => 'Fichier', # NEW
-	'label_fichier_vignette' => 'Vignette', # NEW
-	'label_parents' => 'Ce document est li&eacute; &agrave;', # NEW
-	'label_refdoc_joindre' => 'Document num&eacute;ro', # NEW
-	'lien_tout_enlever' => 'Tout enlever', # NEW
-	'logo' => 'Logo', # NEW
+	'label_activer_document_objets' => 'فعال سازي بارگذاري براي اين مطالب: ',
+	'label_apercu' => 'مرور',
+	'label_caracteristiques' => 'ويژگي‌ها',
+	'label_credits' => 'اعتبارها',
+	'label_fichier' => 'پرونده',
+	'label_fichier_vignette' => 'ويگنت',
+	'label_parents' => 'اين سند پيوند خورده به ',
+	'label_refdoc_joindre' => 'شماره‌ي سند',
+	'lien_tout_enlever' => 'حذف همه',
+	'logo' => 'لوگو',
 
 	// M
-	'media_audio' => 'Bandes sons', # NEW
-	'media_file' => 'Autres', # NEW
-	'media_image' => 'Images', # NEW
-	'media_video' => 'S&eacute;quences', # NEW
+	'media_audio' => 'تراك صدا',
+	'media_file' => 'ديگران',
+	'media_image' => 'تصويرها',
+	'media_video' => 'سكانس‌ها',
+	'miniature_automatique_active' => ' اسپيپ به طور خوكار يك مينياتور از تصوير درست مي‌كند',
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
-	'nb_documents_installe_succes' => '@nb@ fichiers charg&eacute;s avec succ&egrave;s', # NEW
+	'nb_documents_attache_succes' => '@nb@ سند افزوده شه است',
+	'nb_documents_installe_succes' => '@nb@ پرونده با موفقيت بارگداري شده',
 
 	// O
-	'objet_document' => 'Document', # NEW
-	'objet_documents' => 'Documents', # NEW
+	'objet_document' => 'سند',
+	'objet_documents' => 'سندها',
 
 	// P
-	'par_date' => 'Date', # NEW
-	'par_hauteur' => 'Hauteur', # NEW
-	'par_id' => 'ID', # NEW
-	'par_largeur' => 'Largeur', # NEW
-	'par_taille' => 'Poids', # NEW
-	'par_titre' => 'Titre', # NEW
+	'par_date' => 'بر اساس تاريخ',
+	'par_hauteur' => 'بلندي',
+	'par_id' => 'آي.دي',
+	'par_largeur' => 'درازا',
+	'par_taille' => 'وزن',
+	'par_titre' => 'بر اساس تيتر',
 
 	// T
-	'texte_documents_joints' => 'مي‌توانيد اجازه‌ي افزودن سندها (فايل‌هاي اداري، تصويرها، و چندرسانه‌اي و غيره) را به مقاله‌ها و/يا بخش‌ها صادر كنيد. پس از  در مقاله‌ها مي‌توان به اين فايل‌ها ارجاع كرد يا آن‌ها جداگانه به نمايش در مي‌آيند.</p> ',
-	'texte_documents_joints_2' => 'اين تنظيم از الحاق مستقيم تصاوير در مقالات جلوگيرى نميكند',
+	'texte_documents_joints' => 'مي‌توانيد واسطه‌ي افزودن سندها (فايل‌هاي اداري، تصويرها، و چندرسانه‌اي و غيره) را به مقاله‌ها، بخش‌ها و غيره فعال كنيد. به اين پرونده‌ها بعداً مي‌توان در متن، ارجاع يا آن‌ها را جداگانه به نمايش گذاشت.</p> ',
+	'texte_documents_joints_2' => 'اين تنظيم نه از بارگذاري تصاوير در مقالات و نه از گنجاندن مستقيم سند در مت‌هاي مطالب جلوگيرى نمي‌كند.',
 	'titre_documents_joints' => 'اسناد پيوسته',
-	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
-	'tous_les_medias' => 'Tous les medias', # NEW
+	'titre_page_documents_edit' => 'اصلاح سند : @titre@',
+	'tous_les_medias' => 'تمام رسانه‌ها',
 	'tout_dossier_upload' => 'تمام پرونده @upload@',
-	'tout_voir' => 'Tout voir', # NEW
+	'tout_voir' => 'ديدن همه',
 
 	// U
-	'un_audio' => '1 bande son', # NEW
-	'un_document' => '1 document', # NEW
-	'un_file' => '1 document', # NEW
-	'un_image' => '1 image', # NEW
-	'un_video' => '1 s&eacute;quence', # NEW
-	'une_utilisation' => '1 utilisation', # NEW
+	'un_audio' => '1 تراك صدا',
+	'un_document' => '1 سند',
+	'un_file' => '1 سند',
+	'un_image' => '1 تصوير',
+	'un_video' => '1 سكانس',
+	'une_utilisation' => '1اسفتاده',
 	'upload_fichier_zip' => 'فايل فشرده ZIP',
 	'upload_fichier_zip_texte' => 'فايلى كه شما پيشنهاد نصب آنرا ميكنيد يك فايل  ZIP ميباشد.',
 	'upload_fichier_zip_texte2' => 'اين فايل ميتواند',
-	'upload_info_mode_document' => 'D&eacute;poser dans le portfolio', # NEW
-	'upload_info_mode_image' => 'Retirer du portfolio', # NEW
+	'upload_info_mode_document' => 'گذاشتن اين تصويرها در شرح‌ حال',
+	'upload_info_mode_image' => 'برداشتن اين تصوير از شرح حال',
 	'upload_limit' => 'اين فايل براى سرور بسيار بزرگ است حداكثر اندازه ى مجاز <i>upload</i> @max@ ميباشد',
-	'upload_zip_conserver' => 'فايل آرشيوي را پس از استخراج محتواي آن حفظ كن',
+	'upload_zip_conserver' => 'حفظ كردن فايل آرشيوي پس از استخراج محتواي آن',
 	'upload_zip_decompacter' => 'باز شود و هر عنصر محتوى آن ميتواند بروى سايت نصب شود. فايلهايى كه بدين صورت نصب ميشوند',
-	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
+	'upload_zip_mode_document' => 'گذاشتن تمام اين تصويرها در شرح حال',
 	'upload_zip_telquel' => 'بهمان صورت نصب شده اند بصورت بايگانى ZIP',
 	'upload_zip_titrer' => 'مطابق با نام پرونده تيترگذاري كن',
 
 	// V
-	'verifier_documents_brises' => 'V&eacute;rifier les fichiers manquants', # NEW
-	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
-	'vignette_supprimee' => 'La vignette a &eacute;t&eacute; supprim&eacute;e' # NEW
+	'verifier_documents_brises' => 'اصلاح پرونده‌هاي ناقص',
+	'verifier_documents_inutilises' => 'تأييد پيوند‌ها به سندها',
+	'vignette_supprimee' => 'ويگنت‌ها حذف شده‌اند'
 );
 
 ?>

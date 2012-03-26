@@ -119,7 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'Dátum dokumentu je deň, keď bol pridaný na stránku',
 
 	// L
-	'label_activer_document_objets' => 'Zaradiť dokumenty do obsahu:',
+	'label_activer_document_objets' => 'Aktivovať nahrávanie pre obsah:',
 	'label_apercu' => 'Ukážka',
 	'label_caracteristiques' => 'Funkcie',
 	'label_credits' => 'Autori',
@@ -157,8 +157,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints' => 'Môžete povoliť pridávanie dokumentov (súborov z práce, obrázkov
  multimédií, atď.) k článkom a/lebo rubrikám. Na tieto súbory
  môžete potom 
-v článku odkazovať alebo môžu byť zobrazené samostatne.',
-	'texte_documents_joints_2' => 'Toto nastavenie nezabráni priamemu vkladaniu obrázkov do článkov.',
+v článku odkazovať alebo môžu byť zobrazené samostatne.</p>',
+	'texte_documents_joints_2' => 'Toto nastavenie nezabráni priamemu vkladaniu obrázkov do článkov alebo pripojeniu súboru priamo do textu redakčného objektu.',
 	'titre_documents_joints' => 'Pripojené dokumenty',
 	'titre_page_documents_edit' => 'Upraviť dokument: @titre@',
 	'tous_les_medias' => 'Všetky multimédiá',

@@ -119,7 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'La date des documents est celle de leur ajout sur le site',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus :',
+	'label_activer_document_objets' => 'Activer les documents pour les contenus :', # MODIF
 	'label_apercu' => 'Aperçu',
 	'label_caracteristiques' => 'Caractéristiques',
 	'label_credits' => 'Crédits',
@@ -158,7 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
  multimédia, etc.) aux articles et/ou aux rubriques. Ces fichiers
  peuvent ensuite être référencés dans
  l\'article, ou affichés séparément.</p>', # MODIF
-	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas l\'insertion d\'images directement dans les articles.',
+	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas l\'insertion d\'images directement dans les articles.', # MODIF
 	'titre_documents_joints' => 'Documents joints',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@',
 	'tous_les_medias' => 'Tous les medias', # MODIF

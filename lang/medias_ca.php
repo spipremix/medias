@@ -155,7 +155,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'texte_documents_joints' => 'Es pot permetre afegir documents (fitxers ofimàtics, imatges, multimèdia, etc.) als articles i/o a les seccions. Aquests fitxers poden estar referenciats a dins l\'article, o mostrats separadament.</p>', # MODIF
-	'texte_documents_joints_2' => 'Aquesta regla no impideix pas l\'inserció d\'imatges directament als articles.',
+	'texte_documents_joints_2' => 'Aquesta regla no impideix pas l\'inserció d\'imatges directament als articles.', # MODIF
 	'titre_documents_joints' => 'Documents adjunts',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
 	'tous_les_medias' => 'Tous les medias', # NEW

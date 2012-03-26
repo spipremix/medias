@@ -119,7 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'Das Datum der Dokumente entspricht dem Zeitpunkt des Uploads.',
 
 	// L
-	'label_activer_document_objets' => 'Dokumente für die Inhalte freischalten:',
+	'label_activer_document_objets' => 'Dokumente für die Inhalte freischalten:', # MODIF
 	'label_apercu' => 'Vorschau',
 	'label_caracteristiques' => 'Eigenschaften',
 	'label_credits' => 'Beteiligte',
@@ -155,7 +155,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'texte_documents_joints' => 'Sie können die Zuordnung von Dokumenten (Office-Dokumente, Bilder, Multimedia-Dateien, etc.) zu Artikeln und/oder Rubriken erlauben. Diese Dokumente können anschliessend innerhalb von Artikeln verlinkt oder separat angezeigt werden.<p>', # MODIF
-	'texte_documents_joints_2' => 'Diese Einstellung widerspricht nicht dem Einfügen von Bildern in Artikel.',
+	'texte_documents_joints_2' => 'Diese Einstellung widerspricht nicht dem Einfügen von Bildern in Artikel.', # MODIF
 	'titre_documents_joints' => 'beigefügte Dokumente',
 	'titre_page_documents_edit' => 'Dokument bearbeiten: @titre@',
 	'tous_les_medias' => 'Alle Medien', # MODIF

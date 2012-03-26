@@ -14,6 +14,9 @@
 		<traducteur nom="sQuonk" lien="http://trad.spip.org/auteur/squonk" />
 	</langue>
 	<langue code="es" />
+	<langue code="fa" url="http://trad.spip.org/tradlang_module/medias?lang_cible=fa">
+		<traducteur nom="Davood Hossein" lien="http://trad.spip.org/auteur/davood-hossein" />
+	</langue>
 	<langue code="fr" />
 	<langue code="fr_tu" url="http://trad.spip.org/tradlang_module/medias?lang_cible=fr_tu">
 		<traducteur nom="beatnick" lien="http://trad.spip.org/auteur/beatnick" />
