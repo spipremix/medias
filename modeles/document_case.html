@@ -6,7 +6,8 @@
 
 ]
 <BOUCLE_docslies(DOCUMENTS documents_liens types_documents){id_document}{id_objet}{objet}{statut?}>
-	<div class="item #MODE" id="doc#ID_DOCUMENT">
+	<div class="item #MODE" id="doc#ID_DOCUMENT"
+			 onclick="jQuery(this).toggleClass('hover');">
 		<h3 class="titrem">[<span class="fichier">(#FICHIER*|basename)</span>]
 			<span class="image_loading"></span>
 			[<span class="#EDIT{titre} titre">(#TITRE|sinon{<i class="sanstitre"><:info_sans_titre:></i>})</span>]
