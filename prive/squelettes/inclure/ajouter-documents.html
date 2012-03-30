@@ -7,5 +7,6 @@
 <div class='nettoyeur'></div>
 ]
 [(#ENV{ajouter}|=={oui}|non)
-[(#SELF|parametre_url{ajouter,oui}|icone{<:medias:icone_creer_document:>,document-24.png,#LANG_RIGHT,new,ajax})]
+[(#SELF|parametre_url{ajouter,oui}|icone{
+	[(#VAL{auto}|joindre_determiner_mode{0,#ENV{objet,''}}|=={image}|?{<:medias:bouton_ajouter_image:>,<:medias:icone_creer_document:>})],document-24.png,#LANG_RIGHT,new,ajax})]
 ]
