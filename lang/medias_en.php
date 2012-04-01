@@ -29,7 +29,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_sur_le_web' => 'internet',
 	'bouton_enlever_document' => 'Unlink',
 	'bouton_enlever_supprimer_document' => 'Delete',
-	'bouton_enlever_supprimer_document_confirmation' => 'Are you sure you want to delete the document ?',
+	'bouton_enlever_supprimer_document_confirmation' => 'Are you sure you want to delete the document?',
 	'bouton_modifier_document' => 'Modify',
 	'bouton_parcourir' => 'Browse...',
 	'bouton_refresh_document' => 'Refresh document',
@@ -39,7 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'Delete',
 	'bouton_supprimer_tous_orphelins' => 'Delete all unused',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Do you really want to delete @nb@ orphans documents?',
-	'bouton_upload' => 'Upload',
+	'bouton_upload' => 'Upload', # MODIF
 
 	// D
 	'des_audios' => '@nb@ sounds',

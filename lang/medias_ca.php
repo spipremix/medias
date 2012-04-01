@@ -39,7 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'Suprimir',
 	'bouton_supprimer_tous_orphelins' => 'Suprimir tots els orfes',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Esteu segur de voler suprimir @nb@ orfes?', # MODIF
-	'bouton_upload' => 'Descarregar',
+	'bouton_upload' => 'Descarregar', # MODIF
 
 	// D
 	'des_audios' => '@nb@ bandes sonores', # MODIF

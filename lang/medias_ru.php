@@ -1,6 +1,6 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// extrait automatiquement de http://www.spip.net/trad-lang/
+// extrait automatiquement de http://trad.spip.org/tradlang_module/medias?lang_cible=ru
 // ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -8,185 +8,183 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Aucune bande son', # NEW
-	'aucun_document' => 'Aucun document', # NEW
-	'aucun_file' => 'Aucun document', # NEW
-	'aucun_image' => 'Aucune image', # NEW
-	'aucun_video' => 'Aucune s&eacute;quence', # NEW
-	'aucune_utilisation' => 'Ce document n\'est pas utilis&eacute;', # NEW
-	'aucune_vignette' => 'Aucune vignette', # NEW
+	'aucun_audio' => 'Аудио файлов нет',
+	'aucun_document' => 'Нет документов (файлов)',
+	'aucun_file' => 'Нет документов (файлов)',
+	'aucun_image' => 'Нет файлов изображений',
+	'aucun_video' => 'Видео файлов нет',
+	'aucune_utilisation' => 'Документ не используется.',
+	'aucune_vignette' => 'Нет миниатюры',
 
 	// B
 	'bouton_ajouter_document' => 'Добавить документ',
 	'bouton_ajouter_image' => 'Добавить изображение',
 	'bouton_ajouter_image_document' => 'Добавить изображение или документ',
-	'bouton_attacher_document' => 'Attacher', # NEW
-	'bouton_copier_local' => 'Copier dans le site', # NEW
-	'bouton_download_depuis' => 'depuis&nbsp;:', # NEW
-	'bouton_download_local' => 'mon ordinateur', # NEW
-	'bouton_download_par_ftp' => 'le serveur', # NEW
-	'bouton_download_par_mediatheque' => 'la mediath&egrave;que', # NEW
-	'bouton_download_sur_le_web' => 'internet', # NEW
-	'bouton_enlever_document' => 'Detacher', # NEW
-	'bouton_enlever_supprimer_document' => 'Supprimer', # NEW
-	'bouton_enlever_supprimer_document_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer le document ?', # NEW
-	'bouton_modifier_document' => 'Modifier', # NEW
-	'bouton_parcourir' => 'Parcourir...', # NEW
-	'bouton_refresh_document' => 'Rafraichir le document', # NEW
-	'bouton_remplacer_document' => 'Remplacer ce document', # NEW
-	'bouton_remplacer_image' => 'Remplacer cette image', # NEW
-	'bouton_remplacer_image_document' => 'Remplacer par une image ou un document', # NEW
-	'bouton_supprimer' => 'Supprimer', # NEW
-	'bouton_supprimer_tous_orphelins' => 'Supprimer tous les orphelins', # NEW
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Etes-vous s&ucirc;r de vouloir supprimer @nb@ orphelins ?', # NEW
-	'bouton_upload' => 'T&eacute;l&eacute;charger', # NEW
+	'bouton_attacher_document' => 'Добавить',
+	'bouton_copier_local' => 'Добавить на сайт',
+	'bouton_download_depuis' => 'добавить файлы с:',
+	'bouton_download_local' => 'моего компьютера',
+	'bouton_download_par_ftp' => 'сервера',
+	'bouton_download_par_mediatheque' => 'из добавленных',
+	'bouton_download_sur_le_web' => 'интернета',
+	'bouton_enlever_document' => 'Убрать',
+	'bouton_enlever_supprimer_document' => 'Удалить',
+	'bouton_enlever_supprimer_document_confirmation' => 'Вы уверенны, что хотите удалить документ (файл)?',
+	'bouton_modifier_document' => 'Изменить',
+	'bouton_parcourir' => 'Обзор...',
+	'bouton_refresh_document' => 'Обновить документ',
+	'bouton_remplacer_document' => 'Заменить документ',
+	'bouton_remplacer_image' => 'Заменить изображение',
+	'bouton_remplacer_image_document' => 'Заменить изображением или файлом',
+	'bouton_supprimer' => 'Удалить',
+	'bouton_supprimer_tous_orphelins' => 'Удалить неиспользуемые',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Вы действительно хотите удалить @nb@ документов (файлов) ?',
+	'bouton_upload' => 'Добавить', # MODIF
 
 	// D
-	'des_audios' => '@nb@ bandes sons', # NEW
-	'des_documents' => '@nb@ documents', # NEW
-	'des_files' => '@nb@ documents', # NEW
-	'des_images' => '@nb@ images', # NEW
-	'des_utilisations' => '@nb@ utilisations', # NEW
-	'des_videos' => '@nb@ s&eacute;quences', # NEW
-	'descriptif' => 'Description', # NEW
-	'document_attache_succes' => 'Le document a bien &eacute;t&eacute; ajout&eacute;', # NEW
-	'document_copie_locale_succes' => 'Le fichier a bien &eacute;t&eacute; copi&eacute; dans le site', # NEW
-	'document_installe_succes' => 'Le fichier a bien &eacute;t&eacute; charg&eacute;', # NEW
-	'document_vu' => 'Ins&eacute;r&eacute; dans le texte', # NEW
-	'documents' => 'Mediath&egrave;que', # NEW
-	'documents_brises' => 'Bris&eacute;s', # NEW
-	'documents_distants' => 'Distants', # NEW
-	'documents_locaux' => 'Locaux', # NEW
-	'documents_non_publies' => 'Non publi&eacute;s', # NEW
-	'documents_orphelins' => 'Inutilis&eacute;s', # NEW
-	'documents_publies' => 'Publi&eacute;s', # NEW
-	'documents_tous' => 'Tous', # NEW
+	'des_audios' => '@nb@ аудио файлов',
+	'des_documents' => '@nb@ документов (файлов)',
+	'des_files' => '@nb@ документов (файлов)',
+	'des_images' => '@nb@ файлов изображений',
+	'des_utilisations' => 'Используется @nb@ раз(а)',
+	'des_videos' => '@nb@ видео файлов',
+	'descriptif' => 'Описание',
+	'document_attache_succes' => 'Документ (файл) добавлен успешно',
+	'document_copie_locale_succes' => 'Файл успешно скопирован на сайт',
+	'document_installe_succes' => 'Файл добавлен успешно',
+	'document_vu' => 'В тексте',
+	'documents' => 'Управление файлами',
+	'documents_brises' => 'Поврежденные',
+	'documents_distants' => 'На других сайтах',
+	'documents_locaux' => 'На нашем сайте',
+	'documents_non_publies' => 'Не опубликованные',
+	'documents_orphelins' => 'Не используемые',
+	'documents_publies' => 'На сайте',
+	'documents_tous' => 'Все',
 	'double_clic_inserer_doc' => 'Дважды щелкните, чтобы вставить этот ярлык в текст',
 
 	// E
 	'entree_dimensions' => 'Размер:',
 	'entree_titre_document' => 'Название документа:',
 	'entree_titre_image' => 'Название изображения:',
-	'erreur_aucun_document' => 'Ce document n\'existe pas dans la mediath&egrave;que', # NEW
-	'erreur_aucun_fichier' => 'Aucun fichier n\'a &eacute;t&eacute; trouv&eacute;', # NEW
-	'erreur_chemin_distant' => 'Le fichier distant @nom@ n\'a pas pu &ecirc;tre trouv&eacute;', # NEW
-	'erreur_chemin_ftp' => 'Le fichier indiqu&eacute; n\'a pas &eacute;t&eacute; trouv&eacute; sur le serveur', # NEW
-	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@', # NEW
-	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers', # NEW
-	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque', # NEW
-	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image', # NEW
-	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !', # NEW
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de donn&eacute;es', # NEW
-	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette', # NEW
-	'erreur_upload_type_interdit' => 'Le telechargement des fichiers du type de @nom@ n\'est pas autoris&eacute;', # NEW
-	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@', # NEW
-	'erreurs' => '@nb@ erreurs', # NEW
-	'erreurs_voir' => 'Voir les @nb@ erreurs', # NEW
+	'erreur_aucun_document' => 'Этого документа нет в модуле управления файлами',
+	'erreur_aucun_fichier' => 'Файл не найден',
+	'erreur_chemin_distant' => 'Файл @nom@ с другого сайт не найден',
+	'erreur_chemin_ftp' => 'Не удалось найти указанный файл на сервере',
+	'erreur_copie_fichier' => 'Не возможно скопировать файл @nom@ в указанную папку',
+	'erreur_dossier_tmp_manquant' => 'Не удается создать временную папку для загрузки файлов',
+	'erreur_ecriture_fichier' => 'Ошибка при попытка записать на диск',
+	'erreur_format_fichier_image' => 'Формат файла @nom@ не похож на формат изображения',
+	'erreur_indiquez_un_fichier' => 'Укажите файл!',
+	'erreur_insertion_document_base' => 'Не получается добавить документ @fichier@ в базу данных',
+	'erreur_suppression_vignette' => 'При удалении миниатюры произошла ошибка',
+	'erreur_upload_type_interdit' => 'Запрещена загрузка этого типа файла - @nom@',
+	'erreur_upload_vignette' => 'При загрузке миниатюры возникла ошибка @nom@',
+	'erreurs' => '@nb@ ошибок',
+	'erreurs_voir' => 'Посмотреть ошибки (@nb@) ',
 
 	// F
-	'fichier_distant' => 'Fichier distant', # NEW
-	'fichier_manquant' => 'Fichier manquant', # NEW
-	'fichier_modifie' => 'Le fichier a &eacute;t&eacute; modifi&eacute;. Cliquez sur enregistrer.', # NEW
-	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes', # NEW
+	'fichier_distant' => 'Файл на другом сайте',
+	'fichier_manquant' => 'Файл не найден',
+	'fichier_modifie' => 'Файл был изменен. Нажмите кнопку Сохранить.',
+	'format_date_incorrect' => 'Не правильная дата или время',
 
 	// I
-	'icone_creer_document' => 'Ajouter un document', # NEW
-	'id' => 'ID', # NEW
-	'image_tourner_180' => 'Поворот на 180°',
-	'image_tourner_droite' => 'Поворот на 90° вправо',
+	'icone_creer_document' => 'Добавить документ (файл)',
+	'id' => 'ID',
+	'image_tourner_180' => 'Повернуть на 180°',
+	'image_tourner_droite' => 'Повернуть на 90° вправо',
 	'image_tourner_gauche' => 'Поворот на 90° влево',
-	'info_doc_max_poids' => 'Les documents doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).', # NEW
+	'info_doc_max_poids' => 'Размер файла должен быль не больше @maxi@ (текущий размер @actuel@).',
 	'info_document' => 'Документ',
 	'info_document_indisponible' => 'Этот документ недоступен',
-	'info_documents' => 'Документы',
-	'info_gauche_numero_document' => 'DOCUMENT NUM&Eacute;RO', # NEW
-	'info_hauteur' => 'Hauteur', # NEW
-	'info_heure' => 'Heure', # NEW
-	'info_illustrations' => 'Illustrations', # NEW
-	'info_image_max_poids' => 'Les images doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).', # NEW
+	'info_documents' => 'Управление файлами',
+	'info_gauche_numero_document' => 'НОМЕР ДОКУМЕНТА',
+	'info_hauteur' => 'Высота',
+	'info_heure' => 'Время',
+	'info_illustrations' => 'Фотографии в материале',
+	'info_image_max_poids' => 'Размер файла изображения должен быть меньше @maxi@ (сейчас @actuel@).',
 	'info_inclusion_directe' => 'Прямое включение:',
 	'info_inclusion_vignette' => 'Добавить миниатюру:',
 	'info_installer_tous_documents' => 'Добавить все файлы (документы)',
-	'info_largeur' => 'Largeur', # NEW
+	'info_largeur' => 'Ширина',
 	'info_logo_max_taille' => 'Логотипы должны быть меньше чем @maxi@ (размер этого файла @actuel@).',
-	'info_modifier_document' => 'Modifier le document', # NEW
-	'info_portfolio' => 'Приложенные документы',
-	'info_referencer_doc_distant' => 'Ссылка на документ в интернете (URL):',
-	'info_statut_document' => 'Ce document est&nbsp;:', # NEW
+	'info_modifier_document' => 'Изменить файл',
+	'info_portfolio' => 'Галерея фотографий и документов',
+	'info_referencer_doc_distant' => 'Ссылка на файл (URL):',
+	'info_statut_document' => 'Статус документа:',
 	'info_telecharger' => 'Загрузить с вашего компьютера:',
-	'infos' => 'Infos techniques', # NEW
-	'item_autoriser_selectionner_date_en_ligne' => 'Разрешить изменения даты каждого документа',
-	'item_non_autoriser_selectionner_date_en_ligne' => 'Дата документа - это дата, которая была добавлена к сайту',
+	'infos' => 'Техническая информация',
+	'item_autoriser_selectionner_date_en_ligne' => 'Разрешить изменять дату добавления документа',
+	'item_non_autoriser_selectionner_date_en_ligne' => 'Запретить изменять дату добавления документа',
 
 	// L
-	'label_activer_document_objets' => 'Activer les documents pour les contenus&nbsp;:', # NEW
-	'label_apercu' => 'Aper&ccedil;u', # NEW
-	'label_caracteristiques' => 'Caract&eacute;ristiques', # NEW
-	'label_credits' => 'Cr&eacute;dits', # NEW
-	'label_fichier' => 'Fichier', # NEW
-	'label_fichier_vignette' => 'Vignette', # NEW
-	'label_parents' => 'Ce document est li&eacute; &agrave;', # NEW
-	'label_refdoc_joindre' => 'Document num&eacute;ro', # NEW
-	'lien_tout_enlever' => 'Tout enlever', # NEW
-	'logo' => 'Logo', # NEW
+	'label_activer_document_objets' => 'Включить галерею:',
+	'label_apercu' => 'Пред. просмотр',
+	'label_caracteristiques' => 'Характеристики',
+	'label_credits' => 'Информация о авторе',
+	'label_fichier' => 'Файл',
+	'label_fichier_vignette' => 'Миниатюра',
+	'label_parents' => 'Документ используется в:',
+	'label_refdoc_joindre' => 'Номер документа',
+	'lien_tout_enlever' => 'Удалить все',
+	'logo' => 'Лого',
 
 	// M
-	'media_audio' => 'Bandes sons', # NEW
-	'media_file' => 'Autres', # NEW
-	'media_image' => 'Images', # NEW
-	'media_video' => 'S&eacute;quences', # NEW
+	'media_audio' => 'Аудио',
+	'media_file' => 'Прочее',
+	'media_image' => 'Изображения',
+	'media_video' => 'Видео',
+	'miniature_automatique_active' => 'SPIP создаст миниатюру автоматически',
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documents ont bien &eacute;t&eacute; ajout&eacute;s', # NEW
-	'nb_documents_installe_succes' => '@nb@ fichiers charg&eacute;s avec succ&egrave;s', # NEW
+	'nb_documents_attache_succes' => 'Добавлено @nb@ документов (файлов)',
+	'nb_documents_installe_succes' => 'Успешно добавлено @nb@ файлов',
 
 	// O
-	'objet_document' => 'Document', # NEW
-	'objet_documents' => 'Documents', # NEW
+	'objet_document' => 'Документ',
+	'objet_documents' => 'Документы',
 
 	// P
-	'par_date' => 'Date', # NEW
-	'par_hauteur' => 'Hauteur', # NEW
-	'par_id' => 'ID', # NEW
-	'par_largeur' => 'Largeur', # NEW
-	'par_taille' => 'Poids', # NEW
-	'par_titre' => 'Titre', # NEW
+	'par_date' => 'Дата',
+	'par_hauteur' => 'Высота',
+	'par_id' => 'ID',
+	'par_largeur' => 'Ширина',
+	'par_taille' => 'Размер',
+	'par_titre' => 'Название',
 
 	// T
-	'texte_documents_joints' => 'Вы можете позволить дополнять документами (офисными файлами, изображениями, 
- мультимедиа, и т.д.) статьи и/или разделы. Эти 
- файлы могут быть ссылками на 
- статью или показываться отдельно. ', # MODIF
-	'texte_documents_joints_2' => '<MODIF>Этот параметр не позволяет вставку изображений непосредственно в статьи.',
-	'titre_documents_joints' => 'Прилагаемые документы',
-	'titre_page_documents_edit' => 'Modifier le document : @titre@', # NEW
-	'tous_les_medias' => 'Tous les medias', # NEW
+	'texte_documents_joints' => 'Вы можете включить возможность добавлять файлы и документы (аудио, видео, офисные файлы) к ко всем материалам сайта.',
+	'texte_documents_joints_2' => 'Укажите, к каким материалам можно добавлять документы.',
+	'titre_documents_joints' => 'Добавление документов (файлов) к материалам',
+	'titre_page_documents_edit' => 'Изменить документ: @titre@',
+	'tous_les_medias' => 'Все медиа файлы',
 	'tout_dossier_upload' => 'Весь @upload@ каталог',
-	'tout_voir' => 'Tout voir', # NEW
+	'tout_voir' => 'Показать все',
 
 	// U
-	'un_audio' => '1 bande son', # NEW
-	'un_document' => '1 document', # NEW
-	'un_file' => '1 document', # NEW
-	'un_image' => '1 image', # NEW
-	'un_video' => '1 s&eacute;quence', # NEW
-	'une_utilisation' => '1 utilisation', # NEW
+	'un_audio' => '1 аудио файл',
+	'un_document' => '1 документ (файл)',
+	'un_file' => '1 документ (файл)',
+	'un_image' => '1 изображение',
+	'un_video' => '1 видео',
+	'une_utilisation' => 'Используется 1 раз',
 	'upload_fichier_zip' => 'ZIP файл',
-	'upload_fichier_zip_texte' => 'Файл, который Вы хотите установить является ZIP-файлом .',
+	'upload_fichier_zip_texte' => 'Вы ходите добавить файл с архивом (zip).',
 	'upload_fichier_zip_texte2' => 'Этот файл может быть:',
-	'upload_info_mode_document' => 'D&eacute;poser dans le portfolio', # NEW
-	'upload_info_mode_image' => 'Retirer du portfolio', # NEW
-	'upload_limit' => 'Этот файл является слишком большим для сервера; максимально допустимый размер для <i>upload</i> является @max@.',
-	'upload_zip_conserver' => 'Хранить архив файла после извлечения его содержания',
-	'upload_zip_decompacter' => 'разархивировать и установить содержание каждого файла на сайт. Файлы, которые будут установлены:',
-	'upload_zip_mode_document' => 'D&eacute;poser toutes les images dans le portfolio', # NEW
-	'upload_zip_telquel' => 'установливать как ZIP файл;',
-	'upload_zip_titrer' => 'Добавить названия в соответствии с именами файлов',
+	'upload_info_mode_document' => 'Добавить в галерею',
+	'upload_info_mode_image' => 'Убрать из галереи',
+	'upload_limit' => 'Этот файл является слишком большим для сервера; максимально допустимый размер @max@.',
+	'upload_zip_conserver' => 'Не удалять архив после извлечения файлов',
+	'upload_zip_decompacter' => 'разархивировать и установить содержание каждого файла на сайт. Будут установлены файлы:',
+	'upload_zip_mode_document' => 'Добавить все изображения в галерею',
+	'upload_zip_telquel' => 'не разархивировать, добавить как ZIP файл;',
+	'upload_zip_titrer' => 'Создать названия в соответствии с именами файлов',
 
 	// V
-	'verifier_documents_brises' => 'V&eacute;rifier les fichiers manquants', # NEW
-	'verifier_documents_inutilises' => 'V&eacute;rifier les liens des documents', # NEW
-	'vignette_supprimee' => 'La vignette a &eacute;t&eacute; supprim&eacute;e' # NEW
+	'verifier_documents_brises' => 'Проверить недостающие файлы',
+	'verifier_documents_inutilises' => 'Проверить использование документа',
+	'vignette_supprimee' => 'Миниатюра удалена'
 );
 
 ?>

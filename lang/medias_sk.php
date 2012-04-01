@@ -39,7 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'Odstrániť',
 	'bouton_supprimer_tous_orphelins' => 'Odstrániť všetky nepoužívané',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Určite chcete odstrániť @nb@ osamotených objektov?',
-	'bouton_upload' => 'Nahrať',
+	'bouton_upload' => 'Nahrať', # MODIF
 
 	// D
 	'des_audios' => '@nb@ zvukových stôp',
