@@ -39,7 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'حذف',
 	'bouton_supprimer_tous_orphelins' => 'حذف تمام سطر‌هاي يتيم',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'آيا حتماً مي‌خواهيد @nb@ سطر يتيم را حذف كنيد؟‌',
-	'bouton_upload' => 'بارگذاري', # MODIF
+	'bouton_upload' => 'بارگذاري',
 
 	// D
 	'des_audios' => '@nb@ تراك صدا',

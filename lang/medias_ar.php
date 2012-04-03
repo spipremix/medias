@@ -40,7 +40,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'حذف',
 	'bouton_supprimer_tous_orphelins' => 'حذف كل المستندات غير المستخدمة',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'هل تريد فعلاً حذف @nb@ مستند غير مربوط؟',
-	'bouton_upload' => 'تحميل', # MODIF
+	'bouton_upload' => 'إيداع',
 
 	// D
 	'des_audios' => '@nb@ ملف صوت',
