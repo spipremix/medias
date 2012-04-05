@@ -152,7 +152,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titre',
 
 	// T
-	'texte_documents_joints' => 'Vous pouvez activer l\'interface d\'ajout de documents (fichiers bureautiques, images, multimédia, etc.) aux articles, rubriques et autres. Ces fichiers peuvent ensuite être référencés dans le texte, ou affichés séparément.</p>',
+	'texte_documents_joints' => 'Vous pouvez activer l\'interface d\'ajout de documents (fichiers bureautiques, images, multimédia, etc.) aux articles, rubriques et autres. Ces fichiers peuvent ensuite être référencés dans le texte, ou affichés séparément.',
 	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas le téléversement d\'images dans les articles ni l\'insertion de document directement dans les textes des contenus.',
 	'titre_documents_joints' => 'Documents joints',
 	'titre_page_documents_edit' => 'Modifier le document : @titre@',
