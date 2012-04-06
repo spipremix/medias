@@ -46,7 +46,11 @@ function action_dissocier_document_dist($arg=null){
 		$suppr = true;
 	if (count($arg)>4 AND $arg[4]=='safe')
 		$check = true;
-	if ($id_objet=intval($id_objet)	AND autoriser('modifier',$objet,$id_objet))
+	if ($id_objet=intval($id_objet)
+		AND (
+			($id_objet<0 AND $id_objet==-$GLOBALS['visiteur_session']['id_auteur'])
+			OR autoriser('modifier',$objet,$id_objet)
+		))
 		dissocier_document($document, $objet, $id_objet, $suppr, $check);
 	else
 		spip_log("Interdit de modifier $objet $id_objet","spip");
