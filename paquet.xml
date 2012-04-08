@@ -2,7 +2,7 @@
 	prefix="medias"
 	categorie="multimedia"
 	version="2.7.23"
-	etat="test"
+	etat="stable"
 	compatibilite="[3.0.0-alpha2;["
 	logo="prive/themes/spip/images/portfolio-32.png"
 	schema="1.1.1"
