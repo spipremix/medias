@@ -157,7 +157,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints' => 'Môžete povoliť pridávanie dokumentov (súborov z práce, obrázkov
  multimédií, atď.) k článkom a/lebo rubrikám. Na tieto súbory
  môžete potom 
-v článku odkazovať alebo môžu byť zobrazené samostatne.</p>',
+v článku odkazovať alebo môžu byť zobrazené samostatne.</p>', # MODIF
 	'texte_documents_joints_2' => 'Toto nastavenie nezabráni priamemu vkladaniu obrázkov do článkov alebo pripojeniu súboru priamo do textu redakčného objektu.',
 	'titre_documents_joints' => 'Pripojené dokumenty',
 	'titre_page_documents_edit' => 'Upraviť dokument: @titre@',
