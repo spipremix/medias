@@ -154,7 +154,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Title',
 
 	// T
-	'texte_documents_joints' => 'You can enable the interface to add documents (office files, images, multimedia, etc.) to articles, sections and so on. These files may then be referenced in the texts or displayed separately.</p>', # MODIF
+	'texte_documents_joints' => 'You can enable the interface to add documents (office files, images, multimedia, etc.) to articles, sections and so on. These files may then be referenced in the texts or displayed separately.',
 	'texte_documents_joints_2' => 'This setting does not prevent the upload of images to the articles neither the direct inclusion of documents in the texts of the contents.',
 	'titre_documents_joints' => 'Attached documents',
 	'titre_page_documents_edit' => 'Edit the document: @titre@',
