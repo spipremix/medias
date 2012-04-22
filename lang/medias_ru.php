@@ -39,7 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'Удалить',
 	'bouton_supprimer_tous_orphelins' => 'Удалить неиспользуемые',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'Вы действительно хотите удалить @nb@ документов (файлов) ?',
-	'bouton_upload' => 'Добавить', # MODIF
+	'bouton_upload' => 'Добавить',
 
 	// D
 	'des_audios' => '@nb@ аудио файлов',
@@ -98,7 +98,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_doc_max_poids' => 'Размер файла должен быль не больше @maxi@ (текущий размер @actuel@).',
 	'info_document' => 'Документ',
 	'info_document_indisponible' => 'Этот документ недоступен',
-	'info_documents' => 'Управление файлами',
+	'info_documents' => 'Файлы',
 	'info_gauche_numero_document' => 'НОМЕР ДОКУМЕНТА',
 	'info_hauteur' => 'Высота',
 	'info_heure' => 'Время',
@@ -154,7 +154,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Название',
 
 	// T
-	'texte_documents_joints' => 'Вы можете включить возможность добавлять файлы и документы (аудио, видео, офисные файлы) к ко всем материалам сайта.', # MODIF
+	'texte_documents_joints' => 'Вы можете включить возможность добавлять файлы и документы (аудио, видео, офисные файлы) к ко всем материалам сайта.',
 	'texte_documents_joints_2' => 'Укажите, к каким материалам можно добавлять документы.',
 	'titre_documents_joints' => 'Добавление документов (файлов) к материалам',
 	'titre_page_documents_edit' => 'Изменить документ: @titre@',
