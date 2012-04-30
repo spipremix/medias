@@ -80,16 +80,19 @@ function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
  */
 function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 	return
-		(autoriser('modifier', $type, $id, $qui, $opt)
+		(
+			$type=='article' OR in_array(table_objet_sql($type),explode(',',$GLOBALS['meta']['documents_objets']))
+		)
+		AND (
+		  (
+			  $id>0
+		    AND autoriser('modifier', $type, $id, $qui, $opt)
+		  )
 			OR (
 				$id<0
 				AND abs($id) == $qui['id_auteur']
 				AND autoriser('ecrire', $type, $id, $qui, $opt)
 			)
-		)
-		AND
-		(
-			$type=='article' OR in_array(table_objet_sql($type),explode(',',$GLOBALS['meta']['documents_objets']))
 		);
 }
 
