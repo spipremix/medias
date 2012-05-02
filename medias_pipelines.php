@@ -25,16 +25,26 @@ function medias_detecter_fond_par_defaut($fond){
   return $fond;
 }
 
+
+/**
+ * A chaque insertion d'un nouvel objet editorial
+ * auquel on a attache des documents, restituer l'identifiant
+ * du nouvel objet cree sur les liaisons documents/objet,
+ * qui ont ponctuellement un identifiant id_objet negatif.
+ * cf. medias_affiche_gauche()
+**/
 function medias_post_insertion($flux){
 
-	$objet = objet_type($flux['args']['table']);
-	if (in_array($objet,array('article','rubrique'))
+	$objet    = objet_type($flux['args']['table']);
+	$id_objet = $flux['args']['id_objet'];
+
+	if (autoriser('joindredocument', $objet, $id_objet)
 	  AND $id_auteur = intval($GLOBALS['visiteur_session']['id_auteur'])){
 
-		# cf. GROS HACK ecrire/inc/getdocument
+		# cf. HACK medias_affiche_gauche()
 		# rattrapper les documents associes a cet objet nouveau
 		# ils ont un id = 0-id_auteur
-		$id_objet = $flux['args']['id_objet'];
+
 		# utiliser l'api editer_lien pour les appels aux pipeline edition_lien
 		include_spip('action/editer_liens');
 		$liens = objet_trouver_liens(array('document'=>'*'),array($objet=>0-$id_auteur));
@@ -124,6 +134,18 @@ function medias_afficher_complement_objet($flux){
 	return $flux;
 }
 
+/**
+ * Pipeline affiche_gauche
+ * Affiche le formulaire d'ajout de document sur le formulaire d'edition
+ * d'un objet (lorsque cet objet peut recevoir des documents).
+ *
+ * HACK : Lors d'une premiere creation de l'objet, celui-ci n'ayant pas
+ * encore d'identifiant tant que le formulaire d'edition n'est pas enregistre,
+ * les liaisions entre les documents lies et l'objet a creer sauvegardent
+ * un identifiant d'objet negatif de la valeur de id_auteur (l'auteur
+ * connecte). Ces liaisons seront corrigees apres validation dans
+ * medias_post_insertion()
+ */
 function medias_affiche_gauche($flux){
 	if ($en_cours = trouver_objet_exec($flux['args']['exec'])
 		AND $en_cours['edition']!==false // page edition uniquement

@@ -73,7 +73,7 @@ function action_ajouter_documents_dist($id_document, $files, $objet, $id_objet, 
  * @return array|bool|int|mixed|string|unknown
  */
 function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet, $mode) {
-	
+
 	$source = $file['tmp_name'];
 	$nom_envoye = $file['name'];
 
