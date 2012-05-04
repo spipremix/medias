@@ -37,7 +37,9 @@ function medias_post_insertion($flux){
 
 	$objet    = objet_type($flux['args']['table']);
 	$id_objet = $flux['args']['id_objet'];
-
+	
+	include_spip('inc/autoriser');
+	
 	if (autoriser('joindredocument', $objet, $id_objet)
 	  AND $id_auteur = intval($GLOBALS['visiteur_session']['id_auteur'])){
 
