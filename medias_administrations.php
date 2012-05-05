@@ -53,7 +53,7 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	$maj = array();
 	$maj['create'] = array(
 		array('maj_tables',array('spip_documents','spip_documents_liens','spip_types_documents')),
-		array('creer_base_types_doc')
+		array('creer_base_types_doc','','media')
 	);
 	$maj['0.2.0'] = array(
 		array('sql_alter',"TABLE spip_documents ADD statut varchar(10) DEFAULT '0' NOT NULL"),
@@ -70,7 +70,7 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	);
 	$maj['0.6.0'] = array(
 		array('sql_alter',"TABLE spip_types_documents ADD media varchar(10) DEFAULT 'file' NOT NULL"),
-		array('creer_base_types_doc'),
+		array('creer_base_types_doc','','media'),
 	);
 	$maj['0.7.0'] = array(
 		array('sql_alter',"TABLE spip_documents ADD credits varchar(255) DEFAULT '' NOT NULL"),
@@ -88,22 +88,22 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 		array('medias_maj_meta_documents'),
 	);
 	$maj['0.14.0'] = array(
-		array('creer_base_types_doc'),
+		array('creer_base_types_doc','','media'),
 	);
 	$maj['0.15.0'] = array(
-		array('creer_base_types_doc'),
+		array('creer_base_types_doc','','media'),
 	);
 	$maj['0.15.1'] = array(
 		array('sql_alter',"TABLE spip_documents CHANGE taille taille bigint"),
 	);
 	$maj['0.16.0'] = array(
-		array('creer_base_types_doc'),
+		array('creer_base_types_doc','','media'),
 	);
 
 	$maj['1.0.0'] = array(
 		// on cree le champ en defaut '?' pour reperer les nouveaux a peupler
 		array('sql_alter',"TABLE spip_documents ADD media varchar(10) DEFAULT '?' NOT NULL"),
-		array('medias_peuple_media_document'),
+		array('medias_peuple_media_document', 'media'),
 		// puis on retablit le bon defaut
 		array('sql_alter',"TABLE spip_documents CHANGE media media varchar(10) DEFAULT 'file' NOT NULL"),
 	);
@@ -118,6 +118,13 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	);
 	$maj['1.1.1'] = array(
 		array('creer_base_types_doc'),
+	);
+	// reparer les media sur les file suite a upgrade rate depuis SPIP 2.x
+	$maj['1.2.0'] = array(
+		// on remet en ? tous les media=file
+		array('sql_updateq',"spip_documents",array('media'=>'?'),"media='file'"),
+		// et on repeuple
+		array('medias_peuple_media_document'),
 	);
 
 
@@ -140,11 +147,11 @@ function medias_maj_meta_documents(){
 	ecrire_meta('documents_objets',implode(',',$config));
 }
 
-function medias_peuple_media_document(){
+function medias_peuple_media_document($champ_media="media_defaut"){
 	$res = sql_select("DISTINCT extension","spip_documents","media=".sql_quote('?'));
 	while($row = sql_fetch($res)){
 		// attention ici c'est encore le champ media, car on le renomme juste apres
-		$media = sql_getfetsel('media','spip_types_documents','extension='.sql_quote($row['extension']));
+		$media = sql_getfetsel($champ_media,'spip_types_documents','extension='.sql_quote($row['extension']));
 		sql_updateq('spip_documents',array('media'=>$media),"media=".sql_quote('?').' AND extension='.sql_quote($row['extension']));
 		if (time() >= _TIME_OUT)
 			return;

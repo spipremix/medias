@@ -187,13 +187,13 @@ function medias_declarer_tables_objets_sql($tables){
  * @param string $serveur
  * @return void
  */
-function creer_base_types_doc($serveur='') {
+function creer_base_types_doc($serveur='', $champ_media="media_defaut") {
 	global $tables_images, $tables_sequences, $tables_documents, $tables_mime;
 	include_spip('base/typedoc');
 	include_spip('base/abstract_sql');
 
 	// charger en memoire tous les types deja definis pour limiter les requettes
-	$rows = sql_allfetsel('mime_type,titre,inclus,extension,media_defaut,upload,descriptif','spip_types_documents','','','','','',$serveur);
+	$rows = sql_allfetsel('mime_type,titre,inclus,extension,'.$champ_media.',upload,descriptif','spip_types_documents','','','','','',$serveur);
 	$deja = array();
 	foreach ($rows as $k=>$row){
 		$deja[$row['extension']] = &$rows[$k];
@@ -229,13 +229,13 @@ function creer_base_types_doc($serveur='') {
 		  $media = "video";
 
 		$set = array(
-						'mime_type' => $type_mime,
-						'titre' => $titre,
-						'inclus' => $inclus,
-						'extension' => $extension,
-						'media_defaut' => $media,
-						'upload' => 'oui',
-						'descriptif' => '',
+		        'mime_type' => $type_mime,
+		        'titre' => $titre,
+		        'inclus' => $inclus,
+		        'extension' => $extension,
+		        $champ_media => $media,
+		        'upload' => 'oui',
+		        'descriptif' => '',
 					);
 		if (!isset($deja[$extension])){
 			$insertions[] = $set;
