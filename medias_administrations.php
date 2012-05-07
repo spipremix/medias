@@ -53,7 +53,7 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 	$maj = array();
 	$maj['create'] = array(
 		array('maj_tables',array('spip_documents','spip_documents_liens','spip_types_documents')),
-		array('creer_base_types_doc','','media')
+		array('creer_base_types_doc')
 	);
 	$maj['0.2.0'] = array(
 		array('sql_alter',"TABLE spip_documents ADD statut varchar(10) DEFAULT '0' NOT NULL"),
@@ -125,6 +125,9 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 		array('sql_updateq',"spip_documents",array('media'=>'?'),"media='file'"),
 		// et on repeuple
 		array('medias_peuple_media_document'),
+	);
+	$maj['1.2.1'] = array(
+		array('creer_base_types_doc'),
 	);
 
 
