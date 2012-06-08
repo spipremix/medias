@@ -63,7 +63,7 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
 	if (!isset($boucle->modificateur['criteres']['mode'])
 	AND !isset($boucle->modificateur['criteres']['tout'])) {
 		$modes = pipeline('medias_documents_visibles',array('image','document'));
-		$f = sql_serveur('quote', $serveur, true);
+		$f = sql_serveur('quote', $boucle->sql_serveur, true);
 		$modes = addslashes(join(',', array_map($f, array_unique($modes))));
 		array_unshift($boucle->where,array("'IN'", "'$id_table.mode'", "'($modes)'"));
 	}
