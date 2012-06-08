@@ -279,8 +279,10 @@ function verifier_upload_autorise($source, $mode=''){
 		}
 	}
 
-	if (!$res OR is_string($res));
+	if (!$res OR is_string($res)) {
 		spip_log("Upload $source interdit ($res)",_LOG_INFO_IMPORTANTE);
+	}
+
 	return $res;
 }
 

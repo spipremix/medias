@@ -99,6 +99,9 @@ function document_modifier($id_document, $set=false) {
 	);
 
 
+	$invalideur = "";
+	$indexation = false;
+
 	// Si le document est publie, invalider les caches et demander sa reindexation
 	$t = sql_getfetsel("statut", "spip_documents", 'id_document='.intval($id_document));
 	if ($t == 'publie') {
