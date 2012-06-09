@@ -153,7 +153,10 @@ function medias_affiche_gauche($flux){
 		AND $en_cours['edition']!==false // page edition uniquement
 		AND $type = $en_cours['type']
 		AND $id_table_objet = $en_cours['id_table_objet']
-		AND ($id = intval($flux['args'][$id_table_objet]) OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
+		// id non defini sur les formulaires de nouveaux objets
+		AND (isset($flux['args'][$id_table_objet]) and $id = intval($flux['args'][$id_table_objet])
+			// et justement dans ce cas, on met un identifiant negatif
+		    OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
 	  AND autoriser('joindredocument',$type,$id)){
 		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document',array('objet'=>$type,'id_objet'=>$id));
 	}
