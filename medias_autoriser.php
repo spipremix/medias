@@ -79,9 +79,11 @@ function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
  * @return bool
  */
 function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
+	include_spip('inc/config');
 	return
 		(
-			$type=='article' OR in_array(table_objet_sql($type),explode(',',$GLOBALS['meta']['documents_objets']))
+			$type=='article'
+			OR in_array(table_objet_sql($type),explode(',',lire_config('documents_objets', '')))
 		)
 		AND (
 		  (
