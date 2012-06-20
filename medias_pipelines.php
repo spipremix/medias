@@ -81,7 +81,7 @@ function medias_configurer_liste_metas($config){
 
 function medias_post_edition($flux){
 	// le serveur n'est pas toujours la
-	$serveur = (isset($flux['args']['serveur']) ? $flux['args']['serveur'] : '');
+	$serveur = (isset($flux['args']['serveur']) ? $flux['args']['serveur'] : '');
 	// si on ajoute un document, mettre son statut a jour
 	if($flux['args']['action']=='ajouter_document'){
 		include_spip('action/editer_document');
