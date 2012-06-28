@@ -59,7 +59,7 @@ function action_ajouter_documents_dist($id_document, $files, $objet, $id_objet, 
  *   0 ou 'new' pour une insertion
  * @param array $file
  *   proprietes au format $_FILE etendu :
- *     strin tmp_name : source sur le serveur
+ *     string tmp_name : source sur le serveur
  *     string name : nom du fichier envoye
  *     bool titrer : donner ou non un titre a partir du nom du fichier
  *     bool distant : pour utiliser une source distante sur internet
@@ -388,7 +388,7 @@ function verifier_taille_document_acceptable($infos){
 				));
 	}
 
-  // verifier en fonction du mode si une fonction est proposee
+	// verifier en fonction du mode si une fonction est proposee
 	if ($verifier_document_mode = charger_fonction("verifier_document_mode_".$infos['mode'],"inc",true))
 		return $verifier_document_mode($infos);
 
