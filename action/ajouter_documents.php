@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2011                                                *
+ *  Copyright (c) 2001-2012                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -196,6 +196,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 
 	// permettre aux plugins de faire des modifs a l'ajout initial
 	// ex EXIF qui tourne les images si necessaire
+	// Ce plugin ferait quand même mieux de se placer dans metadata/jpg.php
 	pipeline('post_edition',
 		array(
 			'args' => array(
