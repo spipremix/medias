@@ -110,7 +110,7 @@ function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
  * @param <type> $opt
  * @return <type>
  */
-function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
+function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt){
 	static $m = array();
 
 	$q=$qui['id_auteur'];
@@ -125,7 +125,7 @@ function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
 
 	if (!isset($m[$q][$id])) {
 		// un document non publie peut etre modifie par tout le monde (... ?)
-		if ($s AND $s!=='publie')
+		if ($s AND $s!=='publie' AND ($qui['id_auteur'] > 0))
 			$m[$q][$id] = true;
 	}
 
@@ -158,7 +158,7 @@ function autoriser_document_modifier($faire, $type, $id, $qui, $opt){
  * @param <type> $opt
  * @return <type>
  */
-function autoriser_document_supprimer($faire, $type, $id, $qui, $opt){
+function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt){
 	if (!intval($id)
 		OR !$qui['id_auteur']
 		OR !autoriser('ecrire','','',$qui))
@@ -237,7 +237,7 @@ function autoriser_autoassocierdocument_dist($faire, $type, $id, $qui, $opts) {
  * @param  $opt
  * @return bool
  */
-function autoriser_orphelins_supprimer($faire, $type, $id, $qui, $opt){
+function autoriser_orphelins_supprimer_dist($faire, $type, $id, $qui, $opt){
 	if ($qui['statut'] == '0minirezo'
 	AND !$qui['restreint'])
 		return true;
