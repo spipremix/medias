@@ -131,7 +131,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		}
 
 		if (!is_array($fichier = fixer_fichier_upload($file, $mode)))
-			return is_string($fichier)?$fichier:_T("erreur_upload_type_interdit",array('nom'=>$file['name']));
+			return is_string($fichier)?$fichier:_T("medias:erreur_upload_type_interdit",array('nom'=>$file['name']));
 		
 		$champs['inclus'] = $fichier['inclus'];
 		$champs['extension'] = $fichier['extension'];
