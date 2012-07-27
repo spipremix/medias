@@ -239,6 +239,9 @@ function corriger_extension($ext) {
 		case 'tiff':
 			$ext='tif';
 			break;
+		case 'aif':
+			$ext='aiff';
+			break;
 		case 'mpeg':
 			$ext='mpg';
 			break;
