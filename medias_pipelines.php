@@ -174,6 +174,9 @@ function medias_editer_document_actions($flux){
 	return $flux;
 }
 
+function medias_renseigner_document_distant($flux){
+	return $flux;
+}
 
 /**
  * Compter les documents dans un objet
