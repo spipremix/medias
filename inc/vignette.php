@@ -9,18 +9,32 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion des vignettes de types de fichier
+ *
+ * @package SPIP\Medias\Vignette
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
- * Vignette pour les documents lies
- * rechercher les fichiers d'icone au format png pour l'extension demandee
- *
- * on cherche prive/vignettes/ext.png dans le path
+ * Vignette pour une extension de document
+ * 
+ * Recherche les fichiers d'icones au format png pour l'extension demandée.
+ * On cherche prive/vignettes/ext.png dans le path.
  *
  * @param string $ext
+ *     Extension du fichier. Exemple : png
  * @param bool $size
+ *     true pour retourner un tableau avec les tailles de la vignette
+ *     false pour retourner uniquement le chemin du fichier
  * @param bool $loop
- * @return array|bool|int|string
+ *     Autoriser la fonction à s'appeler sur elle-même
+ *     (paramètre interne).
+ * @return array|bool|string
+ *     False si l'image n'est pas trouvée
+ *     Chaîne (chemin vers l'image) si on ne demande pas de taille
+ *     Tableau (chemin, largeur, hauteur) si on demande avec la taille.
  */
 function inc_vignette_dist($ext, $size=true, $loop = true) {
 

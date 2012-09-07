@@ -10,11 +10,14 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Fonctions utiles pour les squelettes et déclarations de boucle
+ * pour le compilateur
+ *
+ * @package SPIP\Medias\Fonctions
+**/
 
-//
-// Ce fichier definit les boucles standard de SPIP
-//
-
+// sécurité
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
@@ -160,4 +163,43 @@ function critere_DOCUMENTS_carre_dist($idb, &$boucles, $crit) {
 	$not = ($crit->not?"NOT ":"");
 	$boucle->where[] = "'$not($table.largeur>0 AND $table.largeur = $table.hauteur)'";
 }
+
+
+/**
+ * Calcule la vignette d'une extension (l'image du type de fichier)
+ *
+ * Utile dans une boucle DOCUMENTS pour afficher une vignette du type
+ * du document (#EXTENSION) alors que ce document a déjà une vignette
+ * personnalisée (affichable par #LOGO_DOCUMENT).
+ * 
+ * @example
+ *     [(#EXTENSION|vignette)] produit une balise <img ... />
+ *     [(#EXTENSION|vignette{true})] retourne le chemin de l'image
+ *
+ * @param string $extension
+ *     L'extension du fichier, exemple : png ou pdf
+ * @param bool $get_chemin
+ *     false pour obtenir une balise img de l'image,
+ *     true pour obtenir seulement le chemin du fichier
+ * @return string
+ *     Balise HTML <img...> ou chemin du fichier
+**/
+function filtre_vignette_dist($extension='defaut', $get_chemin = false) {
+	static $vignette = false;
+	static $balise_img = false;
+
+	if (!$vignette) {
+		$vignette = charger_fonction('vignette', 'inc');
+		$balise_img = charger_filtre('balise_img');
+	}
+
+	$fichier = $vignette($extension, false);
+	// retourne simplement le chemin du fichier
+	if ($get_chemin) {
+		return $fichier;
+	}
+	// retourne une balise <img ... />
+	return $balise_img($fichier);
+}
+
 ?>
