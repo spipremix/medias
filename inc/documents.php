@@ -83,7 +83,7 @@ function generer_url_document_dist($id_document, $args='', $ancre='') {
 			. ($ancre ? "&ancre=$ancre" : '')
 			. '&cle=' . calculer_cle_action($id_document.','.$f)
 			. '&file=' . rawurlencode($f)
-			,false,true);
+			,true,true);
 }
 
 //
