@@ -71,10 +71,7 @@ function generer_url_document_dist($id_document, $args='', $ancre='') {
 	// Si droit de voir tous les docs, pas seulement celui-ci
 	// il est inutilement couteux de rajouter une protection
 	$r = (autoriser('voir', 'document'));
-	if (($r AND $r !== 'htaccess')
-		// idem si ce doc est visible par tous
-		// ie si ca ne renvoie pas false
-		OR autoriser('voir', 'document', $id_document, array()))
+	if (($r AND $r !== 'htaccess'))
 		return get_spip_doc($f);
 
 	include_spip('inc/securiser_action');
