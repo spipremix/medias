@@ -1,9 +1,11 @@
 <?php
-/*
- * Plugin xxx
- * (c) 2009 cedric
- * Distribue sous licence GPL
+/**
+ * Déclaration de fonctions utiles à ce squelette
  *
+ * @copyright (c) 2009 cedric
+ * @license Distribue sous licence GPL
+ *
+ * @package SPIP\Medias\Fonctions
  */
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
