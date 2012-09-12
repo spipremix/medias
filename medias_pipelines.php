@@ -158,9 +158,10 @@ function medias_affiche_gauche($flux){
 		// id non defini sur les formulaires de nouveaux objets
 		AND (isset($flux['args'][$id_table_objet]) and $id = intval($flux['args'][$id_table_objet])
 			// et justement dans ce cas, on met un identifiant negatif
-		    OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
-	  AND autoriser('joindredocument',$type,$id)){
-		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document',array('objet'=>$type,'id_objet'=>$id));
+			OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
+		AND autoriser('joindredocument',$type,$id))
+	{
+		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document', array('objet'=>$type,'id_objet'=>$id));
 	}
 
 	return $flux;
