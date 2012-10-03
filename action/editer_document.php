@@ -166,6 +166,8 @@ function document_instituer($id_document,$champs=array()){
 	$row = sql_fetsel("statut,date_publication", "spip_documents", "id_document=$id_document");
 	$statut_ancien = $row['statut'];
 	$date_publication_ancienne = $row['date_publication'];
+
+	/* Autodetermination du statut si non fourni */
 	if (is_null($statut)){
 		$statut = 'prepa';
 
@@ -188,6 +190,7 @@ function document_instituer($id_document,$champs=array()){
 			// si pas publie, et article, il faut checker la date de post-publi eventuelle
 			elseif ($row['objet']=='article'
 			  AND $row2 = sql_fetsel('date','spip_articles','id_article='.intval($row['id_objet'])." AND statut='publie'")){
+				$statut = 'publie';
 				$date_publication = min($date_publication,strtotime($row2['date']));
 			}
 		}
