@@ -331,7 +331,7 @@ function fixer_fichier_upload($file, $mode=''){
 			spip_unlink($tmp_dir);
 			@mkdir($tmp_dir);
 
-			include_spip('inc/charset');
+			include_spip('inc/charsets');
 			$tmp = $tmp_dir.'/'.translitteration($file['name']);
 
 			$file['name'] .= '.'.$ext; # conserver l'extension dans le nom de fichier, par exemple toto.js => toto.js.zip
