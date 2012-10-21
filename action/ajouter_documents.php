@@ -302,6 +302,7 @@ function verifier_upload_autorise($source, $mode=''){
 
 /**
  * tester le type de document :
+ * - le document existe et n'est pas de taille 0 ?
  * - interdit a l'upload ?
  * - quelle extension dans spip_types_documents ?
  * - est-ce "inclus" comme une image ?
@@ -312,7 +313,16 @@ function verifier_upload_autorise($source, $mode=''){
  * @return array
  */
 function fixer_fichier_upload($file, $mode=''){
-
+	/**
+	 * On vérifie que le fichier existe et qu'il contient quelque chose 
+	 */
+	if (
+		!$file['tmp_name']
+		OR !@file_exists($file['tmp_name'])
+		OR !$infos['taille'] = @intval(filesize($file['tmp_name']))) {
+			spip_log ("Echec copie du fichier ".$file['tmp_name']);
+			return _T('medias:erreur_copie_fichier',array('nom'=> $file['tmp_name']));
+	}
 	if (is_array($row=verifier_upload_autorise($file['name'], $mode))) {
 		if (!isset($row['autozip'])){
 			$row['fichier'] = copier_document($row['extension'], $file['name'], $file['tmp_name']);
