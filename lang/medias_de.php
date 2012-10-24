@@ -120,7 +120,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'Das Datum der Dokumente entspricht dem Zeitpunkt des Uploads.',
 
 	// L
-	'label_activer_document_objets' => 'Hochladen von Dokumenten erlauben:',
+	'label_activer_document_objets' => 'Hochladen von Dokumenten erlauben für:',
 	'label_apercu' => 'Vorschau',
 	'label_caracteristiques' => 'Eigenschaften',
 	'label_credits' => 'Beteiligte',
