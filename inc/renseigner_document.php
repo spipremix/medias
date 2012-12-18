@@ -101,11 +101,10 @@ function renseigner_taille_dimension_image($fichier,$ext){
 	}
 	
 	include_spip('inc/filtres'); # pour objet_info()
+	$editables = objet_info('document','champs_editables');
 	foreach($meta as $m=>$v)
-		if (in_array($m,objet_info('document','champs_editables')))
+		if (isset($infos[$m]) OR in_array($m,$editables))
 			$infos[$m] = $v;
-	// un ajout nécessaire car type_image n'est pas déclaré comme un champ éditable de documents
-	$infos["type_image"] = $meta["type_image"];
 
 	return $infos;
 }
