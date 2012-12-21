@@ -5,18 +5,15 @@
   Distribue sous licence GPL
 
 ]
-#SET{id_unique, #VAL{portfolios_}|concat{#OBJET|et{#ID_OBJET}|?{
-			#OBJET|concat{#ID_OBJET},
-			#EVAL{'rand();'}
-		}
-	}
-}
+[(#REM) pour permettre d'inclure ce squelette plusieurs fois dans une page]
+#SET{id_unique, #ENV{id_unique,''}}
+
 #SET{nbdocs,0}
-<div id="portfolios"[ class="(#GET{id_unique})"]>
+<div id="portfolios#GET{id_unique}">
 [(#REM) D'abord les images illustration]
 <B_illustrations>
 <h3><span class="image_loading"></span><:medias:info_illustrations:></h3>
-<div class="liste_items documents[ (#GET{id_unique})]" id="illustrations">
+<div class="liste_items documents" id="illustrations#GET{id_unique}">
 [<p class="pagination">(#PAGINATION)</p>]
 <BOUCLE_illustrations(DOCUMENTS documents_liens types_documents){inclus=image}{mode=image}{id_objet}{objet}{par num titre,date,id_document}{pagination 50}{statut?}>
 	#MODELE{document_desc,id_document,id_objet,objet}
@@ -30,7 +27,7 @@
 [(#REM) puis les images du portfolio]
 <B_portfolio>
 <h3><:medias:info_portfolio:></h3>
-<div class="liste_items documents[ (#GET{id_unique})]" id="portfolio">
+<div class="liste_items documents" id="portfolio#GET{id_unique}">
 [<p class="pagination">(#PAGINATION)</p>]
 <BOUCLE_portfolio(DOCUMENTS documents_liens types_documents){inclus=image}{mode=document}{id_objet}{objet}{par num titre,date,id_document}{pagination 50}{statut?}>
 	#MODELE{document_desc,id_document,id_objet,objet}
@@ -44,7 +41,7 @@
 [(#REM) puis les documents]
 <B_documents>
 <h3><:medias:info_documents:></h3>
-<div class="liste_items documents[ (#GET{id_unique})]" id="documents">
+<div class="liste_items documents" id="documents#GET{id_unique}">
 [<p class="pagination">(#PAGINATION)</p>]
 <BOUCLE_documents(DOCUMENTS documents_liens types_documents){inclus!=image}{mode!=vignette}{id_objet}{objet}{par num titre,date,id_document}{pagination 50}{statut?}>
 	#MODELE{document_desc,id_document,id_objet,objet}
@@ -64,17 +61,17 @@ if (!$.isFunction(window.editbox_init)) {
 if (window.jQuery) jQuery('#navigation .box.info').ajaxReload();]
 function check_reload_page(){
 	var reload = false;
-	if($('#illustrations[.(#GET{id_unique})]').length && !$('#illustrations[.(#GET{id_unique})] .item').length){
-		$('#illustrations[.(#GET{id_unique})]').remove();reload = true;
+	if($('#illustrations#GET{id_unique}').length && !$('#illustrations#GET{id_unique} .item').length){
+		$('#illustrations#GET{id_unique}').remove();reload = true;
 	}
-	if($('#portfolio[.(#GET{id_unique})]').length && !$('#portfolio[.(#GET{id_unique})] .item').length){
-		$('#portfolio[.(#GET{id_unique})]').remove();reload = true;
+	if($('#portfolio#GET{id_unique}').length && !$('#portfolio#GET{id_unique} .item').length){
+		$('#portfolio#GET{id_unique}').remove();reload = true;
 	}
-	if($('#documents[.(#GET{id_unique})]').length && !$('#documents[.(#GET{id_unique})] .item').length){
-		$('#documents[.(#GET{id_unique})]').remove();reload = true;
+	if($('#documents#GET{id_unique}').length && !$('#documents#GET{id_unique} .item').length){
+		$('#documents#GET{id_unique}').remove();reload = true;
 	}
 	if (reload) {
-		jQuery('#portfolios[.(#GET{id_unique})]').ajaxReload();
+		jQuery('#portfolios#GET{id_unique}').ajaxReload();
 		jQuery('#navigation .box.info').ajaxReload();
 	}
 }
