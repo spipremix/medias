@@ -237,9 +237,9 @@ function joindre_verifier_zip($files){
  */
 function joindre_decrire_contenu_zip($zip) {
 	include_spip('action/ajouter_documents');
+	// si pas possible de decompacter: installer comme fichier zip joint
 	if (!$list = $zip->listContent()) return false;
 
-	// si pas possible de decompacter: installer comme fichier zip joint
 	// Verifier si le contenu peut etre uploade (verif extension)
 	$fichiers = array();
 	$erreurs = array();
@@ -251,6 +251,11 @@ function joindre_decrire_contenu_zip($zip) {
 			if (substr($f,-1)!=='/' AND substr(basename($f),0,1)!=='.')
 				$erreurs[] = _T('medias:erreur_upload_type_interdit',array('nom'=>$f));
 	}
+
+	// si aucun fichier uploadable : installer comme fichier zip joint
+	if (!count($fichiers))
+		return false;
+
 	ksort($fichiers);
 	return array($fichiers,$erreurs);
 }
