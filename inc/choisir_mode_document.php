@@ -10,16 +10,24 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion des modes de documents
+ *
+ * @package SPIP\Medias\Modes
+ */
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 /**
  * Choisir le mode du document : image/document
- * fonction surchargeable
  *
- * @param unknown_type $fichier
- * @param unknown_type $type_image
- * @param unknown_type $largeur
- * @param unknown_type $hauteur
+ * @param array $infos
+ *     Informations sur le document (en base + prises sur le fichier)
+ * @param bool $type_image
+ *     Type d'inclusion demandée : true si image
+ * @param string $objet
+ *     Objet sur lequel est placé le document
+ * @return string
+ *     Mode du document
  */
 function inc_choisir_mode_document($infos, $type_inclus_image, $objet){
 	

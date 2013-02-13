@@ -24,12 +24,12 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 /**
  * Afficher la puce de statut pour les documents
  *
- * @param unknown_type $id_document
- * @param unknown_type $statut
- * @param unknown_type $id_rubrique
- * @param unknown_type $type
- * @param unknown_type $ajax
- * @return unknown
+ * @param int $id_document
+ *     Identifiant du document
+ * @param string $statut
+ *     Statut du document
+ * @return string
+ *     Code HTML de l'image de puce
  */
 function medias_puce_statut_document($id_document, $statut){
 	if ($statut=='publie') {

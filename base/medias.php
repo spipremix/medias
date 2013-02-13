@@ -10,10 +10,16 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Déclarations relatives à la base de données
+ *
+ * @package SPIP\Medias\Pipelines
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
- * Interfaces des tables breves pour le compilateur
+ * Interfaces des tables documents pour le compilateur
  *
  * @param array $interfaces
  * @return array
@@ -183,9 +189,8 @@ function medias_declarer_tables_objets_sql($tables){
 /**
  * Creer la table des types de document
  *
- * http://doc.spip.org/@creer_base_types_doc
- *
  * @param string $serveur
+ * @param string $champ_media
  * @return void
  */
 function creer_base_types_doc($serveur='', $champ_media="media_defaut") {
@@ -260,10 +265,10 @@ function creer_base_types_doc($serveur='', $champ_media="media_defaut") {
 
 
 /**
- * Optimiser la base de donnee en supprimant les liens orphelins
+ * Optimiser la base de données en supprimant les liens orphelins
  *
- * @param int $n
- * @return int
+ * @param array $flux
+ * @return array
  */
 function medias_optimiser_base_disparus($flux){
 
