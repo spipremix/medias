@@ -22,7 +22,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  *
  * @param array $infos
  *     Informations sur le document (en base + prises sur le fichier)
- * @param bool $type_image
+ * @param bool $type_inclus_image
  *     Type d'inclusion demandée : true si image
  * @param string $objet
  *     Objet sur lequel est placé le document
