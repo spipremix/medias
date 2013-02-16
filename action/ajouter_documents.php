@@ -10,6 +10,12 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion de l'action ajouter_documents
+ *
+ * @package SPIP\Medias\Action
+**/
+
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 include_spip('inc/getdocument');
@@ -21,18 +27,18 @@ include_spip('inc/renseigner_document');
  * Ajouter des documents
  *
  * @param int $id_document
- *   document a remplacer, ou pour une vignette, l'id_document de maman
+ *   Document à remplacer, ou pour une vignette, l'id_document de maman
  *   0 ou 'new' pour une insertion
- * @param  $files
- *   tableau de taleau de propriete pour chaque document a inserer
- * @param  $objet
- *   objet auquel associer le document
- * @param  $id_objet
+ * @param array $files
+ *   Tableau de taleau de propriété pour chaque document à insérer
+ * @param string $objet
+ *   Objet auquel associer le document
+ * @param int $id_objet
  *   id_objet
- * @param  $mode
- *   mode par defaut si pas precise pour le document
+ * @param string $mode
+ *   Mode par défaut si pas precisé pour le document
  * @return array
- *   liste des id_documents inseres
+ *   Liste des id_documents inserés
  */
 function action_ajouter_documents_dist($id_document, $files, $objet, $id_objet, $mode){
 	$ajouter_un_document = charger_fonction('ajouter_un_document','action');
@@ -52,27 +58,27 @@ function action_ajouter_documents_dist($id_document, $files, $objet, $id_objet, 
 /**
  * Ajouter un document (au format $_FILES)
  *
- * http://doc.spip.org/@ajouter_un_document
- *
  * @param int $id_document
- *   document a remplacer, ou pour une vignette, l'id_document de maman
+ *   Document à remplacer, ou pour une vignette, l'id_document de maman
  *   0 ou 'new' pour une insertion
  * @param array $file
- *   proprietes au format $_FILE etendu :
- *     string tmp_name : source sur le serveur
- *     string name : nom du fichier envoye
- *     bool titrer : donner ou non un titre a partir du nom du fichier
- *     bool distant : pour utiliser une source distante sur internet
- *     string mode : vignette|image|documents|choix
+ *   Propriétes au format $_FILE étendu :
+ * 
+ *   - string tmp_name : source sur le serveur
+ *   - string name : nom du fichier envoye
+ *   - bool titrer : donner ou non un titre a partir du nom du fichier
+ *   - bool distant : pour utiliser une source distante sur internet
+ *   - string mode : vignette|image|documents|choix
  * @param string $objet
- *   objet auquel associer le document
+ *   Objet auquel associer le document
  * @param int $id_objet
  *   id_objet
  * @param string $mode
- *   mode par defaut si pas precise pour le document
+ *   Mode par défaut si pas precisé pour le document
  * @return array|bool|int|mixed|string|unknown
- * 	 si int : l'id_document ajouté (opération réussie)
- *   si string : une erreur s'est produit, la chaine est le message d'erreur
+ *
+ *   - int : l'id_document ajouté (opération réussie)
+ *   - string : une erreur s'est produit, la chaine est le message d'erreur
  *  
  */
 function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet, $mode) {
@@ -229,10 +235,14 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 
 /**
  * Corrige l'extension du fichier dans quelques cas particuliers
- * (a passer dans ecrire/base/typedoc)
- * A noter : une extension 'pdf ' passe dans la requete de controle
- * mysql> SELECT * FROM spip_types_documents WHERE extension="pdf ";
+ * 
+ * @note
+ *     Une extension 'pdf ' passe dans la requête de contrôle
+ *     mysql> SELECT * FROM spip_types_documents WHERE extension="pdf ";
  *
+ * @todo
+ *     À passer dans base/typedoc
+ * 
  * @param string $ext
  * @return string
  */
@@ -259,13 +269,20 @@ function corriger_extension($ext) {
 }
 
 /**
- * Verifie la possibilite d'uploader une extension
- * renvoie un tableau descriptif si l'extension est acceptee
- * avec un index 'autozip' si il faut zipper
- * false ou message d'erreur si l'extension est refusee
- * Verifie aussi si l'extension est autorisee pour le mode demande
- * si on connait le mode a ce moment la
+ * Vérifie la possibilité d'uploader une extension
  * 
+ * Vérifie aussi si l'extension est autorisée pour le mode demandé
+ * si on connait le mode à ce moment là
+ *
+ * @param string $source
+ *     Nom du fichier
+ * @param string $mode
+ *     Mode d'inclusion du fichier, si connu
+ * @return array|bool|string
+ *
+ *     - array : extension acceptée (tableau descriptif).
+ *       Avec un index 'autozip' si il faut zipper
+ *     - false ou message d'erreur si l'extension est refusée
  */
 function verifier_upload_autorise($source, $mode=''){
 	$infos = array('fichier'=>$source);
@@ -301,15 +318,19 @@ function verifier_upload_autorise($source, $mode=''){
 
 
 /**
- * tester le type de document :
+ * Tester le type de document
+ * 
  * - le document existe et n'est pas de taille 0 ?
  * - interdit a l'upload ?
  * - quelle extension dans spip_types_documents ?
  * - est-ce "inclus" comme une image ?
  * 
- * le zipper si necessaire
+ * Le zipper si necessaire
  * 
- * @param array $file //format $_FILES
+ * @param array $file
+ *     Au format $_FILES
+ * @param string $mode
+ *     Mode d'inclusion du fichier, si connu
  * @return array
  */
 function fixer_fichier_upload($file, $mode=''){

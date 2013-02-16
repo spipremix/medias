@@ -10,17 +10,24 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion de l'action dissocier_document
+ *
+ * @package SPIP\Medias\Action
+**/
+
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 
 /**
  * Dissocier un document
- * $arg fournit les arguments de la fonction dissocier_document
- * sous la forme
- * $id_objet-$objet-$document-suppr-safe
  *
- * 4eme arg : suppr = true, false sinon
- * 5eme arg : safe = true, false sinon
+ * @param string $arg
+ *     fournit les arguments de la fonction dissocier_document
+ *     sous la forme `$id_objet-$objet-$document-suppr-safe`
+ *
+ *     - 4eme arg : suppr = true, false sinon
+ *     - 5eme arg : safe = true, false sinon
  * 
  * @return void
  */

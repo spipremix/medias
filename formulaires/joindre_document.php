@@ -87,7 +87,7 @@ function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=
 			$valeurs['editable'] = autoriser('joindredocument',$objet,$id_objet)?' ':'';
 		}
 	}
-	
+
 	return $valeurs;
 }
 

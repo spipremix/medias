@@ -10,11 +10,20 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion de l'action verifier_documents_liens
+ *
+ * @package SPIP\Medias\Action
+**/
+
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 /**
- * Verifier tous les fichiers brises
+ * Vérifier tous les fichiers brisés
  *
+ * @param int|null $id_document
+ *     Indique le document cible de l'action, sinon il sera
+ *     obtenu par la clé d'action sécurisée.
  */
 function action_verifier_documents_liens_dist($id_document=null) {
 

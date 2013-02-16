@@ -10,30 +10,59 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Définit les autorisations du plugin Médias
+ *
+ * @package SPIP\Medias\Autorisations
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-/* Pour que le pipeline de rale pas ! */
+/**
+ * Fonction d'appel pour le pipeline
+ * @pipeline autoriser
+ */
 function medias_autoriser(){}
 
-
-function autoriser_mediatheque_administrer_dist($faire,$quoi,$id,$qui,$options) {
+/**
+ * Autorisation d'administrer la médiathèque
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_mediatheque_administrer_dist($faire,$type,$id,$qui,$opt) {
 	return $qui['statut'] == '0minirezo';
 }
 
-function autoriser_documents_menu_dist($faire,$quoi,$id,$qui,$options) {
-	return autoriser('administrer','mediatheque',$id,$qui,$options);
+/**
+ * Autorisation de voir le bouton Documents dans le menu
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_documents_menu_dist($faire,$type,$id,$qui,$opt) {
+	return autoriser('administrer','mediatheque',$id,$qui,$opt);
 }
 
 /**
  * Autoriser le changement des dimensions sur un document
- * @param <type> $faire
- * @param <type> $quoi
- * @param <type> $id
- * @param <type> $qui
- * @param <type> $options
- * @return <type>
+ * 
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $options   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
  */
-function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
+function autoriser_document_tailler_dist($faire,$type,$id,$qui,$options) {
 
 	if (!$id_document=intval($id))
 		return false;
@@ -68,15 +97,21 @@ function autoriser_document_tailler_dist($faire,$quoi,$id,$qui,$options) {
 }
 
 /**
+ * Autorisation de joindre un document
+ * 
  * On ne peut joindre un document qu'a un objet qu'on a le droit d'editer
  * mais il faut prevoir le cas d'une *creation* par un redacteur, qui correspond
  * au hack id_objet = 0-id_auteur
+ * 
  * Il faut aussi que les documents aient ete actives sur les objets concernes
  * ou que ce soit un article, sur lequel on peut toujours uploader des images
  *
- * http://doc.spip.org/@autoriser_joindredocument_dist
- *
- * @return bool
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
  */
 function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 	include_spip('inc/config');
@@ -100,15 +135,17 @@ function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 
 
 /**
+ * Autorisation de modifier un document
+ * 
  * On ne peut modifier un document que s'il n'est pas lie a un objet qu'on n'a pas le droit d'editer
  *
  * @staticvar <type> $m
- * @param <type> $faire
- * @param <type> $type
- * @param <type> $id
- * @param <type> $qui
- * @param <type> $opt
- * @return <type>
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
  */
 function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt){
 	static $m = array();
@@ -148,15 +185,17 @@ function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt){
 
 
 /**
+ * Autorisation de supprimer un document
+ * 
  * On ne peut supprimer un document que s'il n'est lie a aucun objet
  * ET qu'on a le droit de le modifier !
  *
- * @param <type> $faire
- * @param <type> $type
- * @param <type> $id
- * @param <type> $qui
- * @param <type> $opt
- * @return <type>
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
  */
 function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt){
 	if (!intval($id)
@@ -183,15 +222,26 @@ function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt){
 }
 
 
-//
-// Peut-on voir un document dans _DIR_IMG ?
-// Tout le monde (y compris les visiteurs non enregistres), puisque par
-// defaut ce repertoire n'est pas protege ; si une extension comme
-// acces_restreint a positionne creer_htaccess, on regarde
-// si le document est lie a un element publie
-// (TODO: a revoir car c'est dommage de sortir de l'API true/false)
-//
-// http://doc.spip.org/@autoriser_document_voir_dist
+/**
+ * Autorisation de voir un document
+ * 
+ * Peut-on voir un document dans _DIR_IMG ?
+ *
+ * Tout le monde (y compris les visiteurs non enregistrés), puisque par
+ * défaut ce repertoire n'est pas protégé ; si une extension comme
+ * acces_restreint a positionné creer_htaccess, on regarde
+ * si le document est lié à un élément publié.
+ * 
+ * @todo
+ *     À revoir car c'est dommage de sortir de l'API true/false
+ * 
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
 function autoriser_document_voir_dist($faire, $type, $id, $qui, $opt) {
 
 	if (!isset($GLOBALS['meta']["creer_htaccess"])
@@ -219,23 +269,32 @@ function autoriser_document_voir_dist($faire, $type, $id, $qui, $opt) {
 
 
 /**
- * Auto-association de documents a du contenu editorial qui le reference
- * par defaut true pour tous les objets
+ * Autorisation d'auto-association de documents à du contenu editorial qui le référence
+ * 
+ * Par defaut true pour tous les objets
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
  */
-function autoriser_autoassocierdocument_dist($faire, $type, $id, $qui, $opts) {
+function autoriser_autoassocierdocument_dist($faire, $type, $id, $qui, $opt) {
 	return true;
 }
 
 /**
- * Autoriser a nettoyer les orphelins de la base des documents
- * reserve aux admins complets
+ * Autoriser à nettoyer les orphelins de la base des documents
  *
- * @param  $faire
- * @param  $type
- * @param  $id
- * @param  $qui
- * @param  $opt
- * @return bool
+ * Réservé aux admins complets.
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
  */
 function autoriser_orphelins_supprimer_dist($faire, $type, $id, $qui, $opt){
 	if ($qui['statut'] == '0minirezo'
