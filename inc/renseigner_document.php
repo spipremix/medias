@@ -10,16 +10,37 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Fonctions pour compléter les informations connues d'un document
+ *
+ * @package SPIP\Medias\Renseigner
+**/
+
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
 /**
- * recuperer les infos distantes d'une url,
+ * Récuperer les infos distantes d'une URL,
  * et renseigner pour une insertion en base
- * utilise une variable static car appellee plusieurs fois au cours du meme hit
- * (verification puis traitement)
+ * 
+ * Utilise une variable static car appellée plusieurs fois au cours du même hit
+ * (vérification puis traitement)
  *
+ * Un plugin peut avec le pipeline renseigner_document_distant renseigner
+ * les informations fichier et mode avant l'analyse et traitement par ce plugin,
+ * qui dans ce cas ne les fera pas. Exemple : OEmbed
+ * 
+ * @pipeline_appel renseigner_document_distant
+ * 
  * @param string $source
- * @return string
+ *     URL du document
+ * @return array|string
+ *     Informations sur le fichier distant, sinon message d'erreur.
+ *     Sans erreur, retourne un tableau :
+ *
+ *     - source : URL du fichier
+ *     - distant : Est-ce un fichier distant ?
+ *     - mode : Mode d'inclusion
+ *     - fichier : Chemin local du fichier s'il a été recopié
  */
 function renseigner_source_distante($source){
 	static $infos = array();
@@ -60,15 +81,17 @@ function renseigner_source_distante($source){
  * Ces fonctions de récupérations peuvent retourner d'autres champs si ces champs sont définis
  * comme editable dans la déclaration de la table spip_documents
  * 
- * TODO Renommer cette fonction sans "_image"
+ * @todo
+ *     Renommer cette fonction sans "_image"
  *
  * @param string $fichier 
- * 		Le fichier à examiner 
+ *     Le fichier à examiner 
  * @param string $ext
- * 		L'extension du fichier à examiner
+ *     L'extension du fichier à examiner
  * @return array|string $infos
- * 		Si c'est une chaine, c'est une erreur
- * 		Si c'est un tableau, l'ensemble des informations récupérées du fichier
+ *
+ *     - Si c'est une chaîne, c'est une erreur
+ *     - Si c'est un tableau, l'ensemble des informations récupérées du fichier
  */
 function renseigner_taille_dimension_image($fichier,$ext){
 

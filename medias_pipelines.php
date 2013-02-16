@@ -19,9 +19,17 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+/**
+ * Traiter le cas pathologique d'un upload de document ayant echoué
+ * car étant trop gros
+ *
+ * @pipeline detecter_fond_par_defaut
+ * @param string $fond
+ *     Nom du squelette par défaut qui sera utilisé
+ * @return string
+ *     Nom du squelette par défaut qui sera utilisé
+**/
 function medias_detecter_fond_par_defaut($fond){
-	// traiter le cas pathologique d'un upload de document ayant echoue
-	// car trop gros
 	if (empty($_GET) AND empty($_POST) AND empty($_FILES)
 	AND isset($_SERVER["CONTENT_LENGTH"])
 	AND strstr($_SERVER["CONTENT_TYPE"], "multipart/form-data;")) {
@@ -33,11 +41,18 @@ function medias_detecter_fond_par_defaut($fond){
 
 
 /**
- * A chaque insertion d'un nouvel objet editorial
- * auquel on a attache des documents, restituer l'identifiant
- * du nouvel objet cree sur les liaisons documents/objet,
- * qui ont ponctuellement un identifiant id_objet negatif.
- * cf. medias_affiche_gauche()
+ * À chaque insertion d'un nouvel objet editorial
+ * auquel on a attaché des documents, restituer l'identifiant
+ * du nouvel objet crée sur les liaisons documents/objet,
+ * qui ont ponctuellement un identifiant id_objet négatif.
+ * 
+ * @see medias_affiche_gauche()
+ * @pipeline post_insertion
+ * 
+ * @param array $flux
+ *     Données du pipeline
+ * @return array
+ *     Données du pipeline
 **/
 function medias_post_insertion($flux){
 
@@ -67,7 +82,9 @@ function medias_post_insertion($flux){
 }
 
 /**
- * Configuration des contenus
+ * Ajoute la configuration des documents à la page de configuration des contenus
+ *
+ * @pipeline affiche_milieu
  * @param array $flux
  * @return array
  */
@@ -78,13 +95,30 @@ function medias_affiche_milieu($flux){
 	return $flux;
 }
 
+/**
+ * Définir les meta de configuration liées aux documents
+ *
+ * @pipeline configurer_liste_metas
+ * @param array $config
+ *     Couples nom de la méta => valeur par défaut
+ * @return array
+ *    Couples nom de la méta => valeur par défaut
+ */
 function medias_configurer_liste_metas($config){
 	$config['documents_objets'] = '';
 	$config['documents_date'] = 'non';
 	return $config;
 }
 
-
+/**
+ * Institue ou met à jour les liens de documents après l'édition d'un objet
+ *
+ * @pipeline post_edition
+ * @param array $flux
+ *     Données du pipeline
+ * @return array
+ *     Données du pipeline
+**/
 function medias_post_edition($flux){
 	// le serveur n'est pas toujours la
 	$serveur = (isset($flux['args']['serveur']) ? $flux['args']['serveur'] : '');
@@ -126,13 +160,13 @@ function medias_post_edition($flux){
 }
 
 /**
- * Pipeline afficher_complement_objet
- * afficher le portfolio et ajout de document sur les fiches objet
- * sur lesquelles les medias ont ete activees
- * Pour les articles, on ajoute toujours !
+ * Ajouter le portfolio et ajout de document sur les fiches objet
  * 
- * @param  $flux
- * @return
+ * Uniquement sur les objets pour lesquelles les medias ont été activés
+ *
+ * @pipeline afficher_complement_objet
+ * @param array $flux
+ * @return array
  */
 function medias_afficher_complement_objet($flux){
 	if ($type=$flux['args']['type']
@@ -145,16 +179,24 @@ function medias_afficher_complement_objet($flux){
 }
 
 /**
- * Pipeline affiche_gauche
- * Affiche le formulaire d'ajout de document sur le formulaire d'edition
+ * Ajoute le formulaire d'ajout de document au formulaire d'édition
  * d'un objet (lorsque cet objet peut recevoir des documents).
  *
- * HACK : Lors d'une premiere creation de l'objet, celui-ci n'ayant pas
- * encore d'identifiant tant que le formulaire d'edition n'est pas enregistre,
- * les liaisions entre les documents lies et l'objet a creer sauvegardent
- * un identifiant d'objet negatif de la valeur de id_auteur (l'auteur
- * connecte). Ces liaisons seront corrigees apres validation dans
- * medias_post_insertion()
+ * @note
+ *   HACK : Lors d'une première création de l'objet, celui-ci n'ayant pas
+ *   encore d'identifiant tant que le formulaire d'édition n'est pas enregistré,
+ *   les liaisions entre les documents liés et l'objet à créer sauvegardent
+ *   un identifiant d'objet négatif de la valeur de id_auteur (l'auteur
+ *   connecte). Ces liaisons seront corrigées après validation dans
+ *   le pipeline medias_post_insertion()
+ *
+ * @pipeline affiche_gauche
+ * @see medias_post_insertion()
+ * 
+ * @param array $flux
+ *     Données du pipeline
+ * @return array
+ *     Données du pipeline
  */
 function medias_affiche_gauche($flux){
 	if ($en_cours = trouver_objet_exec($flux['args']['exec'])
@@ -173,14 +215,58 @@ function medias_affiche_gauche($flux){
 	return $flux;
 }
 
+/**
+ * Utilisation du pipeline document_desc_actions
+ *
+ * Ne fait rien ici.
+ *
+ * Ce pipeline permet aux plugins d'ajouter de boutons d'action supplémentaires
+ * sur les formulaires d'ajouts de documents
+ *
+ * @pipeline document_desc_actions
+ * @param array $flux
+ *     Données du pipeline
+ * @return array
+ *     Données du pipeline
+**/
 function medias_document_desc_actions($flux){
 	return $flux;
 }
 
+/**
+ * Utilisation du pipeline editer_document_actions
+ *
+ * Ne fait rien ici.
+ *
+ * Ce pipeline permet aux plugins d'ajouter de boutons d'action supplémentaires
+ * sur les formulaires d'édition de documents
+ *
+ * @pipeline editer_document_actions
+ * @param array $flux
+ *     Données du pipeline
+ * @return array
+ *     Données du pipeline
+**/
 function medias_editer_document_actions($flux){
 	return $flux;
 }
 
+/**
+ * Utilisation du pipeline renseigner_document_distant
+ *
+ * Ne fait rien ici.
+ *
+ * Ce pipeline permet aux plugins de renseigner les clés `fichier` et
+ * `mode` d'un document distant à partir de l'URL du fichier dans
+ * la clé `source`.
+ *
+ * @see renseigner_source_distante()
+ * @pipeline renseigner_document_distant
+ * @param array $flux
+ *     Données du pipeline
+ * @return array
+ *     Données du pipeline
+**/
 function medias_renseigner_document_distant($flux){
 	return $flux;
 }
@@ -188,6 +274,7 @@ function medias_renseigner_document_distant($flux){
 /**
  * Compter les documents dans un objet
  *
+ * @pipeline objet_compte_enfants
  * @param array $flux
  * @return array
  */
@@ -207,6 +294,7 @@ function medias_objet_compte_enfants($flux){
 /**
  * Afficher le nombre de documents dans chaque rubrique
  *
+ * @pipeline boite_infos
  * @param array $flux
  * @return array
  */

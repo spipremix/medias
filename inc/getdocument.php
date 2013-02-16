@@ -9,12 +9,18 @@
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
+
+/**
+ * Gère un cas d'upload trop gros
+ *
+ * Fichier obsolète, à supprimer.
+ * Mais fonction utilisée encore dans medias_detecter_fond_par_defaut()
+ * 
+ * @package SPIP\Medias\Upload
+**/
+
 #
 # Fichier obsolete, a supprimer
-#
-#
-#
-#
 #
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
@@ -24,9 +30,15 @@ include_once _DIR_RESTREINT . "inc/documents.php";
 
 include_spip('inc/minipres');
 
-// Erreur appelee depuis public.php (la precedente ne fonctionne plus
-// depuis qu'on est sortis de spip_image.php, apparemment).
-// http://doc.spip.org/@erreur_upload_trop_gros
+ 
+/**
+ * Traite l'erreur d'un upload trop gros
+ * 
+ * L'erreur est appelée depuis public.php et medias_detecter_fond_par_defaut
+ * et affiche un minipres avec la taille limite de documents possibles
+ *
+ * @see minipres()
+**/
 function erreur_upload_trop_gros() {
 	include_spip('inc/filtres');
 	
