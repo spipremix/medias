@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.8.11"
+	version="2.8.12"
 	etat="stable"
 	compatibilite="[3.0.0;3.1.*]"
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -33,6 +33,7 @@
 	<pipeline nom="document_desc_actions" inclure="medias_pipelines.php" />
 	<pipeline nom="editer_document_actions" inclure="medias_pipelines.php" />
 	<pipeline nom="renseigner_document_distant" inclure="medias_pipelines.php" />
+	<pipeline nom="detecter_fond_par_defaut" inclure="medias_pipelines.php" />
 	<pipeline nom="afficher_metas_document" action="" />
 	<pipeline nom="medias_documents_visibles" action="" />
 	<pipeline nom="ieconfig_metas" inclure="medias_ieconfig.php" />

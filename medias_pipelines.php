@@ -10,6 +10,12 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Utilisations de pipelines 
+ *
+ * @package SPIP\Medias\Pipelines
+**/
+
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
