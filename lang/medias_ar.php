@@ -40,7 +40,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_supprimer' => 'حذف',
 	'bouton_supprimer_tous_orphelins' => 'حذف كل المستندات غير المستخدمة',
 	'bouton_supprimer_tous_orphelins_confirmation' => 'هل تريد فعلاً حذف @nb@ مستند غير مربوط؟',
-	'bouton_upload' => 'إيداع',
+	'bouton_upload' => 'تنزيل',
 
 	// D
 	'des_audios' => '@nb@ ملف صوت',
@@ -121,7 +121,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'تاريخ المستندات هو تاريخ تحميلهم في الموقع',
 
 	// L
-	'label_activer_document_objets' => 'تفعيل الإيداع في المحتوى:',
+	'label_activer_document_objets' => 'تفعيل التنزيل في المحتوى:',
 	'label_apercu' => 'معاينة',
 	'label_caracteristiques' => 'المواصفات',
 	'label_credits' => 'الحقوق',
@@ -158,7 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'texte_documents_joints' => 'يمكنك تفعيل واجهة إضافة مستندات (ملفات مكتبية، صور، وسائط متعددة، الخ.) الى المقالات والأقسام وغيرها. ويمكن حينها ادراج هذه الملفات في المقال او عرضها منفصلة.',
-	'texte_documents_joints_2' => 'هذا الإعداد لا يمنع تحميل إيداع الصور في المقالات ولا إدراج المستندات مباشرة في نصوص المحتوى.',
+	'texte_documents_joints_2' => 'هذا الإعداد لا يمنع تنزيل الصور في المقالات ولا إدراج المستندات مباشرة في نصوص المحتوى.',
 	'titre_documents_joints' => 'المستندات المرفقة',
 	'titre_page_documents_edit' => 'تعديل المستند: @titre@',
 	'tous_les_medias' => 'كل الوسائط',
