@@ -38,6 +38,8 @@ include_spip('inc/minipres');
  * et affiche un minipres avec la taille limite de documents possibles
  *
  * @see minipres()
+ * @see _IMG_MAX_WIDTH
+ * @see _IMG_MAX_HEIGHT
 **/
 function erreur_upload_trop_gros() {
 	include_spip('inc/filtres');

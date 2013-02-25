@@ -260,16 +260,52 @@ function medias_revision_document_parents($id_document, $parents=null, $ajout=fa
 }
 
 
-// obsoletes
+// Fonctions Dépréciées
+// --------------------
+
+/**
+ * Insertion d'un document 
+ *
+ * @deprecated Utiliser document_inserer()
+ * @see document_inserer()
+ * @return int Identifiant du nouveau document
+ */
 function insert_document() {
 	return document_inserer();
 }
+
+/**
+ * Modification d'un document 
+ *
+ * @deprecated Utiliser document_modifier()
+ * @see document_modifier()
+ * @param int $id_document Identifiant du document
+ * @param array|bool $set
+ */
 function document_set($id_document, $set=false) {
 	return document_modifier($id_document, $set);
 }
+
+/**
+ * Insituer un document 
+ *
+ * @deprecated Utiliser document_instituer()
+ * @see document_instituer()
+ * @param int $id_document Identifiant du document
+ * @param array $champs
+ */
 function instituer_document($id_document,$champs=array()){
 	return document_instituer($id_document,$champs);
 }
+
+/**
+ * Réviser un document 
+ *
+ * @deprecated Utiliser document_modifier()
+ * @see document_modifier()
+ * @param int $id_document Identifiant du document
+ * @param array $c
+ */
 function revision_document($id_document, $c=false) {
 	return document_modifier($id_document,$c);
 }
