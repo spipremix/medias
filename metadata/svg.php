@@ -10,19 +10,25 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Informations meta d'un SVG
+ *
+ * @package SPIP\Medias\Metadata
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 include_spip('inc/autoriser');
 
 /**
- * Determiner les dimensions d'un svg, et enlever ses scripts si necessaire
- * on utilise safehtml qui n'est pas apropriee pour ca en attendant mieux
+ * Déterminer les dimensions d'un svg, et enlever ses scripts si nécessaire
+ * 
+ * On utilise safehtml qui n'est pas apropriée pour ça en attendant mieux
  * cf http://www.slideshare.net/x00mario/the-image-that-called-me
  * http://heideri.ch/svgpurifier/SVGPurifier/index.php
  *
  * @param string $file
- * @return array
+ * @return array Tableau (largeur, hauteur)
  */
-// http://doc.spip.org/@traite_svg
 function medata_svg_dist($file){
 	$meta = array();
 
