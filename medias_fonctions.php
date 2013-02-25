@@ -47,10 +47,19 @@ function medias_puce_statut_document($id_document, $statut){
 	return http_img_pack($puce, $statut, "class='puce'");
 }
 
-//
-// <BOUCLE(DOCUMENTS)>
-//
-// http://doc.spip.org/@boucle_DOCUMENTS_dist
+
+/**
+ * Compile la boucle `DOCUMENTS` qui etourne une liste de documents multimédia
+ * 
+ * `<BOUCLE(DOCUMENTS)>`
+ *
+ * @param string $id_boucle
+ *     Identifiant de la boucle
+ * @param array $boucles
+ *     AST du squelette
+ * @return string
+ *     Code PHP compilé de la boucle
+**/
 function boucle_DOCUMENTS($id_boucle, &$boucles) {
 	$boucle = &$boucles[$id_boucle];
 	$id_table = $boucle->id_table;
