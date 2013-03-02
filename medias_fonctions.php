@@ -49,7 +49,7 @@ function medias_puce_statut_document($id_document, $statut){
 
 
 /**
- * Compile la boucle `DOCUMENTS` qui etourne une liste de documents multimédia
+ * Compile la boucle `DOCUMENTS` qui retourne une liste de documents multimédia
  * 
  * `<BOUCLE(DOCUMENTS)>`
  *
