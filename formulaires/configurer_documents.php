@@ -10,19 +10,36 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion du formulaire de configuration des documents
+ *
+ * @package SPIP\Medias\Formulaires
+**/
+
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+/**
+ * Chargement du formulaire de configuration des documents
+ *
+ * @return array
+ *     Environnement du formulaire
+**/
 function formulaires_configurer_documents_charger_dist(){
 	foreach(array(
 		"documents_objets",
 		"documents_date",
 		) as $m)
-		$valeurs[$m] = $GLOBALS['meta'][$m];
+		$valeurs[$m] = isset($GLOBALS['meta'][$m]) ? $GLOBALS['meta'][$m] : '';
 	$valeurs['documents_objets']=explode(',',$valeurs['documents_objets']);
 	return $valeurs;
 }
 
-
+/**
+ * Traitement du formulaire de configuration des documents
+ *
+ * @return array
+ *     Retours du traitement
+**/
 function formulaires_configurer_documents_traiter_dist(){
 	$res = array('editable'=>true);
 	if (!is_null($v=_request($m='documents_date')))
