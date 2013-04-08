@@ -10,8 +10,25 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Gestion du formulaire de téléversement de documents
+ *
+ * @package SPIP\Medias\Formulaires
+ */
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
+/**
+ * Déterminer le mode d'upload si la valeur au chargement du formulaire est "auto"
+ * 
+ * @param string $mode
+ * 		Le mode passé au formulaire
+ * @param int|string $id_document
+ * 		L'identifiant numérique du document à remplacer ou "new" par défaut
+ * @param string $objet
+ * 		Le type d'objet sur lequel ajouter le document
+ * @return string $mode
+ * 		Le mode définitif 
+ */
 function joindre_determiner_mode($mode,$id_document,$objet){
 	if ($mode=='auto'){
 		if (intval($id_document))
@@ -25,6 +42,29 @@ function joindre_determiner_mode($mode,$id_document,$objet){
 	return $mode;
 }
 
+/**
+ * Chargement du formulaire
+ * 
+ * @param int|string $id_document
+ * 		L'identidiant numérique du document s'il est à remplacer, sinon "new"
+ * @param int $id_objet
+ * 		L'identifiant numérique de l'objet sur lequel on ajoute le document
+ * @param string $objet
+ * 		Le type de l'objet sur lequel on ajoute le document
+ * @param string $mode
+ * 		Le mode du document (auto,choix,document,image,vignette...), par défaut auto
+ * @param string $galerie
+ * 		Passer optionnellement une galerie jointe au form, plus utilise nativement, 
+ * 		on prefere la mise a jour apres upload par ajaxReload('documents')
+ * @param bool|string $proposer_media
+ * 		Doit on afficher la médiathèque ?  par défaut oui
+ * 		Valeurs possibles si string : false,'non','no'. 
+ * @param bool|string $proposer_ftp 
+ * 		Doit on afficher le ftp ? par défaut oui
+ * 		Valeurs possibles si string : false,'non','no'.
+ * @return array $valeurs
+ * 		Les valeurs chargées dans le formulaire
+ */
 function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=0,$objet='',$mode = 'auto',$galerie = false, $proposer_media=true, $proposer_ftp=true){
 	$valeurs = array();
 	$mode = joindre_determiner_mode($mode,$id_document,$objet);
@@ -33,31 +73,23 @@ function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=
 	$valeurs['_mode'] = $mode;
 	
 	$valeurs['url'] = 'http://';
-	$valeurs['fichier_upload'] = '';
-	
-	$valeurs['_options_upload_ftp'] = '';
-	$valeurs['_dir_upload_ftp'] = '';
-	
-	$valeurs['joindre_upload']=''; 
-	$valeurs['joindre_distant']=''; 
-	$valeurs['joindre_ftp']='';
-	$valeurs['joindre_mediatheque']='';
+	$valeurs['fichier_upload'] = $valeurs['_options_upload_ftp'] = $valeurs['_dir_upload_ftp'] = '';	
+	$valeurs['joindre_upload'] = $valeurs['joindre_distant'] = $valeurs['joindre_ftp'] = $valeurs['joindre_mediatheque'] = ''; 
 
 	$valeurs['editable'] = ' ';
-	if (intval($id_document)){
+	if (intval($id_document))
 		$valeurs['editable'] = autoriser('modifier','document',$id_document)?' ':'';
-	}
 	
 	$valeurs['proposer_media'] = is_string($proposer_media) ? (preg_match('/^(false|non|no)$/i', $proposer_media) ? false : true) : $proposer_media;
 	$valeurs['proposer_ftp'] = is_string($proposer_ftp) ? (preg_match('/^(false|non|no)$/i', $proposer_ftp) ? false : true) : $proposer_ftp;
 	
 	# regarder si un choix d'upload FTP est vraiment possible
 	if (
-	 $valeurs['proposer_ftp']
-	 AND test_espace_prive() # ??
-	 AND ($mode == 'document' OR $mode == 'choix') # si c'est pour un document
-	 //AND !$vignette_de_doc		# pas pour une vignette (NB: la ligne precedente suffit, mais si on la supprime il faut conserver ce test-ci)
-	 AND $GLOBALS['flag_upload']
+		$valeurs['proposer_ftp']
+		AND test_espace_prive() # ??
+		AND ($mode != 'image') AND ($mode != 'vignette') # si c'est pour un document
+		//AND !$vignette_de_doc		# pas pour une vignette (NB: la ligne precedente suffit, mais si on la supprime il faut conserver ce test-ci)
+		AND $GLOBALS['flag_upload']
 	 ) {
 		include_spip('inc/documents');
 		if ($dir = determine_upload('documents')) {
@@ -91,23 +123,44 @@ function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=
 	return $valeurs;
 }
 
-
+/**
+ * Vérification du formulaire
+ * 
+ * @param int|string $id_document
+ * 		L'identidiant numérique du document s'il est à remplacer, sinon "new"
+ * @param int $id_objet
+ * 		L'identifiant numérique de l'objet sur lequel on ajoute le document
+ * @param string $objet
+ * 		Le type de l'objet sur lequel on ajoute le document
+ * @param string $mode
+ * 		Le mode du document (auto,choix,document,image,vignette...), par défaut auto
+ * @param string $galerie
+ * 		Passer optionnellement une galerie jointe au form, plus utilise nativement, 
+ * 		on prefere la mise a jour apres upload par ajaxReload('documents')
+ * @param bool|string $proposer_media
+ * 		Doit on afficher la médiathèque ?  par défaut oui
+ * 		Valeurs possibles si string : false,'non','no'. 
+ * @param bool|string $proposer_ftp 
+ * 		Doit on afficher le ftp ? par défaut oui
+ * 		Valeurs possibles si string : false,'non','no'.
+ * @return array $erreurs
+ * 		Les erreurs éventuelles dans un tableau
+ */
 function formulaires_joindre_document_verifier_dist($id_document='new',$id_objet=0,$objet='',$mode = 'auto',$galerie = false, $proposer_media=true, $proposer_ftp=true){
 	include_spip('inc/joindre_document');
 	
 	$erreurs = array();
 	// on joint un document deja dans le site
 	if (_request('joindre_mediatheque')){
-    $refdoc_joindre = intval(preg_replace(',^(doc|document|img),','',_request('refdoc_joindre')));
+    	$refdoc_joindre = intval(preg_replace(',^(doc|document|img),','',_request('refdoc_joindre')));
 		if (!sql_getfetsel('id_document','spip_documents','id_document='.intval($refdoc_joindre)))
 			$erreurs['message_erreur'] = _T('medias:erreur_aucun_document');
 	}
 	// sinon c'est un upload
 	else {
 		$files = joindre_trouver_fichier_envoye();
-		if (is_string($files)){
+		if (is_string($files))
 			$erreurs['message_erreur'] = $files;
-		}
 		elseif(is_array($files)){
 			// erreur si on a pas trouve de fichier
 			if (!count($files))
@@ -128,8 +181,8 @@ function formulaires_joindre_document_verifier_dist($id_document='new',$id_objet
 				// si ce n'est pas deja un post de zip confirme
 				// regarder si il faut lister le contenu du zip et le presenter
 				if (!count($erreurs)
-				 AND !_request('joindre_zip')
-				 AND $contenu_zip = joindre_verifier_zip($files)){
+					AND !_request('joindre_zip')
+					AND $contenu_zip = joindre_verifier_zip($files)){
 					list($fichiers,$erreurs,$tmp_zip) = $contenu_zip;
 					if ($fichiers)
 						$erreurs['lister_contenu_archive'] = recuperer_fond("formulaires/inc-lister_archive_jointe",array('chemin_zip'=>$tmp_zip,'liste_fichiers_zip'=>$fichiers,'erreurs_fichier_zip'=>$erreurs));
@@ -146,7 +199,29 @@ function formulaires_joindre_document_verifier_dist($id_document='new',$id_objet
 	return $erreurs;
 }
 
-
+/**
+ * Traitement du formulaire
+ * 
+ * @param int|string $id_document
+ * 		L'identidiant numérique du document s'il est à remplacer, sinon "new"
+ * @param int $id_objet
+ * 		L'identifiant numérique de l'objet sur lequel on ajoute le document
+ * @param string $objet
+ * 		Le type de l'objet sur lequel on ajoute le document
+ * @param string $mode
+ * 		Le mode du document (auto,choix,document,image,vignette...), par défaut auto
+ * @param string $galerie
+ * 		Passer optionnellement une galerie jointe au form, plus utilise nativement, 
+ * 		on prefere la mise a jour apres upload par ajaxReload('documents')
+ * @param bool|string $proposer_media
+ * 		Doit on afficher la médiathèque ?  par défaut oui
+ * 		Valeurs possibles si string : false,'non','no'. 
+ * @param bool|string $proposer_ftp 
+ * 		Doit on afficher le ftp ? par défaut oui
+ * 		Valeurs possibles si string : false,'non','no'.
+ * @return array $res
+ * 		Le tableau renvoyé par les CVT avec le message et editable
+ */
 function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=0,$objet='',$mode = 'auto',$galerie = false, $proposer_media=true, $proposer_ftp=true){
 	$res = array('editable'=>true);
 	$ancre = '';
@@ -198,9 +273,8 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 			if (!is_numeric($doc))
 				$messages_erreur[] = $doc;
 			// cas qui devrait etre traite en amont
-			elseif(!$doc){
+			elseif(!$doc)
 				$messages_erreur[] = _T('medias:erreur_insertion_document_base',array('fichier'=>'<em>???</em>'));
-			}
 			else{
 				if (!$ancre)
 					$ancre = $doc;
@@ -209,9 +283,8 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 		}
 		if (count($messages_erreur))
 			$res['message_erreur'] = implode('<br />',$messages_erreur);
-		if ($sel){
+		if ($sel)
 			$res['message_ok'] = singulier_ou_pluriel(count($sel),'medias:document_installe_succes','medias:nb_documents_installe_succes');
-		}
 		if ($ancre)
 			$res['redirect'] = "#doc$ancre";
 	}
@@ -221,38 +294,36 @@ function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=
 			$callback .= "jQuery('#doc$ancre a.editbox').eq(0).focus();";
 		if (count($sel)){
 			$sel = "#doc".implode(",#doc",$sel);
-		  $callback .= "jQuery('$sel').animateAppend();";
+			$callback .= "jQuery('$sel').animateAppend();";
 		}
 		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents',{callback:function(){ $callback }});});";
 		$js = "<script type='text/javascript'>$js</script>";
 		if (isset($res['message_erreur']))
 			$res['message_erreur'].= $js;
 		else
-	    $res['message_ok'] .= $js;
+	    	$res['message_ok'] .= $js;
 	}
-
 	return $res;
 }
 
-
-
 /**
- * Retourner le contenu du select HTML d'utilisation de fichiers envoyes
+ * Retourner le contenu du select HTML d'utilisation de fichiers envoyes par le serveur
  *
  * @param string $dir
+ * 		Le répertoire de recherche des documents
  * @param string $mode
- * @return string
+ * 		Le mode d'ajout de document
+ * @return string $texte
+ * 		Le contenu HTML du selecteur de documents
  */
 function joindre_options_upload_ftp($dir, $mode = 'document') {
 	$fichiers = preg_files($dir);
-	$exts = array();
-	$dirs = array(); 
-	$texte_upload = array();
+	$exts = $dirs = $texte_upload = array();
 
 	// en mode "charger une image", ne proposer que les inclus
-	$inclus = ($mode == 'document' OR $mode =='choix')
-		? ''
-		: " AND inclus='image'";
+	$inclus = ($mode == 'image' OR $mode =='vignette')
+		? " AND inclus='image'"
+		: '';
 
 	foreach ($fichiers as $f) {
 		$f = preg_replace(",^$dir,",'',$f);
@@ -269,24 +340,24 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 			$k = 2*substr_count($f,'/');
 			$n = strrpos($f, "/");
 			if ($n === false)
-			  $lefichier = $f;
+				$lefichier = $f;
 			else {
-			  $lefichier = substr($f, $n+1, strlen($f));
-			  $ledossier = substr($f, 0, $n);
-			  if (!in_array($ledossier, $dirs)) {
-				$texte_upload[] = "\n<option value=\"$ledossier\">"
-				. str_repeat("&nbsp;",$k) 
-				._T('medias:tout_dossier_upload', array('upload' => $ledossier))
-				."</option>";
-				$dirs[]= $ledossier;
-			  }
+				$lefichier = substr($f, $n+1, strlen($f));
+				$ledossier = substr($f, 0, $n);
+				if (!in_array($ledossier, $dirs)) {
+					$texte_upload[] = "\n<option value=\"$ledossier\">"
+					.str_repeat("&nbsp;",$k) 
+					._T('medias:tout_dossier_upload', array('upload' => $ledossier))
+					."</option>";
+					$dirs[]= $ledossier;
+				}
 			}
 
 			if ($exts[$ext] == 'oui')
-			  $texte_upload[] = "\n<option value=\"$f\">" .
-			    str_repeat("&nbsp;",$k+2) .
-			    $lefichier .
-			    "</option>";
+				$texte_upload[] = "\n<option value=\"$f\">"
+				.str_repeat("&nbsp;",$k+2)
+				.$lefichier
+				."</option>";
 		}
 	}
 
@@ -296,7 +367,6 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 				._T('medias:info_installer_tous_documents')
 				."</option>" . $texte;
 	}
-
 	return $texte;
 }
 
@@ -304,8 +374,10 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 /**
  * Lister les fichiers contenus dans un zip
  *
- * @param unknown_type $files
- * @return unknown
+ * @param array $files
+ * 		La liste des fichiers
+ * @return string $res
+ * 		La liste HTML des fichiers <li>...</li>
  */
 function joindre_liste_contenu_tailles_archive($files) {
 	include_spip('inc/charsets'); # pour le nom de fichier
@@ -323,17 +395,23 @@ function joindre_liste_contenu_tailles_archive($files) {
 	return $res;
 }
 
-
+/**
+ * Lister les erreurs dans une archive jointe
+ * Utilisé formulaires/inc-lister_archive_jointe.html
+ * 
+ * @param array $erreurs
+ * 		La liste des erreurs
+ * @return string $res
+ * 		Le code HTML des erreurs
+ */
 function joindre_liste_erreurs_to_li($erreurs){
 	if (count($erreurs)==1)
 		return "<p>".reset($erreurs)."</p>";
 
-
 	$res = implode("</li><li>",$erreurs);
 	if (strlen($res)) $res = "<li>$res</li></ul>";
-	if (count($erreurs)>4){
+	if (count($erreurs)>4)
 		$res = "<p style='cursor:pointer;' onclick='jQuery(this).siblings(\"ul\").toggle();return false;'>"._T("medias:erreurs_voir",array('nb'=>count($erreurs)))."</p><ul class=\"spip none-js\">".$res."</ul>";
-	}
 	else
 		$res = "<ul class=\"spip\">$res</ul>";
 	return $res;
