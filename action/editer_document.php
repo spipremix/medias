@@ -123,7 +123,8 @@ function document_modifier($id_document, $set=false) {
 		return $err;
 
 	// nettoyer l'ancien fichier si necessaire
-	if ($champs['fichier'] // un plugin a pu interdire la modif du fichier en virant le champ
+	if (isset($champs['fichier']) // un plugin a pu interdire la modif du fichier en virant le champ
+	 AND $champs['fichier']
 	 AND $ancien_fichier // on avait bien note le nom du fichier avant la modif
 	 AND $ancien_fichier!==$champs['fichier'] // et il a ete modifie
 	 AND @file_exists($f = get_spip_doc($ancien_fichier)))
