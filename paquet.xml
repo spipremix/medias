@@ -40,6 +40,7 @@
 
 	<utilise nom="Z" compatibilite="[1.2.1;[" />
 	<utilise nom="mediabox" compatibilite="[0.5.0;[" />
+	<utilise nom="mots" compatibilite="[2.5.2;[" />
 
 	<menu nom="documents" titre="medias:info_documents" parent="menu_edition" icone="images/portfolio-16.png" />
 
