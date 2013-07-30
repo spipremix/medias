@@ -122,7 +122,9 @@ function renseigner_taille_dimension_image($fichier,$ext){
 			$meta = $metadata($fichier);
 		}
 	}
-	
+
+	$meta = pipeline('renseigner_document',array('args'=>array('extension'=>$ext,'fichier'=>$fichier),'data' => $meta));
+
 	include_spip('inc/filtres'); # pour objet_info()
 	$editables = objet_info('document','champs_editables');
 	foreach($meta as $m=>$v)
