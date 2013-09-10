@@ -112,7 +112,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_document' => 'Modifier le document',
 	'info_portfolio' => 'Portfolio',
 	'info_referencer_doc_distant' => 'Référencer un document sur l\'internet :',
-	'info_sans_vignette' => 'Sans vignette', # NEW
 	'info_statut_document' => 'Ce document est :',
 	'info_telecharger' => 'Télécharger depuis ton ordinateur :',
 	'infos' => 'Infos techniques',
@@ -126,7 +125,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_credits' => 'Crédits',
 	'label_fichier' => 'Fichier',
 	'label_fichier_vignette' => 'Vignette',
-	'label_paginer_par' => 'Paginer par :', # NEW
 	'label_parents' => 'Ce document est lié à',
 	'label_refdoc_joindre' => 'Document numéro',
 	'lien_tout_enlever' => 'Tout enlever',
@@ -137,7 +135,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_file' => 'Autres',
 	'media_image' => 'Images',
 	'media_video' => 'Séquences',
-	'miniature_automatique_active' => 'SPIP génèrera automatiquement une miniature de l\'image', # NEW
 
 	// N
 	'nb_documents_attache_succes' => '@nb@ documents ont bien été ajoutés',
