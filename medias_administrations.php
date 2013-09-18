@@ -150,6 +150,8 @@ function medias_maj_meta_documents(){
 	$config = array();
 	if (isset($GLOBALS['meta']['documents_article']) AND $GLOBALS['meta']['documents_article']!=='non')
 		$config[] = 'spip_articles';
+	if (!isset($GLOBALS['meta']['documents_article']))
+		$config[] = 'spip_articles'; // retablir fonctionnement spip 2: ajout docs sur articles possible par défaut
 	if (isset($GLOBALS['meta']['documents_rubrique']) AND $GLOBALS['meta']['documents_rubrique']!=='non')
 		$config[] = 'spip_rubriques';
 	ecrire_meta('documents_objets',implode(',',$config));
