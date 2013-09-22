@@ -13,7 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'aucun_file' => 'Aucun document',
 	'aucun_image' => 'Aucune image',
 	'aucun_video' => 'Aucune séquence',
-	'aucune_utilisation' => 'Ce document n\'est pas utilisé',
+	'aucune_utilisation' => 'Ce document n’est pas utilisé',
 	'aucune_vignette' => 'Aucune vignette',
 
 	// B
@@ -29,7 +29,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_download_sur_le_web' => 'internet',
 	'bouton_enlever_document' => 'Détacher', # MODIF
 	'bouton_enlever_supprimer_document' => 'Supprimer',
-	'bouton_enlever_supprimer_document_confirmation' => 'Es-tu sûr de vouloir supprimer le document ?', # MODIF
+	'bouton_enlever_supprimer_document_confirmation' => 'Es-tu sûr de vouloir supprimer le document ?', # MODIF
 	'bouton_modifier_document' => 'Modifier',
 	'bouton_parcourir' => 'Parcourir...', # MODIF
 	'bouton_refresh_document' => 'Rafraîchir le document', # MODIF
@@ -38,7 +38,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_remplacer_image_document' => 'Remplacer par une image ou un document',
 	'bouton_supprimer' => 'Supprimer',
 	'bouton_supprimer_tous_orphelins' => 'Supprimer tous les orphelins',
-	'bouton_supprimer_tous_orphelins_confirmation' => 'Es-tu sûr de vouloir supprimer @nb@ orphelins ?', # MODIF
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Es-tu sûr de vouloir supprimer @nb@ orphelins ?', # MODIF
 	'bouton_upload' => 'Télécharger', # MODIF
 
 	// D
@@ -66,19 +66,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'entree_dimensions' => 'Dimensions :',
 	'entree_titre_document' => 'Titre du document :',
-	'entree_titre_image' => 'Titre de l\'image :',
-	'erreur_aucun_document' => 'Ce document n\'existe pas dans la mediathèque', # MODIF
-	'erreur_aucun_fichier' => 'Aucun fichier n\'a été trouvé',
-	'erreur_chemin_distant' => 'Le fichier distant @nom@ n\'a pas pu être trouvé',
-	'erreur_chemin_ftp' => 'Le fichier indiqué n\'a pas été trouvé sur le serveur',
+	'entree_titre_image' => 'Titre de l’image :',
+	'erreur_aucun_document' => 'Ce document n’existe pas dans la mediathèque', # MODIF
+	'erreur_aucun_fichier' => 'Aucun fichier n’a été trouvé',
+	'erreur_chemin_distant' => 'Le fichier distant @nom@ n’a pas pu être trouvé',
+	'erreur_chemin_ftp' => 'Le fichier indiqué n’a pas été trouvé sur le serveur',
 	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@',
 	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers',
-	'erreur_ecriture_fichier' => 'Erreur lors de l\'écriture du fichier sur le disque',
+	'erreur_ecriture_fichier' => 'Erreur lors de l’écriture du fichier sur le disque',
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image',
-	'erreur_indiquez_un_fichier' => 'Indiques un fichier !',
-	'erreur_insertion_document_base' => 'Impossible d\'enregistrer le document @fichier@ en base de données',
+	'erreur_indiquez_un_fichier' => 'Indiques un fichier !',
+	'erreur_insertion_document_base' => 'Impossible d’enregistrer le document @fichier@ en base de données',
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette',
-	'erreur_upload_type_interdit' => 'Le téléchargement des fichiers du type de @nom@ n\'est pas autorisé',
+	'erreur_upload_type_interdit' => 'Le téléchargement des fichiers du type de @nom@ n’est pas autorisé',
 	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@',
 	'erreurs' => '@nb@ erreurs',
 	'erreurs_voir' => 'Voir les @nb@ erreurs',
@@ -87,7 +87,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'fichier_distant' => 'Fichier distant',
 	'fichier_manquant' => 'Fichier manquant',
 	'fichier_modifie' => 'Le fichier a été modifié. Cliquez sur enregistrer.',
-	'format_date_incorrect' => 'La date ou l\'heure sont incorrectes',
+	'format_date_incorrect' => 'La date ou l’heure sont incorrectes',
 
 	// I
 	'icone_creer_document' => 'Ajouter un document',
@@ -97,7 +97,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'image_tourner_gauche' => 'Rotation 90° à gauche',
 	'info_doc_max_poids' => 'Les documents doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).',
 	'info_document' => 'Document',
-	'info_document_indisponible' => 'Ce document n\'est pas disponible',
+	'info_document_indisponible' => 'Ce document n’est pas disponible',
 	'info_documents' => 'Documents',
 	'info_gauche_numero_document' => 'DOCUMENT NUMÉRO',
 	'info_hauteur' => 'Hauteur',
@@ -111,7 +111,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_logo_max_taille' => 'Les logos doivent obligatoirement faire moins de @maxi@ (ce fichier fait @actuel@).',
 	'info_modifier_document' => 'Modifier le document',
 	'info_portfolio' => 'Portfolio',
-	'info_referencer_doc_distant' => 'Référencer un document sur l\'internet :',
+	'info_referencer_doc_distant' => 'Référencer un document sur l’internet :',
 	'info_statut_document' => 'Ce document est :',
 	'info_telecharger' => 'Télécharger depuis ton ordinateur :',
 	'infos' => 'Infos techniques',
@@ -153,13 +153,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titre',
 
 	// T
-	'texte_documents_joints' => 'Tu peux autoriser l\'ajout de documents (fichiers bureautiques, images,
+	'texte_documents_joints' => 'Tu peux autoriser l’ajout de documents (fichiers bureautiques, images,
  multimédia, etc.) aux articles et/ou aux rubriques. Ces fichiers
  peuvent ensuite être référencés dans
- l\'article, ou affichés séparément.</p>', # MODIF
-	'texte_documents_joints_2' => 'Ce réglage n\'empêche pas l\'insertion d\'images directement dans les articles.', # MODIF
+ l’article, ou affichés séparément.</p>', # MODIF
+	'texte_documents_joints_2' => 'Ce réglage n’empêche pas l’insertion d’images directement dans les articles.', # MODIF
 	'titre_documents_joints' => 'Documents joints',
-	'titre_page_documents_edit' => 'Modifier le document : @titre@',
+	'titre_page_documents_edit' => 'Modifier le document : @titre@',
 	'tous_les_medias' => 'Tous les medias', # MODIF
 	'tout_dossier_upload' => 'Tout le dossier @upload@',
 	'tout_voir' => 'Tout voir',
@@ -172,15 +172,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'un_video' => '1 séquence',
 	'une_utilisation' => '1 utilisation',
 	'upload_fichier_zip' => 'Fichier ZIP',
-	'upload_fichier_zip_texte' => 'Le fichier que tu proposes d\'installer est un fichier Zip.',
+	'upload_fichier_zip_texte' => 'Le fichier que tu proposes d’installer est un fichier Zip.',
 	'upload_fichier_zip_texte2' => 'Ce fichier peut être :',
 	'upload_info_mode_document' => 'Déposer dans le portfolio',
 	'upload_info_mode_image' => 'Retirer du portfolio',
 	'upload_limit' => 'Ce fichier est trop gros pour le serveur ; la taille maximum autorisée en <i>upload</i> est de @max@.',
 	'upload_zip_conserver' => 'Conserver l’archive après extraction', # MODIF
-	'upload_zip_decompacter' => 'décompressé et chaque élément qu\'il contient installé sur le site. Les fichiers qui seront alors installés sur le site sont :',
+	'upload_zip_decompacter' => 'décompressé et chaque élément qu’il contient installé sur le site. Les fichiers qui seront alors installés sur le site sont :',
 	'upload_zip_mode_document' => 'Déposer toutes les images dans le portfolio',
-	'upload_zip_telquel' => 'installé tel quel, en tant qu\'archive compressée Zip ;',
+	'upload_zip_telquel' => 'installé tel quel, en tant qu’archive compressée Zip ;',
 	'upload_zip_titrer' => 'Titrer selon le nom des fichiers',
 
 	// V

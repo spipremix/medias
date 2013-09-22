@@ -13,7 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'aucun_file' => 'Cap document',
 	'aucun_image' => 'Cap imatge',
 	'aucun_video' => 'Cap seqüència',
-	'aucune_utilisation' => 'Aquest document no s\'ha utilitzat',
+	'aucune_utilisation' => 'Aquest document no s’ha utilitzat',
 	'aucune_vignette' => 'Cap miniatura',
 
 	// B
@@ -49,9 +49,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => '@nb@ usos',
 	'des_videos' => '@nb@ seqüències',
 	'descriptif' => 'Descripció',
-	'document_attache_succes' => 'El document s\'ha afegit correctament',
-	'document_copie_locale_succes' => 'El fitxer s\'ha copiat al lloc correctament',
-	'document_installe_succes' => 'El fitxer s\'ha carregat correctament',
+	'document_attache_succes' => 'El document s’ha afegit correctament',
+	'document_copie_locale_succes' => 'El fitxer s’ha copiat al lloc correctament',
+	'document_installe_succes' => 'El fitxer s’ha carregat correctament',
 	'document_vu' => 'Inserir al text',
 	'documents' => 'Mediateca', # MODIF
 	'documents_brises' => 'Trencats',
@@ -68,17 +68,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_document' => 'Títol del document:',
 	'entree_titre_image' => 'Títol de la imatge:',
 	'erreur_aucun_document' => 'Aquest document no existeix a la mediateca', # MODIF
-	'erreur_aucun_fichier' => 'No s\'ha trobat cap fitxer',
-	'erreur_chemin_distant' => 'El fitxer distant @nom@ no s\'ha pogut trobar',
-	'erreur_chemin_ftp' => 'El fitxer indicat no s\'ha trobat al servidor',
+	'erreur_aucun_fichier' => 'No s’ha trobat cap fitxer',
+	'erreur_chemin_distant' => 'El fitxer distant @nom@ no s’ha pogut trobar',
+	'erreur_chemin_ftp' => 'El fitxer indicat no s’ha trobat al servidor',
 	'erreur_copie_fichier' => 'Impossible copiar el fitxer @nom@',
 	'erreur_dossier_tmp_manquant' => 'Falta una carpeta temporal per descarregar els fitxers ',
-	'erreur_ecriture_fichier' => 'Error durant l\'escriptura del fitxer al disc',
+	'erreur_ecriture_fichier' => 'Error durant l’escriptura del fitxer al disc',
 
 	// I
 	'image_tourner_180' => 'Girar 180°',
 	'image_tourner_droite' => 'Girar 90° cap a la dreta',
-	'image_tourner_gauche' => 'Girar 90° cap a l\'esquerre',
+	'image_tourner_gauche' => 'Girar 90° cap a l’esquerre',
 	'info_document' => 'Document',
 	'info_document_indisponible' => 'Aquest document no està disponible',
 	'info_documents' => 'Documents',
@@ -93,8 +93,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'item_non_autoriser_selectionner_date_en_ligne' => 'La data dels documents és la de quan han estat afegits al lloc',
 
 	// T
-	'texte_documents_joints' => 'Es pot permetre afegir documents (fitxers ofimàtics, imatges, multimèdia, etc.) als articles i/o a les seccions. Aquests fitxers poden estar referenciats a dins l\'article, o mostrats separadament.</p>', # MODIF
-	'texte_documents_joints_2' => 'Aquesta regla no impideix pas l\'inserció d\'imatges directament als articles.', # MODIF
+	'texte_documents_joints' => 'Es pot permetre afegir documents (fitxers ofimàtics, imatges, multimèdia, etc.) als articles i/o a les seccions. Aquests fitxers poden estar referenciats a dins l’article, o mostrats separadament.</p>', # MODIF
+	'texte_documents_joints_2' => 'Aquesta regla no impideix pas l’inserció d’imatges directament als articles.', # MODIF
 	'titre_documents_joints' => 'Documents adjunts',
 	'tout_dossier_upload' => 'Tot el directori @upload@',
 
@@ -103,7 +103,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_fichier_zip_texte' => 'El fitxer que voleu instal·lar és un fitxer Zip.',
 	'upload_fichier_zip_texte2' => 'El fitxer pot ser:',
 	'upload_limit' => 'El fitxer és massa gran pel servidor; la   mida màxima autoritzada en <i>upload</i> és de @max@.',
-	'upload_zip_conserver' => 'Conservar l\'arxiu desprès de l\'extracció', # MODIF
+	'upload_zip_conserver' => 'Conservar l’arxiu desprès de l’extracció', # MODIF
 	'upload_zip_decompacter' => 'descomprimit i cada element que conté instal·lat en el lloc Web. Els fitxers que llavors seran instal·lat en el lloc Web són:',
 	'upload_zip_telquel' => 'instal·lat tal qual, com a arxiu comprimit Zip;',
 	'upload_zip_titrer' => 'Titular segons el nom dels fitxers'
