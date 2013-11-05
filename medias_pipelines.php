@@ -123,13 +123,13 @@ function medias_post_edition($flux){
 	// le serveur n'est pas toujours la
 	$serveur = (isset($flux['args']['serveur']) ? $flux['args']['serveur'] : '');
 	// si on ajoute un document, mettre son statut a jour
-	if($flux['args']['action']=='ajouter_document'){
+	if (isset($flux['args']['action']) and $flux['args']['action']=='ajouter_document'){
 		include_spip('action/editer_document');
 		// mettre a jour le statut si necessaire
 		document_instituer($flux['args']['id_objet']);
 	}
 	// si on institue un objet, mettre ses documents lies a jour
-	elseif ($flux['args']['table']!=='spip_documents'){
+	elseif (isset($flux['args']['table']) and $flux['args']['table']!=='spip_documents'){
 		$type = isset($flux['args']['type'])?$flux['args']['type']:objet_type($flux['args']['table']);
 		// verifier d'abord les doublons !
 		include_spip('inc/autoriser');
@@ -139,7 +139,7 @@ function medias_post_edition($flux){
 			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$type,id_table_objet($type, $serveur),$table_objet,$flux['args']['table'], '', $serveur);
 		}
 
-		if($flux['args']['action']=='instituer' OR isset($flux['data']['statut'])){
+		if (($flux['args']['action'] and $flux['args']['action']=='instituer') OR isset($flux['data']['statut'])){
 			include_spip('base/abstract_sql');
 			$id = $flux['args']['id_objet'];
 			$docs = array_map('reset',sql_allfetsel('id_document','spip_documents_liens','id_objet='.intval($id).' AND objet='.sql_quote($type)));
@@ -150,7 +150,7 @@ function medias_post_edition($flux){
 		}
 	}
 	else {
-		if ($flux['args']['table']!=='spip_documents'){
+		if (isset($flux['args']['table']) and $flux['args']['table']!=='spip_documents'){
 			// verifier les doublons !
 			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc','inc');
 			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$flux['args']['type'],id_table_objet($flux['args']['type'], $serveur),$flux['args']['table_objet'],$flux['args']['spip_table_objet'], '', $serveur);
