@@ -43,6 +43,15 @@ function medias_check_statuts($affiche = false){
  * @param string $version_cible
  */
 function medias_upgrade($nom_meta_base_version,$version_cible){
+
+	// ne pas installer tant qu'on est pas a jour sur version base SPIP
+	// cas typique d'un upgrade qui commence par suppression de connect.php
+	// SPIP lance la maj des plugins lors de la connexion, alors que l'upgrade SPIP
+	// a pas encore ete joue : ca casse cet upgrade quand on migre depuis un tres vieux SPIP
+	if (isset($GLOBALS['meta']['version_installee'])
+		AND ($GLOBALS['spip_version_base'] != (str_replace(',','.',$GLOBALS['meta']['version_installee']))))
+		return;
+
 	if (!isset($GLOBALS['meta'][$nom_meta_base_version])){
 		$trouver_table = charger_fonction('trouver_table','base');
 		if ($desc = $trouver_table('spip_documents')
