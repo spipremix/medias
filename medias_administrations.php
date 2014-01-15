@@ -146,7 +146,7 @@ function medias_upgrade($nom_meta_base_version,$version_cible){
 		array('creer_base_types_doc')
 	);
 	$maj['1.2.5'] = array(
-		// ajout de tar
+		// ajout de json
 		array('creer_base_types_doc')
 	);
 	include_spip('base/upgrade');
