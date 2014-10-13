@@ -20,7 +20,7 @@ if (!editbox_initialized){
 }
 if (typeof multifile!="undefined" && typeof jQuery.MultiFile=="undefined"){
 jQuery.getScript(multifile,function(){
-	jQuery.MultiFile();
-	onAjaxLoad(function(){jQuery.MultiFile();});
+	jQuery("input[type=file].multi").MultiFile();
+	onAjaxLoad(function(){if (typeof jQuery!="undefined") jQuery("input[type=file].multi").MultiFile();});
 });
 }
