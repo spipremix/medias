@@ -40,7 +40,7 @@
 			})(jQuery);
 		}
 		if (typeof mejsloader=="undefined"){
-			mejsloader = jQuery.getScript("#CHEMIN{lib/mejs/mediaelement-and-player.min.js}",function(){
+			mejsloader = jQuery.getScript("[(#CHEMIN{lib/mejs/mediaelement-and-player.min.js}|timestamp)]",function(){
 				mejs_init(); // init immediate des premiers players dans la page
 				jQuery(mejs_init); // init exhaustive de tous les players
 				onAjaxLoad(mejs_init); // init lors d'un load ajax
@@ -48,6 +48,6 @@
 		}
 	})();
 /*]]>*/</script>
-<link rel="stylesheet" href="#CHEMIN{lib/mejs/mediaelementplayer.min.css}" />
+<link rel="stylesheet" href="[(#CHEMIN{lib/mejs/mediaelementplayer.min.css}|timestamp)]" />
 </div>
 </BOUCLE_tous>
