@@ -51,7 +51,7 @@
 					[(#ENV**{_inclus}|=={embed}|?{
 						[(#MODELE{emb,id_document=#ENV{id_document,''},largeur=300,hauteur=#HAUTEUR|min{200}})]
 						,
-						[(#MODELE{doc,id_document=#ENV{id_document,''},largeur=300,hauteur==#HAUTEUR|min{200}}|extraire_balise{a})]
+						[(#MODELE{doc,id_document=#ENV{id_document,''},largeur=300,hauteur=#HAUTEUR|min{200}}|extraire_balise{a})]
 						})]
 				]
 	  	</li>
