@@ -88,12 +88,14 @@ function renseigner_source_distante($source){
  *     Le fichier à examiner 
  * @param string $ext
  *     L'extension du fichier à examiner
+ * @param bool $distant
+ *     Indique que le fichier peut etre distant, on essaiera alors d'en recuperer un bout pour en lire les meta infos
  * @return array|string $infos
  *
  *     - Si c'est une chaîne, c'est une erreur
  *     - Si c'est un tableau, l'ensemble des informations récupérées du fichier
  */
-function renseigner_taille_dimension_image($fichier,$ext){
+function renseigner_taille_dimension_image($fichier,$ext,$distant=false){
 
 	$infos = array(
 		'largeur'=>0,
@@ -101,14 +103,30 @@ function renseigner_taille_dimension_image($fichier,$ext){
 		'type_image'=>'',
 		'taille'=>0
 	);
-	
+
 	// Quelques infos sur le fichier
 	if (
 		!$fichier
 		OR !@file_exists($fichier)
 		OR !$infos['taille'] = @intval(filesize($fichier))) {
+
+		if ($distant){
+			// on ne saura pas la taille
+			unset($infos['taille']);
+
+			// recuperer un debut de fichier 512ko semblent suffire
+			$tmp = _DIR_TMP . md5($fichier);
+			$res = recuperer_url($fichier,array('file'=>$tmp,'taille_max'=>512*1024));
+			if (!$res){
+				spip_log ("Echec copie du fichier $fichier");
+				return _T('medias:erreur_copie_fichier',array('nom'=> $fichier));
+			}
+			$fichier = $tmp;
+		}
+		else {
 			spip_log ("Echec copie du fichier $fichier");
 			return _T('medias:erreur_copie_fichier',array('nom'=> $fichier));
+		}
 	}
 
 	// chercher une fonction de description

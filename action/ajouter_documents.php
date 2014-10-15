@@ -117,6 +117,12 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 			# NB: dans les bonnes conditions (fichier autorise et pas trop gros)
 			# $a['fichier'] est une copie locale du fichier
 
+			$infos = renseigner_taille_dimension_image($champs['fichier'],$champs['extension'], true);
+			// on ignore erreur eventuelle sur $infos car on est distant, ca ne marche pas forcement
+			if (is_array($infos)){
+				$champs = array_merge($champs, $infos);
+			}
+
 			unset($champs['type_image']);
 		}
 		// on ne doit plus arriver ici, car l'url distante a ete verifiee a la saisie !
