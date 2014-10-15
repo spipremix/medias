@@ -45,13 +45,13 @@
 					<input class="image" type="image" name="tournerR90" src="#CHEMIN_IMAGE{tourner-droite-12.png}" alt="<:medias:image_tourner_droite:>" />
 					<input class="image" type="image" name="tourner180" src="#CHEMIN_IMAGE{tourner-180-12.png}" alt="<:medias:image_tourner_180:>" />
 				</div>
-				[<a href='#ENV{apercu}'>(#ENV{apercu}|image_reduire{300,200})</a>]
+				[<a href='#ENV{apercu}'>(#ENV{apercu}|image_reduire{320,200})</a>]
 				]
 		  	[(#ENV{apercu}|non)
 					[(#ENV**{_inclus}|=={embed}|?{
-						[(#MODELE{emb,id_document=#ENV{id_document,''},largeur=300,hauteur=#HAUTEUR|min{200}})]
+						[(#MODELE{emb,id_document=#ENV{id_document,''},largeur=320,hauteur=#HAUTEUR|?{#HAUTEUR|div{#LARGEUR}|mult{320}|round{0},200}})]
 						,
-						[(#MODELE{doc,id_document=#ENV{id_document,''},largeur=300,hauteur=#HAUTEUR|min{200}}|extraire_balise{a})]
+						[(#MODELE{doc,id_document=#ENV{id_document,''},largeur=320,hauteur=#HAUTEUR|?{#HAUTEUR|div{#LARGEUR}|mult{320}|round{0},200}}|extraire_balise{a})]
 						})]
 				]
 	  	</li>
