@@ -30,6 +30,7 @@
 .formulaire_editer_document .editer_apercu .tourner {display:block;float:#GET{right};}
 .formulaire_editer_document .editer_apercu .tourner input.image {padding:5px;border:1px solid #eee;}
 
+.formulaire_joindre_document {margin-top: 0}
 .formulaire_joindre_document .sourceup {}
 .formulaire_joindre_document .infos {}
 .formulaire_joindre_document .deballer_zip ul {font-size:0.9em;}
@@ -60,10 +61,11 @@
 
 a.bouton_fermer {display:block;text-align:#GET{right};}
 
-.galerie { float: none; width: 100%; padding:0;}
-.galerie .pagination {clear:both;}
-.galerie table { width: 100%; border: none; }
-.galerie table thead { background: [#(#GET{foncee}|couleur_foncer)];color:#fff; }
+.galerie { float: none; width: 100%; padding:0;margin-bottom: #ENV{margin-bottom};}
+.galerie .pagination {clear:both;font-size:0.95em;}
+.galerie .pagination + .pagination {border-top: 0;margin-top:-1px;}
+.galerie table { width: 100%; border: none; margin-bottom: 0}
+.galerie table thead,.galerie table thead th  { background: #e5e5e5;background: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#e0e0e0));background-image: -webkit-linear-gradient(top, #f0f0f0, #e0e0e0);background-image: -moz-linear-gradient(top, #f0f0f0, #e0e0e0);background-image: -ms-linear-gradient(top, #f0f0f0, #e0e0e0);background-image: -o-linear-gradient(top, #f0f0f0, #e0e0e0);background-image: linear-gradient(top, #f0f0f0, #e0e0e0);filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0f0f0', endColorstr='#e0e0e0');}
 .galerie table tbody tr:hover { background: [#(#GET{claire}|couleur_eclaircir|couleur_eclaircir)]; }
 .galerie table td { min-height: 100px; vertical-align: top; }
 .galerie table th, .galerie table td { padding: 0.5em .3em; border-bottom: 1px solid #ccc; }
