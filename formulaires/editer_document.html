@@ -48,10 +48,12 @@
 				[<a href='#ENV{apercu}'>(#ENV{apercu}|image_reduire{320,200})</a>]
 				]
 		  	[(#ENV{apercu}|non)
+					#SET{hauteur,#HAUTEUR|et{#LARGEUR}|?{#HAUTEUR|div{#LARGEUR}|mult{320}|round{0},200}}
+					[(#MEDIA|=={audio}|oui) #SET{hauteur,0}]
 					[(#ENV**{_inclus}|=={embed}|?{
-						[(#MODELE{emb,id_document=#ENV{id_document,''},largeur=320,hauteur=#HAUTEUR|?{#HAUTEUR|div{#LARGEUR}|mult{320}|round{0},200}})]
+						[(#MODELE{emb,id_document=#ENV{id_document,''},largeur=320,hauteur=#GET{hauteur}})]
 						,
-						[(#MODELE{doc,id_document=#ENV{id_document,''},largeur=320,hauteur=#HAUTEUR|?{#HAUTEUR|div{#LARGEUR}|mult{320}|round{0},200}}|extraire_balise{a})]
+						[(#MODELE{doc,id_document=#ENV{id_document,''},largeur=320,hauteur=#GET{hauteur}}|extraire_balise{a})]
 						})]
 				]
 	  	</li>
