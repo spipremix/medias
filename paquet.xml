@@ -35,6 +35,7 @@
 	<pipeline nom="renseigner_document_distant" inclure="medias_pipelines.php" />
 	<pipeline nom="detecter_fond_par_defaut" inclure="medias_pipelines.php" />
 	<pipeline nom="configurer_liste_metas" inclure="medias_pipelines.php" />
+	<pipeline nom="revisions_chercher_label" inclure="medias_pipelines.php" />
 	<pipeline nom="afficher_metas_document" action="" />
 	<pipeline nom="medias_documents_visibles" action="" />
 	<pipeline nom="ieconfig_metas" inclure="medias_ieconfig.php" />
