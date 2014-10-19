@@ -173,7 +173,7 @@ function medias_declarer_tables_objets_sql($tables){
 			'titre' => 3, 'descriptif' => 1, 'fichier' => 1, 'credits' => 1,
 		),
 		'champs_editables' => array('titre', 'descriptif', 'date', 'taille', 'largeur','hauteur','mode','credits','fichier','distant','extension', 'id_vignette', 'media'),
-		'champs_versionnes' => array('id_vignette', 'titre', 'descriptif', 'hauteur', 'largeur', 'mode','credits','distant'),
+		'champs_versionnes' => array('id_vignette', 'titre', 'descriptif', 'hauteur', 'largeur','fichier','taille', 'mode','credits','distant'),
 		'modeles' => array('document','doc','img','emb','image','video','text','audio','application'),
 	);
 
