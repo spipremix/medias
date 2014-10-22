@@ -37,7 +37,7 @@ function medias_declarer_tables_interfaces($interfaces) {
 	$interfaces['exceptions_des_jointures']['spip_documents']['vu']=array('spip_documents_liens', 'vu');
 	$interfaces['table_date']['types_documents']='date';
 
-	$interfaces['table_des_traitements']['FICHIER']['documents']= 'get_spip_doc(%s)';
+	$interfaces['table_des_traitements']['FICHIER'][]= 'get_spip_doc(%s)';
 
 	return $interfaces;
 }
