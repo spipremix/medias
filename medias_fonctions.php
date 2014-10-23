@@ -84,16 +84,19 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
 }
 
 
+/**
+ * Pour compat uniquement, utiliser generer_lien_entite
+ * @deprecated
+ * @uses generer_lien_entite()
+ *
+ * @param $id
+ * @param $type
+ * @param int $longueur
+ * @param null $connect
+ * @return string
+ */
 function lien_objet($id,$type,$longueur=80,$connect=NULL){
-	include_spip('inc/liens');
-	$titre = traiter_raccourci_titre($id, $type, $connect);
-	// lorsque l'objet n'est plus declare (plugin desactive par exemple)
-	// le raccourcis n'est plus valide
-	$titre = isset($titre['titre']) ? typo($titre['titre']) : '';
-	if (!strlen($titre))
-		$titre = _T('info_sans_titre');
-	$url = generer_url_entite($id,$type);
-	return "<a href='$url' class='$type'>".couper($titre,$longueur)."</a>";
+	return generer_lien_entite($id,$type,$longueur,$connect);
 }
 
 /**
