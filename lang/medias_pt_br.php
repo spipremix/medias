@@ -8,9 +8,12 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'aucun_audio' => 'Sem som',
 	'aucun_document' => 'Nenhum documento',
 	'aucun_file' => 'nenhum documento',
 	'aucun_image' => 'Nenhuma imagem',
+	'aucun_video' => 'Sem vídeo',
+	'aucune_utilisation' => 'Este documento não é usado',
 	'aucune_vignette' => 'Nenhuma miniatura',
 
 	// B
@@ -18,25 +21,68 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_ajouter_image' => 'Incluir uma imagem',
 	'bouton_ajouter_image_document' => 'Incluir uma imagem ou um documento',
 	'bouton_attacher_document' => 'Anexar',
+	'bouton_copier_local' => 'Copiar no site',
 	'bouton_download_depuis' => 'local :',
 	'bouton_download_local' => 'meu computador',
 	'bouton_download_par_ftp' => 'do servidor',
 	'bouton_download_par_mediatheque' => 'biblioteca de mídia',
 	'bouton_download_sur_le_web' => 'internet',
+	'bouton_enlever_document' => 'Desvincular',
 	'bouton_enlever_supprimer_document' => 'Remover',
+	'bouton_enlever_supprimer_document_confirmation' => 'Tem certeza de que deseja remover o documento?',
 	'bouton_modifier_document' => 'Editar',
+	'bouton_parcourir' => 'Procurar... ',
+	'bouton_refresh_document' => 'Atualizar o documento',
+	'bouton_remplacer_document' => 'Substituir este documento',
+	'bouton_remplacer_image' => 'Substituir esta imagem',
+	'bouton_remplacer_image_document' => 'Substituir por imagem ou documento',
 	'bouton_supprimer' => 'Remover',
+	'bouton_supprimer_tous_orphelins' => 'Remover todas as não usadas',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Deseja realmente remover os @nb@ documentos que não estão em uso?',
 	'bouton_upload' => 'Download',
 
 	// D
+	'des_audios' => '@nb@ sons',
+	'des_documents' => '@nb@ documentos',
+	'des_files' => '@nb@ documentos',
+	'des_images' => '@nb@ imagens',
+	'des_utilisations' => '@nb@ utilizações',
+	'des_videos' => '@nb@ vídeos',
 	'descriptif' => 'Descrição',
+	'document_attache_succes' => 'O documento foi adicionado com sucesso',
+	'document_copie_locale_succes' => 'O arquivo foi copiado com sucesso para o site',
+	'document_installe_succes' => 'O arquivo foi carregado com sucesso',
+	'document_vu' => 'Inserido no texto',
+	'documents' => 'Biblioteca de mídia',
+	'documents_brises' => 'Danificados',
+	'documents_distants' => 'Remotos',
+	'documents_locaux' => 'Locais',
+	'documents_non_publies' => 'Não publicados',
+	'documents_orphelins' => 'Não usados',
+	'documents_publies' => 'Publicados',
+	'documents_tous' => 'Todos',
 	'double_clic_inserer_doc' => 'Faça um clique duplo para inserir este atalho no texto',
 
 	// E
 	'entree_dimensions' => 'Dimensões:',
 	'entree_titre_document' => 'Título do documento:',
 	'entree_titre_image' => 'Título da imagem:',
+	'erreur_aucun_document' => 'Este documento não existe na biblioteca de mídia',
+	'erreur_aucun_fichier' => 'Nenhum documento encontrado',
+	'erreur_chemin_distant' => 'O arquivo remoto @nom@ não foi encontrado',
+	'erreur_chemin_ftp' => 'O arquivo indicado não foi encontrado no servidor',
+	'erreur_copie_fichier' => 'Impossível copiar o arquivo @nom@',
+	'erreur_format_fichier_image' => 'O formato de @nom@ não é adequado para uma imagem',
 	'erreur_indiquez_un_fichier' => 'Indique um arquivo !',
+	'erreur_insertion_document_base' => 'Impossível salvar o documento @fichier@ no banco de dados',
+	'erreur_suppression_vignette' => 'Erro ao apagar a miniatura',
+	'erreur_upload_type_interdit' => 'O carregamento dos arquivos do tipo @nom@ não é autorizado',
+	'erreur_upload_vignette' => 'Erro no carregamento da miniatura @nom@',
+	'erreurs' => '@nb@ erros',
+	'erreurs_voir' => 'Visualizar os @nb@ erros',
+
+	// F
+	'fichier_distant' => 'Arquivo remoto',
 
 	// I
 	'icone_creer_document' => 'Adicionar ao documento',
@@ -55,9 +101,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_installer_tous_documents' => 'Instalar todos os documentos',
 	'info_largeur' => 'Largura',
 	'info_logo_max_taille' => 'Os ícones devem obrigatoriamente ter menos de @maxi@ (este arquivo tem @actuel@).',
+	'info_mode' => 'Modo',
 	'info_modifier_document' => 'Editar documento',
 	'info_portfolio' => 'Portfólio',
 	'info_referencer_doc_distant' => 'Referenciar um documento na internet:',
+	'info_sans_vignette' => 'Sem miniatura',
 	'info_telecharger' => 'Transferir do seu computador:',
 	'item_autoriser_selectionner_date_en_ligne' => 'Permite modificar a data de cada documento',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'A data dos documentos é a mesma da incorporação ao site',
@@ -67,6 +115,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_credits' => 'Créditos',
 	'label_fichier' => 'Arquivo',
 	'label_fichier_vignette' => 'Miniatura',
+	'label_paginer_par' => 'Paginar por:',
 	'label_refdoc_joindre' => 'Número do documento',
 	'lien_tout_enlever' => 'Remover todos',
 	'logo' => 'Logo',
@@ -75,6 +124,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_file' => 'Outro',
 	'media_image' => 'Imagens',
 	'media_video' => 'Sequências',
+	'miniature_automatique_active' => 'SPIP criará automaticamente uma miniatura da imagem',
 
 	// O
 	'objet_document' => 'Documento',
@@ -90,7 +140,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'texte_documents_joints' => 'Você pode autorizar a inclusão de documentos (arquivos, imagens,  multimídia etc.) às matérias e/ou às seções. Estes arquivos podem, em seguida, ser referenciados na matéria, ou exibidos separadamente.',
-	'texte_documents_joints_2' => 'Esta escolha não impede a inserção de imagens diretamente nas matérias', # MODIF
+	'texte_documents_joints_2' => 'Essa escolha não impede a inserção de imagens diretamente nas matérias.',
 	'titre_documents_joints' => 'Documentos anexados',
 	'tous_les_medias' => 'Todas as mídias',
 	'tout_dossier_upload' => 'Todo o diretório @upload@',
@@ -103,7 +153,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Coloque no portfolio',
 	'upload_info_mode_image' => 'Retirar do portfolio',
 	'upload_limit' => 'Este arquivo é grande demais para o servidor; o tamanho máximo autorizado para <i>upload</i> é de @max@.',
-	'upload_zip_conserver' => 'Manter o arquivo após extração', # MODIF
+	'upload_zip_conserver' => 'Manter o arquivo após extração',
 	'upload_zip_decompacter' => 'expandido e cada elemento que ele contém gravados no site. Os arquivos que serão então gravados são:',
 	'upload_zip_telquel' => 'instalado; como arquivo compactado Zip;',
 	'upload_zip_titrer' => 'Titular de acordo com o nome dos arquivos',
