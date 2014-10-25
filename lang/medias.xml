@@ -32,8 +32,9 @@
 	</langue>
 	<langue code="el" url="http://trad.spip.net/tradlang_module/medias?lang_cible=el" total="155" traduits="14" relire="0" modifs="3" nouveaux="138" pourcent="9.03">
 	</langue>
-	<langue code="en" url="http://trad.spip.net/tradlang_module/medias?lang_cible=en" total="155" traduits="153" relire="0" modifs="0" nouveaux="2" pourcent="98.71">
+	<langue code="en" url="http://trad.spip.net/tradlang_module/medias?lang_cible=en" total="155" traduits="155" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="George" lien="http://trad.spip.net/auteur/جورج-قندلفت" />
+		<traducteur nom="Gilles" lien="http://trad.spip.net/auteur/gilles" />
 		<traducteur nom="kent1" lien="http://trad.spip.net/auteur/kent1" />
 		<traducteur nom="raphael" lien="http://trad.spip.net/auteur/raphael-7042" />
 		<traducteur nom="sQuonk" lien="http://trad.spip.net/auteur/squonk" />
