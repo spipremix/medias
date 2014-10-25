@@ -33,6 +33,28 @@ if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
 	}
 	session_set('zip_to_clean');
 }
+// capturer un formulaire post plus grand que post_max_size
+// on genere un minipres car on ne peut rien faire de mieux
+if ($_SERVER['REQUEST_METHOD']=='POST' and strlen($_SERVER['CONTENT_TYPE'])>0 and
+	substr($_SERVER['CONTENT_TYPE'], 0, 19)=='multipart/form-data' and
+	$_SERVER['CONTENT_LENGTH']>medias_inigetoctets('post_max_size')){
+	include_spip('inc/minipres');
+	echo minipres(_T('medias:upload_limit',array('max' => ini_get('post_max_size'))));
+	exit;
+}
+function medias_inigetoctets($var){
+	$last = '';
+	$val = trim(@ini_get($var));
+	if ($val!=''){
+		$last = strtolower($val[strlen($val)-1]);
+	}
+	switch ($last) { // The 'G' modifier is available since PHP 5.1.0
+		case 'g': $val *= 1024;
+		case 'm': $val *= 1024;
+		case 'k': $val *= 1024;
+	}
+	return $val;
+}
 
 /**
  * Afficher la puce de statut pour les documents
