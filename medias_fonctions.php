@@ -33,11 +33,15 @@ if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
 	}
 	session_set('zip_to_clean');
 }
-// capturer un formulaire post plus grand que post_max_size
+
+// capturer un formulaire POST plus grand que post_max_size
 // on genere un minipres car on ne peut rien faire de mieux
-if ($_SERVER['REQUEST_METHOD']=='POST' and strlen($_SERVER['CONTENT_TYPE'])>0 and
-	substr($_SERVER['CONTENT_TYPE'], 0, 19)=='multipart/form-data' and
-	$_SERVER['CONTENT_LENGTH']>medias_inigetoctets('post_max_size')){
+if ($_SERVER['REQUEST_METHOD']=='POST'
+	AND empty($_POST)
+	AND strlen($_SERVER['CONTENT_TYPE'])>0
+	AND strncmp($_SERVER['CONTENT_TYPE'],'multipart/form-data', 19)==0
+	AND $_SERVER['CONTENT_LENGTH']>medias_inigetoctets('post_max_size')){
+
 	include_spip('inc/minipres');
 	echo minipres(_T('medias:upload_limit',array('max' => ini_get('post_max_size'))));
 	exit;
