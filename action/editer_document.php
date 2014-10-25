@@ -42,14 +42,20 @@ function action_editer_document_dist($arg=null) {
 /**
  * Creer un nouveau document
  *
+ * @param int $id_parent
+ *     inutilise, pas de parent pour les documents
+ * @param array|null $set
  * @return int
  */
-function document_inserer() {
+function document_inserer($id_parent=null, $set=null) {
 
 	$champs = array(
 		'statut' => 'prop',
 		'date' => 'NOW()',
 	);
+
+	if ($set)
+		$champs = array_merge($champs, $set);
 
 	// Envoyer aux plugins
 	$champs = pipeline('pre_insertion',
