@@ -214,10 +214,14 @@ function joindre_verifier_zip($files){
 		// Est-ce qu'on sait le lire ?
 		include_spip('inc/pclzip');
 		if ($zip
-		 AND $archive = new PclZip($zip)
-		 AND $contenu = joindre_decrire_contenu_zip($archive)
-		 AND rename($zip, $tmp = _DIR_TMP.basename($zip))
-		 ){
+			AND $archive = new PclZip($zip)
+		  AND $contenu = joindre_decrire_contenu_zip($archive)
+			AND $tmp = sous_repertoire(_DIR_TMP,"zip")
+		  AND rename($zip, $tmp = $tmp.basename($zip))
+		  ){
+			$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean'])?unserialize($GLOBALS['visiteur_session']['zip_to_clean']):array());
+			$zip_to_clean[] = $tmp;
+			session_set('zip_to_clean',serialize($zip_to_clean));
 		 	$contenu[] = $tmp;
 		 	return $contenu;
 		 }

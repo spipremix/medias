@@ -20,6 +20,19 @@
 // sécurité
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
+// nettoyer les zip abandonnes par l'utilisateur
+if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
+  AND test_espace_prive()
+  AND $_SERVER['REQUEST_METHOD']!=='POST'){
+	$zip_to_clean = unserialize($GLOBALS['visiteur_session']['zip_to_clean']);
+	if ($zip_to_clean){
+		foreach ($zip_to_clean as $zip){
+			if (@file_exists($zip))
+				@unlink($zip);
+		}
+	}
+	session_set('zip_to_clean');
+}
 
 /**
  * Afficher la puce de statut pour les documents
