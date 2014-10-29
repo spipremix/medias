@@ -416,37 +416,72 @@ function fixer_fichier_upload($file, $mode=''){
  * @param  array $infos
  * @return bool|mixed|string
  */
-function verifier_taille_document_acceptable($infos){
+function verifier_taille_document_acceptable(&$infos){
 	
 	// si ce n'est pas une image
 	if (!$infos['type_image']) {
-		if (_DOC_MAX_SIZE > 0
-		 AND $infos['taille'] > _DOC_MAX_SIZE*1024)
-			return _T('medias:info_doc_max_poids', array('maxi' => taille_en_octets(_DOC_MAX_SIZE*1024), 'actuel' => taille_en_octets($infos['taille'])));
+		if (defined('_DOC_MAX_SIZE') AND _DOC_MAX_SIZE > 0 AND $infos['taille'] > _DOC_MAX_SIZE*1024){
+			return _T('medias:info_doc_max_poids',
+				array(
+					'maxi' => taille_en_octets(_DOC_MAX_SIZE*1024),
+					'actuel' => taille_en_octets($infos['taille'])
+				)
+			);
+		}
 	}
 	
 	// si c'est une image
 	else {
 
-		if (_IMG_MAX_SIZE > 0
-		 AND $infos['taille'] > _IMG_MAX_SIZE*1024)
-			return _T('medias:info_image_max_poids', array('maxi' => taille_en_octets(_IMG_MAX_SIZE*1024), 'actuel' => taille_en_octets($infos['taille'])));
-	
-		if (_IMG_MAX_WIDTH * _IMG_MAX_HEIGHT
-		 AND ($infos['largeur'] > _IMG_MAX_WIDTH
-		 OR $infos['hauteur'] > _IMG_MAX_HEIGHT))
+		if ((defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH AND $infos['largeur']>_IMG_MAX_WIDTH)
+			OR (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT AND $infos['hauteur']>_IMG_MAX_HEIGHT) ){
+			$max_width = (defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH) ? _IMG_MAX_WIDTH : '*';
+			$max_height = (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT) ? _IMG_MAX_HEIGHT : '*';
 
-			return _T('medias:info_logo_max_taille',
+			// pas la peine d'embeter le redacteur avec ca si on a active le calcul des miniatures
+			// on met directement a la taille maxi a la volee
+			if (isset($GLOBALS['meta']['creer_preview']) AND $GLOBALS['meta']['creer_preview']=='oui'){
+				include_spip('inc/filtres');
+				$img = filtrer('image_reduire', $infos['fichier'], $max_width, $max_height);
+				$img = extraire_attribut($img, 'src');
+				$img = supprimer_timestamp($img);
+				if (@file_exists($img) AND $img!==$infos['fichier']){
+					spip_unlink($infos['fichier']);
+					@rename($img, $infos['fichier']);
+					$size = @getimagesize($infos['fichier']);
+					$infos['largeur'] = $size[0];
+					$infos['hauteur'] = $size[1];
+					$infos['taille'] = @filesize($infos['fichier']);
+				}
+			}
+
+			if ((defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH AND $infos['largeur']>_IMG_MAX_WIDTH)
+				OR (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT AND $infos['hauteur']>_IMG_MAX_HEIGHT) ){
+
+				return _T('medias:info_logo_max_taille',
 					array(
-					'maxi' =>
-						_T('info_largeur_vignette',
-							array('largeur_vignette' => _IMG_MAX_WIDTH,
-							'hauteur_vignette' => _IMG_MAX_HEIGHT)),
-					'actuel' =>
-						_T('info_largeur_vignette',
-							array('largeur_vignette' => $infos['largeur'],
-							'hauteur_vignette' => $infos['hauteur']))
-				));
+						'maxi' =>
+							_T('info_largeur_vignette',
+								array('largeur_vignette' => $max_width,
+									'hauteur_vignette' => $max_height)),
+						'actuel' =>
+							_T('info_largeur_vignette',
+								array('largeur_vignette' => $infos['largeur'],
+									'hauteur_vignette' => $infos['hauteur']))
+					));
+			}
+		}
+
+		if (defined('_IMG_MAX_SIZE') AND  _IMG_MAX_SIZE > 0 AND $infos['taille'] > _IMG_MAX_SIZE*1024){
+			return _T('medias:info_image_max_poids',
+				array(
+					'maxi' => taille_en_octets(_IMG_MAX_SIZE*1024),
+					'actuel' => taille_en_octets($infos['taille']
+					)
+				)
+			);
+		}
+
 	}
 
 	// verifier en fonction du mode si une fonction est proposee
