@@ -42,7 +42,7 @@
 				[(#ID_OBJET|<{0}|ou{#AUTORISER{modifier,#OBJET,#ID_OBJET}})[(#BOUTON_ACTION{<:medias:bouton_enlever_document:>,#URL_ACTION_AUTEUR{dissocier_document,#ID_OBJET-#OBJET-#ID_DOCUMENT,#SELF},ajax,'','',[(function(){jQuery("#doc(#ID_DOCUMENT)").animateRemove();return true;})()]})]<span>|</span>]
 				<a href="#URL_ECRIRE{document_edit,id_document=#ID_DOCUMENT}" target="_blank" class="editbox" tabindex="0" role="button"><:medias:bouton_modifier_document:></a>
 				<//B_compte>
-				[(#PIPELINE{document_desc_actions,#ARRAY{args,#ARRAY{id_document,#ID_DOCUMENT,position,document_case},data,''}})]
+				[(#PIPELINE{document_desc_actions,#ARRAY{args,#ARRAY{id_document,#ID_DOCUMENT,position,document_case,objet,#OBJET,id_objet,#ID_OBJET},data,''}})]
 			</div>
 			[(#PIPELINE{afficher_metas_document,#ARRAY{args,#ARRAY{'quoi','document_case','id_document',#ID_DOCUMENT},data,''}})]
 		</div>
