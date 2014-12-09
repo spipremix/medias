@@ -149,8 +149,8 @@ function vignette_automatique($img, $doc, $lien, $x=0, $y=0, $align='', $class='
 
 function image_du_document($document)
 {
-	$e = $document['extension'];
-	if ((strpos($GLOBALS['meta']['formats_graphiques'], $e) !== false)
+	if ($e = $document['extension']
+	  AND (strpos($GLOBALS['meta']['formats_graphiques'], $e) !== false)
 	  AND (!test_espace_prive() OR $GLOBALS['meta']['creer_preview']=='oui')
 	  AND $document['fichier']) {
 		if ($document['distant'] == 'oui') {
