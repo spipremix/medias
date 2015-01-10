@@ -9,13 +9,14 @@
 	       src="#FICHIER"
 	       type="#MIME_TYPE"
 	       data-mejsoptions='{"alwaysShowControls": true[,"loop":(#ENV{loop}|?{true,false})],"audioWidth":"100%"[,"audioHeight":"(#ENV{hauteur})"][,"startVolume":"(#ENV{volume})"]}'
+	       data-mejscss='[(#LISTE{#CHEMIN{lib/mejs/mediaelementplayer.min.css}}|json_encode)]'
 	       controls="controls"
 				 [autoplay="autoplay"(#ENV{autoplay}|oui)]></audio>
 </div>
 [<div class='spip_doc_titre'><strong>(#TITRE)</strong></div>]
 [<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]
 [<script>/*<!\[CDATA\[*/var mejspath = '[(#CHEMIN{lib/mejs/mediaelement-and-player.min.js}|timestamp)]';
-(#INCLURE{javascript/mejs-init.min.js})/*\]\]>*/</script>]
-[<style>(#INCLURE{#CHEMIN{lib/mejs/mediaelementplayer.min.css}|url_absolue_css})</style>]
+(#INCLURE{javascript/mejs-init.min.js}|compacte{js})/*\]\]>*/</script>]
+[(#ENV{skin}|oui)[<style>(#INCLURE{#CHEMIN{css/mejs-skin-#ENV{skin}.css}|sinon{#CHEMIN{lib/mejs/mejs-skins.css}}|url_absolue_css})</style>]]
 </div>
 </BOUCLE_tous>
