@@ -37,6 +37,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_remplacer_image' => 'Remplaçà aqueula image',
 	'bouton_remplacer_image_document' => 'Remplaçà per una image o un doucumen',
 	'bouton_supprimer' => 'Suprimà',
+	'bouton_supprimer_tous_orphelins' => 'Suprimà toui lu ourfanèu',
+	'bouton_supprimer_tous_orphelins_confirmation' => 'Sias segur de voulé suprimà @nb@ ourfanèu ?',
 	'bouton_upload' => 'Televersà',
 
 	// D
@@ -46,32 +48,46 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_images' => '@nb@ image',
 	'des_utilisations' => '@nb@ utilisacioun',
 	'des_videos' => '@nb@ sequènsa',
+	'descriptif' => 'Descricioun',
 	'document_attache_succes' => 'Lou doucumen es ben estat ajustat',
 	'document_copie_locale_succes' => 'Lou fichié es ben estat coupiat en lou sit',
 	'document_installe_succes' => 'Lou fichié es ben estat cargat',
 	'document_vu' => 'Inserà en lou tèst',
 	'documents' => 'Mediatèca',
+	'documents_brises' => 'Courroumput',
+	'documents_distants' => 'Distant',
+	'documents_locaux' => 'Loucal',
 	'documents_non_publies' => 'Noun publicat',
+	'documents_orphelins' => 'Inutilisat',
 	'documents_publies' => 'Publicat',
 	'documents_tous' => 'Toui',
 	'double_clic_inserer_doc' => 'Bespicàs da inserà aqueu escourcha en lou tèst',
 
 	// E
+	'entree_dimensions' => 'Dimensioun :',
 	'entree_titre_document' => 'Titre dóu doucumen :',
 	'entree_titre_image' => 'Titre de l’image :',
 	'erreur_aucun_document' => 'Aqueu doucumen noun esista en la mediatèca',
 	'erreur_aucun_fichier' => 'Mìnga fichié es estat troubat',
+	'erreur_chemin_distant' => 'Lou fichié distant @nom@ a pas pouscut estre troubat',
 	'erreur_chemin_ftp' => 'Lou fichié endicat es pas estat troubat soubre lou servidour',
 	'erreur_copie_fichier' => 'Empoussible de coupià lou fichié @nom@',
+	'erreur_dossier_tmp_manquant' => 'Manca un doussié tempourari da telecargà lu fichié',
 	'erreur_ecriture_fichier' => 'Errour en tant que lou fichié s’escrieuguèsse sus lou disc',
+	'erreur_format_fichier_image' => 'Lou fourmat de @nom@ noun counven a una image',
 	'erreur_indiquez_un_fichier' => 'Endicàs un fichié !',
 	'erreur_insertion_document_base' => 'Empoussible de registrà lou doucumen @fichier@ en basa de dounada',
 	'erreur_suppression_vignette' => 'Errour en tant que si suprimèsse la vigneta',
+	'erreur_upload_type_interdit' => 'Lou telecargamen dei fichié de tìpou de @nom@ noun es autourisat',
+	'erreur_upload_vignette' => 'Errour en tant que la vigneta @nom@ si cargue',
 	'erreurs' => '@nb@ errour',
 	'erreurs_voir' => 'Veire li @nb@ errour',
 
 	// F
+	'fichier_distant' => 'Fichié distant',
+	'fichier_manquant' => 'Fichié mancant',
 	'fichier_modifie' => 'Lou fichié es etat moudificat. Picàs soubre registrà.',
+	'format_date_incorrect' => 'La data o l’oura es mau couret',
 
 	// I
 	'icone_creer_document' => 'Ajustà un doucumen',
@@ -79,26 +95,41 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'image_tourner_180' => 'Routacioun 180°',
 	'image_tourner_droite' => 'Routacioun 90° a drecha',
 	'image_tourner_gauche' => 'Routacioun 90° a seneca',
+	'info_doc_max_poids' => 'Lu doucumen devon óubligatoriamen faire mens de @maxi@ (aqueu fichié fa @actuel@).',
 	'info_document' => 'Doucumen',
 	'info_document_indisponible' => 'Aquéu doucumen es pas dispounible',
 	'info_documents' => 'Doucumen',
 	'info_gauche_numero_document' => 'DOUCUMEN NUMERÒ',
 	'info_hauteur' => 'Autessa',
 	'info_heure' => 'Oura',
+	'info_illustrations' => 'Ilustracioun',
 	'info_image_max_poids' => 'Li image devon oubligatoriamen faire mens de @maxi@ (aqueu fichié fa @actuel@).',
+	'info_inclusion_directe' => 'Enclusioun direta :',
+	'info_inclusion_vignette' => 'Enclusioun de la vigneta :',
 	'info_installer_tous_documents' => 'Instalà toui lu doucumen',
 	'info_largeur' => 'Larguessa',
 	'info_logo_max_taille' => 'Lu logou devon oubligatoriamen faire mens de @maxi@ (aqueu fichié fa @actuel@).',
+	'info_mode' => 'Mòdou',
 	'info_modifier_document' => 'Moudificà lou doucumen',
 	'info_portfolio' => 'Pouòrtafoliò',
+	'info_referencer_doc_distant' => 'Referençà un doucumen sus internet :',
 	'info_sans_vignette' => 'Sensa vigneta',
 	'info_statut_document' => 'Aquéu doucumen es :',
+	'info_taille' => 'Pès',
 	'info_telecharger' => 'Telecargà dau vouòstre ourdinatour :',
+	'item_autoriser_selectionner_date_en_ligne' => 'Permetre de moudificà la data de cada doucumen',
+	'item_non_autoriser_selectionner_date_en_ligne' => 'La data dei doucumen es aquela dóu siéu ajustié sus lou sit',
 
 	// L
+	'label_activer_document_objets' => 'Ativà lou televersamen ai contengut :',
+	'label_apercu' => 'Aperçut',
+	'label_caracteristiques' => 'Caraterìstica',
+	'label_credits' => 'Crèdi',
 	'label_fichier' => 'Fichié',
 	'label_fichier_vignette' => 'Vigneta',
+	'label_paginer_par' => 'Paginà per :',
 	'label_refdoc_joindre' => 'Doucumen numerò',
+	'lien_tout_enlever' => 'Levà tout',
 	'logo' => 'Logou',
 
 	// M
@@ -109,6 +140,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// N
 	'nb_documents_attache_succes' => '@nb@ doucumen soun ben estat ajustat',
+	'nb_documents_installe_succes' => '@nb@ fichié cargat embé suchès',
 
 	// O
 	'objet_document' => 'Doucumen',
@@ -119,6 +151,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_hauteur' => 'Autessa',
 	'par_id' => 'ID',
 	'par_largeur' => 'Larguessa',
+	'par_taille' => 'Pès',
 	'par_titre' => 'Titre',
 
 	// T
