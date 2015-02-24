@@ -117,6 +117,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_statut_document' => 'Aquéu doucumen es :',
 	'info_taille' => 'Pès',
 	'info_telecharger' => 'Telecargà dau vouòstre ourdinatour :',
+	'infos' => 'Infourmacioun tècniqui',
 	'item_autoriser_selectionner_date_en_ligne' => 'Permetre de moudificà la data de cada doucumen',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'La data dei doucumen es aquela dóu siéu ajustié sus lou sit',
 
@@ -128,6 +129,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_fichier' => 'Fichié',
 	'label_fichier_vignette' => 'Vigneta',
 	'label_paginer_par' => 'Paginà per :',
+	'label_parents' => 'Aqueu doucumen es estacat da',
 	'label_refdoc_joindre' => 'Doucumen numerò',
 	'lien_tout_enlever' => 'Levà tout',
 	'logo' => 'Logou',
@@ -137,6 +139,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'media_file' => 'Autre',
 	'media_image' => 'Image',
 	'media_video' => 'Sequènsa',
+	'miniature_automatique_active' => 'SPIP genererà automaticamen una miniatura de l’image',
 
 	// N
 	'nb_documents_attache_succes' => '@nb@ doucumen soun ben estat ajustat',
@@ -177,8 +180,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'descoumprimat e cada elemen que counten instalat sus lou sit. Lu fichié que seran pi instalat sus lou sit soun :',
 	'upload_zip_mode_document' => 'Depousà touti li image en lou pouòrtafoliò',
 	'upload_zip_telquel' => 'instalat tau quau, couma arquivi  coumprimat Zip ;',
+	'upload_zip_titrer' => 'Titrà segoun lou noum dei fichié',
 
 	// V
+	'verifier_documents_brises' => 'Verificà lu fichié mancant',
 	'verifier_documents_inutilises' => 'Verificà lu estac dei doucumen',
 	'vignette_supprimee' => 'La vigneta es estada suprimada'
 );
