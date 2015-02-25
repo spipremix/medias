@@ -52,7 +52,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'document_attache_succes' => 'Lou doucumen es ben estat ajustat',
 	'document_copie_locale_succes' => 'Lou fichié es ben estat coupiat en lou sit',
 	'document_installe_succes' => 'Lou fichié es ben estat cargat',
-	'document_vu' => 'Inserà en lou tèst',
+	'document_vu' => 'Inserì en lou tèstou',
 	'documents' => 'Mediatèca',
 	'documents_brises' => 'Courroumput',
 	'documents_distants' => 'Distant',
@@ -61,7 +61,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'documents_orphelins' => 'Inutilisat',
 	'documents_publies' => 'Publicat',
 	'documents_tous' => 'Toui',
-	'double_clic_inserer_doc' => 'Bespicàs da inserà aqueu escourcha en lou tèst',
+	'double_clic_inserer_doc' => 'Bespicàs da inserì aqueu escourcha en lou tèstou',
 
 	// E
 	'entree_dimensions' => 'Dimensioun :',
@@ -119,7 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_telecharger' => 'Telecargà dau vouòstre ourdinatour :',
 	'infos' => 'Infourmacioun tècniqui',
 	'item_autoriser_selectionner_date_en_ligne' => 'Permetre de moudificà la data de cada doucumen',
-	'item_non_autoriser_selectionner_date_en_ligne' => 'La data dei doucumen es aquela dóu siéu ajustié sus lou sit',
+	'item_non_autoriser_selectionner_date_en_ligne' => 'La data dei doucumen es aquela dóu siéu ajountamen sus lou sit',
 
 	// L
 	'label_activer_document_objets' => 'Ativà lou televersamen ai contengut :',
@@ -158,6 +158,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'par_titre' => 'Titre',
 
 	// T
+	'texte_documents_joints' => 'Poudès ativà l’interfaça d’ajountamen de doucumen (fichié buròticou, image, multimedia, eca.) ai article, rùbrica e autre. Aquelu fichié pouòdon pi estre referençat en lou tèstou, o afichat separatamen.',
+	'texte_documents_joints_2' => 'Aqueu reglage noun empedisse lou televersamen d’image en lu article ni l’ensercioun de doucumen diretamen en lu tèstou dei countengut.',
 	'titre_documents_joints' => 'Doucumen jounch',
 	'titre_page_documents_edit' => 'Moudificà lou doucumen : @titre@',
 	'tous_les_medias' => 'Toui lu media',
@@ -177,6 +179,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_info_mode_document' => 'Depousà en lou pouòrtafoliò',
 	'upload_info_mode_image' => 'Restirà dóu pouòrtafoliò',
 	'upload_limit' => 'Aqueu fichié es tròu gros per lou servidour; la talha massimala autourisada en <i>upload</i> es de @max@.',
+	'upload_zip_conserver' => 'Counservà l’arquivi après estracioun',
 	'upload_zip_decompacter' => 'descoumprimat e cada elemen que counten instalat sus lou sit. Lu fichié que seran pi instalat sus lou sit soun :',
 	'upload_zip_mode_document' => 'Depousà touti li image en lou pouòrtafoliò',
 	'upload_zip_telquel' => 'instalat tau quau, couma arquivi  coumprimat Zip ;',
