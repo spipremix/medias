@@ -80,6 +80,9 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	if (!$id_document = intval($id_document))
 		return false;
 
+	// [TODO] le mettre en paramètre de la fonction ?
+	$serveur = ''; 
+
 	// D'abord on ne supprime pas, on dissocie
 	include_spip('action/editer_liens');
 	objet_dissocier(array('document'=>$id_document),array($objet=>$id_objet));
