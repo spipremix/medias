@@ -61,7 +61,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'documents_orphelins' => 'Inutilisat',
 	'documents_publies' => 'Publicat',
 	'documents_tous' => 'Toui',
-	'double_clic_inserer_doc' => 'Bespicàs da inserì aqueu escourcha en lou tèstou',
+	'double_clic_inserer_doc' => 'Besclicàs da inserì aqueu escourcha en lou tèstou',
 
 	// E
 	'entree_dimensions' => 'Dimensioun :',
@@ -86,7 +86,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// F
 	'fichier_distant' => 'Fichié distant',
 	'fichier_manquant' => 'Fichié mancant',
-	'fichier_modifie' => 'Lou fichié es etat moudificat. Picàs soubre registrà.',
+	'fichier_modifie' => 'Lou fichié es etat moudificat. Clicàs soubre registrà.',
 	'format_date_incorrect' => 'La data o l’oura es mau couret',
 
 	// I
