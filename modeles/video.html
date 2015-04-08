@@ -25,7 +25,7 @@
 			<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
 		  <object width="#GET{largeur}" height="#GET{hauteur}" type="application/x-shockwave-flash" data="#CHEMIN{lib/mejs/flashmediaelement.swf}">
 	      <param name="movie" value="#CHEMIN{lib/mejs/flashmediaelement.swf}" />
-	      <param name="flashvars" value="controls=true&file=#FICHIER" />
+	      <param name="flashvars" value="controls=true&amp;file=#FICHIER" />
 	      <!-- Image as a last resort -->
 			  [(#LOGO_DOCUMENT|image_reduire{#GET{largeur},0}|vider_attribut{class}|inserer_attribut{alt,'Impossible de lire la video'})]
 		  </object>
@@ -36,6 +36,6 @@
 [<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]
 [<script>/*<!\[CDATA\[*/var mejspath='[(#CHEMIN{lib/mejs/mediaelement-and-player.min.js}|timestamp)]',mejscss='[(#CHEMIN{lib/mejs/mediaelementplayer.min.css}|timestamp)]';
 (#INCLURE{javascript/mejs-init.min.js})/*\]\]>*/</script>]
-[(#ENV{skin}|oui)[<style>(#INCLURE{#CHEMIN{css/mejs-skin-#ENV{skin}.css}|sinon{#CHEMIN{lib/mejs/mejs-skins.css}}|url_absolue_css})</style>]]</span>
+[(#ENV{skin}|oui)[<style>(#INCLURE{#CHEMIN{css/mejs-skin-#ENV{skin}.css}|sinon{#CHEMIN{lib/mejs/mejs-skins.css}}|url_absolue_css})</style>]]
 </div>
 </BOUCLE_tous>
