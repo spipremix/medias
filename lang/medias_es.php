@@ -114,6 +114,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_referencer_doc_distant' => 'Referenciar un documento de Internet:',
 	'info_sans_vignette' => 'Sin miniatura',
 	'info_statut_document' => 'Este documento es:',
+	'info_taille' => 'Tamaño',
 	'info_telecharger' => 'Subir desde tu equipo:',
 	'infos' => 'Información técnica',
 	'item_autoriser_selectionner_date_en_ligne' => 'Permitir la modificación de la fecha de cada documento',
