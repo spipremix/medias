@@ -26,7 +26,8 @@
 	</langue>
 	<langue code="da" url="http://trad.spip.net/tradlang_module/medias?lang_cible=da" total="155" traduits="11" relire="0" modifs="3" nouveaux="141" pourcent="7.10">
 	</langue>
-	<langue code="de" url="http://trad.spip.net/tradlang_module/medias?lang_cible=de" total="155" traduits="153" relire="0" modifs="0" nouveaux="2" pourcent="98.71">
+	<langue code="de" url="http://trad.spip.net/tradlang_module/medias?lang_cible=de" total="155" traduits="155" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="kennethkeen" lien="http://trad.spip.net/auteur/kennethkeen" />
 		<traducteur nom="klaus++" lien="http://trad.spip.net/auteur/klaus" />
 		<traducteur nom="Rainer Müller" lien="http://trad.spip.net/auteur/rainer-muller" />
 	</langue>
