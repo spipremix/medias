@@ -14,7 +14,7 @@
 			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-droite-12.png}|balise_img{<:medias:image_tourner_droite:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',90'},#SELF},ajax})]
 			[(#BOUTON_ACTION{[(#CHEMIN_IMAGE{tourner-180-12.png}|balise_img{<:medias:image_tourner_180:>})],#URL_ACTION_AUTEUR{tourner,#GET{id}|concat{',180'},#SELF},ajax})]
 		</div>]
-		[(#LOGO_DOCUMENT{#URL_DOCUMENT,150,150})]
+		[<div class='vignette'>(#LOGO_DOCUMENT{#URL_DOCUMENT,150,150})</div>]
 		<h4 class="titrem">
 			[(#VU|=={oui}|oui)<img src='#CHEMIN_IMAGE{vu-16-10.png}' width='16' height='10' alt='<:medias:document_vu:>' title='<:medias:document_vu:>'/> ]
 			[<span class="fichier">(#FICHIER*|basename)</span>]
