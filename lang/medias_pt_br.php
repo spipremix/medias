@@ -8,11 +8,11 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
-	'aucun_audio' => 'Sem som',
+	'aucun_audio' => 'Nemhum som',
 	'aucun_document' => 'Nenhum documento',
-	'aucun_file' => 'nenhum documento',
+	'aucun_file' => 'Nenhum documento',
 	'aucun_image' => 'Nenhuma imagem',
-	'aucun_video' => 'Sem vídeo',
+	'aucun_video' => 'Nemhum vídeo',
 	'aucune_utilisation' => 'Este documento não é usado',
 	'aucune_vignette' => 'Nenhuma miniatura',
 
@@ -105,7 +105,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_illustrations' => 'Ilustrações',
 	'info_image_max_poids' => 'As imagens devem obrigatoriamente ter menos de @maxi@ (este arquivo tem @actuel@).',
 	'info_inclusion_directe' => 'Inclusão direta:',
-	'info_inclusion_vignette' => 'Inclusão do ícone:',
+	'info_inclusion_vignette' => 'Inclusão da miniatura:',
 	'info_installer_tous_documents' => 'Instalar todos os documentos',
 	'info_largeur' => 'Largura',
 	'info_logo_max_taille' => 'Os ícones devem obrigatoriamente ter menos de @maxi@ (este arquivo tem @actuel@).',
@@ -136,7 +136,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// M
 	'media_audio' => 'Sons',
-	'media_file' => 'Outro',
+	'media_file' => 'Outros',
 	'media_image' => 'Imagens',
 	'media_video' => 'Sequências',
 	'miniature_automatique_active' => 'SPIP criará automaticamente uma miniatura da imagem',
