@@ -134,6 +134,7 @@ function formulaires_editer_document_traiter_dist($id_document='new', $id_parent
 	}
 
 	$res = formulaires_editer_objet_traiter('document',$id_document,$id_parent,$lier_trad,$retour,$config_fonc,$row,$hidden);
+	set_request('parents');
 	$autoclose = "<script type='text/javascript'>if (window.jQuery) jQuery.modalboxclose();</script>";
 	if (_request('copier_local')
 	  OR _request('joindre_upload')
