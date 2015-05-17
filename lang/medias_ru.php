@@ -114,6 +114,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_referencer_doc_distant' => 'Ссылка на файл (URL):',
 	'info_sans_vignette' => 'Нет миниатюры',
 	'info_statut_document' => 'Статус документа:',
+	'info_taille' => 'Вес',
 	'info_telecharger' => 'Загрузить с вашего компьютера:',
 	'infos' => 'Техническая информация',
 	'item_autoriser_selectionner_date_en_ligne' => 'Разрешить изменять дату добавления документа',
