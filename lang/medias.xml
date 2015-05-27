@@ -142,7 +142,7 @@
 	</langue>
 	<langue code="roa" url="http://trad.spip.net/tradlang_module/medias?lang_cible=roa" total="155" traduits="20" relire="0" modifs="3" nouveaux="132" pourcent="12.90">
 	</langue>
-	<langue code="ru" url="http://trad.spip.net/tradlang_module/medias?lang_cible=ru" total="155" traduits="154" relire="0" modifs="0" nouveaux="1" pourcent="99.35">
+	<langue code="ru" url="http://trad.spip.net/tradlang_module/medias?lang_cible=ru" total="155" traduits="155" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 		<traducteur nom="olly" lien="http://trad.spip.net/auteur/olly" />
 		<traducteur nom="Serge Markitanenko" lien="http://trad.spip.net/auteur/serge-markitanenko" />
 	</langue>
@@ -154,6 +154,10 @@
 	<langue code="sv" url="http://trad.spip.net/tradlang_module/medias?lang_cible=sv" total="155" traduits="38" relire="0" modifs="2" nouveaux="115" pourcent="24.52">
 	</langue>
 	<langue code="tr" url="http://trad.spip.net/tradlang_module/medias?lang_cible=tr" total="155" traduits="31" relire="0" modifs="3" nouveaux="121" pourcent="20.00">
+	</langue>
+	<langue code="uk" url="http://trad.spip.net/tradlang_module/medias?lang_cible=uk" total="155" traduits="155" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="olly" lien="http://trad.spip.net/auteur/olly" />
+		<traducteur nom="Retenodus" lien="http://trad.spip.net/auteur/retenodus" />
 	</langue>
 	<langue code="vi" url="http://trad.spip.net/tradlang_module/medias?lang_cible=vi" total="155" traduits="25" relire="0" modifs="4" nouveaux="126" pourcent="16.13">
 	</langue>
