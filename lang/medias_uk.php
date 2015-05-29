@@ -60,7 +60,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'documents_non_publies' => 'Не опубліковані',
 	'documents_orphelins' => 'Не використовуються',
 	'documents_publies' => 'На сайті',
-	'documents_tous' => 'Все',
+	'documents_tous' => 'Усі',
 	'double_clic_inserer_doc' => 'Двічі клацніть, щоб вставити цей ярлик в текст',
 
 	// E
@@ -98,7 +98,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_doc_max_poids' => 'Розмір файлу має бути не більше @maxi@ (поточний розмір @actuel@).',
 	'info_document' => 'Документ',
 	'info_document_indisponible' => 'Цей документ недоступний',
-	'info_documents' => 'Файлі',
+	'info_documents' => 'Документи',
 	'info_gauche_numero_document' => 'НОМЕР ДОКУМЕНТУ',
 	'info_hauteur' => 'Висота',
 	'info_heure' => 'Час',
@@ -113,7 +113,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_document' => 'Змінити файл',
 	'info_portfolio' => 'Галерея фотографій і документів',
 	'info_referencer_doc_distant' => 'Посилання на файл (URL):',
-	'info_sans_vignette' => 'Нема мініатюри',
+	'info_sans_vignette' => 'Без мініатюри',
 	'info_statut_document' => 'Статус документу:',
 	'info_taille' => 'Вага',
 	'info_telecharger' => 'Завантажити з вашого комп’ютера:',
@@ -164,7 +164,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_page_documents_edit' => 'Змінити документ: @titre@',
 	'tous_les_medias' => 'Усі медіа файли',
 	'tout_dossier_upload' => 'Увесь @upload@ каталог',
-	'tout_voir' => 'Показати все',
+	'tout_voir' => 'Показати усі',
 
 	// U
 	'un_audio' => '1 аудіо файл',
