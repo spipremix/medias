@@ -115,22 +115,20 @@ function autoriser_document_tailler_dist($faire,$type,$id,$qui,$options) {
  */
 function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt){
 	include_spip('inc/config');
-	return
-		(
-			$type=='article'
-			OR in_array(table_objet_sql($type),explode(',',lire_config('documents_objets', '')))
-		)
-		AND (
-		  (
-			  $id>0
-		    AND autoriser('modifier', $type, $id, $qui, $opt)
-		  )
-			OR (
-				$id<0
-				AND abs($id) == $qui['id_auteur']
-				AND autoriser('ecrire', $type, $id, $qui, $opt)
-			)
-		);
+
+	// objet autorisé en upload ?
+	if ($type=='article' OR in_array(table_objet_sql($type), explode(',', lire_config('documents_objets', '')))) {
+		// sur un objet existant
+		if ($id>0) {
+			return autoriser('modifier', $type, $id, $qui, $opt);
+		}
+		// sur un nouvel objet
+		elseif ($id<0 AND (abs($id) == $qui['id_auteur'])) {
+			return autoriser('ecrire', $type, $id, $qui, $opt);
+		}
+	}
+
+	return false;
 }
 
 
