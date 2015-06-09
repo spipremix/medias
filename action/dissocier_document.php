@@ -95,6 +95,10 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	include_spip('action/editer_document');
 	document_instituer($id_document);
 
+	// Invalider les caches
+	include_spip('inc/invalideur');
+	suivre_invalideur("id='id_document/$id_document'");
+
 	pipeline('post_edition',
 		array(
 			'args' => array(
