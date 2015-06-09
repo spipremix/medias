@@ -63,6 +63,7 @@ function action_tourner_post($id_document,$angle)
 	include_spip('inc/documents'); 
 	// Fichier destination : on essaie toujours de repartir de l'original
 	$var_rot = $angle;
+	$effacer = false;
 
 	include_spip('inc/distant'); # pour copie_locale
 	$src = _DIR_RACINE . copie_locale(get_spip_doc($row['fichier']));
@@ -119,7 +120,6 @@ function action_tourner_post($id_document,$angle)
 					'type' =>'document',
 					'id_objet' => $id_document,
 					'champs' => array('rotation'=>$angle,'orientation'=>$var_rot,'fichier'=>$row['fichier']),
-					'serveur' => $serveur,
 					'action'=>'tourner',
 				),
 				'data' => $set
