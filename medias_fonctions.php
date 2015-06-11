@@ -46,6 +46,15 @@ if ($_SERVER['REQUEST_METHOD']=='POST'
 	echo minipres(_T('medias:upload_limit',array('max' => ini_get('post_max_size'))));
 	exit;
 }
+
+/**
+ * Retourne la taille en octet d'une valeur de configuration php 
+ * 
+ * @param string $var
+ *     Clé de configuration ; valeur récupérée par `ini_get()`. Exemple `post_max_size`
+ * @return int|string
+ *     Taille en octet, sinon chaine vide.
+**/
 function medias_inigetoctets($var){
 	$last = '';
 	$val = trim(@ini_get($var));
@@ -128,8 +137,8 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
  * @deprecated
  * @uses generer_lien_entite()
  *
- * @param $id
- * @param $type
+ * @param int $id
+ * @param string $type
  * @param int $longueur
  * @param null $connect
  * @return string
@@ -220,12 +229,12 @@ function critere_DOCUMENTS_carre_dist($idb, &$boucles, $crit) {
  * Calcule la vignette d'une extension (l'image du type de fichier)
  *
  * Utile dans une boucle DOCUMENTS pour afficher une vignette du type
- * du document (#EXTENSION) alors que ce document a déjà une vignette
- * personnalisée (affichable par #LOGO_DOCUMENT).
+ * du document (balise `#EXTENSION`) alors que ce document a déjà une vignette
+ * personnalisée (affichable par `#LOGO_DOCUMENT`).
  * 
  * @example
- *     [(#EXTENSION|vignette)] produit une balise <img ... />
- *     [(#EXTENSION|vignette{true})] retourne le chemin de l'image
+ *     `[(#EXTENSION|vignette)]` produit une balise `<img ... />`
+ *     `[(#EXTENSION|vignette{true})]` retourne le chemin de l'image
  *
  * @param string $extension
  *     L'extension du fichier, exemple : png ou pdf
@@ -253,4 +262,4 @@ function filtre_vignette_dist($extension='defaut', $get_chemin = false) {
 	return $balise_img($fichier);
 }
 
-?>
+
