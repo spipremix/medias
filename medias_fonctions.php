@@ -58,8 +58,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST'
 function medias_inigetoctets($var){
 	$last = '';
 	$val = trim(@ini_get($var));
-	if ($val!=''){
+	if (is_numeric($val)) {
+		return $val;
+	}
+	// en octet si "32M"
+	if ($val !='' ){
 		$last = strtolower($val[strlen($val)-1]);
+		$val = substr($val, 0, -1);
 	}
 	switch ($last) { // The 'G' modifier is available since PHP 5.1.0
 		case 'g': $val *= 1024;
