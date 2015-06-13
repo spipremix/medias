@@ -10,7 +10,7 @@
 
 (#REM) Formulaire d'upload de fichier
 ]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={upload}|non)none-js]' id='joindre_upload#GET{domid}'>
-	<ul>
+	<ul class="editer-groupe">
 		<li class='editer editer_fichier_upload[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]'>
 			<label for='fichier_upload#GET{domid}'><:bouton_upload:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier_upload})</span>
@@ -36,7 +36,7 @@
 (#REM) Formulaire pour document dans mediatheque
 ][(#ENV{mediatheque,''}|oui)
 <div class='joindre_mode#GET{domid}[(#GET{methode}|=={mediatheque}|non)none-js]' id='joindre_mediatheque#GET{domid}'>
-	<ul>
+	<ul class="editer-groupe">
 		<li class='editer editer_refdoc_joindre[ (#ENV**{erreurs}|table_valeur{refdoc_joindre}|oui)erreur]'>
 			<label for='refdoc_joindre#GET{domid}'><:medias:label_refdoc_joindre:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{refdoc_joindre})</span>
@@ -69,7 +69,7 @@
 ][(#ENV{proposer_ftp,''}|oui)
 <div class='joindre_mode#GET{domid}[(#GET{methode}|=={ftp}|non)none-js]' id='joindre_ftp#GET{domid}'>
 	[
-	<ul>
+	<ul class="editer-groupe">
 		<li class='editer editer_cheminftp[ (#ENV**{erreurs}|table_valeur{cheminftp}|oui)erreur]'>
 			<label for='cheminftp#GET{domid}'>[(#VAL{info_selectionner_fichier}|_T{#ARRAY{upload,#ENV*{_dir_upload_ftp}}})]</label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{cheminftp})</span>
@@ -105,7 +105,7 @@
 
 (#REM) Formulaire pour document distant
 ]<div class='joindre_mode#GET{domid}[(#GET{methode}|=={distant}|non)none-js]' id='joindre_distant#GET{domid}'>
-	<ul>
+	<ul class="editer-groupe">
 		<li class='editer editer_url[ (#ENV**{erreurs}|table_valeur{url}|oui)erreur]'>
 			<label for='url#GET{domid}'><:medias:info_referencer_doc_distant:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{url})</span>
@@ -129,7 +129,7 @@
 
 
 (#REM) Formulaire pour deballer un zip
-][<ul><li class='fieldset deballer_zip'>(#ENV**{erreurs}|table_valeur{lister_contenu_archive})</li></ul>]
+][<ul class="editer-groupe"><li class='fieldset deballer_zip'>(#ENV**{erreurs}|table_valeur{lister_contenu_archive})</li></ul>]
 
 <script type='text/javascript'>/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
 if (window.jQuery){

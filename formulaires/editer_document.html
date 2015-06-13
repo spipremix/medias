@@ -11,7 +11,7 @@
 		il ne doit pas etre hidden pour marcher dans safari
 		]
 	  <div style="position:absolute;#LANG_LEFT:-10000px;"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></div>
-	  <ul>
+	  <ul class="editer-groupe">
 	    <li class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
 		    <label for="titre">[(#ENV{mode}|=={document}|?{<:medias:entree_titre_document:>,<:medias:entree_titre_image:>})]</label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{titre})</span>

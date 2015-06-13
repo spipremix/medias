@@ -4,7 +4,7 @@
 	[(#ENV{editable})	
 	<form action="#ENV{action}#formulaire_changer_fichier_document-#ENV{id,new}" method="post" enctype='multipart/form-data'><div>
 		[(#ACTION_FORMULAIRE{#ENV{action}})]
-		<ul>
+		<ul class="editer-groupe">
 			<li class="editer editer_fichier[ (#ENV**{erreurs}|table_valeur{fichier}|oui)erreur]">
 				<label for="fichier"><:medias:label_fichier:></label>[
 				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier})</span>
