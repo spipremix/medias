@@ -312,7 +312,6 @@ function autoriser_orphelins_supprimer_dist($faire, $type, $id, $qui, $opt){
  * @return bool
  */
 function autoriser_associerdocuments_dist($faire, $type, $id, $qui, $opt){
-	if ($type=='document') return false; // pas de document sur les documents
 	// cas particulier (hack nouvel objet)
 	if (intval($id)<0 AND $id==-$qui['id_auteur']){
 		return true;
