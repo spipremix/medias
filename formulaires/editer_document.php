@@ -54,11 +54,8 @@ function formulaires_editer_document_charger_dist($id_document='new', $id_parent
 	// verifier les infos de taille et dimensions sur les fichiers locaux
 	// cas des maj de fichier directes par ftp
 	if ($valeurs['distant']!=='oui'){
-		$infos = false;
 		include_spip('inc/renseigner_document');
-		$f = get_spip_doc($valeurs['fichier']);
-		if ($f AND @file_exists($f))
-			$infos = renseigner_taille_dimension_image($f,$valeurs['extension']);
+		$infos = renseigner_taille_dimension_image(get_spip_doc($valeurs['fichier']),$valeurs['extension']);
 		if ($infos AND is_array($infos) AND isset($infos['taille'])){
 			if ($infos['taille']!=$valeurs['taille']
 				OR ($infos['type_image'] && ($infos['largeur']!=$valeurs['largeur']))
