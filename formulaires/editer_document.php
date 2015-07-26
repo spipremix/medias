@@ -54,20 +54,23 @@ function formulaires_editer_document_charger_dist($id_document='new', $id_parent
 	// verifier les infos de taille et dimensions sur les fichiers locaux
 	// cas des maj de fichier directes par ftp
 	if ($valeurs['distant']!=='oui'){
+		$infos = false;
 		include_spip('inc/renseigner_document');
 		$f = get_spip_doc($valeurs['fichier']);
 		if ($f AND @file_exists($f))
 			$infos = renseigner_taille_dimension_image($f,$valeurs['extension']);
-		if ($infos['taille']!=$valeurs['taille']
-			OR ($infos['type_image'] && ($infos['largeur']!=$valeurs['largeur']))
-			OR ($infos['type_image'] && ($infos['hauteur']!=$valeurs['hauteur']))){
-			$valeurs['_taille_modif'] = $infos['taille'];
-			$valeurs['_largeur_modif'] = $infos['largeur'];
-			$valeurs['_hauteur_modif'] = $infos['hauteur'];
-			$valeurs['_hidden'].=
-			"<input type='hidden' name='_taille_modif' value='".$infos['taille']."' />"
-			. "<input type='hidden' name='_largeur_modif' value='".$infos['largeur']."' />"
-			. "<input type='hidden' name='_hauteur_modif' value='".$infos['hauteur']."' />";
+		if ($infos AND is_array($infos) AND isset($infos['taille'])){
+			if ($infos['taille']!=$valeurs['taille']
+				OR ($infos['type_image'] && ($infos['largeur']!=$valeurs['largeur']))
+				OR ($infos['type_image'] && ($infos['hauteur']!=$valeurs['hauteur']))){
+				$valeurs['_taille_modif'] = $infos['taille'];
+				$valeurs['_largeur_modif'] = $infos['largeur'];
+				$valeurs['_hauteur_modif'] = $infos['hauteur'];
+				$valeurs['_hidden'].=
+				"<input type='hidden' name='_taille_modif' value='".$infos['taille']."' />"
+				. "<input type='hidden' name='_largeur_modif' value='".$infos['largeur']."' />"
+				. "<input type='hidden' name='_hauteur_modif' value='".$infos['hauteur']."' />";
+			}
 		}
 	}
 
