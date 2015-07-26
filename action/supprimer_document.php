@@ -72,7 +72,8 @@ function action_supprimer_document_dist($id_document=0) {
 				'operation' => 'supprimer_document', // compat v<=2
 				'action' => 'supprimer_document',
 				'table' => 'spip_documents',
-				'id_objet' => $id_document
+				'id_objet' => $id_document,
+				'document' => $doc,
 			),
 			'data' => null
 		)
