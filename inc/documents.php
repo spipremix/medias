@@ -25,8 +25,8 @@ if (!defined('CHARSET_JOINT')) define('CHARSET_JOINT', 'iso-8859-1');
 // Si 2e arg fourni, conversion dans le charset du site si possible
 
 // http://code.spip.net/@contenu_document
-function contenu_document($arg, $charset='')
-{
+function contenu_document($arg, $charset='') {
+	include_spip('inc/distant');
 	if (is_numeric($arg)) {
 		$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=".intval($arg));
 		if (!$r) return '';
@@ -95,8 +95,7 @@ function generer_url_document_dist($id_document, $args='', $ancre='') {
 // A noter : dans le portfolio prive on pousse le vice jusqu'a reduire la taille
 // de la vignette -> c'est a ca que sert la variable $portfolio
 // http://code.spip.net/@vignette_automatique
-function vignette_automatique($img, $doc, $lien, $x=0, $y=0, $align='', $class='spip_logo spip_logos')
-{
+function vignette_automatique($img, $doc, $lien, $x=0, $y=0, $align='', $class='spip_logo spip_logos') {
 	include_spip('inc/distant');
 	include_spip('inc/texte');
 	include_spip('inc/filtres_images_mini');
@@ -147,8 +146,7 @@ function vignette_automatique($img, $doc, $lien, $x=0, $y=0, $align='', $class='
 // Autrement retourner la vignette fournie par SPIP pour ce type MIME
 // Resultat: un fichier local existant
 
-function image_du_document($document)
-{
+function image_du_document($document) {
 	if ($e = $document['extension']
 	  AND isset($GLOBALS['meta']['formats_graphiques'])
 	  AND (strpos($GLOBALS['meta']['formats_graphiques'], $e) !== false)
