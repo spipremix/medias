@@ -22,8 +22,8 @@
 			<span class="image_loading"></span>
 		</h4>
 		<div class="infos">
-		[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{distant-16.png}' width='16' height='16' alt='<:medias:fichier_distant:>' title='<:medias:fichier_distant:>'/> ]<:info_numero_abbreviation:>#ID_DOCUMENT - #EXTENSION - [(#TAILLE|taille_en_octets)]
-		[(#PIPELINE{afficher_metas_document,#ARRAY{args,#ARRAY{'quoi','document_desc','id_document',#ID_DOCUMENT},data,''}})]
+		[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{distant-16.png}' width='16' height='16' alt='<:medias:fichier_distant:>' title='<:medias:fichier_distant:>'/> ]<:info_numero_abbreviation:>#ID_DOCUMENT - #EXTENSION [ - (#LARGEUR|ou{#HAUTEUR}|oui)[(#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#LARGEUR,hauteur_vignette,#HAUTEUR}})]][ ((#TAILLE|taille_en_octets))]
+    [(#PIPELINE{afficher_metas_document,#ARRAY{args,#ARRAY{'quoi','document_desc','id_document',#ID_DOCUMENT},data,''}})]
 		</div>
 		[<div class="mode">(#INCLUS|=={image}|et{#EVAL{_BOUTON_MODE_IMAGE}}|oui)
 			[(#MODE|=={image}|oui)
