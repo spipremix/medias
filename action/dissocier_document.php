@@ -48,7 +48,7 @@ function action_dissocier_document_dist($arg=null){
 		list($id_objet, $objet, $document) = $arg;
 	}
 
-	$suppr=false;
+	$suppr = $check = false;
 	if (count($arg)>3 AND $arg[3]=='suppr')
 		$suppr = true;
 	if (count($arg)>4 AND $arg[4]=='safe')

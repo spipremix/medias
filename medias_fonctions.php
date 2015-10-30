@@ -23,6 +23,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 // nettoyer les zip abandonnes par l'utilisateur
 if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
   AND test_espace_prive()
+  AND isset($_SERVER['REQUEST_METHOD'])
   AND $_SERVER['REQUEST_METHOD']!=='POST'){
 	$zip_to_clean = unserialize($GLOBALS['visiteur_session']['zip_to_clean']);
 	if ($zip_to_clean){
@@ -36,7 +37,8 @@ if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
 
 // capturer un formulaire POST plus grand que post_max_size
 // on genere un minipres car on ne peut rien faire de mieux
-if ($_SERVER['REQUEST_METHOD']=='POST'
+if (isset($_SERVER['REQUEST_METHOD'])
+	AND $_SERVER['REQUEST_METHOD']=='POST'
 	AND empty($_POST)
 	AND strlen($_SERVER['CONTENT_TYPE'])>0
 	AND strncmp($_SERVER['CONTENT_TYPE'],'multipart/form-data', 19)==0
