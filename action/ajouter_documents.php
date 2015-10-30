@@ -458,7 +458,7 @@ function verifier_taille_document_acceptable(&$infos){
 			if ((defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH AND $infos['largeur']>_IMG_MAX_WIDTH)
 				OR (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT AND $infos['hauteur']>_IMG_MAX_HEIGHT) ){
 
-				return _T('medias:info_logo_max_taille',
+				return _T('medias:info_image_max_taille',
 					array(
 						'maxi' =>
 							_T('info_largeur_vignette',
