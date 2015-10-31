@@ -104,6 +104,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_heure' => 'Время',
 	'info_illustrations' => 'Фотографии в материале',
 	'info_image_max_poids' => 'Размер файла изображения должен быть меньше @maxi@ (сейчас @actuel@).',
+	'info_image_max_taille' => 'Размер файла изображения должен быть меньше @maxi@ (сейчас @actuel@).',
 	'info_inclusion_directe' => 'Прямое включение:',
 	'info_inclusion_vignette' => 'Добавить миниатюру:',
 	'info_installer_tous_documents' => 'Добавить все файлы (документы)',

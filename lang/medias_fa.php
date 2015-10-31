@@ -104,6 +104,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_heure' => 'ساعت',
 	'info_illustrations' => 'ترسيم‌ها',
 	'info_image_max_poids' => 'تصويرها بايد الزام كم‌تر از @maxi@ باشند(اين پرونده @actuel@ است).',
+	'info_image_max_taille' => 'تصويرها بايد الزام كم‌تر از @maxi@ باشند(اين پرونده @actuel@ است).',
 	'info_inclusion_directe' => ': گنجاندن مستقيم',
 	'info_inclusion_vignette' => ': گنجاندن تصاوير كوچك شده',
 	'info_installer_tous_documents' => 'تمام اسناد را مستقر كنيد',

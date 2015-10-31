@@ -104,6 +104,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_heure' => 'Čas',
 	'info_illustrations' => 'Ilustrácie',
 	'info_image_max_poids' => 'Obrázky musia mať nevyhnutne menej ako @maxi@ (tento súbor má @actuel@).',
+	'info_image_max_taille' => 'Obrázky musia mať nevyhnutne menej ako @maxi@ (tento súbor má @actuel@).',
 	'info_inclusion_directe' => 'Priame zaradenie:',
 	'info_inclusion_vignette' => 'Zaradiť miniatúru:',
 	'info_installer_tous_documents' => 'Nainštalovať všetky dokumenty',

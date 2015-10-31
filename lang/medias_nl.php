@@ -104,6 +104,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_heure' => 'Uur',
 	'info_illustrations' => 'Illustraties',
 	'info_image_max_poids' => 'De beelden moeten verplicht minder dan @maxi@ wegen (huidige bestand is @actuel@).',
+	'info_image_max_taille' => 'De beelden moeten verplicht minder dan @maxi@ wegen (huidige bestand is @actuel@).',
 	'info_inclusion_directe' => 'Directe insluiting:',
 	'info_inclusion_vignette' => 'Insluiten van de miniatuurafbeelding:',
 	'info_installer_tous_documents' => 'Alle documenten installeren',

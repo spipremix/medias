@@ -104,6 +104,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_heure' => 'Zäit',
 	'info_illustrations' => 'Illustratiounen',
 	'info_image_max_poids' => 'D’Maximalgréisst vun de Biller ass @maxi@ (dëse Fichier huet @actuel@).',
+	'info_image_max_taille' => 'D’Maximalgréisst vun de Biller ass @maxi@ (dëse Fichier huet @actuel@).',
 	'info_inclusion_directe' => 'Direkt Abannung:',
 	'info_inclusion_vignette' => 'Ubannen vun der Vignette:',
 	'info_installer_tous_documents' => 'All d’Dokumenter eroplueden',
