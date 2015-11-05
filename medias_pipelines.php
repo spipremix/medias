@@ -23,6 +23,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * Traiter le cas pathologique d'un upload de document ayant echoué
  * car étant trop gros
  *
+ * @uses erreur_upload_trop_gros()
  * @pipeline detecter_fond_par_defaut
  * @param string $fond
  *     Nom du squelette par défaut qui sera utilisé

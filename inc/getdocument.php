@@ -38,20 +38,18 @@ include_spip('inc/minipres');
  * et affiche un minipres avec la taille limite de documents possibles
  *
  * @see minipres()
- * @see _IMG_MAX_WIDTH
- * @see _IMG_MAX_HEIGHT
 **/
 function erreur_upload_trop_gros() {
 	include_spip('inc/filtres');
-	
-	$msg = 		"<p>"
+
+	$msg = "<p>"
 		.taille_en_octets($_SERVER["CONTENT_LENGTH"])
 		.'<br />'
 		._T('medias:upload_limit',
 		array('max' => ini_get('upload_max_filesize')))
 		."</p>";
-	
-  echo minipres(_T('pass_erreur'),"<div class='upload_answer upload_error'>".$msg."</div>");
+
+	echo minipres(_T('pass_erreur'),"<div class='upload_answer upload_error'>".$msg."</div>");
 	exit;
 }
 
