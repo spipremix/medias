@@ -109,18 +109,41 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 		$id_table_objet => $id
 	));
 
-	// tous les documents liés à l'article sont considérés non vus
-	objet_qualifier_liens(array('document'=>'*'), array($type=>$id), array('vu'=>'non'));
+	$texte_documents_vus = $GLOBALS['doublons_documents_inclus'];
 
-	// ceux présents sont considérés comme vus
-	if (count($GLOBALS['doublons_documents_inclus'])){
-		// on repasse par une requete sur spip_documents pour verifier que les documents existent bien !
-		$in_liste = sql_in('id_document', $GLOBALS['doublons_documents_inclus']);
-		$res = sql_allfetsel("id_document", "spip_documents", $in_liste);
-		$res = array_map('reset', $res);
-		// Creer le lien s'il n'existe pas deja
-		objet_associer(array('document'=>$res),array($type=>$id),array('vu'=>'oui'));
-		objet_qualifier_liens(array('document'=>$res),array($type=>$id),array('vu'=>'oui'));
+	// on ne modifie les liaisons que si c'est nécessaire
+	$bdd_documents_vus = array(
+		'oui' => array(),
+		'non' => array()
+	);
+
+	$liaisons = objet_trouver_liens(array('document'=>'*'), array($type => $id));
+	foreach ($liaisons as $l) {
+		$bdd_documents_vus[$l['vu']][] = $l['id_document'];
+	}
+
+	// il y en a des nouveaux documents vus dans le texte
+	$nouveaux = array_diff($texte_documents_vus, $bdd_documents_vus['oui']);
+
+	// il y en a des anciens documents vus dans la bdd
+	$anciens = array_diff($bdd_documents_vus['oui'], $texte_documents_vus);
+
+	// si on a des choses à actualiser
+	if ($nouveaux OR $anciens) {
+		if ($nouveaux) {
+			// on vérifie que les documents indiqués vus existent réellement tout de même (en cas d'erreur de saisie)
+			$ids = sql_allfetsel("id_document", "spip_documents", sql_in('id_document', $nouveaux));
+			$ids = array_map('reset', $ids);
+			if ($ids) {
+				var_dump('associer');
+				// Creer le lien s'il n'existe pas déjà
+				objet_associer(array('document' => $ids), array($type => $id), array('vu' => 'oui'));
+				objet_qualifier_liens(array('document' => $ids), array($type => $id), array('vu' => 'oui'));
+			}
+		}
+		if ($anciens) {
+			objet_qualifier_liens(array('document' => $anciens), array($type => $id), array('vu' => 'non'));
+		}
 	}
 }
 
