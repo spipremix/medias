@@ -34,6 +34,10 @@ $GLOBALS['medias_liste_champs'][] = 'chapo';
  * indique que le document est utilisé et doit être lié à l'objet, avec le champ `vu=oui`
  *
  * S'il y avait des anciens liens avec vu=oui qui n'ont plus lieu d'être, ils passent à non.
+ *
+ * @note
+ *     La fonction pourrait avoir bien moins d'arguments : seuls $champs, $id, $type ou $objet, $desc, $serveur
+ *     sont nécessaires. On calcule $desc s'il est absent, et il contient toutes les infos…
  * 
  * @param array $champs
  *     Couples [champ => valeur] connus de l'objet
@@ -54,59 +58,69 @@ $GLOBALS['medias_liste_champs'][] = 'chapo';
  * @return void|null
 **/
 function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $table_objet, $spip_table_objet, $desc=array(), $serveur=''){
-	$champs_selection=array();
 
-	foreach ($GLOBALS['medias_liste_champs'] as $champs_choisis) {
-		if ( isset($champs[$champs_choisis]) )
-			array_push($champs_selection,$champs_choisis);
-	}
-	if (count($champs_selection) == 0)
+	// On conserve uniquement les champs qui modifient le calcul des doublons de documents
+	// S'il n'il en a aucun, les doublons ne sont pas impactés, donc rien à faire d'autre..
+	if (!$champs = array_intersect_key($champs, array_flip($GLOBALS['medias_liste_champs']))) {
 		return;
+	}
+
 	if (!$desc){
 		$trouver_table = charger_fonction('trouver_table', 'base');
 		$desc = $trouver_table($table_objet, $serveur);
 	}
-	$load = "";
-	// charger le champ manquant en cas de modif partielle de l	'objet
-	// seulement si le champ existe dans la table demande
 
-	$champs_a_traiter = "";
-	foreach ($champs_selection as $champs_a_parcourir) {
-		if (isset($desc['field'][$champs_a_parcourir])) {
-			$load = $champs_a_parcourir;
-			$champs_a_traiter .= $champs[$champs_a_parcourir];
+	// Il faut récupérer toutes les données qui impactent les liens de documents vus
+	// afin de savoir lesquels sont présents dans les textes, et pouvoir actualiser avec
+	// les liens actuellement enregistrés.
+	$absents = array();
+
+	// Récupérer chaque champ impactant qui existe dans la table de l'objet et qui nous manque
+	foreach ($GLOBALS['medias_liste_champs'] as $champ) {
+		if (isset($desc['field'][$champ]) and !isset($champs[$champ])) {
+			$absents[] = $champ;
 		}
 	}
 
-	if ($load){
-		$champs[$load] = "";
-		$row = sql_fetsel($load, $spip_table_objet, "$id_table_objet=".sql_quote($id));
-		if ($row AND isset($row[$load]))
-			$champs[$load] = $row[$load];
+	// Retrouver les textes des champs manquants
+	if ($absents) {
+		$row = sql_fetsel($absents, $spip_table_objet, "$id_table_objet=".sql_quote($id));
+		if ($row) {
+			$champs = array_merge($row, $champs);
+		}
 	}
+
 	include_spip('inc/texte');
 	include_spip('base/abstract_sql');
 	include_spip('action/editer_liens');
 	include_spip('base/objets');
+
+	// récupérer la liste des modèles qui considèrent un document comme vu s'ils sont utilisés dans un texte
 	$modeles = lister_tables_objets_sql('spip_documents');
 	$modeles = $modeles['modeles'];
+
+	// liste d'id_documents trouvés dans les textes
 	$GLOBALS['doublons_documents_inclus'] = array();
-	$env = array(
-		'objet' => $type,
-		'id_objet' => $id,
+
+	// detecter les doublons dans ces textes
+	traiter_modeles(implode(" ", $champs), array('documents' => $modeles), '', '', null, array(
+		'objet'         => $type,
+		'id_objet'      => $id,
 		$id_table_objet => $id
-	);
-	traiter_modeles($champs_a_traiter,array('documents'=>$modeles),'','',null,$env); // detecter les doublons
-	objet_qualifier_liens(array('document'=>'*'),array($type=>$id),array('vu'=>'non'));
+	));
+
+	// tous les documents liés à l'article sont considérés non vus
+	objet_qualifier_liens(array('document'=>'*'), array($type=>$id), array('vu'=>'non'));
+
+	// ceux présents sont considérés comme vus
 	if (count($GLOBALS['doublons_documents_inclus'])){
 		// on repasse par une requete sur spip_documents pour verifier que les documents existent bien !
-		$in_liste = sql_in('id_document',$GLOBALS['doublons_documents_inclus']);
+		$in_liste = sql_in('id_document', $GLOBALS['doublons_documents_inclus']);
 		$res = sql_allfetsel("id_document", "spip_documents", $in_liste);
-		$res = array_map('reset',$res);
+		$res = array_map('reset', $res);
 		// Creer le lien s'il n'existe pas deja
 		objet_associer(array('document'=>$res),array($type=>$id),array('vu'=>'oui'));
 		objet_qualifier_liens(array('document'=>$res),array($type=>$id),array('vu'=>'oui'));
 	}
 }
 
-?>
