@@ -10,16 +10,50 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
+/**
+ * Analyse des textes pour trouver et marquer comme vu les documents utilisés dedans
+ *
+ * @package SPIP\Medias\Fonctions
+**/
+
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
-
-// On liste tous les champs susceptibles de contenir des documents ou images si on veut que ces derniers soient lies a l objet lorsqu on y fait reference par imgXX docXX ou embXX
-// la dist ne regarde que chapo et texte, on laisse comme ca, mais ca permet d etendre a descriptif ou toto depuis d autre plugin comme agenda ou grappe
+// la dist ne regarde que chapo et texte, on laisse comme ca,
+// mais ca permet d etendre a descriptif ou toto depuis d autres plugins
 $GLOBALS['medias_liste_champs'][] = 'texte';
 $GLOBALS['medias_liste_champs'][] = 'chapo';
  
-// http://code.spip.net/@marquer_doublons_documents
-function inc_marquer_doublons_doc_dist($champs,$id,$type,$id_table_objet,$table_objet,$spip_table_objet, $desc=array(), $serveur=''){
+/**
+ * Trouver les documents utilisés dans le texte d'un objet et enregistrer cette liaison comme vue.
+ *
+ * La liste des champs susceptibles de contenir des documents ou images est indiquée
+ * par la globale `medias_liste_champs` (un tableau).
+ * 
+ * Le contenu de ces champs (du moins ceux qui existent pour l'objet demandé) est récupéré et analysé.
+ * La présence d'un modèle de document dans ces contenus, tel que imgXX, docXX ou embXX
+ * indique que le document est utilisé et doit être lié à l'objet, avec le champ `vu=oui`
+ *
+ * S'il y avait des anciens liens avec vu=oui qui n'ont plus lieu d'être, ils passent à non.
+ * 
+ * @param array $champs
+ *     Couples [champ => valeur] connus de l'objet
+ * @param int $id
+ *     Identifiant de l'objet
+ * @param string $type
+ *     Type d'objet éditorial (ex: article)
+ * @param string $id_table_objet
+ *     Nom de la clé primaire sur la table sql de l'objet
+ * @param string $table_objet
+ *     Nom de l'objet éditorial (ex: articles)
+ * @param string $spip_table_objet
+ *     Nom de la table sql de l'objet
+ * @param array $desc
+ *     Description de l'objet, si déjà calculé
+ * @param string $serveur
+ *     Serveur sql utilisé.
+ * @return void|null
+**/
+function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $table_objet, $spip_table_objet, $desc=array(), $serveur=''){
 	$champs_selection=array();
 
 	foreach ($GLOBALS['medias_liste_champs'] as $champs_choisis) {
