@@ -128,22 +128,20 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 	// il y en a des anciens documents vus dans la bdd
 	$anciens = array_diff($bdd_documents_vus['oui'], $texte_documents_vus);
 
-	// si on a des choses à actualiser
-	if ($nouveaux OR $anciens) {
-		if ($nouveaux) {
-			// on vérifie que les documents indiqués vus existent réellement tout de même (en cas d'erreur de saisie)
-			$ids = sql_allfetsel("id_document", "spip_documents", sql_in('id_document', $nouveaux));
-			$ids = array_map('reset', $ids);
-			if ($ids) {
-				var_dump('associer');
-				// Creer le lien s'il n'existe pas déjà
-				objet_associer(array('document' => $ids), array($type => $id), array('vu' => 'oui'));
-				objet_qualifier_liens(array('document' => $ids), array($type => $id), array('vu' => 'oui'));
-			}
-		}
-		if ($anciens) {
-			objet_qualifier_liens(array('document' => $anciens), array($type => $id), array('vu' => 'non'));
+	if ($nouveaux) {
+		// on vérifie que les documents indiqués vus existent réellement tout de même (en cas d'erreur de saisie)
+		$ids = sql_allfetsel("id_document", "spip_documents", sql_in('id_document', $nouveaux));
+		$ids = array_map('reset', $ids);
+		if ($ids) {
+			// Creer le lien s'il n'existe pas déjà
+			objet_associer(array('document' => $ids), array($type => $id), array('vu' => 'oui'));
+			objet_qualifier_liens(array('document' => $ids), array($type => $id), array('vu' => 'oui'));
 		}
 	}
+
+	if ($anciens) {
+		objet_qualifier_liens(array('document' => $anciens), array($type => $id), array('vu' => 'non'));
+	}
+
 }
 
