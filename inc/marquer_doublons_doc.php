@@ -122,10 +122,10 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 		$bdd_documents_vus[$l['vu']][] = $l['id_document'];
 	}
 
-	// il y en a des nouveaux documents vus dans le texte
+	// il y a des nouveaux documents vus dans le texte
 	$nouveaux = array_diff($texte_documents_vus, $bdd_documents_vus['oui']);
 
-	// il y en a des anciens documents vus dans la bdd
+	// il y a des anciens documents vus dans la bdd
 	$anciens = array_diff($bdd_documents_vus['oui'], $texte_documents_vus);
 
 	if ($nouveaux) {
