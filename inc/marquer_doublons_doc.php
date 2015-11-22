@@ -57,7 +57,7 @@ $GLOBALS['medias_liste_champs'][] = 'chapo';
  *     Serveur sql utilisé.
  * @return void|null
 **/
-function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $table_objet, $spip_table_objet, $desc=array(), $serveur=''){
+function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $table_objet, $spip_table_objet, $desc = array(), $serveur = ''){
 
 	// On conserve uniquement les champs qui modifient le calcul des doublons de documents
 	// S'il n'il en a aucun, les doublons ne sont pas impactés, donc rien à faire d'autre..

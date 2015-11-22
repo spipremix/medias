@@ -29,7 +29,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @return string $mode
  * 		Le mode définitif 
  */
-function joindre_determiner_mode($mode,$id_document,$objet){
+function joindre_determiner_mode($mode, $id_document, $objet){
 	if ($mode=='auto'){
 		if (intval($id_document))
 			$mode = sql_getfetsel('mode','spip_documents','id_document='.intval($id_document));
@@ -65,7 +65,7 @@ function joindre_determiner_mode($mode,$id_document,$objet){
  * @return array $valeurs
  * 		Les valeurs chargées dans le formulaire
  */
-function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=0,$objet='',$mode = 'auto',$galerie = false, $proposer_media=true, $proposer_ftp=true){
+function formulaires_joindre_document_charger_dist($id_document = 'new', $id_objet = 0, $objet = '', $mode = 'auto', $galerie = false, $proposer_media = true, $proposer_ftp = true){
 	$valeurs = array();
 	$mode = joindre_determiner_mode($mode,$id_document,$objet);
 	
@@ -146,7 +146,7 @@ function formulaires_joindre_document_charger_dist($id_document='new',$id_objet=
  * @return array $erreurs
  * 		Les erreurs éventuelles dans un tableau
  */
-function formulaires_joindre_document_verifier_dist($id_document='new',$id_objet=0,$objet='',$mode = 'auto',$galerie = false, $proposer_media=true, $proposer_ftp=true){
+function formulaires_joindre_document_verifier_dist($id_document = 'new', $id_objet = 0, $objet = '', $mode = 'auto', $galerie = false, $proposer_media = true, $proposer_ftp = true){
 	include_spip('inc/joindre_document');
 	
 	$erreurs = array();
@@ -224,7 +224,7 @@ function formulaires_joindre_document_verifier_dist($id_document='new',$id_objet
  * @return array $res
  * 		Le tableau renvoyé par les CVT avec le message et editable
  */
-function formulaires_joindre_document_traiter_dist($id_document='new',$id_objet=0,$objet='',$mode = 'auto',$galerie = false, $proposer_media=true, $proposer_ftp=true){
+function formulaires_joindre_document_traiter_dist($id_document = 'new', $id_objet = 0, $objet = '', $mode = 'auto', $galerie = false, $proposer_media = true, $proposer_ftp = true){
 	$res = array('editable'=>true);
 	$ancre = '';
 	// on joint un document deja dans le site

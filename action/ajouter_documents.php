@@ -290,7 +290,7 @@ function corriger_extension($ext) {
  *       Avec un index 'autozip' si il faut zipper
  *     - false ou message d'erreur si l'extension est refusée
  */
-function verifier_upload_autorise($source, $mode=''){
+function verifier_upload_autorise($source, $mode = ''){
 	$infos = array('fichier'=>$source);
 	$res = false;
 	if (preg_match(",\.([a-z0-9]+)(\?.*)?$,i", $source, $match)
@@ -339,7 +339,7 @@ function verifier_upload_autorise($source, $mode=''){
  *     Mode d'inclusion du fichier, si connu
  * @return array
  */
-function fixer_fichier_upload($file, $mode=''){
+function fixer_fichier_upload($file, $mode = ''){
 	/**
 	 * On vérifie que le fichier existe et qu'il contient quelque chose 
 	 */

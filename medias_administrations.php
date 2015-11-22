@@ -42,7 +42,7 @@ function medias_check_statuts($affiche = false){
  * @param string $nom_meta_base_version
  * @param string $version_cible
  */
-function medias_upgrade($nom_meta_base_version,$version_cible){
+function medias_upgrade($nom_meta_base_version, $version_cible){
 
 	// ne pas installer tant qu'on est pas a jour sur version base SPIP
 	// cas typique d'un upgrade qui commence par suppression de connect.php
@@ -172,7 +172,7 @@ function medias_maj_meta_documents(){
 	ecrire_meta('documents_objets',implode(',',$config));
 }
 
-function medias_peuple_media_document($champ_media="media_defaut"){
+function medias_peuple_media_document($champ_media = "media_defaut"){
 	$res = sql_select("DISTINCT extension","spip_documents","media=".sql_quote('?'));
 	while($row = sql_fetch($res)){
 		// attention ici c'est encore le champ media, car on le renomme juste apres
@@ -184,7 +184,7 @@ function medias_peuple_media_document($champ_media="media_defaut"){
 }
 
 /*
-function medias_install($action,$prefix,$version_cible){
+function medias_install($action, $prefix, $version_cible){
 	$version_base = $GLOBALS[$prefix."_base_version"];
 	switch ($action){
 		case 'test':

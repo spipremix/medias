@@ -2134,7 +2134,7 @@ echo 'QuicktimeParseNikonNCTG()::unknown $data_size_type: '.$data_size_type.'<br
 	}
 
 
-	public function CopyToAppropriateCommentsSection($keyname, $data, $boxname='') {
+	public function CopyToAppropriateCommentsSection($keyname, $data, $boxname = '') {
 		static $handyatomtranslatorarray = array();
 		if (empty($handyatomtranslatorarray)) {
 			// http://www.geocities.com/xhelmboyx/quicktime/formats/qtm-layout.txt

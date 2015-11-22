@@ -25,7 +25,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  *   angle de rotation en degre>0
  * @return void
  */
-function action_tourner_dist($id_document=null, $angle=null) {
+function action_tourner_dist($id_document = null, $angle = null) {
 	if (is_null($id_document) OR is_null($angle)){
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
@@ -53,7 +53,7 @@ function action_tourner_dist($id_document=null, $angle=null) {
  *   angle de rotation en degre>0
  * @return
  */
-function action_tourner_post($id_document,$angle)
+function action_tourner_post($id_document, $angle)
 {
 	$row = sql_fetsel("fichier,extension", "spip_documents", "id_document=".intval($id_document));
 

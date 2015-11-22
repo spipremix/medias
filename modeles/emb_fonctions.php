@@ -15,7 +15,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param  $mime_type
  * @return mixed
  */
-function trouver_modele_emb($extension,$mime_type){
+function trouver_modele_emb($extension, $mime_type){
 	if ($extension AND trouve_modele($fond="emb_".$extension)){
 		return $fond;
 	}

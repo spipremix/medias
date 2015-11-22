@@ -95,7 +95,7 @@ function renseigner_source_distante($source){
  *     - Si c'est une chaîne, c'est une erreur
  *     - Si c'est un tableau, l'ensemble des informations récupérées du fichier
  */
-function renseigner_taille_dimension_image($fichier,$ext,$distant=false){
+function renseigner_taille_dimension_image($fichier, $ext, $distant = false){
 
 	$infos = array(
 		'largeur'=>0,

@@ -31,7 +31,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * 
  * @return void
  */
-function action_dissocier_document_dist($arg=null){
+function action_dissocier_document_dist($arg = null){
 	if(is_null($arg)){
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();

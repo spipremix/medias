@@ -243,7 +243,7 @@ class getID3
 	}
 
 
-	public function openfile($filename, $filesize=null) {
+	public function openfile($filename, $filesize = null) {
 		try {
 			if (!empty($this->startup_error)) {
 				throw new getid3_exception($this->startup_error);
@@ -342,7 +342,7 @@ class getID3
 	}
 
 	// public: analyze file
-	public function analyze($filename, $filesize=null, $original_filename='') {
+	public function analyze($filename, $filesize = null, $original_filename = '') {
 		try {
 			if (!$this->openfile($filename, $filesize)) {
 				return $this->info;
@@ -1104,7 +1104,7 @@ class getID3
 
 
 
-	public function GetFileFormat(&$filedata, $filename='') {
+	public function GetFileFormat(&$filedata, $filename = '') {
 		// this function will determine the format of a file based on usually
 		// the first 2-4 bytes of the file (8 bytes for PNG, 16 bytes for JPG,
 		// and in the case of ISO CD image, 6 bytes offset 32kb from the start
@@ -1630,7 +1630,7 @@ abstract class getid3_handler {
 	private $dependency_to = null;
 
 
-	public function __construct(getID3 $getid3, $call_module=null) {
+	public function __construct(getID3 $getid3, $call_module = null) {
 		$this->getid3 = $getid3;
 
 		if ($call_module) {
@@ -1694,7 +1694,7 @@ abstract class getid3_handler {
 		return fread($this->getid3->fp, $bytes);
 	}
 
-	protected function fseek($bytes, $whence=SEEK_SET) {
+	protected function fseek($bytes, $whence = SEEK_SET) {
 		if ($this->data_string_flag) {
 			switch ($whence) {
 				case SEEK_SET:
@@ -1749,7 +1749,7 @@ abstract class getid3_handler {
 		// does nothing for now
 	}
 
-	public function saveAttachment($name, $offset, $length, $image_mime=null) {
+	public function saveAttachment($name, $offset, $length, $image_mime = null) {
 		try {
 
 			// do not extract at all

@@ -36,7 +36,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  *     Chaîne (chemin vers l'image) si on ne demande pas de taille
  *     Tableau (chemin, largeur, hauteur) si on demande avec la taille.
  */
-function inc_vignette_dist($ext, $size=true, $loop = true) {
+function inc_vignette_dist($ext, $size = true, $loop = true) {
 
 	if (!$ext)
 		$ext = 'txt';

@@ -96,7 +96,7 @@ class getID3_cached_sqlite3 extends getID3 {
 	* @param string $table holds name of sqlite table
 	* @return type
 	*/
-	public function __construct($table='getid3_cache', $hide=false) {
+	public function __construct($table = 'getid3_cache', $hide = false) {
 		$this->table = $table; // Set table
 		$file = dirname(__FILE__).'/'.basename(__FILE__, 'php').'sqlite';
 		if ($hide) {
@@ -159,7 +159,7 @@ class getID3_cached_sqlite3 extends getID3 {
 	* @param type $filename
 	* @return boolean
 	*/
-	public function analyze($filename, $filesize=null, $original_filename='') {
+	public function analyze($filename, $filesize = null, $original_filename = '') {
 		if (!file_exists($filename)) {
 			return false;
 		}

@@ -160,7 +160,7 @@ class getid3_write_apetag
 		return $this->GenerateAPEtagHeaderFooter($items, true).implode('', $items).$this->GenerateAPEtagHeaderFooter($items, false);
 	}
 
-	public function GenerateAPEtagHeaderFooter(&$items, $isheader=false) {
+	public function GenerateAPEtagHeaderFooter(&$items, $isheader = false) {
 		$tagdatalength = 0;
 		foreach ($items as $itemdata) {
 			$tagdatalength += strlen($itemdata);
@@ -176,7 +176,7 @@ class getid3_write_apetag
 		return $APEheader;
 	}
 
-	public function GenerateAPEtagFlags($header=true, $footer=true, $isheader=false, $encodingid=0, $readonly=false) {
+	public function GenerateAPEtagFlags($header = true, $footer = true, $isheader = false, $encodingid = 0, $readonly = false) {
 		$APEtagFlags = array_fill(0, 4, 0);
 		if ($header) {
 			$APEtagFlags[0] |= 0x80; // Tag contains a header

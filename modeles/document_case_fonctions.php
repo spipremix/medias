@@ -13,7 +13,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 define('_BOUTON_MODE_IMAGE', true);
 
 include_spip('inc/documents'); // pour la fonction affiche_raccourci_doc
-function medias_raccourcis_doc($id_document,$titre,$descriptif,$inclus,$largeur,$hauteur,$mode,$vu,$media=null){
+function medias_raccourcis_doc($id_document, $titre, $descriptif, $inclus, $largeur, $hauteur, $mode, $vu, $media = null){
 	$raccourci = '';
 	$doc = 'doc';
 

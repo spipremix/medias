@@ -22,7 +22,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @param string $mode
  * @return void
  */
-function action_changer_mode_document_dist($id_document=null, $mode=null){
+function action_changer_mode_document_dist($id_document = null, $mode = null){
 	if (is_null($id_document) OR is_null($mode)){
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();

@@ -267,7 +267,7 @@ function joindre_decrire_contenu_zip($zip) {
 
 
 // http://code.spip.net/@joindre_deballes
-function joindre_deballer_lister_zip($path,$tmp_dir) {
+function joindre_deballer_lister_zip($path, $tmp_dir) {
   include_spip('inc/pclzip');
 	$archive = new PclZip($path);
 	$archive->extract(

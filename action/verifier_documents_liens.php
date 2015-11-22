@@ -25,7 +25,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  *     Indique le document cible de l'action, sinon il sera
  *     obtenu par la clé d'action sécurisée.
  */
-function action_verifier_documents_liens_dist($id_document=null) {
+function action_verifier_documents_liens_dist($id_document = null) {
 
 	if (is_null($id_document)){
 		$securiser_action = charger_fonction('securiser_action', 'inc');

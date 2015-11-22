@@ -23,7 +23,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @param null $id_document
  * @return bool|mixed|string
  */
-function action_copier_local_dist($id_document=null) {
+function action_copier_local_dist($id_document = null) {
 
 	if (!$id_document){
 		// Recupere les arguments.

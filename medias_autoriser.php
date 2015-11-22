@@ -34,7 +34,7 @@ function medias_autoriser(){}
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_mediatheque_administrer_dist($faire,$type,$id,$qui,$opt) {
+function autoriser_mediatheque_administrer_dist($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo';
 }
 
@@ -48,7 +48,7 @@ function autoriser_mediatheque_administrer_dist($faire,$type,$id,$qui,$opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_documents_menu_dist($faire,$type,$id,$qui,$opt) {
+function autoriser_documents_menu_dist($faire, $type, $id, $qui, $opt) {
 	return autoriser('administrer','mediatheque',$id,$qui,$opt);
 }
 
@@ -62,7 +62,7 @@ function autoriser_documents_menu_dist($faire,$type,$id,$qui,$opt) {
  * @param  array  $options   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
  */
-function autoriser_document_tailler_dist($faire,$type,$id,$qui,$options) {
+function autoriser_document_tailler_dist($faire, $type, $id, $qui, $options) {
 
 	if (!$id_document=intval($id))
 		return false;

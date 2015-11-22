@@ -193,7 +193,7 @@ function medias_declarer_tables_objets_sql($tables){
  * @param string $champ_media
  * @return void
  */
-function creer_base_types_doc($serveur='', $champ_media="media_defaut") {
+function creer_base_types_doc($serveur = '', $champ_media = "media_defaut") {
 	global $tables_images, $tables_sequences, $tables_documents, $tables_mime;
 	include_spip('base/typedoc');
 	include_spip('base/abstract_sql');

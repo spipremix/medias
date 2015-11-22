@@ -24,6 +24,6 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param string $ajax
  * @return string
  */
-function puce_statut_document_dist($id, $statut, $id_rubrique, $type, $ajax='') {
+function puce_statut_document_dist($id, $statut, $id_rubrique, $type, $ajax = '') {
 	return "<img src='" . chemin_image("attachment-16.png") . "' width='16' height='16' alt=''  />";
 }

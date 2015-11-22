@@ -19,7 +19,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @param int $arg
  * @return array
  */
-function action_editer_document_dist($arg=null) {
+function action_editer_document_dist($arg = null) {
 
 	if (is_null($arg)){
 		$securiser_action = charger_fonction('securiser_action', 'inc');
@@ -47,7 +47,7 @@ function action_editer_document_dist($arg=null) {
  * @param array|null $set
  * @return int
  */
-function document_inserer($id_parent=null, $set=null) {
+function document_inserer($id_parent = null, $set = null) {
 
 	$champs = array(
 		'statut' => 'prop',
@@ -88,7 +88,7 @@ function document_inserer($id_parent=null, $set=null) {
  * @param int $id_document
  * @param array|bool $set
  */
-function document_modifier($id_document, $set=false) {
+function document_modifier($id_document, $set = false) {
 
 	include_spip('inc/modifier');
 	include_spip('inc/filtres');
@@ -161,7 +161,7 @@ function document_modifier($id_document, $set=false) {
  * @param array $champs
  * @return bool
  */
-function document_instituer($id_document,$champs=array()){
+function document_instituer($id_document, $champs = array()){
 	
 	$statut=isset($champs['statut'])?$champs['statut']:null;
 	$date_publication = isset($champs['date_publication'])?$champs['date_publication']:null;
@@ -232,7 +232,7 @@ function document_instituer($id_document,$champs=array()){
  * @param array $parents
  * @param bool $ajout
  */
-function medias_revision_document_parents($id_document, $parents=null, $ajout=false){
+function medias_revision_document_parents($id_document, $parents = null, $ajout = false){
 	if (!is_array($parents))
 		return;
 	
@@ -299,7 +299,7 @@ function insert_document() {
  * @param int $id_document Identifiant du document
  * @param array|bool $set
  */
-function document_set($id_document, $set=false) {
+function document_set($id_document, $set = false) {
 	return document_modifier($id_document, $set);
 }
 
@@ -311,7 +311,7 @@ function document_set($id_document, $set=false) {
  * @param int $id_document Identifiant du document
  * @param array $champs
  */
-function instituer_document($id_document,$champs=array()){
+function instituer_document($id_document, $champs = array()){
 	return document_instituer($id_document,$champs);
 }
 
@@ -323,7 +323,7 @@ function instituer_document($id_document,$champs=array()){
  * @param int $id_document Identifiant du document
  * @param array $c
  */
-function revision_document($id_document, $c=false) {
+function revision_document($id_document, $c = false) {
 	return document_modifier($id_document,$c);
 }
 

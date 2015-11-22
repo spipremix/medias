@@ -17,7 +17,7 @@ include_spip('inc/editer');
 include_spip('inc/documents');
 include_spip('inc/config');
 
-function formulaires_editer_document_charger_dist($id_document='new', $id_parent='', $retour='', $lier_trad=0, $config_fonc='documents_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_document_charger_dist($id_document = 'new', $id_parent = '', $retour = '', $lier_trad = 0, $config_fonc = 'documents_edit_config', $row = array(), $hidden = ''){
 	$valeurs = formulaires_editer_objet_charger('document',$id_document,$id_parent,$lier_trad,$retour,$config_fonc,$row,$hidden);
 
 	// relier les parents
@@ -95,7 +95,7 @@ function documents_edit_config($row)
 	return $config;
 }
 
-function formulaires_editer_document_verifier_dist($id_document='new', $id_parent='', $retour='', $lier_trad=0, $config_fonc='documents_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_document_verifier_dist($id_document = 'new', $id_parent = '', $retour = '', $lier_trad = 0, $config_fonc = 'documents_edit_config', $row = array(), $hidden = ''){
 	$erreurs = formulaires_editer_objet_verifier('document',$id_document,is_numeric($id_document)?array():array('titre'));
 
 	// verifier l'upload si on a demande a changer le document
@@ -124,7 +124,7 @@ function formulaires_editer_document_verifier_dist($id_document='new', $id_paren
 }
 
 // http://code.spip.net/@inc_editer_article_dist
-function formulaires_editer_document_traiter_dist($id_document='new', $id_parent='', $retour='', $lier_trad=0, $config_fonc='documents_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_document_traiter_dist($id_document = 'new', $id_parent = '', $retour = '', $lier_trad = 0, $config_fonc = 'documents_edit_config', $row = array(), $hidden = ''){
 	if (is_null(_request('parents')))
 		set_request('parents',array());
 

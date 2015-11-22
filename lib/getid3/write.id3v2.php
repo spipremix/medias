@@ -260,7 +260,7 @@ class getid3_write_id3v2
 	}
 
 
-	public function GenerateID3v2FrameFlags($TagAlter=false, $FileAlter=false, $ReadOnly=false, $Compression=false, $Encryption=false, $GroupingIdentity=false, $Unsynchronisation=false, $DataLengthIndicator=false) {
+	public function GenerateID3v2FrameFlags($TagAlter = false, $FileAlter = false, $ReadOnly = false, $Compression = false, $Encryption = false, $GroupingIdentity = false, $Unsynchronisation = false, $DataLengthIndicator = false) {
 		switch ($this->majorversion) {
 			case 4:
 				// %0abc0000 %0h00kmnp
@@ -1531,7 +1531,7 @@ class getid3_write_id3v2
 		return true;
 	}
 
-	public function GenerateID3v2Tag($noerrorsonly=true) {
+	public function GenerateID3v2Tag($noerrorsonly = true) {
 		$this->ID3v2FrameIsAllowed(null, ''); // clear static array in case this isn't the first call to $this->GenerateID3v2Tag()
 
 		$tagstring = '';
@@ -1842,7 +1842,7 @@ class getid3_write_id3v2
 		return false;
 	}
 
-	public function IsWithinBitRange($number, $maxbits, $signed=false) {
+	public function IsWithinBitRange($number, $maxbits, $signed = false) {
 		if ($signed) {
 			if (($number > (0 - pow(2, $maxbits - 1))) && ($number <= pow(2, $maxbits - 1))) {
 				return true;
@@ -1866,7 +1866,7 @@ class getid3_write_id3v2
 		return $parts;
 	}
 
-	public function IsValidURL($url, $allowUserPass=false) {
+	public function IsValidURL($url, $allowUserPass = false) {
 		if ($url == '') {
 			return false;
 		}

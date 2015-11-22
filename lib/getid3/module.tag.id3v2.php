@@ -2607,7 +2607,7 @@ class getid3_id3v2 extends getid3_handler
 
 
 
-	public static function LanguageLookup($languagecode, $casesensitive=false) {
+	public static function LanguageLookup($languagecode, $casesensitive = false) {
 
 		if (!$casesensitive) {
 			$languagecode = strtolower($languagecode);
@@ -3122,7 +3122,7 @@ class getid3_id3v2 extends getid3_handler
 		return (isset($SYTLContentTypeLookup[$index]) ? $SYTLContentTypeLookup[$index] : '');
 	}
 
-	public static function APICPictureTypeLookup($index, $returnarray=false) {
+	public static function APICPictureTypeLookup($index, $returnarray = false) {
 		static $APICPictureTypeLookup = array(
 			0x00 => 'Other',
 			0x01 => '32x32 pixels \'file icon\' (PNG only)',
@@ -3587,7 +3587,7 @@ class getid3_id3v2 extends getid3_handler
 		return false;
 	}
 
-	public static function IsANumber($numberstring, $allowdecimal=false, $allownegative=false) {
+	public static function IsANumber($numberstring, $allowdecimal = false, $allownegative = false) {
 		for ($i = 0; $i < strlen($numberstring); $i++) {
 			if ((chr($numberstring{$i}) < chr('0')) || (chr($numberstring{$i}) > chr('9'))) {
 				if (($numberstring{$i} == '.') && $allowdecimal) {

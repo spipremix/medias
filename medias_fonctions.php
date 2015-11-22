@@ -150,7 +150,7 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
  * @param null $connect
  * @return string
  */
-function lien_objet($id,$type,$longueur=80,$connect=NULL){
+function lien_objet($id, $type, $longueur = 80, $connect = NULL){
 	return generer_lien_entite($id,$type,$longueur,$connect);
 }
 
@@ -251,7 +251,7 @@ function critere_DOCUMENTS_carre_dist($idb, &$boucles, $crit) {
  * @return string
  *     Balise HTML <img...> ou chemin du fichier
 **/
-function filtre_vignette_dist($extension='defaut', $get_chemin = false) {
+function filtre_vignette_dist($extension = 'defaut', $get_chemin = false) {
 	static $vignette = false;
 	static $balise_img = false;
 
