@@ -86,9 +86,10 @@ function document_inserer($id_parent = null, $set = null) {
  * $set est un contenu (par defaut on prend le contenu via _request())
  *
  * @param int $id_document
- * @param array|bool $set
+ * @param array|null $set
+ * @return string|null
  */
-function document_modifier($id_document, $set = false) {
+function document_modifier($id_document, $set = null) {
 
 	include_spip('inc/modifier');
 	include_spip('inc/filtres');
@@ -122,6 +123,7 @@ function document_modifier($id_document, $set = false) {
 
 	if ($err = objet_modifier_champs('document', $id_document,
 		array(
+			'data' => $set,
 			'invalideur' => $invalideur,
 			'indexation' => $indexation
 		),
