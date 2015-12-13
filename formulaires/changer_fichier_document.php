@@ -51,7 +51,7 @@ function formulaires_changer_fichier_document_traiter_dist($id_document) {
 	} else {
 		// liberer le nom de l'ancien fichier pour permettre le remplacement par un fichier du meme nom
 		if ($ancien_fichier = sql_getfetsel('fichier', 'spip_documents', 'id_document=' . intval($id_document))
-			AND @file_exists($f = get_spip_doc($ancien_fichier))
+			and @file_exists($f = get_spip_doc($ancien_fichier))
 		) {
 			spip_unlink($f);
 		}
@@ -61,5 +61,3 @@ function formulaires_changer_fichier_document_traiter_dist($id_document) {
 
 	return $res;
 }
-
-?>

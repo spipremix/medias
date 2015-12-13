@@ -74,16 +74,16 @@ function autoriser_document_tailler_dist($faire, $type, $id, $qui, $options) {
 		return false;
 	}
 
-	if (!isset($options['document']) OR !$document = $options['document']) {
+	if (!isset($options['document']) or !$document = $options['document']) {
 		$document = sql_fetsel('*', 'spip_documents', 'id_document=' . intval($id_document));
 	}
 
 	// (on ne le propose pas pour les images qu'on sait
 	// lire : gif jpg png), sauf bug, ou document distant
 	if (in_array($document['extension'], array('gif', 'jpg', 'png'))
-		AND $document['hauteur']
-		AND $document['largeur']
-		AND $document['distant'] != 'oui'
+		and $document['hauteur']
+		and $document['largeur']
+		and $document['distant'] != 'oui'
 	) {
 		return false;
 	}
@@ -92,14 +92,14 @@ function autoriser_document_tailler_dist($faire, $type, $id, $qui, $options) {
 	$extension = $document['extension'];
 	$type_inclus = sql_getfetsel('inclus', 'spip_types_documents', "extension=" . sql_quote($extension));
 
-	if (($type_inclus == "embed" OR $type_inclus == "image")
-		AND (
+	if (($type_inclus == "embed" or $type_inclus == "image")
+		and (
 			// documents dont la taille est definie
-			($document['largeur']*$document['hauteur'])
+			($document['largeur'] * $document['hauteur'])
 			// ou distants
-			OR $document['distant'] == 'oui'
+			or $document['distant'] == 'oui'
 			// ou tous les formats qui s'affichent en embed
-			OR $type_inclus == "embed"
+			or $type_inclus == "embed"
 		)
 	) {
 		return true;
@@ -127,12 +127,12 @@ function autoriser_joindredocument_dist($faire, $type, $id, $qui, $opt) {
 	include_spip('inc/config');
 
 	// objet autorisé en upload ?
-	if ($type == 'article' OR in_array(table_objet_sql($type), explode(',', lire_config('documents_objets', '')))) {
+	if ($type == 'article' or in_array(table_objet_sql($type), explode(',', lire_config('documents_objets', '')))) {
 		// sur un objet existant
 		if ($id > 0) {
 			return autoriser('modifier', $type, $id, $qui, $opt);
 		} // sur un nouvel objet
-		elseif ($id < 0 AND (abs($id) == $qui['id_auteur'])) {
+		elseif ($id < 0 and (abs($id) == $qui['id_auteur'])) {
 			return autoriser('ecrire', $type, $id, $qui, $opt);
 		}
 	}
@@ -165,14 +165,14 @@ function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt) {
 	$s = sql_getfetsel("statut", "spip_documents", "id_document=" . intval($id));
 	// les admins ont le droit de modifier tous les documents existants
 	if ($qui['statut'] == '0minirezo'
-		AND !$qui['restreint']
+		and !$qui['restreint']
 	) {
 		return is_string($s) ? true : false;
 	}
 
 	if (!isset($m[$q][$id])) {
 		// un document non publie peut etre modifie par tout le monde (... ?)
-		if ($s AND $s !== 'publie' AND ($qui['id_auteur'] > 0)) {
+		if ($s and $s !== 'publie' and ($qui['id_auteur'] > 0)) {
 			$m[$q][$id] = true;
 		}
 	}
@@ -210,8 +210,8 @@ function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt) {
  */
 function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt) {
 	if (!intval($id)
-		OR !$qui['id_auteur']
-		OR !autoriser('ecrire', '', '', $qui)
+		or !$qui['id_auteur']
+		or !autoriser('ecrire', '', '', $qui)
 	) {
 		return false;
 	}
@@ -226,7 +226,7 @@ function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt) {
 	if (sql_getfetsel('mode', 'spip_documents', 'id_document=' . intval($id)) == 'vignette') {
 		$id_document = sql_getfetsel('id_document', 'spip_documents', 'id_vignette=' . intval($id));
 
-		return !$id_document OR autoriser('modifier', 'document', $id_document);
+		return !$id_document or autoriser('modifier', 'document', $id_document);
 	}
 	// si c'est un document annexe, se ramener a l'autorisation de son parent
 	if ($id_document = sql_getfetsel('id_objet', 'spip_documents_liens',
@@ -262,12 +262,12 @@ function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt) {
 function autoriser_document_voir_dist($faire, $type, $id, $qui, $opt) {
 
 	if (!isset($GLOBALS['meta']["creer_htaccess"])
-		OR $GLOBALS['meta']["creer_htaccess"] != 'oui'
+		or $GLOBALS['meta']["creer_htaccess"] != 'oui'
 	) {
 		return true;
 	}
 
-	if ((!is_numeric($id)) OR $id < 0) {
+	if ((!is_numeric($id)) or $id < 0) {
 		return false;
 	}
 
@@ -324,7 +324,7 @@ function autoriser_autoassocierdocument_dist($faire, $type, $id, $qui, $opt) {
  */
 function autoriser_orphelins_supprimer_dist($faire, $type, $id, $qui, $opt) {
 	if ($qui['statut'] == '0minirezo'
-		AND !$qui['restreint']
+		and !$qui['restreint']
 	) {
 		return true;
 	}
@@ -344,7 +344,7 @@ function autoriser_orphelins_supprimer_dist($faire, $type, $id, $qui, $opt) {
  */
 function autoriser_associerdocuments_dist($faire, $type, $id, $qui, $opt) {
 	// cas particulier (hack nouvel objet)
-	if (intval($id) < 0 AND $id == -$qui['id_auteur']) {
+	if (intval($id) < 0 and $id == -$qui['id_auteur']) {
 		return true;
 	}
 
@@ -364,7 +364,7 @@ function autoriser_associerdocuments_dist($faire, $type, $id, $qui, $opt) {
  */
 function autoriser_dissocierdocuments_dist($faire, $type, $id, $qui, $opt) {
 	// cas particulier (hack nouvel objet)
-	if (intval($id) < 0 AND $id == -$qui['id_auteur']) {
+	if (intval($id) < 0 and $id == -$qui['id_auteur']) {
 		return true;
 	}
 

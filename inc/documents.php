@@ -53,7 +53,7 @@ function contenu_document($arg, $charset = '') {
 		include_spip('inc/charset');
 		if ($charset !== 'auto') {
 			$r = importer_charset($r, $charset);
-		} elseif ($GLOBALS['meta']['charset'] == 'utf-8' AND !is_utf8($r)) {
+		} elseif ($GLOBALS['meta']['charset'] == 'utf-8' and !is_utf8($r)) {
 			$r = importer_charset($r, CHARSET_JOINT);
 		}
 	}
@@ -84,7 +84,7 @@ function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 	// Si droit de voir tous les docs, pas seulement celui-ci
 	// il est inutilement couteux de rajouter une protection
 	$r = (autoriser('voir', 'document'));
-	if (($r AND $r !== 'htaccess')) {
+	if (($r and $r !== 'htaccess')) {
 		return get_spip_doc($f);
 	}
 
@@ -96,8 +96,7 @@ function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 		. 'arg=' . $id_document
 		. ($ancre ? "&ancre=$ancre" : '')
 		. '&cle=' . calculer_cle_action($id_document . ',' . $f)
-		. '&file=' . rawurlencode($f)
-		, true, true);
+		. '&file=' . rawurlencode($f), true, true);
 }
 
 //
@@ -117,7 +116,7 @@ function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $c
 	$e = $doc['extension'];
 	if (!$img) {
 		if ($img = image_du_document($doc)) {
-			if (!$x AND !$y) // eviter une double reduction
+			if (!$x and !$y) // eviter une double reduction
 			{
 				$img = image_reduire($img);
 			}
@@ -134,7 +133,7 @@ function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $c
 	// on appelle image_reduire independamment de la presence ou non
 	// des librairies graphiques
 	// la fonction sait se debrouiller et faire de son mieux dans tous les cas
-	if ($x OR $y) {
+	if ($x or $y) {
 		$img = image_reduire($img, $x, $y);
 	}
 	$img = inserer_attribut($img, 'alt', '');
@@ -167,10 +166,10 @@ function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $c
 
 function image_du_document($document) {
 	if ($e = $document['extension']
-		AND isset($GLOBALS['meta']['formats_graphiques'])
-		AND (strpos($GLOBALS['meta']['formats_graphiques'], $e) !== false)
-		AND (!test_espace_prive() OR $GLOBALS['meta']['creer_preview'] == 'oui')
-		AND $document['fichier']
+		and isset($GLOBALS['meta']['formats_graphiques'])
+		and (strpos($GLOBALS['meta']['formats_graphiques'], $e) !== false)
+		and (!test_espace_prive() or $GLOBALS['meta']['creer_preview'] == 'oui')
+		and $document['fichier']
 	) {
 		if ($document['distant'] == 'oui') {
 			$image = _DIR_RACINE . copie_locale($document['fichier']);
@@ -237,5 +236,3 @@ function affiche_raccourci_doc($doc, $id, $align) {
 
 	return "\n<div style='text-align: $align'$onclick>&lt;$doc$id$pipe&gt;</div>\n";
 }
-
-?>

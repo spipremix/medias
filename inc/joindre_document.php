@@ -77,7 +77,7 @@ function joindre_trouver_fichier_envoye() {
 		return $files;
 	} elseif (_request('joindre_distant')) {
 		$path = _request('url');
-		if (!strlen($path) OR $path == 'http://') {
+		if (!strlen($path) or $path == 'http://') {
 			return _T('medias:erreur_indiquez_un_fichier');
 		}
 		include_spip('action/ajouter_documents');
@@ -103,7 +103,7 @@ function joindre_trouver_fichier_envoye() {
 		include_spip('inc/documents');
 		include_spip('inc/actions');
 		$upload = determine_upload();
-		if ($path != '/' AND $path != './') {
+		if ($path != '/' and $path != './') {
 			$upload .= $path;
 		}
 
@@ -127,7 +127,7 @@ function joindre_trouver_fichier_envoye() {
 
 			return $files;
 		}
-	} elseif (_request('joindre_zip') AND $path = _request('chemin_zip')) {
+	} elseif (_request('joindre_zip') and $path = _request('chemin_zip')) {
 		include_spip('inc/documents'); //pour creer_repertoire_documents
 		define('_tmp_zip', $path);
 		define('_tmp_dir', creer_repertoire_documents(md5($path . $GLOBALS['visiteur_session']['id_auteur'])));
@@ -141,7 +141,7 @@ function joindre_trouver_fichier_envoye() {
 		}
 
 		// si le zip doit aussi etre conserve, l'ajouter
-		if (_request('options_upload_zip') == 'upload' OR _request('options_deballe_zip_conserver')) {
+		if (_request('options_upload_zip') == 'upload' or _request('options_deballe_zip_conserver')) {
 			$files[] = array(
 				'name' => basename($path),
 				'tmp_name' => $path,
@@ -213,11 +213,11 @@ function joindre_upload_error($error) {
  */
 function joindre_verifier_zip($files) {
 	if (function_exists('gzopen')
-		AND (count($files) == 1)
-		AND !isset($files[0]['distant'])
-		AND
+		and (count($files) == 1)
+		and !isset($files[0]['distant'])
+		and
 		(preg_match('/\.zip$/i', $files[0]['name'])
-			OR (isset($files[0]['type']) AND $files[0]['type'] == 'application/zip'))
+			or (isset($files[0]['type']) and $files[0]['type'] == 'application/zip'))
 	) {
 
 		// on pose le fichier dans le repertoire zip
@@ -233,10 +233,10 @@ function joindre_verifier_zip($files) {
 		// Est-ce qu'on sait le lire ?
 		include_spip('inc/pclzip');
 		if ($zip
-			AND $archive = new PclZip($zip)
-			AND $contenu = joindre_decrire_contenu_zip($archive)
-			AND $tmp = sous_repertoire(_DIR_TMP, "zip")
-			AND rename($zip, $tmp = $tmp . basename($zip))
+			and $archive = new PclZip($zip)
+			and $contenu = joindre_decrire_contenu_zip($archive)
+			and $tmp = sous_repertoire(_DIR_TMP, "zip")
+			and rename($zip, $tmp = $tmp . basename($zip))
 		) {
 			$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ? unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
 			$zip_to_clean[] = $tmp;
@@ -274,7 +274,7 @@ function joindre_decrire_contenu_zip($zip) {
 			$fichiers[$f] = $file;
 		} else // pas de message pour les dossiers et fichiers caches
 		{
-			if (substr($f, -1) !== '/' AND substr(basename($f), 0, 1) !== '.') {
+			if (substr($f, -1) !== '/' and substr(basename($f), 0, 1) !== '.') {
 				$erreurs[] = _T('medias:erreur_upload_type_interdit', array('nom' => $f));
 			}
 		}
@@ -332,7 +332,7 @@ if (!function_exists('fixer_extension_document')) {
 		$extension = '';
 		$name = $doc['name'];
 		if (preg_match(',\.([^.]+)$,', $name, $r)
-			AND $t = sql_fetsel("extension", "spip_types_documents", "extension=" . sql_quote(corriger_extension($r[1])))
+			and $t = sql_fetsel("extension", "spip_types_documents", "extension=" . sql_quote(corriger_extension($r[1])))
 		) {
 			$extension = $t['extension'];
 			$name = preg_replace(',\.[^.]*$,', '', $doc['name']) . '.' . $extension;
@@ -354,7 +354,7 @@ if (!function_exists('fixer_extension_document')) {
 
 function accepte_fichier_upload($f) {
 	if (!preg_match(",.*__MACOSX/,", $f)
-		AND !preg_match(",^\.,", basename($f))
+		and !preg_match(",^\.,", basename($f))
 	) {
 		include_spip('action/ajouter_documents');
 		$ext = corriger_extension((strtolower(substr(strrchr($f, "."), 1))));
@@ -376,5 +376,3 @@ function callback_deballe_fichier($p_event, &$p_header) {
 		return 0;
 	}
 }
-
-?>

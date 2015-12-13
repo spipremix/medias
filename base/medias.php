@@ -265,11 +265,11 @@ function creer_base_types_doc($serveur = '', $champ_media = "media_defaut") {
 
 		// type de media
 		$media = "file";
-		if (preg_match(",^image/,", $type_mime) OR in_array($type_mime, array('application/illustrator'))) {
+		if (preg_match(",^image/,", $type_mime) or in_array($type_mime, array('application/illustrator'))) {
 			$media = "image";
 		} elseif (preg_match(",^audio/,", $type_mime)) {
 			$media = "audio";
-		} elseif (preg_match(",^video/,", $type_mime) OR in_array($type_mime,
+		} elseif (preg_match(",^video/,", $type_mime) or in_array($type_mime,
 				array('application/ogg', 'application/x-shockwave-flash', 'application/mp4'))
 		) {
 			$media = "video";
@@ -322,5 +322,3 @@ function medias_optimiser_base_disparus($flux) {
 
 	return $flux;
 }
-
-?>

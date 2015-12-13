@@ -57,7 +57,7 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 	// SPIP lance la maj des plugins lors de la connexion, alors que l'upgrade SPIP
 	// a pas encore ete joue : ca casse cet upgrade quand on migre depuis un tres vieux SPIP
 	if (isset($GLOBALS['meta']['version_installee'])
-		AND ($GLOBALS['spip_version_base'] != (str_replace(',', '.', $GLOBALS['meta']['version_installee'])))
+		and ($GLOBALS['spip_version_base'] != (str_replace(',', '.', $GLOBALS['meta']['version_installee'])))
 	) {
 		return;
 	}
@@ -65,7 +65,7 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 	if (!isset($GLOBALS['meta'][$nom_meta_base_version])) {
 		$trouver_table = charger_fonction('trouver_table', 'base');
 		if ($desc = $trouver_table('spip_documents')
-			AND !isset($desc['field']['statut'])
+			and !isset($desc['field']['statut'])
 		) {
 			ecrire_meta($nom_meta_base_version, '0.1.0');
 		}
@@ -177,10 +177,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
  */
 function medias_maj_meta_documents() {
 	$config = array();
-	if (isset($GLOBALS['meta']['documents_article']) AND $GLOBALS['meta']['documents_article'] !== 'non') {
+	if (isset($GLOBALS['meta']['documents_article']) and $GLOBALS['meta']['documents_article'] !== 'non') {
 		$config[] = 'spip_articles';
 	}
-	if (isset($GLOBALS['meta']['documents_rubrique']) AND $GLOBALS['meta']['documents_rubrique'] !== 'non') {
+	if (isset($GLOBALS['meta']['documents_rubrique']) and $GLOBALS['meta']['documents_rubrique'] !== 'non') {
 		$config[] = 'spip_rubriques';
 	}
 	ecrire_meta('documents_objets', implode(',', $config));

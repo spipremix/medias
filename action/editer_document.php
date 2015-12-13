@@ -138,10 +138,10 @@ function document_modifier($id_document, $set = null) {
 
 	// nettoyer l'ancien fichier si necessaire
 	if (isset($champs['fichier']) // un plugin a pu interdire la modif du fichier en virant le champ
-		AND $champs['fichier']
-		AND $ancien_fichier // on avait bien note le nom du fichier avant la modif
-		AND $ancien_fichier !== $champs['fichier'] // et il a ete modifie
-		AND @file_exists($f = get_spip_doc($ancien_fichier))
+		and $champs['fichier']
+		and $ancien_fichier // on avait bien note le nom du fichier avant la modif
+		and $ancien_fichier !== $champs['fichier'] // et il a ete modifie
+		and @file_exists($f = get_spip_doc($ancien_fichier))
 	) {
 		spip_unlink($f);
 	}
@@ -195,21 +195,21 @@ function document_instituer($id_document, $champs = array()) {
 			"objet!='document' AND id_document=" . intval($id_document));
 		// dans 10 ans, ca nous fera un bug a corriger vers 2018
 		// penser a ouvrir un ticket d'ici la :p
-		$date_publication = time()+10*365*24*3600;
+		$date_publication = time() + 10 * 365 * 24 * 3600;
 		include_spip('base/objets');
 		while ($row = sql_fetch($res)) {
 			if (
 				// cas particulier des rubriques qui sont publiees des qu'elles contiennent un document !
 				$row['objet'] == 'rubrique'
 				// ou si objet publie selon sa declaration
-				OR objet_test_si_publie($row['objet'], $row['id_objet'])
+				or objet_test_si_publie($row['objet'], $row['id_objet'])
 			) {
 				$statut = 'publie';
 				$date_publication = 0;
 				continue;
 			} // si pas publie, et article, il faut checker la date de post-publi eventuelle
 			elseif ($row['objet'] == 'article'
-				AND $row2 = sql_fetsel('date', 'spip_articles',
+				and $row2 = sql_fetsel('date', 'spip_articles',
 					'id_article=' . intval($row['id_objet']) . " AND statut='publie'")
 			) {
 				$statut = 'publie';
@@ -217,15 +217,15 @@ function document_instituer($id_document, $champs = array()) {
 			}
 		}
 		$date_publication = date('Y-m-d H:i:s', $date_publication);
-		if ($statut == 'publie' AND $statut_ancien == 'publie' AND $date_publication == $date_publication_ancienne) {
+		if ($statut == 'publie' and $statut_ancien == 'publie' and $date_publication == $date_publication_ancienne) {
 			return false;
 		}
-		if ($statut != 'publie' AND $statut_ancien != 'publie' AND $statut_ancien != '0') {
+		if ($statut != 'publie' and $statut_ancien != 'publie' and $statut_ancien != '0') {
 			return false;
 		}
 	}
 	if ($statut !== $statut_ancien
-		OR $date_publication != $date_publication_ancienne
+		or $date_publication != $date_publication_ancienne
 	) {
 		sql_updateq('spip_documents', array('statut' => $statut, 'date_publication' => $date_publication),
 			'id_document=' . intval($id_document));
@@ -267,7 +267,7 @@ function medias_revision_document_parents($id_document, $parents = null, $ajout 
 	foreach ($parents as $p) {
 		$p = explode('|', $p);
 		if (preg_match('/^[a-z0-9_]+$/i', $objet = $p[0])
-			AND $p[1] = intval($p[1])
+			and $p[1] = intval($p[1])
 		) { // securite
 			$objets_parents[$p[0]][] = $p[1];
 		}
@@ -280,7 +280,7 @@ function medias_revision_document_parents($id_document, $parents = null, $ajout 
 	// si ce n'est pas un ajout, il faut supprimer les liens actuels qui ne sont pas dans $objets_parents
 	if (!$ajout) {
 		foreach ($liens as $k => $lien) {
-			if (!isset($objets_parents[$lien['objet']]) OR !in_array($lien['id_objet'], $objets_parents[$lien['objet']])) {
+			if (!isset($objets_parents[$lien['objet']]) or !in_array($lien['id_objet'], $objets_parents[$lien['objet']])) {
 				if (autoriser('dissocierdocuments', $lien['objet'], $lien['id_objet'])) {
 					objet_dissocier(array('document' => $id_document), array($lien['objet'] => $lien['id_objet']));
 				}
@@ -353,5 +353,3 @@ function instituer_document($id_document, $champs = array()) {
 function revision_document($id_document, $c = false) {
 	return document_modifier($id_document, $c);
 }
-
-?>

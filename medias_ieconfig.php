@@ -12,5 +12,3 @@ function medias_ieconfig_metas($table) {
 
 	return $table;
 }
-
-?>

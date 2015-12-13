@@ -63,12 +63,10 @@ function inc_vignette_dist($ext, $size = true, $loop = true) {
 	}
 
 	$largeur = $hauteur = 0;
-	if ($v AND $size = @getimagesize($v)) {
+	if ($v and $size = @getimagesize($v)) {
 		$largeur = $size[0];
 		$hauteur = $size[1];
 	}
 
 	return array($v, $largeur, $hauteur);
 }
-
-?>

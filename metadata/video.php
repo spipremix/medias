@@ -54,5 +54,3 @@ function metadata_video($file) {
 
 	return $meta;
 }
-
-?>

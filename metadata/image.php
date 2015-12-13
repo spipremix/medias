@@ -55,5 +55,3 @@ function decoder_type_image($type, $strict = false) {
 			return "";
 	}
 }
-
-?>

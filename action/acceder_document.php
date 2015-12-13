@@ -32,11 +32,11 @@ function action_acceder_document_dist() {
 
 	$status = $dcc = false;
 	if (strpos($f, '../') !== false
-		OR preg_match(',^\w+://,', $f)
+		or preg_match(',^\w+://,', $f)
 	) {
 		$status = 403;
 	} else {
-		if (!file_exists($file) OR !is_readable($file)) {
+		if (!file_exists($file) or !is_readable($file)) {
 			$status = 404;
 		} else {
 			$where = "D.fichier=" . sql_quote(set_spip_doc($file))
@@ -51,7 +51,7 @@ function action_acceder_document_dist() {
 				// ETag pour gerer le status 304
 				$ETag = md5($file . ': ' . filemtime($file));
 				if (isset($_SERVER['HTTP_IF_NONE_MATCH'])
-					AND $_SERVER['HTTP_IF_NONE_MATCH'] == $ETag
+					and $_SERVER['HTTP_IF_NONE_MATCH'] == $ETag
 				) {
 					http_status(304); // Not modified
 					exit;
@@ -102,7 +102,7 @@ function action_acceder_document_dist() {
 
 				$f = basename($file);
 				if (isset($doc['titre'])
-					AND (preg_match('/^\w+[.]\w+$/', $doc['titre']) OR $doc['titre'] == 'Makefile')
+					and (preg_match('/^\w+[.]\w+$/', $doc['titre']) or $doc['titre'] == 'Makefile')
 				) {
 					$f = $doc['titre'];
 				}
@@ -129,5 +129,3 @@ function action_acceder_document_dist() {
 	}
 
 }
-
-?>

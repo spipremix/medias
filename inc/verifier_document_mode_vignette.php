@@ -20,8 +20,8 @@ function inc_verifier_document_mode_vignette_dist($infos) {
 		return _T('medias:erreur_format_fichier_image', array('nom' => $infos['fichier']));
 	} #SVG
 
-	if (isset($infos['largeur']) AND isset($infos['hauteur'])) {
-		if (!($infos['largeur'] OR $infos['hauteur'])) {
+	if (isset($infos['largeur']) and isset($infos['hauteur'])) {
+		if (!($infos['largeur'] or $infos['hauteur'])) {
 			return _T('medias:erreur_upload_vignette', array('nom' => $infos['fichier']));
 		}
 	}

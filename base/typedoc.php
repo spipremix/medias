@@ -404,5 +404,3 @@ $mime_alias = array(
 	'video/mp4' => 'application/mp4',
 	'image/jpg' => 'image/jpeg'
 );
-
-?>

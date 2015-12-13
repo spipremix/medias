@@ -57,4 +57,3 @@ function formulaires_configurer_documents_traiter_dist() {
 
 	return $res;
 }
-

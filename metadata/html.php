@@ -28,7 +28,7 @@ function medata_html_dist($file) {
 	// Securite si pas autorise : virer les scripts et les references externes
 	// sauf si on est en mode javascript 'ok' (1), cf. inc_version
 	if ($GLOBALS['filtrer_javascript'] < 1
-		AND !autoriser('televerser', 'script')
+		and !autoriser('televerser', 'script')
 	) {
 		$texte = spip_file_get_contents($file);
 		include_spip('inc/texte');

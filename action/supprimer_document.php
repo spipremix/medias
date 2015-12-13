@@ -87,5 +87,3 @@ function action_supprimer_document_dist($id_document = 0) {
 
 	return true;
 }
-
-?>

@@ -59,7 +59,7 @@ function renseigner_source_distante($source) {
 
 	// si la source est encore la, en revenir a la
 	// methode traditionnelle : chargement de l'url puis analyse
-	if (!isset($a['fichier']) OR !isset($a['mode'])) {
+	if (!isset($a['fichier']) or !isset($a['mode'])) {
 		if (!$a = recuperer_infos_distantes($a['source'])) {
 			return _T('medias:erreur_chemin_distant', array('nom' => $source));
 		}
@@ -110,8 +110,8 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 	// Quelques infos sur le fichier
 	if (
 		!$fichier
-		OR !@file_exists($fichier)
-		OR !$infos['taille'] = @intval(filesize($fichier))
+		or !@file_exists($fichier)
+		or !$infos['taille'] = @intval(filesize($fichier))
 	) {
 
 		if ($distant) {
@@ -120,7 +120,7 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 
 			// recuperer un debut de fichier 512ko semblent suffire
 			$tmp = _DIR_TMP . md5($fichier);
-			$res = recuperer_url($fichier, array('file' => $tmp, 'taille_max' => 512*1024));
+			$res = recuperer_url($fichier, array('file' => $tmp, 'taille_max' => 512 * 1024));
 			if (!$res) {
 				spip_log("Echec copie du fichier $fichier");
 
@@ -151,12 +151,10 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 	include_spip('inc/filtres'); # pour objet_info()
 	$editables = objet_info('document', 'champs_editables');
 	foreach ($meta as $m => $v) {
-		if (isset($infos[$m]) OR in_array($m, $editables)) {
+		if (isset($infos[$m]) or in_array($m, $editables)) {
 			$infos[$m] = $v;
 		}
 	}
 
 	return $infos;
 }
-
-?>

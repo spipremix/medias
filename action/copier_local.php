@@ -81,5 +81,3 @@ function action_copier_local_post($id_document) {
 
 	return _T('medias:erreur_copie_fichier', array('nom' => $source));
 }
-
-?>

@@ -54,6 +54,3 @@ function erreur_upload_trop_gros() {
 	echo minipres(_T('pass_erreur'), "<div class='upload_answer upload_error'>" . $msg . "</div>");
 	exit;
 }
-
-
-?>

@@ -28,7 +28,7 @@ if (!defined("_ECRIRE_INC_VERSION")) {
  * @return void
  */
 function action_tourner_dist($id_document = null, $angle = null) {
-	if (is_null($id_document) OR is_null($angle)) {
+	if (is_null($id_document) or is_null($angle)) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
 
@@ -40,7 +40,7 @@ function action_tourner_dist($id_document = null, $angle = null) {
 		}
 
 	}
-	if ($id_document AND autoriser('modifier', 'document', $id_document)) {
+	if ($id_document and autoriser('modifier', 'document', $id_document)) {
 		action_tourner_post($id_document, $angle);
 	}
 }
@@ -75,7 +75,7 @@ function action_tourner_post($id_document, $angle) {
 		$src = $match[1] . '.' . $match[3];
 		$var_rot += intval($match[2]);
 	}
-	$var_rot = ((360+$var_rot)%360); // 0, 90, 180 ou 270
+	$var_rot = ((360 + $var_rot) % 360); // 0, 90, 180 ou 270
 
 	if ($var_rot > 0) {
 		$dest = preg_replace(',\.[^.]+$,', '-r' . $var_rot . '$0', $src);
@@ -99,7 +99,7 @@ function action_tourner_post($id_document, $angle) {
 	}
 
 	// succes !
-	if ($largeur > 0 AND $hauteur > 0) {
+	if ($largeur > 0 and $hauteur > 0) {
 		$set = array(
 			'fichier' => set_spip_doc($dest),
 			'largeur' => $largeur,
@@ -139,10 +139,10 @@ function action_tourner_post($id_document, $angle) {
 function tourner_selon_exif_orientation($id_document, $fichier) {
 
 	if (function_exists('exif_read_data')
-		AND $exif = exif_read_data($fichier)
-		AND (
+		and $exif = exif_read_data($fichier)
+		and (
 			$ort = $exif['IFD0']['Orientation']
-			OR $ort = $exif['Orientation'])
+			or $ort = $exif['Orientation'])
 	) {
 		spip_log("rotation: $ort");
 		$rot = null;
@@ -159,5 +159,3 @@ function tourner_selon_exif_orientation($id_document, $fichier) {
 		}
 	}
 }
-
-?>

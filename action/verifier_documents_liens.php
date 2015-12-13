@@ -39,5 +39,3 @@ function action_verifier_documents_liens_dist($id_document = null) {
 	objet_optimiser_liens(array('document' => $id_document), '*');
 
 }
-
-?>

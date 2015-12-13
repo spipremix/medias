@@ -29,7 +29,7 @@ function medias_raccourcis_doc(
 	$raccourci = '';
 	$doc = 'doc';
 
-	if ($mode == 'image' AND (strlen($descriptif . $titre) == 0)) {
+	if ($mode == 'image' and (strlen($descriptif . $titre) == 0)) {
 		$doc = 'img';
 	}
 
@@ -39,9 +39,9 @@ function medias_raccourcis_doc(
 		. affiche_raccourci_doc($doc, $id_document, 'center')
 		. affiche_raccourci_doc($doc, $id_document, 'right');
 	if ($mode == 'document'
-		AND ($inclus == "embed" OR $inclus == "image")
-		AND (($largeur > 0 AND $hauteur > 0)
-			OR in_array($media, array('video', 'audio')))
+		and ($inclus == "embed" or $inclus == "image")
+		and (($largeur > 0 and $hauteur > 0)
+			or in_array($media, array('video', 'audio')))
 	) {
 		$raccourci =
 			"<span>" . _T('medias:info_inclusion_vignette') . "</span>"
@@ -54,6 +54,3 @@ function medias_raccourcis_doc(
 
 	return "<div class='raccourcis'>" . $raccourci . "</div>";
 }
-
-
-?>

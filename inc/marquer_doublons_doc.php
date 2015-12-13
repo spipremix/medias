@@ -155,4 +155,3 @@ function inc_marquer_doublons_doc_dist(
 	}
 
 }
-

@@ -34,12 +34,12 @@ if (!defined("_ECRIRE_INC_VERSION")) {
 function inc_choisir_mode_document($infos, $type_inclus_image, $objet) {
 
 	// si ce n'est pas une image, c'est forcement un document
-	if (!$infos['type_image'] OR !$type_inclus_image) {
+	if (!$infos['type_image'] or !$type_inclus_image) {
 		return 'document';
 	}
 
 	// si on a pas le droit d'ajouter de document a l'objet, c'est donc un mode image
-	if ($objet AND isset($GLOBALS['meta']["documents_$objet"]) AND ($GLOBALS['meta']["documents_$objet"] == 'non')) {
+	if ($objet and isset($GLOBALS['meta']["documents_$objet"]) and ($GLOBALS['meta']["documents_$objet"] == 'non')) {
 		return 'image';
 	}
 
@@ -58,12 +58,10 @@ function inc_choisir_mode_document($infos, $type_inclus_image, $objet) {
 	}
 
 	if ($infos['largeur'] > 0
-		AND $infos['largeur'] < _LARGEUR_MODE_IMAGE
+		and $infos['largeur'] < _LARGEUR_MODE_IMAGE
 	) {
 		return 'image';
 	} else {
 		return 'document';
 	}
 }
-
-?>

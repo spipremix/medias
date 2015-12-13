@@ -56,5 +56,3 @@ function action_supprimer_tous_orphelins() {
 		$supprimer_document($row['id_document']); // pour les orphelins du contexte, on traite avec la fonction existante
 	}
 }
-
-?>

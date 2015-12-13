@@ -24,9 +24,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 
 // nettoyer les zip abandonnes par l'utilisateur
 if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
-	AND test_espace_prive()
-	AND isset($_SERVER['REQUEST_METHOD'])
-	AND $_SERVER['REQUEST_METHOD'] !== 'POST'
+	and test_espace_prive()
+	and isset($_SERVER['REQUEST_METHOD'])
+	and $_SERVER['REQUEST_METHOD'] !== 'POST'
 ) {
 	$zip_to_clean = unserialize($GLOBALS['visiteur_session']['zip_to_clean']);
 	if ($zip_to_clean) {
@@ -42,11 +42,11 @@ if (isset($GLOBALS['visiteur_session']['zip_to_clean'])
 // capturer un formulaire POST plus grand que post_max_size
 // on genere un minipres car on ne peut rien faire de mieux
 if (isset($_SERVER['REQUEST_METHOD'])
-	AND $_SERVER['REQUEST_METHOD'] == 'POST'
-	AND empty($_POST)
-	AND strlen($_SERVER['CONTENT_TYPE']) > 0
-	AND strncmp($_SERVER['CONTENT_TYPE'], 'multipart/form-data', 19) == 0
-	AND $_SERVER['CONTENT_LENGTH'] > medias_inigetoctets('post_max_size')
+	and $_SERVER['REQUEST_METHOD'] == 'POST'
+	and empty($_POST)
+	and strlen($_SERVER['CONTENT_TYPE']) > 0
+	and strncmp($_SERVER['CONTENT_TYPE'], 'multipart/form-data', 19) == 0
+	and $_SERVER['CONTENT_LENGTH'] > medias_inigetoctets('post_max_size')
 ) {
 
 	include_spip('inc/minipres');
@@ -70,7 +70,7 @@ function medias_inigetoctets($var) {
 	}
 	// en octet si "32M"
 	if ($val != '') {
-		$last = strtolower($val[strlen($val)-1]);
+		$last = strtolower($val[strlen($val) - 1]);
 		$val = substr($val, 0, -1);
 	}
 	switch ($last) { // The 'G' modifier is available since PHP 5.1.0
@@ -139,7 +139,7 @@ function boucle_DOCUMENTS($id_boucle, &$boucles) {
 	 * Utiliser le "pipeline medias_documents_visibles" pour en ajouter
 	 */
 	if (!isset($boucle->modificateur['criteres']['mode'])
-		AND !isset($boucle->modificateur['tout'])
+		and !isset($boucle->modificateur['tout'])
 	) {
 		$modes = pipeline('medias_documents_visibles', array('image', 'document'));
 		$f = sql_serveur('quote', $boucle->sql_serveur, true);
@@ -282,5 +282,3 @@ function filtre_vignette_dist($extension = 'defaut', $get_chemin = false) {
 	// retourne une balise <img ... />
 	return $balise_img($fichier);
 }
-
-

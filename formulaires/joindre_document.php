@@ -38,7 +38,7 @@ function joindre_determiner_mode($mode, $id_document, $objet) {
 		}
 		if (!in_array($mode, array('choix', 'document', 'image'))) {
 			$mode = 'choix';
-			if ($objet AND !in_array(table_objet_sql($objet), explode(',', $GLOBALS['meta']["documents_objets"]))) {
+			if ($objet and !in_array(table_objet_sql($objet), explode(',', $GLOBALS['meta']["documents_objets"]))) {
 				$mode = 'image';
 			}
 		}
@@ -102,10 +102,10 @@ function formulaires_joindre_document_charger_dist(
 	# regarder si un choix d'upload FTP est vraiment possible
 	if (
 		$valeurs['proposer_ftp']
-		AND test_espace_prive() # ??
-		AND ($mode != 'image') AND ($mode != 'vignette') # si c'est pour un document
+		and test_espace_prive() # ??
+		and ($mode != 'image') and ($mode != 'vignette') # si c'est pour un document
 		//AND !$vignette_de_doc		# pas pour une vignette (NB: la ligne precedente suffit, mais si on la supprime il faut conserver ce test-ci)
-		AND $GLOBALS['flag_upload']
+		and $GLOBALS['flag_upload']
 	) {
 		include_spip('inc/documents');
 		if ($dir = determine_upload('documents')) {
@@ -113,7 +113,7 @@ function formulaires_joindre_document_charger_dist(
 			$valeurs['_options_upload_ftp'] = joindre_options_upload_ftp($dir, $mode);
 			// s'il n'y en a pas, on affiche un message d'aide
 			// en mode document, mais pas en mode image
-			if ($valeurs['_options_upload_ftp'] OR ($mode == 'document' OR $mode == 'choix')) {
+			if ($valeurs['_options_upload_ftp'] or ($mode == 'document' or $mode == 'choix')) {
 				$valeurs['_dir_upload_ftp'] = "<b>" . joli_repertoire($dir) . "</b>";
 			}
 		}
@@ -127,7 +127,7 @@ function formulaires_joindre_document_charger_dist(
 		# apres upload par ajaxReload('documents')
 		$valeurs['_galerie'] = $galerie;
 	}
-	if ($objet AND $id_objet) {
+	if ($objet and $id_objet) {
 		$valeurs['id_objet'] = $id_objet;
 		$valeurs['objet'] = $objet;
 		$valeurs['refdoc_joindre'] = '';
@@ -194,7 +194,7 @@ function formulaires_joindre_document_verifier_dist(
 				// regarder si on a eu une erreur sur l'upload d'un fichier
 				foreach ($files as $file) {
 					if (isset($file['error'])
-						AND $test = joindre_upload_error($file['error'])
+						and $test = joindre_upload_error($file['error'])
 					) {
 						if (is_string($test)) {
 							$erreurs['message_erreur'] = $test;
@@ -207,8 +207,8 @@ function formulaires_joindre_document_verifier_dist(
 				// si ce n'est pas deja un post de zip confirme
 				// regarder si il faut lister le contenu du zip et le presenter
 				if (!count($erreurs)
-					AND !_request('joindre_zip')
-					AND $contenu_zip = joindre_verifier_zip($files)
+					and !_request('joindre_zip')
+					and $contenu_zip = joindre_verifier_zip($files)
 				) {
 					list($fichiers, $erreurs, $tmp_zip) = $contenu_zip;
 					if ($fichiers) {
@@ -222,7 +222,7 @@ function formulaires_joindre_document_verifier_dist(
 			}
 		}
 
-		if (count($erreurs) AND defined('_tmp_dir')) {
+		if (count($erreurs) and defined('_tmp_dir')) {
 			effacer_repertoire_temporaire(_tmp_dir);
 		}
 	}
@@ -337,7 +337,7 @@ function formulaires_joindre_document_traiter_dist(
 			$res['redirect'] = "#doc$ancre";
 		}
 	}
-	if (count($sel) OR isset($res['message_ok'])) {
+	if (count($sel) or isset($res['message_ok'])) {
 		$callback = "";
 		if ($ancre) {
 			$callback .= "jQuery('#doc$ancre a.editbox').eq(0).focus();";
@@ -376,7 +376,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 	$exts = $dirs = $texte_upload = array();
 
 	// en mode "charger une image", ne proposer que les inclus
-	$inclus = ($mode == 'image' OR $mode == 'vignette')
+	$inclus = ($mode == 'image' or $mode == 'vignette')
 		? " AND inclus='image'"
 		: '';
 
@@ -394,12 +394,12 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 				}
 			}
 
-			$k = 2*substr_count($f, '/');
+			$k = 2 * substr_count($f, '/');
 			$n = strrpos($f, "/");
 			if ($n === false) {
 				$lefichier = $f;
 			} else {
-				$lefichier = substr($f, $n+1, strlen($f));
+				$lefichier = substr($f, $n + 1, strlen($f));
 				$ledossier = substr($f, 0, $n);
 				if (!in_array($ledossier, $dirs)) {
 					$texte_upload[] = "\n<option value=\"$ledossier\">"
@@ -412,7 +412,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 
 			if ($exts[$ext] == 'oui') {
 				$texte_upload[] = "\n<option value=\"$f\">"
-					. str_repeat("&nbsp;", $k+2)
+					. str_repeat("&nbsp;", $k + 2)
 					. $lefichier
 					. "</option>";
 			}
@@ -482,5 +482,3 @@ function joindre_liste_erreurs_to_li($erreurs) {
 
 	return $res;
 }
-
-?>

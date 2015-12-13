@@ -101,10 +101,10 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	}
 
 	$titrer = isset($file['titrer']) ? $file['titrer'] : _TITRER_DOCUMENTS;
-	$mode = ((isset($file['mode']) AND $file['mode']) ? $file['mode'] : $mode);
+	$mode = ((isset($file['mode']) and $file['mode']) ? $file['mode'] : $mode);
 
 	include_spip('inc/modifier');
-	if (isset($file['distant']) AND $file['distant'] AND !in_array($mode, array('choix', 'auto', 'image', 'document'))) {
+	if (isset($file['distant']) and $file['distant'] and !in_array($mode, array('choix', 'auto', 'image', 'document'))) {
 		include_spip('inc/distant');
 		$file['tmp_name'] = _DIR_RACINE . copie_locale($source);
 		$source = $file['tmp_name'];
@@ -114,7 +114,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	// Documents distants : pas trop de verifications bloquantes, mais un test
 	// via une requete HEAD pour savoir si la ressource existe (non 404), si le
 	// content-type est connu, et si possible recuperer la taille, voire plus.
-	if (isset($file['distant']) AND $file['distant']) {
+	if (isset($file['distant']) and $file['distant']) {
 		include_spip('inc/distant');
 		if (is_array($a = renseigner_source_distante($source))) {
 
@@ -197,7 +197,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	}
 
 	// lier le parent si necessaire
-	if ($id_objet = intval($id_objet) AND $objet) {
+	if ($id_objet = intval($id_objet) and $objet) {
 		$champs['parents'][] = "$objet|$id_objet";
 	}
 
@@ -308,7 +308,7 @@ function verifier_upload_autorise($source, $mode = '') {
 	$infos = array('fichier' => $source);
 	$res = false;
 	if (preg_match(",\.([a-z0-9]+)(\?.*)?$,i", $source, $match)
-		AND $ext = $match[1]
+		and $ext = $match[1]
 	) {
 
 		$ext = corriger_extension(strtolower($ext));
@@ -326,7 +326,7 @@ function verifier_upload_autorise($source, $mode = '') {
 			$res['autozip'] = true;
 		}
 	}
-	if ($mode AND $res) {
+	if ($mode and $res) {
 		// verifier en fonction du mode si une fonction est proposee
 		if ($verifier_document_mode = charger_fonction("verifier_document_mode_" . $mode, "inc", true)) {
 			$check = $verifier_document_mode($infos); // true ou message d'erreur sous forme de chaine
@@ -336,7 +336,7 @@ function verifier_upload_autorise($source, $mode = '') {
 		}
 	}
 
-	if (!$res OR is_string($res)) {
+	if (!$res or is_string($res)) {
 		spip_log("Upload $source interdit ($res)", _LOG_INFO_IMPORTANTE);
 	}
 
@@ -447,10 +447,10 @@ function verifier_taille_document_acceptable(&$infos) {
 
 	// si ce n'est pas une image
 	if (!$infos['type_image']) {
-		if (defined('_DOC_MAX_SIZE') AND _DOC_MAX_SIZE > 0 AND $infos['taille'] > _DOC_MAX_SIZE*1024) {
+		if (defined('_DOC_MAX_SIZE') and _DOC_MAX_SIZE > 0 and $infos['taille'] > _DOC_MAX_SIZE * 1024) {
 			return _T('medias:info_doc_max_poids',
 				array(
-					'maxi' => taille_en_octets(_DOC_MAX_SIZE*1024),
+					'maxi' => taille_en_octets(_DOC_MAX_SIZE * 1024),
 					'actuel' => taille_en_octets($infos['taille'])
 				)
 			);
@@ -458,20 +458,20 @@ function verifier_taille_document_acceptable(&$infos) {
 	} // si c'est une image
 	else {
 
-		if ((defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH AND $infos['largeur'] > _IMG_MAX_WIDTH)
-			OR (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT AND $infos['hauteur'] > _IMG_MAX_HEIGHT)
+		if ((defined('_IMG_MAX_WIDTH') and _IMG_MAX_WIDTH and $infos['largeur'] > _IMG_MAX_WIDTH)
+			or (defined('_IMG_MAX_HEIGHT') and _IMG_MAX_HEIGHT and $infos['hauteur'] > _IMG_MAX_HEIGHT)
 		) {
-			$max_width = (defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH) ? _IMG_MAX_WIDTH : '*';
-			$max_height = (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT) ? _IMG_MAX_HEIGHT : '*';
+			$max_width = (defined('_IMG_MAX_WIDTH') and _IMG_MAX_WIDTH) ? _IMG_MAX_WIDTH : '*';
+			$max_height = (defined('_IMG_MAX_HEIGHT') and _IMG_MAX_HEIGHT) ? _IMG_MAX_HEIGHT : '*';
 
 			// pas la peine d'embeter le redacteur avec ca si on a active le calcul des miniatures
 			// on met directement a la taille maxi a la volee
-			if (isset($GLOBALS['meta']['creer_preview']) AND $GLOBALS['meta']['creer_preview'] == 'oui') {
+			if (isset($GLOBALS['meta']['creer_preview']) and $GLOBALS['meta']['creer_preview'] == 'oui') {
 				include_spip('inc/filtres');
 				$img = filtrer('image_reduire', $infos['fichier'], $max_width, $max_height);
 				$img = extraire_attribut($img, 'src');
 				$img = supprimer_timestamp($img);
-				if (@file_exists($img) AND $img !== $infos['fichier']) {
+				if (@file_exists($img) and $img !== $infos['fichier']) {
 					spip_unlink($infos['fichier']);
 					@rename($img, $infos['fichier']);
 					$size = @getimagesize($infos['fichier']);
@@ -481,8 +481,8 @@ function verifier_taille_document_acceptable(&$infos) {
 				}
 			}
 
-			if ((defined('_IMG_MAX_WIDTH') AND _IMG_MAX_WIDTH AND $infos['largeur'] > _IMG_MAX_WIDTH)
-				OR (defined('_IMG_MAX_HEIGHT') AND _IMG_MAX_HEIGHT AND $infos['hauteur'] > _IMG_MAX_HEIGHT)
+			if ((defined('_IMG_MAX_WIDTH') and _IMG_MAX_WIDTH and $infos['largeur'] > _IMG_MAX_WIDTH)
+				or (defined('_IMG_MAX_HEIGHT') and _IMG_MAX_HEIGHT and $infos['hauteur'] > _IMG_MAX_HEIGHT)
 			) {
 
 				return _T('medias:info_image_max_taille',
@@ -503,10 +503,10 @@ function verifier_taille_document_acceptable(&$infos) {
 			}
 		}
 
-		if (defined('_IMG_MAX_SIZE') AND _IMG_MAX_SIZE > 0 AND $infos['taille'] > _IMG_MAX_SIZE*1024) {
+		if (defined('_IMG_MAX_SIZE') and _IMG_MAX_SIZE > 0 and $infos['taille'] > _IMG_MAX_SIZE * 1024) {
 			return _T('medias:info_image_max_poids',
 				array(
-					'maxi' => taille_en_octets(_IMG_MAX_SIZE*1024),
+					'maxi' => taille_en_octets(_IMG_MAX_SIZE * 1024),
 					'actuel' => taille_en_octets($infos['taille']
 					)
 				)
@@ -522,6 +522,3 @@ function verifier_taille_document_acceptable(&$infos) {
 
 	return true;
 }
-
-
-?>

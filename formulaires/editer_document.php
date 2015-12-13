@@ -36,7 +36,7 @@ function formulaires_editer_document_charger_dist(
 	$valeurs['_hidden'] = "";
 	$parents = sql_allfetsel('objet,id_objet', 'spip_documents_liens', 'id_document=' . intval($id_document));
 	foreach ($parents as $p) {
-		if (in_array($p['objet'], array('article', 'rubrique')) AND $p['id_objet'] > 0) {
+		if (in_array($p['objet'], array('article', 'rubrique')) and $p['id_objet'] > 0) {
 			$valeurs['parents'][] = $p['objet'] . '|' . $p['id_objet'];
 		} else {
 			$valeurs['_hidden'] .= "<input type='hidden' name='parents[]' value='" . $p['objet'] . '|' . $p['id_objet'] . "' />";
@@ -68,10 +68,10 @@ function formulaires_editer_document_charger_dist(
 	if ($valeurs['distant'] !== 'oui') {
 		include_spip('inc/renseigner_document');
 		$infos = renseigner_taille_dimension_image(get_spip_doc($valeurs['fichier']), $valeurs['extension']);
-		if ($infos AND is_array($infos) AND isset($infos['taille'])) {
+		if ($infos and is_array($infos) and isset($infos['taille'])) {
 			if ($infos['taille'] != $valeurs['taille']
-				OR ($infos['type_image'] && ($infos['largeur'] != $valeurs['largeur']))
-				OR ($infos['type_image'] && ($infos['hauteur'] != $valeurs['hauteur']))
+				or ($infos['type_image'] && ($infos['largeur'] != $valeurs['largeur']))
+				or ($infos['type_image'] && ($infos['hauteur'] != $valeurs['hauteur']))
 			) {
 				$valeurs['_taille_modif'] = $infos['taille'];
 				$valeurs['_largeur_modif'] = $infos['largeur'];
@@ -121,7 +121,7 @@ function formulaires_editer_document_verifier_dist(
 		is_numeric($id_document) ? array() : array('titre'));
 
 	// verifier l'upload si on a demande a changer le document
-	if (_request('joindre_upload') OR _request('joindre_ftp') OR _request('joindre_distant')) {
+	if (_request('joindre_upload') or _request('joindre_ftp') or _request('joindre_distant')) {
 		if (_request('copier_local')) {
 		} else {
 			$verifier = charger_fonction('verifier', 'formulaires/joindre_document');
@@ -132,7 +132,7 @@ function formulaires_editer_document_verifier_dist(
 	// On ne vérifie la date que si on avait le droit de la modifier
 	if (lire_config('documents_date') == 'oui') {
 		if (!$date = recup_date(_request('saisie_date') . ' ' . _request('saisie_heure') . ':00')
-			OR !($date = mktime($date[3], $date[4], 0, $date[1], $date[2], $date[0]))
+			or !($date = mktime($date[3], $date[4], 0, $date[1], $date[2], $date[0]))
 		) {
 			$erreurs['saisie_date'] = _T('medias:format_date_incorrect');
 		} else {
@@ -162,7 +162,7 @@ function formulaires_editer_document_traiter_dist(
 	// verifier les infos de taille et dimensions sur les fichiers locaux
 	// cas des maj de fichier directes par ftp
 	foreach (array('taille', 'largeur', 'hauteur') as $c) {
-		if (($v = _request("_{$c}_modif")) AND !_request($c)) {
+		if (($v = _request("_{$c}_modif")) and !_request($c)) {
 			set_request($c, $v);
 		}
 	}
@@ -172,10 +172,10 @@ function formulaires_editer_document_traiter_dist(
 	set_request('parents');
 	$autoclose = "<script type='text/javascript'>if (window.jQuery) jQuery.modalboxclose();</script>";
 	if (_request('copier_local')
-		OR _request('joindre_upload')
-		OR _request('joindre_ftp')
-		OR _request('joindre_distant')
-		OR _request('joindre_zip')
+		or _request('joindre_upload')
+		or _request('joindre_ftp')
+		or _request('joindre_distant')
+		or _request('joindre_zip')
 	) {
 		$autoclose = "";
 		if (_request('copier_local')) {
@@ -190,7 +190,7 @@ function formulaires_editer_document_traiter_dist(
 		} else {
 			// liberer le nom de l'ancien fichier pour permettre le remplacement par un fichier du meme nom
 			if ($ancien_fichier = sql_getfetsel('fichier', 'spip_documents', 'id_document=' . intval($id_document))
-				AND @file_exists($rename = get_spip_doc($ancien_fichier))
+				and @file_exists($rename = get_spip_doc($ancien_fichier))
 			) {
 				@rename($rename, "$rename--.old");
 
@@ -215,13 +215,13 @@ function formulaires_editer_document_traiter_dist(
 		// regarder si une demande de rotation a eu lieu
 		// c'est un bouton image, dont on a pas toujours le name en request, on fait avec
 		$angle = 0;
-		if (_request('tournerL90') OR _request('tournerL90_x')) {
+		if (_request('tournerL90') or _request('tournerL90_x')) {
 			$angle = -90;
 		}
-		if (_request('tournerR90') OR _request('tournerR90_x')) {
+		if (_request('tournerR90') or _request('tournerR90_x')) {
 			$angle = 90;
 		}
-		if (_request('tourner180') OR _request('tourner180_x')) {
+		if (_request('tourner180') or _request('tourner180_x')) {
 			$angle = 180;
 		}
 		if ($angle) {
@@ -244,5 +244,3 @@ function formulaires_editer_document_traiter_dist(
 
 	return $res;
 }
-
-?>

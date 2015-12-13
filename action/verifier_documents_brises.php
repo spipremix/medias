@@ -34,5 +34,3 @@ function action_verifier_documents_brises_dist() {
 		}
 	}
 }
-
-?>

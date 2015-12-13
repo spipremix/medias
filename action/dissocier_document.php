@@ -50,16 +50,16 @@ function action_dissocier_document_dist($arg = null) {
 	}
 
 	$suppr = $check = false;
-	if (count($arg) > 3 AND $arg[3] == 'suppr') {
+	if (count($arg) > 3 and $arg[3] == 'suppr') {
 		$suppr = true;
 	}
-	if (count($arg) > 4 AND $arg[4] == 'safe') {
+	if (count($arg) > 4 and $arg[4] == 'safe') {
 		$check = true;
 	}
 	if ($id_objet = intval($id_objet)
-		AND (
-			($id_objet < 0 AND $id_objet == -$GLOBALS['visiteur_session']['id_auteur'])
-			OR autoriser('dissocierdocuments', $objet, $id_objet)
+		and (
+			($id_objet < 0 and $id_objet == -$GLOBALS['visiteur_session']['id_auteur'])
+			or autoriser('dissocierdocuments', $objet, $id_objet)
 		)
 	) {
 		dissocier_document($document, $objet, $id_objet, $suppr, $check);
@@ -133,7 +133,7 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	// On supprime ensuite s'il est orphelin
 	// et si demande
 	// ici on ne bloque pas la suppression d'un document rattache a un autre
-	if ($supprime AND !sql_countsel('spip_documents_liens', "objet!='document' AND id_document=" . $id_document)) {
+	if ($supprime and !sql_countsel('spip_documents_liens', "objet!='document' AND id_document=" . $id_document)) {
 		$supprimer_document = charger_fonction('supprimer_document', 'action');
 
 		return $supprimer_document($id_document);
@@ -182,5 +182,3 @@ function dissocier_document($document, $objet, $id_objet, $supprime = false, $ch
 		depublier_branche_rubrique_if($id_objet);
 	}
 }
-
-?>
