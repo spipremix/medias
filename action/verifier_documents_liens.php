@@ -14,9 +14,11 @@
  * Gestion de l'action verifier_documents_liens
  *
  * @package SPIP\Medias\Action
-**/
+ **/
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined("_ECRIRE_INC_VERSION")) {
+	return;
+}
 
 /**
  * Vérifier tous les fichiers brisés
@@ -27,14 +29,14 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  */
 function action_verifier_documents_liens_dist($id_document = null) {
 
-	if (is_null($id_document)){
+	if (is_null($id_document)) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$id_document = $securiser_action();
 	}
 
-	$id_document = ($id_document=='*')?'*':intval($id_document);
+	$id_document = ($id_document == '*') ? '*' : intval($id_document);
 	include_spip('action/editer_liens');
-	objet_optimiser_liens(array('document'=>$id_document),'*');
+	objet_optimiser_liens(array('document' => $id_document), '*');
 
 }
 

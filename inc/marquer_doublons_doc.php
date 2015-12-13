@@ -14,21 +14,23 @@
  * Analyse des textes pour trouver et marquer comme vu les documents utilisés dedans
  *
  * @package SPIP\Medias\Fonctions
-**/
+ **/
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined("_ECRIRE_INC_VERSION")) {
+	return;
+}
 
 // la dist ne regarde que chapo et texte, on laisse comme ca,
 // mais ca permet d etendre a descriptif ou toto depuis d autres plugins
 $GLOBALS['medias_liste_champs'][] = 'texte';
 $GLOBALS['medias_liste_champs'][] = 'chapo';
- 
+
 /**
  * Trouver les documents utilisés dans le texte d'un objet et enregistrer cette liaison comme vue.
  *
  * La liste des champs susceptibles de contenir des documents ou images est indiquée
  * par la globale `medias_liste_champs` (un tableau).
- * 
+ *
  * Le contenu de ces champs (du moins ceux qui existent pour l'objet demandé) est récupéré et analysé.
  * La présence d'un modèle de document dans ces contenus, tel que imgXX, docXX ou embXX
  * indique que le document est utilisé et doit être lié à l'objet, avec le champ `vu=oui`
@@ -38,7 +40,7 @@ $GLOBALS['medias_liste_champs'][] = 'chapo';
  * @note
  *     La fonction pourrait avoir bien moins d'arguments : seuls $champs, $id, $type ou $objet, $desc, $serveur
  *     sont nécessaires. On calcule $desc s'il est absent, et il contient toutes les infos…
- * 
+ *
  * @param array $champs
  *     Couples [champ => valeur] connus de l'objet
  * @param int $id
@@ -56,8 +58,17 @@ $GLOBALS['medias_liste_champs'][] = 'chapo';
  * @param string $serveur
  *     Serveur sql utilisé.
  * @return void|null
-**/
-function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $table_objet, $spip_table_objet, $desc = array(), $serveur = ''){
+ **/
+function inc_marquer_doublons_doc_dist(
+	$champs,
+	$id,
+	$type,
+	$id_table_objet,
+	$table_objet,
+	$spip_table_objet,
+	$desc = array(),
+	$serveur = ''
+) {
 
 	// On conserve uniquement les champs qui modifient le calcul des doublons de documents
 	// S'il n'il en a aucun, les doublons ne sont pas impactés, donc rien à faire d'autre..
@@ -65,7 +76,7 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 		return;
 	}
 
-	if (!$desc){
+	if (!$desc) {
 		$trouver_table = charger_fonction('trouver_table', 'base');
 		$desc = $trouver_table($table_objet, $serveur);
 	}
@@ -84,7 +95,7 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 
 	// Retrouver les textes des champs manquants
 	if ($absents) {
-		$row = sql_fetsel($absents, $spip_table_objet, "$id_table_objet=".sql_quote($id));
+		$row = sql_fetsel($absents, $spip_table_objet, "$id_table_objet=" . sql_quote($id));
 		if ($row) {
 			$champs = array_merge($row, $champs);
 		}
@@ -104,8 +115,8 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 
 	// detecter les doublons dans ces textes
 	traiter_modeles(implode(" ", $champs), array('documents' => $modeles), '', '', null, array(
-		'objet'         => $type,
-		'id_objet'      => $id,
+		'objet' => $type,
+		'id_objet' => $id,
 		$id_table_objet => $id
 	));
 
@@ -117,7 +128,7 @@ function inc_marquer_doublons_doc_dist($champs, $id, $type, $id_table_objet, $ta
 		'non' => array()
 	);
 
-	$liaisons = objet_trouver_liens(array('document'=>'*'), array($type => $id));
+	$liaisons = objet_trouver_liens(array('document' => '*'), array($type => $id));
 	foreach ($liaisons as $l) {
 		$bdd_documents_vus[$l['vu']][] = $l['id_document'];
 	}

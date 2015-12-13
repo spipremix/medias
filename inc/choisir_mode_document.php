@@ -15,7 +15,9 @@
  *
  * @package SPIP\Medias\Modes
  */
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined("_ECRIRE_INC_VERSION")) {
+	return;
+}
 
 /**
  * Choisir le mode du document : image/document
@@ -29,16 +31,18 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @return string
  *     Mode du document
  */
-function inc_choisir_mode_document($infos, $type_inclus_image, $objet){
-	
+function inc_choisir_mode_document($infos, $type_inclus_image, $objet) {
+
 	// si ce n'est pas une image, c'est forcement un document
-	if (!$infos['type_image'] OR !$type_inclus_image)
+	if (!$infos['type_image'] OR !$type_inclus_image) {
 		return 'document';
+	}
 
 	// si on a pas le droit d'ajouter de document a l'objet, c'est donc un mode image
-	if ($objet AND isset($GLOBALS['meta']["documents_$objet"]) AND ($GLOBALS['meta']["documents_$objet"]=='non'))
+	if ($objet AND isset($GLOBALS['meta']["documents_$objet"]) AND ($GLOBALS['meta']["documents_$objet"] == 'non')) {
 		return 'image';
-	
+	}
+
 
 	// _INTERFACE_DOCUMENTS
 	// en fonction de la taille de l'image
@@ -48,15 +52,18 @@ function inc_choisir_mode_document($infos, $type_inclus_image, $objet){
 	// define('_LARGEUR_MODE_IMAGE', 450);
 	// pour beneficier de cette detection auto
 	@define('_LARGEUR_MODE_IMAGE', 0);
-	
-	if (!_LARGEUR_MODE_IMAGE)
+
+	if (!_LARGEUR_MODE_IMAGE) {
 		return 'image';
-	
+	}
+
 	if ($infos['largeur'] > 0
-	  AND $infos['largeur'] < _LARGEUR_MODE_IMAGE)
+		AND $infos['largeur'] < _LARGEUR_MODE_IMAGE
+	) {
 		return 'image';
-	else
+	} else {
 		return 'document';
+	}
 }
 
 ?>

@@ -10,7 +10,9 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 
 /**
@@ -28,5 +30,6 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 function urls_generer_url_document_dist($id, $args = '', $ancre = '', $public = null, $connect = '') {
 	include_spip('inc/documents');
+
 	return generer_url_document_dist($id, $args, $ancre);
 }

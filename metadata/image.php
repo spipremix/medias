@@ -10,9 +10,11 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
-function metadata_image_dist($fichier){
+function metadata_image_dist($fichier) {
 	$meta = array();
 
 	if ($size_image = @getimagesize($fichier)) {
@@ -53,4 +55,5 @@ function decoder_type_image($type, $strict = false) {
 			return "";
 	}
 }
+
 ?>

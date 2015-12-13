@@ -10,7 +10,9 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 include_spip('inc/autoriser');
 
 /**
@@ -20,19 +22,22 @@ include_spip('inc/autoriser');
  * @param string $file
  * @return array
  */
-function medata_html_dist($file){
+function medata_html_dist($file) {
 	$meta = array();
 
 	// Securite si pas autorise : virer les scripts et les references externes
 	// sauf si on est en mode javascript 'ok' (1), cf. inc_version
 	if ($GLOBALS['filtrer_javascript'] < 1
-	  AND !autoriser('televerser','script')) {
+		AND !autoriser('televerser', 'script')
+	) {
 		$texte = spip_file_get_contents($file);
 		include_spip('inc/texte');
 		$new = trim(safehtml($texte));
 		// petit bug safehtml
-		if ($new != $texte) ecrire_fichier($file, $new);
+		if ($new != $texte) {
+			ecrire_fichier($file, $new);
+		}
 	}
-	
+
 	return $meta;
 }

@@ -11,13 +11,15 @@
 \***************************************************************************/
 
 /**
- * Utilisations de pipelines 
+ * Utilisations de pipelines
  *
  * @package SPIP\Medias\Pipelines
-**/
+ **/
 
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 /**
  * Traiter le cas pathologique d'un upload de document ayant echoué
@@ -29,15 +31,17 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  *     Nom du squelette par défaut qui sera utilisé
  * @return string
  *     Nom du squelette par défaut qui sera utilisé
-**/
-function medias_detecter_fond_par_defaut($fond){
+ **/
+function medias_detecter_fond_par_defaut($fond) {
 	if (empty($_GET) AND empty($_POST) AND empty($_FILES)
-	AND isset($_SERVER["CONTENT_LENGTH"])
-	AND strstr($_SERVER["CONTENT_TYPE"], "multipart/form-data;")) {
+		AND isset($_SERVER["CONTENT_LENGTH"])
+		AND strstr($_SERVER["CONTENT_TYPE"], "multipart/form-data;")
+	) {
 		include_spip('inc/getdocument');
 		erreur_upload_trop_gros();
 	}
-  return $fond;
+
+	return $fond;
 }
 
 
@@ -46,24 +50,25 @@ function medias_detecter_fond_par_defaut($fond){
  * auquel on a attaché des documents, restituer l'identifiant
  * du nouvel objet crée sur les liaisons documents/objet,
  * qui ont ponctuellement un identifiant id_objet négatif.
- * 
+ *
  * @see medias_affiche_gauche()
  * @pipeline post_insertion
- * 
+ *
  * @param array $flux
  *     Données du pipeline
  * @return array
  *     Données du pipeline
-**/
-function medias_post_insertion($flux){
+ **/
+function medias_post_insertion($flux) {
 
-	$objet    = objet_type($flux['args']['table']);
+	$objet = objet_type($flux['args']['table']);
 	$id_objet = $flux['args']['id_objet'];
-	
+
 	include_spip('inc/autoriser');
-	
+
 	if (autoriser('joindredocument', $objet, $id_objet)
-	  AND $id_auteur = intval($GLOBALS['visiteur_session']['id_auteur'])){
+		AND $id_auteur = intval($GLOBALS['visiteur_session']['id_auteur'])
+	) {
 
 		# cf. HACK medias_affiche_gauche()
 		# rattrapper les documents associes a cet objet nouveau
@@ -71,15 +76,15 @@ function medias_post_insertion($flux){
 
 		# utiliser l'api editer_lien pour les appels aux pipeline edition_lien
 		include_spip('action/editer_liens');
-		$liens = objet_trouver_liens(array('document'=>'*'),array($objet=>0-$id_auteur));
-		foreach($liens as $lien){
-			objet_associer(array('document'=>$lien['document']),array($objet=>$id_objet),$lien);
+		$liens = objet_trouver_liens(array('document' => '*'), array($objet => 0-$id_auteur));
+		foreach ($liens as $lien) {
+			objet_associer(array('document' => $lien['document']), array($objet => $id_objet), $lien);
 		}
 		// un simple delete pour supprimer les liens temporaires
-		sql_delete("spip_documents_liens", array("id_objet = ".(0-$id_auteur),"objet=".sql_quote($objet)));
+		sql_delete("spip_documents_liens", array("id_objet = " . (0-$id_auteur), "objet=" . sql_quote($objet)));
 	}
 
-  return $flux;
+	return $flux;
 }
 
 /**
@@ -89,10 +94,12 @@ function medias_post_insertion($flux){
  * @param array $flux
  * @return array
  */
-function medias_affiche_milieu($flux){
+function medias_affiche_milieu($flux) {
 	if ($flux["args"]["exec"] == "configurer_contenu") {
-		$flux["data"] .=  recuperer_fond('prive/squelettes/inclure/configurer',array('configurer'=>'configurer_documents'));
+		$flux["data"] .= recuperer_fond('prive/squelettes/inclure/configurer',
+			array('configurer' => 'configurer_documents'));
 	}
+
 	return $flux;
 }
 
@@ -105,9 +112,10 @@ function medias_affiche_milieu($flux){
  * @return array
  *    Couples nom de la méta => valeur par défaut
  */
-function medias_configurer_liste_metas($config){
+function medias_configurer_liste_metas($config) {
 	$config['documents_objets'] = 'spip_articles';
 	$config['documents_date'] = 'non';
+
 	return $config;
 }
 
@@ -119,63 +127,70 @@ function medias_configurer_liste_metas($config){
  *     Données du pipeline
  * @return array
  *     Données du pipeline
-**/
-function medias_post_edition($flux){
+ **/
+function medias_post_edition($flux) {
 	// le serveur n'est pas toujours la
 	$serveur = (isset($flux['args']['serveur']) ? $flux['args']['serveur'] : '');
 	// si on ajoute un document, mettre son statut a jour
-	if (isset($flux['args']['action']) and $flux['args']['action']=='ajouter_document'){
+	if (isset($flux['args']['action']) and $flux['args']['action'] == 'ajouter_document') {
 		include_spip('action/editer_document');
 		// mettre a jour le statut si necessaire
 		document_instituer($flux['args']['id_objet']);
-	}
-	// si on institue un objet, mettre ses documents lies a jour
-	elseif (isset($flux['args']['table']) and $flux['args']['table']!=='spip_documents'){
-		$type = isset($flux['args']['type'])?$flux['args']['type']:objet_type($flux['args']['table']);
+	} // si on institue un objet, mettre ses documents lies a jour
+	elseif (isset($flux['args']['table']) and $flux['args']['table'] !== 'spip_documents') {
+		$type = isset($flux['args']['type']) ? $flux['args']['type'] : objet_type($flux['args']['table']);
 		// verifier d'abord les doublons !
 		include_spip('inc/autoriser');
-		if (autoriser('autoassocierdocument',$type,$flux['args']['id_objet'])){
-			$table_objet = isset($flux['args']['table_objet'])?$flux['args']['table_objet']:table_objet($flux['args']['table'],$serveur);
-			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc','inc');
-			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$type,id_table_objet($type, $serveur),$table_objet,$flux['args']['table'], '', $serveur);
+		if (autoriser('autoassocierdocument', $type, $flux['args']['id_objet'])) {
+			$table_objet = isset($flux['args']['table_objet']) ? $flux['args']['table_objet'] : table_objet($flux['args']['table'],
+				$serveur);
+			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc', 'inc');
+			$marquer_doublons_doc($flux['data'], $flux['args']['id_objet'], $type, id_table_objet($type, $serveur),
+				$table_objet, $flux['args']['table'], '', $serveur);
 		}
 
-		if (($flux['args']['action'] and $flux['args']['action']=='instituer') OR isset($flux['data']['statut'])){
+		if (($flux['args']['action'] and $flux['args']['action'] == 'instituer') OR isset($flux['data']['statut'])) {
 			include_spip('base/abstract_sql');
 			$id = $flux['args']['id_objet'];
-			$docs = array_map('reset',sql_allfetsel('id_document','spip_documents_liens','id_objet='.intval($id).' AND objet='.sql_quote($type)));
+			$docs = array_map('reset', sql_allfetsel('id_document', 'spip_documents_liens',
+				'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type)));
 			include_spip('action/editer_document');
-			foreach($docs as $id_document)
-				// mettre a jour le statut si necessaire
+			foreach ($docs as $id_document) // mettre a jour le statut si necessaire
+			{
 				document_instituer($id_document);
+			}
 		}
-	}
-	else {
-		if (isset($flux['args']['table']) and $flux['args']['table']!=='spip_documents'){
+	} else {
+		if (isset($flux['args']['table']) and $flux['args']['table'] !== 'spip_documents') {
 			// verifier les doublons !
-			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc','inc');
-			$marquer_doublons_doc($flux['data'],$flux['args']['id_objet'],$flux['args']['type'],id_table_objet($flux['args']['type'], $serveur),$flux['args']['table_objet'],$flux['args']['spip_table_objet'], '', $serveur);
+			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc', 'inc');
+			$marquer_doublons_doc($flux['data'], $flux['args']['id_objet'], $flux['args']['type'],
+				id_table_objet($flux['args']['type'], $serveur), $flux['args']['table_objet'],
+				$flux['args']['spip_table_objet'], '', $serveur);
 		}
 	}
+
 	return $flux;
 }
 
 /**
  * Ajouter le portfolio et ajout de document sur les fiches objet
- * 
+ *
  * Uniquement sur les objets pour lesquelles les medias ont été activés
  *
  * @pipeline afficher_complement_objet
  * @param array $flux
  * @return array
  */
-function medias_afficher_complement_objet($flux){
-	if ($type=$flux['args']['type']
-		AND $id=intval($flux['args']['id'])
-	  AND (autoriser('joindredocument',$type,$id))) {
-		$documenter_objet = charger_fonction('documenter_objet','inc');
-		$flux['data'] .= $documenter_objet($id,$type);
+function medias_afficher_complement_objet($flux) {
+	if ($type = $flux['args']['type']
+		AND $id = intval($flux['args']['id'])
+		AND (autoriser('joindredocument', $type, $id))
+	) {
+		$documenter_objet = charger_fonction('documenter_objet', 'inc');
+		$flux['data'] .= $documenter_objet($id, $type);
 	}
+
 	return $flux;
 }
 
@@ -193,24 +208,24 @@ function medias_afficher_complement_objet($flux){
  *
  * @pipeline affiche_gauche
  * @see medias_post_insertion()
- * 
+ *
  * @param array $flux
  *     Données du pipeline
  * @return array
  *     Données du pipeline
  */
-function medias_affiche_gauche($flux){
+function medias_affiche_gauche($flux) {
 	if ($en_cours = trouver_objet_exec($flux['args']['exec'])
-		AND $en_cours['edition']!==false // page edition uniquement
+		AND $en_cours['edition'] !== false // page edition uniquement
 		AND $type = $en_cours['type']
 		AND $id_table_objet = $en_cours['id_table_objet']
 		// id non defini sur les formulaires de nouveaux objets
 		AND (isset($flux['args'][$id_table_objet]) and $id = intval($flux['args'][$id_table_objet])
 			// et justement dans ce cas, on met un identifiant negatif
 			OR $id = 0-$GLOBALS['visiteur_session']['id_auteur'])
-		AND autoriser('joindredocument',$type,$id))
-	{
-		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document', array('objet'=>$type,'id_objet'=>$id));
+		AND autoriser('joindredocument', $type, $id)
+	) {
+		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document', array('objet' => $type, 'id_objet' => $id));
 	}
 
 	return $flux;
@@ -229,8 +244,8 @@ function medias_affiche_gauche($flux){
  *     Données du pipeline
  * @return array
  *     Données du pipeline
-**/
-function medias_document_desc_actions($flux){
+ **/
+function medias_document_desc_actions($flux) {
 	return $flux;
 }
 
@@ -247,8 +262,8 @@ function medias_document_desc_actions($flux){
  *     Données du pipeline
  * @return array
  *     Données du pipeline
-**/
-function medias_editer_document_actions($flux){
+ **/
+function medias_editer_document_actions($flux) {
 	return $flux;
 }
 
@@ -267,8 +282,8 @@ function medias_editer_document_actions($flux){
  *     Données du pipeline
  * @return array
  *     Données du pipeline
-**/
-function medias_renseigner_document_distant($flux){
+ **/
+function medias_renseigner_document_distant($flux) {
 	return $flux;
 }
 
@@ -279,16 +294,20 @@ function medias_renseigner_document_distant($flux){
  * @param array $flux
  * @return array
  */
-function medias_objet_compte_enfants($flux){
+function medias_objet_compte_enfants($flux) {
 	if ($objet = $flux['args']['objet']
-	  AND $id=intval($flux['args']['id_objet'])) {
+		AND $id = intval($flux['args']['id_objet'])
+	) {
 		// juste les publies ?
 		if (array_key_exists('statut', $flux['args']) and ($flux['args']['statut'] == 'publie')) {
-			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document', "L.objet=".sql_quote($objet)."AND L.id_objet=".intval($id)." AND (D.statut='publie')");
+			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document',
+				"L.objet=" . sql_quote($objet) . "AND L.id_objet=" . intval($id) . " AND (D.statut='publie')");
 		} else {
-			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document', "L.objet=".sql_quote($objet)."AND L.id_objet=".intval($id)." AND (D.statut='publie' OR D.statut='prepa')");
+			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document',
+				"L.objet=" . sql_quote($objet) . "AND L.id_objet=" . intval($id) . " AND (D.statut='publie' OR D.statut='prepa')");
 		}
 	}
+
 	return $flux;
 }
 
@@ -299,43 +318,49 @@ function medias_objet_compte_enfants($flux){
  * @param array $flux
  * @return array
  */
-function medias_boite_infos($flux){
-	if ($flux['args']['type']=='rubrique'
-	  AND $id_rubrique = $flux['args']['id']){
-		if ($nb = sql_countsel('spip_documents_liens',"objet='rubrique' AND id_objet=".intval($id_rubrique))){
-			$nb = "<div>". singulier_ou_pluriel($nb, "medias:un_document", "medias:des_documents") . "</div>";
-			if ($p = strpos($flux['data'],"<!--nb_elements-->"))
-				$flux['data'] = substr_replace($flux['data'],$nb,$p,0);
+function medias_boite_infos($flux) {
+	if ($flux['args']['type'] == 'rubrique'
+		AND $id_rubrique = $flux['args']['id']
+	) {
+		if ($nb = sql_countsel('spip_documents_liens', "objet='rubrique' AND id_objet=" . intval($id_rubrique))) {
+			$nb = "<div>" . singulier_ou_pluriel($nb, "medias:un_document", "medias:des_documents") . "</div>";
+			if ($p = strpos($flux['data'], "<!--nb_elements-->")) {
+				$flux['data'] = substr_replace($flux['data'], $nb, $p, 0);
+			}
 		}
 	}
+
 	return $flux;
 }
 
 /**
  * Insertion dans le pipeline revisions_chercher_label (Plugin révisions)
  * Trouver le bon label à afficher sur les champs dans les listes de révisions
- * 
+ *
  * Si un champ est un champ extra, son label correspond au label défini du champs extra
- * 
+ *
  * @pipeline revisions_chercher_label
  * @param array $flux Données du pipeline
  * @return array      Données du pipeline
-**/ 
-function medias_revisions_chercher_label($flux){
-	foreach(array('id_vignette', 'hauteur', 'largeur','mode','taille') as $champ){
-		if($flux['args']['champ'] == $champ){
-			$flux['data'] = _T('medias:info_'.$champ);
+ **/
+function medias_revisions_chercher_label($flux) {
+	foreach (array('id_vignette', 'hauteur', 'largeur', 'mode', 'taille') as $champ) {
+		if ($flux['args']['champ'] == $champ) {
+			$flux['data'] = _T('medias:info_' . $champ);
+
 			return $flux;
 		}
 	}
-	foreach(array('fichier','taille', 'mode','credits') as $champ){
-		if($flux['args']['champ'] == $champ){
-			$flux['data'] = _T('medias:label_'.$champ);
+	foreach (array('fichier', 'taille', 'mode', 'credits') as $champ) {
+		if ($flux['args']['champ'] == $champ) {
+			$flux['data'] = _T('medias:label_' . $champ);
+
 			return $flux;
 		}
 	}
-	if($flux['args']['champ'] == 'distant')
+	if ($flux['args']['champ'] == 'distant') {
 		$flux['data'] = $flux['data'] = _T('medias:fichier_distant');
-	
+	}
+
 	return $flux;
 }

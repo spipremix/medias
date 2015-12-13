@@ -13,13 +13,15 @@
  * Gestion des vignettes de types de fichier
  *
  * @package SPIP\Medias\Vignette
-**/
+ **/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 /**
  * Vignette pour une extension de document
- * 
+ *
  * Recherche les fichiers d'icones au format png pour l'extension demandée.
  * On cherche prive/vignettes/ext.png dans le path.
  *
@@ -38,23 +40,27 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  */
 function inc_vignette_dist($ext, $size = true, $loop = true) {
 
-	if (!$ext)
+	if (!$ext) {
 		$ext = 'txt';
+	}
 
 	// Chercher la vignette correspondant a ce type de document
 	// dans les vignettes persos, ou dans les vignettes standard
 	if (
-	# installation dans un dossier /vignettes personnel, par exemple /squelettes/vignettes
-	!$v = find_in_path("prive/vignettes/".$ext.".png")
-	)
-		if ($loop){
-			$f = charger_fonction('vignette','inc');
-			$v = $f('defaut', false, $loop=false);
+		# installation dans un dossier /vignettes personnel, par exemple /squelettes/vignettes
+	!$v = find_in_path("prive/vignettes/" . $ext . ".png")
+	) {
+		if ($loop) {
+			$f = charger_fonction('vignette', 'inc');
+			$v = $f('defaut', false, $loop = false);
+		} else {
+			$v = false;
 		}
-		else
-			$v = false; # pas trouve l'icone de base
+	} # pas trouve l'icone de base
 
-	if (!$size) return $v;
+	if (!$size) {
+		return $v;
+	}
 
 	$largeur = $hauteur = 0;
 	if ($v AND $size = @getimagesize($v)) {

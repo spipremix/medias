@@ -1,6 +1,8 @@
 <?php
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 /**
  * Trouver le fond pour embarquer un document
@@ -10,18 +12,19 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * => modeles/emb_html.html si il existe
  * => modeles/text_html.html si il existe,
  * => modeles/text.html sinon
- * 
+ *
  * @param  $extension
  * @param  $mime_type
  * @return mixed
  */
-function trouver_modele_emb($extension, $mime_type){
-	if ($extension AND trouve_modele($fond="emb_".$extension)){
+function trouver_modele_emb($extension, $mime_type) {
+	if ($extension AND trouve_modele($fond = "emb_" . $extension)) {
 		return $fond;
 	}
-	$fond = preg_replace(',\W,','_',$mime_type);
-	if (trouve_modele($fond))
+	$fond = preg_replace(',\W,', '_', $mime_type);
+	if (trouve_modele($fond)) {
 		return $fond;
-	else
-		return preg_replace(',\W.*$,','',$mime_type);
+	} else {
+		return preg_replace(',\W.*$,', '', $mime_type);
+	}
 }

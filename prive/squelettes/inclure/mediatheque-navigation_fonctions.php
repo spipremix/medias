@@ -11,9 +11,12 @@
 \***************************************************************************/
 
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 
-function liste_extensions_utilisees($media){
-	return $media?array_map('reset',sql_allfetsel('extension','spip_documents','media='.sql_quote($media))):array();
+function liste_extensions_utilisees($media) {
+	return $media ? array_map('reset',
+		sql_allfetsel('extension', 'spip_documents', 'media=' . sql_quote($media))) : array();
 }

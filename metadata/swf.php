@@ -10,9 +10,12 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
-function metadata_swf_dist($file){
-	$metadata = charger_fonction('image','metadata');
+function metadata_swf_dist($file) {
+	$metadata = charger_fonction('image', 'metadata');
+
 	return $metadata($file);
 }

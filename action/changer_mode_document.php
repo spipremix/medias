@@ -10,7 +10,9 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined("_ECRIRE_INC_VERSION")) {
+	return;
+}
 
 
 /**
@@ -22,33 +24,37 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * @param string $mode
  * @return void
  */
-function action_changer_mode_document_dist($id_document = null, $mode = null){
-	if (is_null($id_document) OR is_null($mode)){
+function action_changer_mode_document_dist($id_document = null, $mode = null) {
+	if (is_null($id_document) OR is_null($mode)) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
 
-		if (!preg_match(",^(\d+)\W(\w+)$,", $arg, $r))
+		if (!preg_match(",^(\d+)\W(\w+)$,", $arg, $r)) {
 			spip_log("action_changer_mode_document $arg pas compris");
-		else {
+		} else {
 			array_shift($r);
-	    list($id_document, $mode) = $r;
+			list($id_document, $mode) = $r;
 		}
 	}
 
 	if ($id_document
 		AND include_spip('inc/autoriser')
-	  AND autoriser('modifier','document',$id_document))
+		AND autoriser('modifier', 'document', $id_document)
+	) {
 		action_changer_mode_document_post($id_document, $mode);
+	}
 }
 
 // http://code.spip.net/@action_changer_mode_document_post
-function action_changer_mode_document_post($id_document, $mode){
+function action_changer_mode_document_post($id_document, $mode) {
 	// - id_document le doc a modifier
 	// - mode le mode a lui donner
 	if ($id_document = intval($id_document)
-	AND in_array($mode, array('vignette', 'image', 'document'))) {
+		AND in_array($mode, array('vignette', 'image', 'document'))
+	) {
 		include_spip('action/editer_document');
-		document_modifier($id_document,array('mode'=>$mode));
+		document_modifier($id_document, array('mode' => $mode));
 	}
 }
+
 ?>
