@@ -2,7 +2,7 @@
 /**
  * Déclaration de fonctions utiles à ce squelette
  *
- * @copyright (c) 2009-2014 cedric
+ * @copyright (c) 2009-2016 cedric
  * @license Distribue sous licence GPL
  *
  * @package SPIP\Medias\Fonctions
