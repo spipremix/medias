@@ -92,7 +92,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'format_date_incorrect' => 'A data ou a hora estão incorretas',
 
 	// I
-	'icone_creer_document' => 'Adicionar ao documento',
+	'icone_creer_document' => 'Incluir um documento',
 	'id' => 'ID',
 	'image_tourner_180' => 'Rodar 180°',
 	'image_tourner_droite' => 'Rodar 90° à direita',
