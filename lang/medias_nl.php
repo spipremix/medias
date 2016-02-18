@@ -132,7 +132,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_fichier' => 'Bestand',
 	'label_fichier_vignette' => 'Verkleining',
 	'label_paginer_par' => 'Pagineren per:',
-	'label_parents' => 'Deze document is gekoppeld aan',
+	'label_parents' => 'Dit document is gekoppeld aan',
 	'label_refdoc_joindre' => 'Document nummer',
 	'lien_tout_enlever' => 'Alles verwijderen',
 	'logo' => 'Logo',
@@ -163,7 +163,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'texte_documents_joints' => 'Je kan het toevoegen van documenten (teksten, afbeeldingen, multimedia, ...) bij artikelen, rubrieken en andere toelaten. De bijgevoegde bestanden kunnen vervolgens in de 
 tekst opgenomen worden of afzonderlijk worden getoond.',
-	'texte_documents_joints_2' => 'Deze instelling verhindert de directe opname van afbeeldingen of andere inhoud in de tekst van een artikel of andere inhoud.',
+	'texte_documents_joints_2' => 'Deze instelling verhindert de directe opname van afbeeldingen of andere inhoud in de tekst van een object (artikel, ...).',
 	'titre_documents_joints' => 'Bijlagen',
 	'titre_page_documents_edit' => 'Document aanpassen: @titre@',
 	'tous_les_medias' => 'Alle medias',
