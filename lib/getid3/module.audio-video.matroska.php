@@ -1223,7 +1223,7 @@ class getid3_matroska extends getid3_handler
 		}
 	}
 
-	private function EnsureBufferHasEnoughData($min_data = 1024) {
+	private function EnsureBufferHasEnoughData($min_data=1024) {
 		if (($this->current_offset - $this->EBMLbuffer_offset) >= ($this->EBMLbuffer_length - $min_data)) {
 			$read_bytes = max($min_data, $this->getid3->fread_buffer_size());
 
@@ -1276,7 +1276,7 @@ class getid3_matroska extends getid3_handler
 		return $int_value;
 	}
 
-	private function readEBMLelementData($length, $check_buffer = false) {
+	private function readEBMLelementData($length, $check_buffer=false) {
 		if ($check_buffer && !$this->EnsureBufferHasEnoughData($length)) {
 			return false;
 		}
@@ -1285,7 +1285,7 @@ class getid3_matroska extends getid3_handler
 		return $data;
 	}
 
-	private function getEBMLelement(&$element, $parent_end, $get_data = false) {
+	private function getEBMLelement(&$element, $parent_end, $get_data=false) {
 		if ($this->current_offset >= $parent_end) {
 			return false;
 		}

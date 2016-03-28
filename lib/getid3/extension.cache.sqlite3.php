@@ -96,7 +96,7 @@ class getID3_cached_sqlite3 extends getID3 {
 	* @param string $table holds name of sqlite table
 	* @return type
 	*/
-	public function __construct($table = 'getid3_cache', $hide = false) {
+	public function __construct($table='getid3_cache', $hide=false) {
 		$this->table = $table; // Set table
 		$file = dirname(__FILE__).'/'.basename(__FILE__, 'php').'sqlite';
 		if ($hide) {
@@ -159,13 +159,13 @@ class getID3_cached_sqlite3 extends getID3 {
 	* @param type $filename
 	* @return boolean
 	*/
-	public function analyze($filename, $filesize = null, $original_filename = '') {
+	public function analyze($filename, $filesize=null, $original_filename='') {
 		if (!file_exists($filename)) {
 			return false;
 		}
 		// items to track for caching
 		$filetime = filemtime($filename);
-		$filesize = filesize($filename);
+		$filesize_real = filesize($filename);
 		// this will be saved for a quick directory lookup of analized files
 		// ... why do 50 seperate sql quries when you can do 1 for the same result
 		$dirname  = dirname($filename);
@@ -173,25 +173,25 @@ class getID3_cached_sqlite3 extends getID3 {
 		$db = $this->db;
 		$sql = $this->get_id3_data;
 		$stmt = $db->prepare($sql);
-		$stmt->bindValue(':filename', $filename, SQLITE3_TEXT);
-		$stmt->bindValue(':filesize', $filesize, SQLITE3_INTEGER);
-		$stmt->bindValue(':filetime', $filetime, SQLITE3_INTEGER);
+		$stmt->bindValue(':filename', $filename,      SQLITE3_TEXT);
+		$stmt->bindValue(':filesize', $filesize_real, SQLITE3_INTEGER);
+		$stmt->bindValue(':filetime', $filetime,      SQLITE3_INTEGER);
 		$res = $stmt->execute();
 		list($result) = $res->fetchArray();
 		if (count($result) > 0 ) {
 			return unserialize(base64_decode($result));
 		}
 		// if it hasn't been analyzed before, then do it now
-		$analysis = parent::analyze($filename, $filesize=null, $original_filename='');
+		$analysis = parent::analyze($filename, $filesize, $original_filename);
 		// Save result
 		$sql = $this->cache_file;
 		$stmt = $db->prepare($sql);
-		$stmt->bindValue(':filename', $filename, SQLITE3_TEXT);
-		$stmt->bindValue(':dirname', $dirname, SQLITE3_TEXT);
-		$stmt->bindValue(':filesize', $filesize, SQLITE3_INTEGER);
-		$stmt->bindValue(':filetime', $filetime, SQLITE3_INTEGER);
-		$stmt->bindValue(':atime', time(), SQLITE3_INTEGER);
-		$stmt->bindValue(':val', base64_encode(serialize($analysis)), SQLITE3_TEXT);
+		$stmt->bindValue(':filename', $filename,                           SQLITE3_TEXT);
+		$stmt->bindValue(':dirname',  $dirname,                            SQLITE3_TEXT);
+		$stmt->bindValue(':filesize', $filesize_real,                      SQLITE3_INTEGER);
+		$stmt->bindValue(':filetime', $filetime,                           SQLITE3_INTEGER);
+		$stmt->bindValue(':atime',    time(),                              SQLITE3_INTEGER);
+		$stmt->bindValue(':val',      base64_encode(serialize($analysis)), SQLITE3_TEXT);
 		$res = $stmt->execute();
 		return $analysis;
 	}

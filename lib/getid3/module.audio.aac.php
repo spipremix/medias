@@ -258,7 +258,7 @@ class getid3_aac extends getid3_handler
 	}
 
 
-	public function getAACADTSheaderFilepointer($MaxFramesToScan = 1000000, $ReturnExtendedInfo = false) {
+	public function getAACADTSheaderFilepointer($MaxFramesToScan=1000000, $ReturnExtendedInfo=false) {
 		$info = &$this->getid3->info;
 
 		// based loosely on code from AACfile by Jurgen Faul  <jfaulØgmx.de>

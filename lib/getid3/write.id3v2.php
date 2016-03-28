@@ -30,7 +30,7 @@ class getid3_write_id3v2
 	public $warnings                    = array();  // any non-critical errors will be stored here
 	public $errors                      = array();  // any critical errors will be stored here
 
-	public function getid3_write_id3v2() {
+	public function __construct() {
 		return true;
 	}
 
@@ -260,7 +260,7 @@ class getid3_write_id3v2
 	}
 
 
-	public function GenerateID3v2FrameFlags($TagAlter = false, $FileAlter = false, $ReadOnly = false, $Compression = false, $Encryption = false, $GroupingIdentity = false, $Unsynchronisation = false, $DataLengthIndicator = false) {
+	public function GenerateID3v2FrameFlags($TagAlter=false, $FileAlter=false, $ReadOnly=false, $Compression=false, $Encryption=false, $GroupingIdentity=false, $Unsynchronisation=false, $DataLengthIndicator=false) {
 		switch ($this->majorversion) {
 			case 4:
 				// %0abc0000 %0h00kmnp
@@ -1531,7 +1531,7 @@ class getid3_write_id3v2
 		return true;
 	}
 
-	public function GenerateID3v2Tag($noerrorsonly = true) {
+	public function GenerateID3v2Tag($noerrorsonly=true) {
 		$this->ID3v2FrameIsAllowed(null, ''); // clear static array in case this isn't the first call to $this->GenerateID3v2Tag()
 
 		$tagstring = '';
@@ -1759,10 +1759,15 @@ class getid3_write_id3v2
 	}
 
 	public function ID3v2IsValidTextEncoding($textencodingbyte) {
+		// 0 = ISO-8859-1
+		// 1 = UTF-16 with BOM
+		// 2 = UTF-16BE without BOM
+		// 3 = UTF-8
 		static $ID3v2IsValidTextEncoding_cache = array(
-			2 => array(true, true),
-			3 => array(true, true),
-			4 => array(true, true, true, true));
+			2 => array(true, true),              // ID3v2.2 - allow 0=ISO-8859-1, 1=UTF-16
+			3 => array(true, true),              // ID3v2.3 - allow 0=ISO-8859-1, 1=UTF-16
+			4 => array(true, true, true, true),  // ID3v2.4 - allow 0=ISO-8859-1, 1=UTF-16, 2=UTF-16BE, 3=UTF-8
+		);
 		return isset($ID3v2IsValidTextEncoding_cache[$this->majorversion][$textencodingbyte]);
 	}
 
@@ -1842,7 +1847,7 @@ class getid3_write_id3v2
 		return false;
 	}
 
-	public function IsWithinBitRange($number, $maxbits, $signed = false) {
+	public function IsWithinBitRange($number, $maxbits, $signed=false) {
 		if ($signed) {
 			if (($number > (0 - pow(2, $maxbits - 1))) && ($number <= pow(2, $maxbits - 1))) {
 				return true;
@@ -1866,7 +1871,7 @@ class getid3_write_id3v2
 		return $parts;
 	}
 
-	public function IsValidURL($url, $allowUserPass = false) {
+	public function IsValidURL($url, $allowUserPass=false) {
 		if ($url == '') {
 			return false;
 		}
@@ -1906,6 +1911,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[2]['comment']                                          = 'COM';
 			$ID3v2ShortFrameNameLookup[2]['album']                                            = 'TAL';
 			$ID3v2ShortFrameNameLookup[2]['beats_per_minute']                                 = 'TBP';
+			$ID3v2ShortFrameNameLookup[2]['bpm']                                              = 'TBP';
 			$ID3v2ShortFrameNameLookup[2]['composer']                                         = 'TCM';
 			$ID3v2ShortFrameNameLookup[2]['genre']                                            = 'TCO';
 			$ID3v2ShortFrameNameLookup[2]['itunescompilation']                                = 'TCP';
@@ -1966,6 +1972,7 @@ class getid3_write_id3v2
 			$ID3v2ShortFrameNameLookup[3]['synchronised_tempo_codes']                         = 'SYTC';
 			$ID3v2ShortFrameNameLookup[3]['album']                                            = 'TALB';
 			$ID3v2ShortFrameNameLookup[3]['beats_per_minute']                                 = 'TBPM';
+			$ID3v2ShortFrameNameLookup[3]['bpm']                                              = 'TBPM';
 			$ID3v2ShortFrameNameLookup[3]['itunescompilation']                                = 'TCMP';
 			$ID3v2ShortFrameNameLookup[3]['composer']                                         = 'TCOM';
 			$ID3v2ShortFrameNameLookup[3]['genre']                                            = 'TCON';

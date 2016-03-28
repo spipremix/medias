@@ -213,7 +213,7 @@ class getid3_bonk extends getid3_handler
 		}
 	}
 
-	public static function BonkIsValidTagName($PossibleBonkTag, $ignorecase = false) {
+	public static function BonkIsValidTagName($PossibleBonkTag, $ignorecase=false) {
 		static $BonkIsValidTagName = array('BONK', 'INFO', ' ID3', 'META');
 		foreach ($BonkIsValidTagName as $validtagname) {
 			if ($validtagname == $PossibleBonkTag) {

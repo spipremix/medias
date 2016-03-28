@@ -1170,9 +1170,16 @@ class getid3_riff extends getid3_handler {
 				}
 				break;
 
+			case 'WEBP':
+				// https://developers.google.com/speed/webp/docs/riff_container
+				$info['fileformat'] = 'webp';
+				$info['mime_type']  = 'image/webp';
+
+$info['error'][] = 'WebP image parsing not supported in this version of getID3()';
+				break;
 
 			default:
-				$info['error'][] = 'Unknown RIFF type: expecting one of (WAVE|RMP3|AVI |CDDA|AIFF|AIFC|8SVX|CDXA), found "'.$RIFFsubtype.'" instead';
+				$info['error'][] = 'Unknown RIFF type: expecting one of (WAVE|RMP3|AVI |CDDA|AIFF|AIFC|8SVX|CDXA|WEBP), found "'.$RIFFsubtype.'" instead';
 				//unset($info['fileformat']);
 		}
 
@@ -1897,7 +1904,7 @@ class getid3_riff extends getid3_handler {
 		return true;
 	}
 
-	public static function ParseBITMAPINFOHEADER($BITMAPINFOHEADER, $littleEndian = true) {
+	public static function ParseBITMAPINFOHEADER($BITMAPINFOHEADER, $littleEndian=true) {
 
 		$parsed['biSize']          = substr($BITMAPINFOHEADER,  0, 4); // number of bytes required by the BITMAPINFOHEADER structure
 		$parsed['biWidth']         = substr($BITMAPINFOHEADER,  4, 4); // width of the bitmap in pixels
@@ -1916,7 +1923,7 @@ class getid3_riff extends getid3_handler {
 		return $parsed;
 	}
 
-	public static function ParseDIVXTAG($DIVXTAG, $raw = false) {
+	public static function ParseDIVXTAG($DIVXTAG, $raw=false) {
 		// structure from "IDivX" source, Form1.frm, by "Greg Frazier of Daemonic Software Group", email: gfrazier@icestorm.net, web: http://dsg.cjb.net/
 		// source available at http://files.divx-digest.com/download/c663efe7ef8ad2e90bf4af4d3ea6188a/on0SWN2r/edit/IDivX.zip
 		// 'Byte Layout:                   '1111111111111111
@@ -2576,7 +2583,7 @@ class getid3_riff extends getid3_handler {
 		return getid3_lib::EmbeddedLookup($fourcc, $begin, __LINE__, __FILE__, 'riff-fourcc');
 	}
 
-	private function EitherEndian2Int($byteword, $signed = false) {
+	private function EitherEndian2Int($byteword, $signed=false) {
 		if ($this->container == 'riff') {
 			return getid3_lib::LittleEndian2Int($byteword, $signed);
 		}
