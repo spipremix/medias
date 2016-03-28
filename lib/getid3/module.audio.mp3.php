@@ -405,7 +405,7 @@ class getid3_mp3 extends getid3_handler
 	}
 
 
-	public function decodeMPEGaudioHeader($offset, &$info, $recursivesearch = true, $ScanAsCBR = false, $FastMPEGheaderScan = false) {
+	public function decodeMPEGaudioHeader($offset, &$info, $recursivesearch=true, $ScanAsCBR=false, $FastMPEGheaderScan=false) {
 		static $MPEGaudioVersionLookup;
 		static $MPEGaudioLayerLookup;
 		static $MPEGaudioBitrateLookup;
@@ -1128,7 +1128,7 @@ class getid3_mp3 extends getid3_handler
 		return true;
 	}
 
-	public function FreeFormatFrameLength($offset, $deepscan = false) {
+	public function FreeFormatFrameLength($offset, $deepscan=false) {
 		$info = &$this->getid3->info;
 
 		$this->fseek($offset);
@@ -1353,7 +1353,7 @@ class getid3_mp3 extends getid3_handler
 	}
 
 
-	public function getOnlyMPEGaudioInfo($avdataoffset, $BitrateHistogram = false) {
+	public function getOnlyMPEGaudioInfo($avdataoffset, $BitrateHistogram=false) {
 		// looks for synch, decodes MPEG audio header
 
 		$info = &$this->getid3->info;
@@ -1696,11 +1696,11 @@ class getid3_mp3 extends getid3_handler
 		return $MPEGaudioEmphasis;
 	}
 
-	public static function MPEGaudioHeaderBytesValid($head4, $allowBitrate15 = false) {
+	public static function MPEGaudioHeaderBytesValid($head4, $allowBitrate15=false) {
 		return self::MPEGaudioHeaderValid(self::MPEGaudioHeaderDecode($head4), false, $allowBitrate15);
 	}
 
-	public static function MPEGaudioHeaderValid($rawarray, $echoerrors = false, $allowBitrate15 = false) {
+	public static function MPEGaudioHeaderValid($rawarray, $echoerrors=false, $allowBitrate15=false) {
 		if (($rawarray['synch'] & 0x0FFE) != 0x0FFE) {
 			return false;
 		}

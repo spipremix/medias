@@ -1642,7 +1642,7 @@ class getid3_asf extends getid3_handler {
 		return strtoupper($GUIDstring);
 	}
 
-	public static function FILETIMEtoUNIXtime($FILETIME, $round = true) {
+	public static function FILETIMEtoUNIXtime($FILETIME, $round=true) {
 		// FILETIME is a 64-bit unsigned integer representing
 		// the number of 100-nanosecond intervals since January 1, 1601
 		// UNIX timestamp is number of seconds since January 1, 1970

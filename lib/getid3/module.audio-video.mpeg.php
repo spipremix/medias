@@ -502,7 +502,7 @@ echo 'average_File_bitrate = '.number_format(array_sum($vbr_bitrates) / count($v
 		return true;
 	}
 
-	private function readBitsFromStream(&$bitstream, &$bitstreamoffset, $bits_to_read, $return_singlebit_as_boolean = true) {
+	private function readBitsFromStream(&$bitstream, &$bitstreamoffset, $bits_to_read, $return_singlebit_as_boolean=true) {
 		$return = bindec(substr($bitstream, $bitstreamoffset, $bits_to_read));
 		$bitstreamoffset += $bits_to_read;
 		if (($bits_to_read == 1) && $return_singlebit_as_boolean) {

@@ -464,7 +464,7 @@ class getid3_mpc extends getid3_handler
 		return number_format($encoderversion / 100, 2).' alpha';
 	}
 
-	public function SV8variableLengthInteger($data, &$packetLength, $maxHandledPacketLength = 9) {
+	public function SV8variableLengthInteger($data, &$packetLength, $maxHandledPacketLength=9) {
 		$packet_size = 0;
 		for ($packetLength = 1; $packetLength <= $maxHandledPacketLength; $packetLength++) {
 			// variable-length size field:

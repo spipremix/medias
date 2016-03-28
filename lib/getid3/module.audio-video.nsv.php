@@ -132,7 +132,7 @@ class getid3_nsv extends getid3_handler
 		return true;
 	}
 
-	public function getNSVfHeaderFilepointer($fileoffset, $getTOCoffsets = false) {
+	public function getNSVfHeaderFilepointer($fileoffset, $getTOCoffsets=false) {
 		$info = &$this->getid3->info;
 		$this->fseek($fileoffset);
 		$NSVfheader = $this->fread(28);

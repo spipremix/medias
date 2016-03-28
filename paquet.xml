@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.10.28"
+	version="2.10.29"
 	etat="stable"
 	compatibilite="[3.1.0;3.1.*]"
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -13,6 +13,8 @@
 
 	<auteur>Collectif SPIP</auteur>
 	<credit>C&#233;dric Morin, Romy Duhem-Verdi&#232;re pour la m&#233;diath&#232;que</credit>
+	<credit lien="http://www.getid3.org/">getID3()</credit>
+	<credit lien="http://mediaelementjs.com/">MediaElement.js</credit>
 
 	<traduire module="medias" reference="fr" gestionnaire="salvatore" />
 
