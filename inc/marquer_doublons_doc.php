@@ -71,7 +71,7 @@ function inc_marquer_doublons_doc_dist(
 ) {
 
 	// On conserve uniquement les champs qui modifient le calcul des doublons de documents
-	// S'il n'il en a aucun, les doublons ne sont pas impactés, donc rien à faire d'autre..
+	// S'il n'y en a aucun, les doublons ne sont pas impactés, donc rien à faire d'autre..
 	if (!$champs = array_intersect_key($champs, array_flip($GLOBALS['medias_liste_champs']))) {
 		return;
 	}
