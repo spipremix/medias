@@ -57,7 +57,7 @@ function action_supprimer_document_dist($id_document = 0) {
 	}
 
 	// dereferencer dans la base
-	objet_dissocier(array('document' => $id_document), '*');
+	objet_dissocier(array('document' => $id_document), '*', array('role' => '*'));
 	sql_delete('spip_documents', 'id_document=' . intval($id_document));
 
 

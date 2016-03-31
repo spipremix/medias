@@ -91,7 +91,7 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 
 	// D'abord on ne supprime pas, on dissocie
 	include_spip('action/editer_liens');
-	objet_dissocier(array('document' => $id_document), array($objet => $id_objet));
+	objet_dissocier(array('document' => $id_document), array($objet => $id_objet), array('role' => '*'));
 
 	// Si c'est une vignette, l'eliminer du document auquel elle appartient
 	// cas tordu peu probable
