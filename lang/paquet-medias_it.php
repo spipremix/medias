@@ -13,4 +13,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'medias_description' => 'Gestione dei media di SPIP',
 	'medias_slogan' => 'Gestione dei media di SPIP'
 );
-

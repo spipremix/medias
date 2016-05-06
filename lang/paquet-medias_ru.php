@@ -13,4 +13,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'medias_description' => 'Управление медиа файлами',
 	'medias_slogan' => 'Управление медиа файлами'
 );
-
