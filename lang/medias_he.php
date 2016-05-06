@@ -51,4 +51,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'מותקן כפי שהוא, בשאר הוא ארכיון מחולץ ;'
 );
 
-?>

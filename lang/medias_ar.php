@@ -195,4 +195,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'vignette_supprimee' => 'تم حذف المصغر'
 );
 
-?>

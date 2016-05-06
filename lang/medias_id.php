@@ -52,4 +52,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'diinstal seperti apa adanya, sebagai berkas ZIP;'
 );
 
-?>

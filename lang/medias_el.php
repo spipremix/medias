@@ -38,4 +38,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_documents_joints' => 'Επισυναπτόμενα'
 );
 
-?>

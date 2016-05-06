@@ -194,4 +194,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'vignette_supprimee' => 'La miniatura se ha eliminado'
 );
 
-?>

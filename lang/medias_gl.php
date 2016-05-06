@@ -58,4 +58,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Titular consonte o patrón de nome dos ficheiros.'
 );
 
-?>

@@ -111,4 +111,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Titular segons el nom dels fitxers'
 );
 
-?>

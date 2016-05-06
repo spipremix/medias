@@ -54,4 +54,3 @@ multimediów, itd.) do artykułów bądź działów. Te pliki
 	'upload_zip_telquel' => 'zostaną zainstalowane jako archiwum Zip;'
 );
 
-?>

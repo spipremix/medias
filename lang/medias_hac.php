@@ -34,4 +34,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_telecharger' => ':با رايانه خودتان بارگذارى كنيد'
 );
 
-?>

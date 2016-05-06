@@ -50,4 +50,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'そのまま。ZIPファイル１つを登録。'
 );
 
-?>

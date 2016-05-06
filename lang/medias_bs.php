@@ -50,4 +50,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'instaliran kakav jeste, u ZIP formatu;'
 );
 
-?>

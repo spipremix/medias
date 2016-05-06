@@ -194,4 +194,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'vignette_supprimee' => 'The thumbnail has been deleted'
 );
 
-?>

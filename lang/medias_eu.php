@@ -54,4 +54,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'Besterik gabe instalatuta, Zip fitxategi bezala;'
 );
 
-?>

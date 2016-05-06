@@ -59,4 +59,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Dosya isimlerine göre başlık ver'
 );
 
-?>

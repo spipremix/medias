@@ -51,4 +51,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'thiết trí y nguyên, hồ sơ ZIP;'
 );
 
-?>

@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'te enstale komsa kom achiv koprese Zip ;'
 );
 
-?>

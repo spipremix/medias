@@ -52,4 +52,3 @@ zéléman miltimédia, tousala...). Bann fisyé-la, ou pé answit référans azo
 	'upload_zip_telquel' => 'instalé komsa kom in larsiv kopresé Zip ;'
 );
 
-?>

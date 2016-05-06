@@ -34,4 +34,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_documents_joints' => '4774ch3d d0cum3n75'
 );
 
-?>

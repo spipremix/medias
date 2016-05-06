@@ -40,4 +40,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
  l’article, ou affichés séparément.' # MODIF
 );
 
-?>

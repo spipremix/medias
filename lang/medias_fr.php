@@ -192,4 +192,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'vignette_supprimee' => 'La vignette a été supprimée'
 );
 
-?>

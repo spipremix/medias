@@ -56,4 +56,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Dare i titoli in base al nome dei file'
 );
 
-?>

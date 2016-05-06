@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'installat tau coma es, coma archiu comprimit Zip;'
 );
 
-?>

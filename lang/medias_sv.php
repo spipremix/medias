@@ -67,4 +67,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Lägg till titlar efter vad filerna kallas'
 );
 
-?>

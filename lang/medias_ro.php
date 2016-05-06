@@ -58,4 +58,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_titrer' => 'Titraţi după numele fişierelor'
 );
 
-?>

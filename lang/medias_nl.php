@@ -195,4 +195,3 @@ tekst opgenomen worden of afzonderlijk worden getoond.',
 	'vignette_supprimee' => 'Verkleining wordt verwijderd'
 );
 
-?>

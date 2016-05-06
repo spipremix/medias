@@ -46,4 +46,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'sɔ ɖémɛ ɖê ɖé gbɔn ɔ  Zip ;'
 );
 
-?>

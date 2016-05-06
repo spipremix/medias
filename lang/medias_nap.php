@@ -44,4 +44,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'nstallato accussí comm’è, pecché archivio nzardato Zip ;'
 );
 
-?>

@@ -39,4 +39,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_fichier_zip_texte2' => 'Gal būt šis failas'
 );
 
-?>

@@ -50,4 +50,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'ကျစ်လစ်ဖိုင် ​အဖြစ်ဖြင့် ထည့်သွင်းထားသည်'
 );
 
-?>

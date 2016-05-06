@@ -47,4 +47,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => '照原样安装，仍以 Zip压缩文档格式;'
 );
 
-?>

@@ -44,4 +44,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'Ñu sampleen noonu ñu nekk baston bu nagu ci najub Zip.'
 );
 
-?>

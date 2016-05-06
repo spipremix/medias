@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'nainstalovat tak, jak je, tedy ve formátu ZIP;'
 );
 
-?>

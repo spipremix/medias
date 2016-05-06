@@ -48,4 +48,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => ' instalohet kështu siç është sepse është Zip;'
 );
 
-?>

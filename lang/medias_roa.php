@@ -46,4 +46,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'installé tel quel, en tant qu’archive compressée Zip ;'
 );
 
-?>

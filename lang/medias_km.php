@@ -52,4 +52,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'បានតំលើង តាមដំណើរ, ជាទំរង់បណ្ណសារ ត្រូវបានបង្ហាប់ ZIP ;'
 );
 
-?>

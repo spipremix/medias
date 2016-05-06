@@ -35,4 +35,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_telecharger' => 'Computaturamat apkataña:'
 );
 
-?>
