@@ -53,4 +53,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'kitömöritve, és az összes eleme a honlapra telepítve. A honlapra telepített fájlok a következők lesznek :',
 	'upload_zip_telquel' => 'Egymagában telepítve, mint ZIP tömörített állómány;'
 );
-

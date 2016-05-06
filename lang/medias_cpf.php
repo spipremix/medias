@@ -51,4 +51,3 @@ zéléman miltimédia, tousala...). Bann fisyé-la, ou pé answit référans azo
 	'upload_zip_decompacter' => 'dékopresé é sakinn zéléman ali sré pou instalé si lo sit. Tout bann fisyé pou instal i sra lor :',
 	'upload_zip_telquel' => 'instalé komsa kom in larsiv kopresé Zip ;'
 );
-

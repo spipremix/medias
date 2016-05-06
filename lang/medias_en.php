@@ -193,4 +193,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'Check for documents links',
 	'vignette_supprimee' => 'The thumbnail has been deleted'
 );
-

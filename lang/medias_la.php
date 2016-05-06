@@ -38,4 +38,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_fichier_zip_texte' => 'Scapus quem collocare proposuisti ZIP est.',
 	'upload_fichier_zip_texte2' => 'Forsitan hic scapus sit:'
 );
-

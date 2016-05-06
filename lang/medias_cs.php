@@ -52,4 +52,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'rozbalený a každý ze souborů v něm obsažený bude na web nainstalován. Budou nainstalovány tyto soubory:',
 	'upload_zip_telquel' => 'nainstalovat tak, jak je, tedy ve formátu ZIP;'
 );
-

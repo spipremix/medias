@@ -47,4 +47,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => ' i dekompresuar dhe çdo element i instaluar në faqe. File që do të instalohen në faqe janë:',
 	'upload_zip_telquel' => ' instalohet kështu siç është sepse është Zip;'
 );
-

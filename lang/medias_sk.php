@@ -196,4 +196,3 @@ v článku odkazovať alebo môžu byť zobrazené samostatne.',
 	'verifier_documents_inutilises' => 'Skontrolovať prepojenia dokumentov',
 	'vignette_supprimee' => 'Miniatúra bola odstránená'
 );
-

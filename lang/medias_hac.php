@@ -33,4 +33,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_portfolio' => 'كارنامه',
 	'info_telecharger' => ':با رايانه خودتان بارگذارى كنيد'
 );
-

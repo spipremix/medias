@@ -49,4 +49,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'dekompresovan i svaki sadrzani dokument ce biti instaliran na stranicu. Dokumenti koji ce biti instalirani su:',
 	'upload_zip_telquel' => 'instaliran kakav jeste, u ZIP formatu;'
 );
-

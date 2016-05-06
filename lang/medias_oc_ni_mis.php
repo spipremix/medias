@@ -193,4 +193,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'Verificà lu estac dei doucumen',
 	'vignette_supprimee' => 'La vigneta es estada suprimada'
 );
-

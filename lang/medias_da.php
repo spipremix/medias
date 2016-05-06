@@ -32,4 +32,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints_2' => 'Denne konfiguration hindrer ikke indsættelse af billeder direkte i dokumenter.', # MODIF
 	'titre_documents_joints' => 'Vedhæftede dokumenter'
 );
-

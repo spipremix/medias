@@ -51,4 +51,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'diekstrak dan setiap berkas yang terdapat di dalamnya akan diinstal di situs. Berkas-berkas yang akan diinstal adalah:',
 	'upload_zip_telquel' => 'diinstal seperti apa adanya, sebagai berkas ZIP;'
 );
-

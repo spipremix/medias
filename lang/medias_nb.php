@@ -39,4 +39,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
  peuvent ensuite être référencés dans
  l’article, ou affichés séparément.' # MODIF
 );
-

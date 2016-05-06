@@ -55,4 +55,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'installato così com’è in quanto archivio compresso Zip;',
 	'upload_zip_titrer' => 'Dare i titoli in base al nome dei file'
 );
-

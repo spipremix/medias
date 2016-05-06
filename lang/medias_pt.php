@@ -191,4 +191,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'Verificar as ligações dos documentos',
 	'vignette_supprimee' => 'A miniatura foi eliminada'
 );
-

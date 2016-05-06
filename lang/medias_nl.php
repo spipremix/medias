@@ -194,4 +194,3 @@ tekst opgenomen worden of afzonderlijk worden getoond.',
 	'verifier_documents_inutilises' => 'Links naar documenten checken',
 	'vignette_supprimee' => 'Verkleining wordt verwijderd'
 );
-

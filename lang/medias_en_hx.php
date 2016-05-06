@@ -33,4 +33,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'texte_documents_joints_2' => '7h15 53771ng d035 n07 570p 7h3 1n53r710n 0f 1m4g35 d1r3c71y 1n 7h3 4r71c135.', # MODIF
 	'titre_documents_joints' => '4774ch3d d0cum3n75'
 );
-

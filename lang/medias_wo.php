@@ -43,4 +43,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'Nagu na ba noppi mbir mu ne ci biir sampu na ci dàl bi. Su ko defee dencukaay yi nara sampu ci dà bi ñooy. ',
 	'upload_zip_telquel' => 'Ñu sampleen noonu ñu nekk baston bu nagu ci najub Zip.'
 );
-

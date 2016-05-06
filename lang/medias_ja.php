@@ -49,4 +49,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => '解凍して、ファイルをそれぞれ別で登録する。登録されるファイル群は下の通り。:',
 	'upload_zip_telquel' => 'そのまま。ZIPファイル１つを登録。'
 );
-

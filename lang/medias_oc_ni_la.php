@@ -52,4 +52,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'descomprimit e cada element que conten installat sus lo sit. Alora lu fichiers que seràn installats sus lo sit son:',
 	'upload_zip_telquel' => 'installat tau coma es, coma archiu comprimit Zip;'
 );
-

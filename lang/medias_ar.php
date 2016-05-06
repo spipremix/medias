@@ -194,4 +194,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'التدقيق في روابط المستندات',
 	'vignette_supprimee' => 'تم حذف المصغر'
 );
-

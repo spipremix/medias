@@ -57,4 +57,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'instalat ca atare, ca arhivă comprimată ZIP ;',
 	'upload_zip_titrer' => 'Titraţi după numele fişierelor'
 );
-

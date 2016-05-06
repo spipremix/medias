@@ -58,4 +58,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'instalita tia, kia ĝi estas, kiel densigita Zip-arkivo ;',
 	'upload_zip_titrer' => 'Titoligi laŭ dosiernomo'
 );
-

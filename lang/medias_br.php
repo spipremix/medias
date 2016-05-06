@@ -57,4 +57,3 @@ Gallout a ra restroù-se bezañ menegeret er pennad, pe diskwelet a-ziforc’h.'
 	'upload_zip_telquel' => 'staliet evel-henn, da lavaret eo restroù gwasket Zip ;',
 	'upload_zip_titrer' => 'Titlañ diouzh anv ar restroù'
 );
-

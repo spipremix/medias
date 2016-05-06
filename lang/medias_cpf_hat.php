@@ -52,4 +52,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'dekonprese ek chak eleman li ka kontni se instale sou sit-la. Fichye yo ke instale sou sit-la se :',
 	'upload_zip_telquel' => 'te enstale komsa kom achiv koprese Zip ;'
 );
-

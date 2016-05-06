@@ -193,4 +193,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'Links der Dokumente prüfen',
 	'vignette_supprimee' => 'Das MIniaturbild wurde gelöscht.'
 );
-

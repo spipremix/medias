@@ -24,4 +24,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_document' => 'Skjal',
 	'info_documents' => 'Skjöl'
 );
-

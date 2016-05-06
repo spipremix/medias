@@ -191,4 +191,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'Vérifier les liens des documents',
 	'vignette_supprimee' => 'La vignette a été supprimée'
 );
-

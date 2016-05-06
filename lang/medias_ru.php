@@ -193,4 +193,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'Проверить использование документа',
 	'vignette_supprimee' => 'Миниатюра удалена'
 );
-

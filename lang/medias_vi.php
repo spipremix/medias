@@ -50,4 +50,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'được mở ra và hồ sơ trong đó sẽ được thiết trí vào trang web. Các hồ sơ sẽ được thiết trí là:',
 	'upload_zip_telquel' => 'thiết trí y nguyên, hồ sơ ZIP;'
 );
-

@@ -57,4 +57,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'instalado tal cal, dado que é un arquivo comprimido Zip ;',
 	'upload_zip_titrer' => 'Titular consonte o patrón de nome dos ficheiros.'
 );
-

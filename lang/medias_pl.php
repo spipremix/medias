@@ -53,4 +53,3 @@ multimediów, itd.) do artykułów bądź działów. Te pliki
 	'upload_zip_decompacter' => 'zdekompresowany i każdy jego element zostanie zainstalowany w serwisie. Pliki, które zostaną zainstalowane w serwisie to:',
 	'upload_zip_telquel' => 'zostaną zainstalowane jako archiwum Zip;'
 );
-

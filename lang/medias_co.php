@@ -56,4 +56,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'stallatu cusì, in tantu chì archiviu cumpressu è zip;',
 	'upload_zip_titrer' => 'Intitulà secondu u nome di i schedari'
 );
-

@@ -34,4 +34,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_portfolio' => 'Justup imañ q’ìpi',
 	'info_telecharger' => 'Computaturamat apkataña:'
 );
-

@@ -191,4 +191,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'verifier_documents_inutilises' => 'D’Linke vun den Dokumenter kontrolléieren',
 	'vignette_supprimee' => 'D’Vignette gouf geläscht'
 );
-

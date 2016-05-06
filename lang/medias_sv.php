@@ -66,4 +66,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_telquel' => 'installerad som den är, som en ZIP-fil;',
 	'upload_zip_titrer' => 'Lägg till titlar efter vad filerna kallas'
 );
-

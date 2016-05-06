@@ -43,4 +43,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => 'denzardato e ogne alemento fuje nstallato ’int’ô sito. ’E ffile ca sarranno nstallate ’int’ô sito songo :',
 	'upload_zip_telquel' => 'nstallato accussí comm’è, pecché archivio nzardato Zip ;'
 );
-

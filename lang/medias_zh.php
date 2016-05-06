@@ -46,4 +46,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'upload_zip_decompacter' => '已被解压，并且其中的所有文件均被安装到网站。将被安装到网站的文件如下：',
 	'upload_zip_telquel' => '照原样安装，仍以 Zip压缩文档格式;'
 );
-
