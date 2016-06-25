@@ -57,26 +57,34 @@ function action_copier_local_post($id_document) {
 	$row = sql_fetsel("mode,fichier, descriptif, credits", "spip_documents", "id_document=$id_document");
 	$source = $row['fichier'];
 
-	include_spip('inc/distant'); // pour 'copie_locale'
-	$fichier = copie_locale($source);
-	if ($fichier) {
-		$fichier = _DIR_RACINE . $fichier;
-		$files[] = array('tmp_name' => $fichier, 'name' => basename($fichier));
-		$ajouter_documents = charger_fonction('ajouter_documents', 'action');
-		spip_log("convertit doc $id_document en local: $source => $fichier");
-		$liste = array();
-		$ajouter_documents($id_document, $files, '', 0, $row['mode'], $liste);
+	// si la source est bien un fichier distant
+	// sinon c'est une donnee moisie, on ne fait rien
+	if (tester_url_absolue($source)){
 
-		spip_unlink($fichier);
+		include_spip('inc/distant'); // pour 'copie_locale'
+		$fichier = copie_locale($source);
+		if ($fichier
+		  and tester_url_absolue($source)) {
+			$fichier = _DIR_RACINE . $fichier;
+			$files[] = array('tmp_name' => $fichier, 'name' => basename($fichier));
+			$ajouter_documents = charger_fonction('ajouter_documents', 'action');
+			spip_log("convertit doc $id_document en local: $source => $fichier", "medias");
+			$liste = array();
+			$ajouter_documents($id_document, $files, '', 0, $row['mode'], $liste);
 
-		// ajouter l'origine du document aux credits
-		include_spip('action/editer_document');
-		document_modifier($id_document, array('credits' => ($row['credits'] ? $row['credits'] . ', ' : '') . $source));
+			spip_unlink($fichier);
 
-		return true;
+			// ajouter l'origine du document aux credits
+			include_spip('action/editer_document');
+			document_modifier($id_document, array('credits' => ($row['credits'] ? $row['credits'] . ', ' : '') . $source));
 
+			return true;
+
+		} else {
+			spip_log("echec copie locale $source", "medias" . _LOG_ERREUR);
+		}
 	} else {
-		spip_log("echec copie locale $source");
+		spip_log("echec copie locale $source n'est pas une URL distante", "medias" . _LOG_ERREUR);
 	}
 
 	return _T('medias:erreur_copie_fichier', array('nom' => $source));
