@@ -141,6 +141,7 @@ function document_modifier($id_document, $set = null) {
 		and $champs['fichier']
 		and $ancien_fichier // on avait bien note le nom du fichier avant la modif
 		and $ancien_fichier !== $champs['fichier'] // et il a ete modifie
+		and !tester_url_absolue($ancien_fichier)
 		and @file_exists($f = get_spip_doc($ancien_fichier))
 	) {
 		spip_unlink($f);
