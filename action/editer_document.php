@@ -257,6 +257,8 @@ function document_instituer($id_document, $champs = array()) {
  * @param bool $ajout
  */
 function medias_revision_document_parents($id_document, $parents = null, $ajout = false) {
+	include_spip('inc/autoriser');
+	
 	if (!is_array($parents)) {
 		return;
 	}
