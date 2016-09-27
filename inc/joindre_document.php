@@ -127,7 +127,13 @@ function joindre_trouver_fichier_envoye() {
 
 			return $files;
 		}
-	} elseif (_request('joindre_zip') and $path = _request('chemin_zip')) {
+	} elseif (_request('joindre_zip') and $token_zip = _request('chemin_zip')) {
+
+		$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ? unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
+		if (!$zip_to_clean or !isset($zip_to_clean[$token_zip]) or !$path = $zip_to_clean[$token_zip]){
+			return _T('avis_operation_impossible');
+		}
+
 		include_spip('inc/documents'); //pour creer_repertoire_documents
 		define('_tmp_zip', $path);
 		define('_tmp_dir', creer_repertoire_documents(md5($path . $GLOBALS['visiteur_session']['id_auteur'])));
@@ -239,7 +245,7 @@ function joindre_verifier_zip($files) {
 			and rename($zip, $tmp = $tmp . basename($zip))
 		) {
 			$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ? unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
-			$zip_to_clean[] = $tmp;
+			$zip_to_clean[md5($tmp)] = $tmp;
 			session_set('zip_to_clean', serialize($zip_to_clean));
 			$contenu[] = $tmp;
 
