@@ -16,7 +16,7 @@
  * @package SPIP\Medias\Action
  **/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -32,7 +32,7 @@ include_spip('inc/renseigner_document');
  *   Document à remplacer, ou pour une vignette, l'id_document de maman
  *   0 ou 'new' pour une insertion
  * @param array $files
- *   Tableau de taleau de propriété pour chaque document à insérer
+ *   Tableau de tableaux de propriétés pour chaque document à insérer
  * @param string $objet
  *   Objet auquel associer le document
  * @param int $id_objet
@@ -104,8 +104,9 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	$mode = ((isset($file['mode']) and $file['mode']) ? $file['mode'] : $mode);
 
 	include_spip('inc/modifier');
-	if (isset($file['distant']) and $file['distant'] and !in_array($mode, array('choix', 'auto', 'image', 'document'))) {
-		spip_log("document distant $source accepte sans verification, mode=$mode","medias"._LOG_INFO_IMPORTANTE);
+	if (isset($file['distant']) and $file['distant']
+		and !in_array($mode, array('choix', 'auto', 'image', 'document'))) {
+		spip_log("document distant $source accepte sans verification, mode=$mode", 'medias'._LOG_INFO_IMPORTANTE);
 		include_spip('inc/distant');
 		$file['tmp_name'] = _DIR_RACINE . copie_locale($source);
 		$source = $file['tmp_name'];
@@ -116,12 +117,11 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	// via une requete HEAD pour savoir si la ressource existe (non 404), si le
 	// content-type est connu, et si possible recuperer la taille, voire plus.
 	if (isset($file['distant']) and $file['distant']) {
-		if (!tester_url_absolue($source)){
+		if (!tester_url_absolue($source)) {
 			return _T('medias:erreur_chemin_distant', array('nom' => $source));
 		}
 		include_spip('inc/distant');
 		if (is_array($a = renseigner_source_distante($source))) {
-
 			$champs = $a;
 			# NB: dans les bonnes conditions (fichier autorise et pas trop gros)
 			# $a['fichier'] est une copie locale du fichier
@@ -148,13 +148,14 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		$type_image = ''; // au pire
 		$champs['titre'] = '';
 		if ($titrer) {
-			$titre = substr($nom_envoye, 0, strrpos($nom_envoye, ".")); // Enlever l'extension du nom du fichier
+			$titre = substr($nom_envoye, 0, strrpos($nom_envoye, '.')); // Enlever l'extension du nom du fichier
 			$titre = preg_replace(',[[:punct:][:space:]]+,u', ' ', $titre);
 			$champs['titre'] = preg_replace(',\.([^.]+)$,', '', $titre);
 		}
 
 		if (!is_array($fichier = fixer_fichier_upload($file, $mode))) {
-			return is_string($fichier) ? $fichier : _T("medias:erreur_upload_type_interdit", array('nom' => $file['name']));
+			return is_string($fichier) ?
+				$fichier : _T('medias:erreur_upload_type_interdit', array('nom' => $file['name']));
 		}
 
 		$champs['inclus'] = $fichier['inclus'];
@@ -196,8 +197,11 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 
 	// si le media est pas renseigne, le faire, en fonction de l'extension
 	if (!isset($champs['media'])) {
-		$champs['media'] = sql_getfetsel('media_defaut', 'spip_types_documents',
-			'extension=' . sql_quote($champs['extension']));
+		$champs['media'] = sql_getfetsel(
+			'media_defaut',
+			'spip_types_documents',
+			'extension=' . sql_quote($champs['extension'])
+		);
 	}
 
 	// lier le parent si necessaire
@@ -219,15 +223,19 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	// Installer le document dans la base
 	if (!$id_document) {
 		if ($id_document = document_inserer()) {
-			spip_log("ajout du document " . $file['tmp_name'] . " " . $file['name'] . "  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",
-				'medias');
+			spip_log(
+				'ajout du document ' . $file['tmp_name'] . ' ' . $file['name'] . "  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",
+				'medias'
+			);
 		} else {
-			spip_log("Echec insert_document() du document " . $file['tmp_name'] . " " . $file['name'] . "  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",
-				'medias' . _LOG_ERREUR);
+			spip_log(
+				'Echec insert_document() du document ' . $file['tmp_name'] . ' ' . $file['name'] . "  (M '$mode' T '$objet' L '$id_objet' D '$id_document')",
+				'medias' . _LOG_ERREUR
+			);
 		}
 	}
 	if (!$id_document) {
-		return _T('medias:erreur_insertion_document_base', array('fichier' => "<em>" . $file['name'] . "</em>"));
+		return _T('medias:erreur_insertion_document_base', array('fichier' => '<em>' . $file['name'] . '</em>'));
 	}
 
 	document_modifier($id_document, $champs);
@@ -235,7 +243,8 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	// permettre aux plugins de faire des modifs a l'ajout initial
 	// ex EXIF qui tourne les images si necessaire
 	// Ce plugin ferait quand même mieux de se placer dans metadata/jpg.php
-	pipeline('post_edition',
+	pipeline(
+		'post_edition',
 		array(
 			'args' => array(
 				'table' => 'spip_documents', // compatibilite
@@ -311,28 +320,31 @@ function corriger_extension($ext) {
 function verifier_upload_autorise($source, $mode = '') {
 	$infos = array('fichier' => $source);
 	$res = false;
-	if (preg_match(",\.([a-z0-9]+)(\?.*)?$,i", $source, $match)
+	if (preg_match(',\.([a-z0-9]+)(\?.*)?$,i', $source, $match)
 		and $ext = $match[1]
 	) {
-
 		$ext = corriger_extension(strtolower($ext));
-		if ($res = sql_fetsel("extension,inclus,media_defaut as media", "spip_types_documents",
-			"extension=" . sql_quote($ext) . " AND upload='oui'")
-		) {
+		if ($res = sql_fetsel(
+			'extension,inclus,media_defaut as media',
+			'spip_types_documents',
+			'extension=' . sql_quote($ext) . " AND upload='oui'"
+		)) {
 			$infos = array_merge($infos, $res);
 		}
 	}
 	if (!$res) {
-		if ($res = sql_fetsel("extension,inclus,media_defaut as media", "spip_types_documents",
-			"extension='zip' AND upload='oui'")
-		) {
+		if ($res = sql_fetsel(
+			'extension,inclus,media_defaut as media',
+			'spip_types_documents',
+			"extension='zip' AND upload='oui'"
+		)) {
 			$infos = array_merge($infos, $res);
 			$res['autozip'] = true;
 		}
 	}
 	if ($mode and $res) {
 		// verifier en fonction du mode si une fonction est proposee
-		if ($verifier_document_mode = charger_fonction("verifier_document_mode_" . $mode, "inc", true)) {
+		if ($verifier_document_mode = charger_fonction('verifier_document_mode_' . $mode, 'inc', true)) {
 			$check = $verifier_document_mode($infos); // true ou message d'erreur sous forme de chaine
 			if ($check !== true) {
 				$res = $check;
@@ -376,18 +388,15 @@ function fixer_fichier_upload($file, $mode = '') {
 			 * si non, on le supprime et on affiche une erreur
 			 */
 			if ($row['fichier'] && (!$taille = @intval(filesize(get_spip_doc($row['fichier']))))) {
-				spip_log("Echec copie du fichier " . $file['tmp_name'] . " (taille de fichier indéfinie)");
+				spip_log('Echec copie du fichier ' . $file['tmp_name'] . ' (taille de fichier indéfinie)');
 				spip_unlink(get_spip_doc($row['fichier']));
-
 				return _T('medias:erreur_copie_fichier', array('nom' => $file['tmp_name']));
 			} else {
 				return $row;
 			}
-		}
-		// creer un zip comme demande
-		// pour encapsuler un fichier dont l'extension n'est pas supportee
-		else {
-
+		} else {
+			// creer un zip comme demande
+			// pour encapsuler un fichier dont l'extension n'est pas supportee
 			unset($row['autozip']);
 
 			$ext = 'zip';
@@ -401,7 +410,8 @@ function fixer_fichier_upload($file, $mode = '') {
 			include_spip('inc/charsets');
 			$tmp = $tmp_dir . '/' . translitteration($file['name']);
 
-			$file['name'] .= '.' . $ext; # conserver l'extension dans le nom de fichier, par exemple toto.js => toto.js.zip
+			// conserver l'extension dans le nom de fichier, par exemple toto.js => toto.js.zip
+			$file['name'] .= '.' . $ext;
 
 			// deplacer le fichier tmp_name dans le dossier tmp
 			deplacer_fichier_upload($file['tmp_name'], $tmp, true);
@@ -410,14 +420,17 @@ function fixer_fichier_upload($file, $mode = '') {
 			$source = _DIR_TMP . basename($tmp_dir) . '.' . $ext;
 			$archive = new PclZip($source);
 
-			$v_list = $archive->create($tmp,
-				PCLZIP_OPT_REMOVE_PATH, $tmp_dir,
-				PCLZIP_OPT_ADD_PATH, '');
+			$v_list = $archive->create(
+				$tmp,
+				PCLZIP_OPT_REMOVE_PATH,
+				$tmp_dir,
+				PCLZIP_OPT_ADD_PATH,
+				''
+			);
 
 			effacer_repertoire_temporaire($tmp_dir);
 			if (!$v_list) {
-				spip_log("Echec creation du zip ");
-
+				spip_log('Echec creation du zip');
 				return false;
 			}
 
@@ -428,7 +441,7 @@ function fixer_fichier_upload($file, $mode = '') {
 			 * si non, on le supprime et on affiche une erreur
 			 */
 			if ($row['fichier'] && (!$taille = @intval(filesize(get_spip_doc($row['fichier']))))) {
-				spip_log("Echec copie du fichier " . $file['tmp_name'] . " (taille de fichier indéfinie)");
+				spip_log('Echec copie du fichier ' . $file['tmp_name'] . ' (taille de fichier indéfinie)');
 				spip_unlink(get_spip_doc($row['fichier']));
 
 				return _T('medias:erreur_copie_fichier', array('nom' => $file['tmp_name']));
@@ -452,7 +465,8 @@ function verifier_taille_document_acceptable(&$infos) {
 	// si ce n'est pas une image
 	if (!$infos['type_image']) {
 		if (defined('_DOC_MAX_SIZE') and _DOC_MAX_SIZE > 0 and $infos['taille'] > _DOC_MAX_SIZE * 1024) {
-			return _T('medias:info_doc_max_poids',
+			return _T(
+				'medias:info_doc_max_poids',
 				array(
 					'maxi' => taille_en_octets(_DOC_MAX_SIZE * 1024),
 					'actuel' => taille_en_octets($infos['taille'])
@@ -461,7 +475,6 @@ function verifier_taille_document_acceptable(&$infos) {
 		}
 	} // si c'est une image
 	else {
-
 		if ((defined('_IMG_MAX_WIDTH') and _IMG_MAX_WIDTH and $infos['largeur'] > _IMG_MAX_WIDTH)
 			or (defined('_IMG_MAX_HEIGHT') and _IMG_MAX_HEIGHT and $infos['hauteur'] > _IMG_MAX_HEIGHT)
 		) {
@@ -488,39 +501,43 @@ function verifier_taille_document_acceptable(&$infos) {
 			if ((defined('_IMG_MAX_WIDTH') and _IMG_MAX_WIDTH and $infos['largeur'] > _IMG_MAX_WIDTH)
 				or (defined('_IMG_MAX_HEIGHT') and _IMG_MAX_HEIGHT and $infos['hauteur'] > _IMG_MAX_HEIGHT)
 			) {
-
-				return _T('medias:info_image_max_taille',
+				return _T(
+					'medias:info_image_max_taille',
 					array(
 						'maxi' =>
-							_T('info_largeur_vignette',
+							_T(
+								'info_largeur_vignette',
 								array(
 									'largeur_vignette' => $max_width,
 									'hauteur_vignette' => $max_height
-								)),
+								)
+							),
 						'actuel' =>
-							_T('info_largeur_vignette',
+							_T(
+								'info_largeur_vignette',
 								array(
 									'largeur_vignette' => $infos['largeur'],
 									'hauteur_vignette' => $infos['hauteur']
-								))
-					));
+								)
+							)
+					)
+				);
 			}
 		}
 
 		if (defined('_IMG_MAX_SIZE') and _IMG_MAX_SIZE > 0 and $infos['taille'] > _IMG_MAX_SIZE * 1024) {
-			return _T('medias:info_image_max_poids',
+			return _T(
+				'medias:info_image_max_poids',
 				array(
 					'maxi' => taille_en_octets(_IMG_MAX_SIZE * 1024),
-					'actuel' => taille_en_octets($infos['taille']
-					)
+					'actuel' => taille_en_octets($infos['taille'])
 				)
 			);
 		}
-
 	}
 
 	// verifier en fonction du mode si une fonction est proposee
-	if ($verifier_document_mode = charger_fonction("verifier_document_mode_" . $infos['mode'], "inc", true)) {
+	if ($verifier_document_mode = charger_fonction('verifier_document_mode_' . $infos['mode'], 'inc', true)) {
 		return $verifier_document_mode($infos);
 	}
 

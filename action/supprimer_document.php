@@ -10,7 +10,7 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -30,7 +30,7 @@ function action_supprimer_document_dist($id_document = 0) {
 	// si c'etait une vignette, modifier le document source !
 	if ($source = sql_getfetsel('id_document', 'spip_documents', 'id_vignette=' . intval($id_document))) {
 		include_spip('action/editer_document');
-		document_modifier($source, array("id_vignette" => 0));
+		document_modifier($source, array('id_vignette' => 0));
 	}
 
 	include_spip('inc/documents');
@@ -40,7 +40,7 @@ function action_supprimer_document_dist($id_document = 0) {
 		return false;
 	}
 
-	spip_log("Suppression du document $id_document (" . $doc['fichier'] . ")");
+	spip_log("Suppression du document $id_document (" . $doc['fichier'] . ')');
 	include_spip('action/editer_liens');
 
 	// Si c'est un document ayant une vignette, supprimer aussi la vignette
@@ -50,8 +50,10 @@ function action_supprimer_document_dist($id_document = 0) {
 	}
 	// Si c'est un document ayant des documents annexes (sous-titre, ...)
 	// les supprimer aussi
-	$annexes = array_map('reset',
-		sql_allfetsel("id_document", "spip_documents_liens", "objet='document' AND id_objet=" . intval($id_document)));
+	$annexes = array_map(
+		'reset',
+		sql_allfetsel('id_document', 'spip_documents_liens', "objet='document' AND id_objet=" . intval($id_document))
+	);
 	foreach ($annexes as $id) {
 		action_supprimer_document_dist($id);
 	}
@@ -72,7 +74,8 @@ function action_supprimer_document_dist($id_document = 0) {
 		spip_unlink(get_spip_doc($doc['fichier']));
 	}
 
-	pipeline('post_edition',
+	pipeline(
+		'post_edition',
 		array(
 			'args' => array(
 				'operation' => 'supprimer_document', // compat v<=2

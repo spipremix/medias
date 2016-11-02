@@ -10,7 +10,7 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -29,7 +29,7 @@ function action_changer_mode_document_dist($id_document = null, $mode = null) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
 
-		if (!preg_match(",^(\d+)\W(\w+)$,", $arg, $r)) {
+		if (!preg_match(',^(\d+)\W(\w+)$,', $arg, $r)) {
 			spip_log("action_changer_mode_document $arg pas compris");
 		} else {
 			array_shift($r);

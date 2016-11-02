@@ -10,7 +10,7 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -32,13 +32,12 @@ function action_tourner_dist($id_document = null, $angle = null) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
 
-		if (!preg_match(",^\W*(\d+)\W?(-?\d+)$,", $arg, $r)) {
+		if (!preg_match(',^\W*(\d+)\W?(-?\d+)$,', $arg, $r)) {
 			spip_log("action_tourner_dist $arg pas compris");
 		} else {
 			array_shift($r);
 			list($id_document, $angle) = $r;
 		}
-
 	}
 	if ($id_document and autoriser('modifier', 'document', $id_document)) {
 		action_tourner_post($id_document, $angle);
@@ -56,7 +55,7 @@ function action_tourner_dist($id_document = null, $angle = null) {
  * @return
  */
 function action_tourner_post($id_document, $angle) {
-	$row = sql_fetsel("fichier,extension", "spip_documents", "id_document=" . intval($id_document));
+	$row = sql_fetsel('fichier,extension', 'spip_documents', 'id_document=' . intval($id_document));
 
 	if (!$row) {
 		return;
@@ -109,13 +108,14 @@ function action_tourner_post($id_document, $angle) {
 		if ($taille = @filesize($dest)) {
 			$set['taille'] = $taille;
 		}
-		sql_updateq('spip_documents', $set, "id_document=" . intval($id_document));
+		sql_updateq('spip_documents', $set, 'id_document=' . intval($id_document));
 		if ($effacer) {
 			spip_log("rotation : j'efface $effacer");
 			spip_unlink($effacer);
 		}
 		// pipeline pour les plugins
-		pipeline('post_edition',
+		pipeline(
+			'post_edition',
 			array(
 				'args' => array(
 					'table' => 'spip_documents',
@@ -130,7 +130,6 @@ function action_tourner_post($id_document, $angle) {
 			)
 		);
 	}
-
 }
 
 // Appliquer l'EXIF orientation
@@ -149,8 +148,10 @@ function tourner_selon_exif_orientation($id_document, $fichier) {
 		switch ($ort) {
 			case 3:
 				$rot = 180;
+				// rotation à 180
 			case 6:
 				$rot = 90;
+				// rotation à 90
 			case 8:
 				$rot = -90;
 		}

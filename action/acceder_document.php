@@ -30,7 +30,7 @@ function action_acceder_document_dist() {
 	$file = get_spip_doc($f);
 	$arg = rawurldecode(_request('arg'));
 
-	$status = $dcc = false;
+	$status = false;
 	if (strpos($f, '../') !== false
 		or preg_match(',^\w+://,', $f)
 	) {
@@ -39,15 +39,17 @@ function action_acceder_document_dist() {
 		if (!file_exists($file) or !is_readable($file)) {
 			$status = 404;
 		} else {
-			$where = "D.fichier=" . sql_quote(set_spip_doc($file))
-				. ($arg ? " AND D.id_document=" . intval($arg) : '');
+			$where = 'D.fichier=' . sql_quote(set_spip_doc($file))
+				. ($arg ? ' AND D.id_document=' . intval($arg) : '');
 
-			$doc = sql_fetsel("D.id_document, D.titre, D.fichier, T.mime_type, T.inclus, D.extension",
-				"spip_documents AS D LEFT JOIN spip_types_documents AS T ON D.extension=T.extension", $where);
+			$doc = sql_fetsel(
+				'D.id_document, D.titre, D.fichier, T.mime_type, T.inclus, D.extension',
+				'spip_documents AS D LEFT JOIN spip_types_documents AS T ON D.extension=T.extension',
+				$where
+			);
 			if (!$doc) {
 				$status = 404;
 			} else {
-
 				// ETag pour gerer le status 304
 				$ETag = md5($file . ': ' . filemtime($file));
 				if (isset($_SERVER['HTTP_IF_NONE_MATCH'])
@@ -74,7 +76,6 @@ function action_acceder_document_dist() {
 	}
 
 	switch ($status) {
-
 		case 403:
 			include_spip('inc/minipres');
 			echo minipres();
@@ -83,19 +84,17 @@ function action_acceder_document_dist() {
 		case 404:
 			http_status(404);
 			include_spip('inc/minipres');
-			echo minipres(_T('erreur') . ' 404',
-				_T('medias:info_document_indisponible'));
+			echo minipres(_T('erreur') . ' 404', _T('medias:info_document_indisponible'));
 			break;
 
 		default:
-			header("Content-Type: " . $doc['mime_type']);
+			header('Content-Type: ' . $doc['mime_type']);
 
 			// pour les images ne pas passer en attachment
 			// sinon, lorsqu'on pointe directement sur leur adresse,
 			// le navigateur les downloade au lieu de les afficher
 
 			if ($doc['inclus'] == 'non') {
-
 				// Si le fichier a un titre avec extension,
 				// ou si c'est un nom bien connu d'Unix, le prendre
 				// sinon l'ignorer car certains navigateurs pataugent
@@ -111,21 +110,19 @@ function action_acceder_document_dist() {
 				header('Content-Type: application/octet-stream');
 
 				header("Content-Disposition: attachment; filename=\"$f\";");
-				header("Content-Transfer-Encoding: binary");
+				header('Content-Transfer-Encoding: binary');
 
 				// fix for IE catching or PHP bug issue
-				header("Pragma: public");
-				header("Expires: 0"); // set expiration time
-				header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-
+				header('Pragma: public');
+				header('Expires: 0'); // set expiration time
+				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 			}
 
 			if ($cl = filesize($file)) {
-				header("Content-Length: " . $cl);
+				header('Content-Length: ' . $cl);
 			}
 
 			readfile($file);
 			break;
 	}
-
 }

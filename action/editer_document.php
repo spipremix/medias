@@ -10,7 +10,7 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -62,7 +62,8 @@ function document_inserer($id_parent = null, $set = null) {
 	}
 
 	// Envoyer aux plugins
-	$champs = pipeline('pre_insertion',
+	$champs = pipeline(
+		'pre_insertion',
 		array(
 			'args' => array(
 				'table' => 'spip_documents',
@@ -70,8 +71,9 @@ function document_inserer($id_parent = null, $set = null) {
 			'data' => $champs
 		)
 	);
-	$id_document = sql_insertq("spip_documents", $champs);
-	pipeline('post_insertion',
+	$id_document = sql_insertq('spip_documents', $champs);
+	pipeline(
+		'post_insertion',
 		array(
 			'args' => array(
 				'table' => 'spip_documents',
@@ -100,7 +102,7 @@ function document_modifier($id_document, $set = null) {
 
 	// champs normaux
 	$champs = collecter_requests(
-	// white list
+		// white list
 		objet_info('document', 'champs_editables'),
 		// black list
 		array('parents', 'ajout_parents'),
@@ -109,30 +111,32 @@ function document_modifier($id_document, $set = null) {
 	);
 
 
-	$invalideur = "";
+	$invalideur = '';
 	$indexation = false;
 
 	// Si le document est publie, invalider les caches et demander sa reindexation
-	$t = sql_getfetsel("statut", "spip_documents", 'id_document=' . intval($id_document));
+	$t = sql_getfetsel('statut', 'spip_documents', 'id_document=' . intval($id_document));
 	if ($t == 'publie') {
 		$invalideur = "id='id_document/$id_document'";
 		$indexation = true;
 	}
 
-	$ancien_fichier = "";
+	$ancien_fichier = '';
 	// si le fichier est modifie, noter le nom de l'ancien pour faire le menage
 	if (isset($champs['fichier'])) {
 		$ancien_fichier = sql_getfetsel('fichier', 'spip_documents', 'id_document=' . intval($id_document));
 	}
 
-	if ($err = objet_modifier_champs('document', $id_document,
+	if ($err = objet_modifier_champs(
+		'document',
+		$id_document,
 		array(
 			'data' => $set,
 			'invalideur' => $invalideur,
 			'indexation' => $indexation
 		),
-		$champs)
-	) {
+		$champs
+	)) {
 		return $err;
 	}
 
@@ -151,7 +155,6 @@ function document_modifier($id_document, $set = null) {
 	// le statut n'est jamais fixe manuellement mais decoule de celui des objets lies
 	$champs = collecter_requests(array('parents', 'ajouts_parents'), array(), $set);
 	if (document_instituer($id_document, $champs)) {
-
 		//
 		// Post-modifications
 		//
@@ -160,7 +163,6 @@ function document_modifier($id_document, $set = null) {
 		include_spip('inc/invalideur');
 		suivre_invalideur("id='id_document/$id_document'");
 	}
-
 }
 
 
@@ -183,7 +185,7 @@ function document_instituer($id_document, $champs = array()) {
 		medias_revision_document_parents($id_document, $champs['ajout_parents'], true);
 	}
 
-	$row = sql_fetsel("statut,date_publication", "spip_documents", "id_document=$id_document");
+	$row = sql_fetsel('statut,date_publication', 'spip_documents', 'id_document='.intval($id_document));
 	$statut_ancien = $row['statut'];
 	$date_publication_ancienne = $row['date_publication'];
 
@@ -192,8 +194,11 @@ function document_instituer($id_document, $champs = array()) {
 		$statut = 'prepa';
 
 		$trouver_table = charger_fonction('trouver_table', 'base');
-		$res = sql_select('id_objet,objet', 'spip_documents_liens',
-			"objet!='document' AND id_document=" . intval($id_document));
+		$res = sql_select(
+			'id_objet,objet',
+			'spip_documents_liens',
+			"objet!='document' AND id_document=" . intval($id_document)
+		);
 		// dans 10 ans, ca nous fera un bug a corriger vers 2018
 		// penser a ouvrir un ticket d'ici la :p
 		$date_publication = time() + 10 * 365 * 24 * 3600;
@@ -210,8 +215,11 @@ function document_instituer($id_document, $champs = array()) {
 				continue;
 			} // si pas publie, et article, il faut checker la date de post-publi eventuelle
 			elseif ($row['objet'] == 'article'
-				and $row2 = sql_fetsel('date', 'spip_articles',
-					'id_article=' . intval($row['id_objet']) . " AND statut='publie'")
+				and $row2 = sql_fetsel(
+					'date',
+					'spip_articles',
+					'id_article=' . intval($row['id_objet']) . " AND statut='publie'"
+				)
 			) {
 				$statut = 'publie';
 				$date_publication = min($date_publication, strtotime($row2['date']));
@@ -228,11 +236,17 @@ function document_instituer($id_document, $champs = array()) {
 	if ($statut !== $statut_ancien
 		or $date_publication != $date_publication_ancienne
 	) {
-		sql_updateq('spip_documents', array('statut' => $statut, 'date_publication' => $date_publication),
-			'id_document=' . intval($id_document));
+		sql_updateq(
+			'spip_documents',
+			array('statut' => $statut, 'date_publication' => $date_publication),
+			'id_document=' . intval($id_document)
+		);
 		if ($statut !== $statut_ancien) {
-			$publier_rubriques = sql_allfetsel('id_objet', 'spip_documents_liens',
-				"objet='rubrique' AND id_document=" . intval($id_document));
+			$publier_rubriques = sql_allfetsel(
+				'id_objet',
+				'spip_documents_liens',
+				"objet='rubrique' AND id_document=" . intval($id_document)
+			);
 			if (count($publier_rubriques)) {
 				include_spip('inc/rubriques');
 				foreach ($publier_rubriques as $r) {
@@ -240,10 +254,8 @@ function document_instituer($id_document, $champs = array()) {
 				}
 			}
 		}
-
 		return true;
 	}
-
 	return false;
 }
 
@@ -258,7 +270,7 @@ function document_instituer($id_document, $champs = array()) {
  */
 function medias_revision_document_parents($id_document, $parents = null, $ajout = false) {
 	include_spip('inc/autoriser');
-	
+
 	if (!is_array($parents)) {
 		return;
 	}
@@ -303,7 +315,6 @@ function medias_revision_document_parents($id_document, $parents = null, $ajout 
 		}
 	}
 	objet_associer(array('document' => $id_document), $objets_parents);
-
 }
 
 

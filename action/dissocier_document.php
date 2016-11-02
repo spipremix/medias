@@ -16,7 +16,7 @@
  * @package SPIP\Medias\Action
  **/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -64,7 +64,7 @@ function action_dissocier_document_dist($arg = null) {
 	) {
 		dissocier_document($document, $objet, $id_objet, $suppr, $check);
 	} else {
-		spip_log("Interdit de modifier $objet $id_objet", "spip");
+		spip_log("Interdit de modifier $objet $id_objet", 'spip');
 	}
 }
 
@@ -95,7 +95,7 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 
 	// Si c'est une vignette, l'eliminer du document auquel elle appartient
 	// cas tordu peu probable
-	sql_updateq("spip_documents", array('id_vignette' => 0), "id_vignette=" . $id_document);
+	sql_updateq('spip_documents', array('id_vignette' => 0), 'id_vignette=' . $id_document);
 
 	// verifier son statut apres une suppression de lien
 	include_spip('action/editer_document');
@@ -105,7 +105,8 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 	include_spip('inc/invalideur');
 	suivre_invalideur("id='id_document/$id_document'");
 
-	pipeline('post_edition',
+	pipeline(
+		'post_edition',
 		array(
 			'args' => array(
 				'operation' => 'delier_document', // compat v<=2
@@ -124,7 +125,7 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
 		$spip_table_objet = table_objet_sql($objet);
 		$table_objet = table_objet($objet);
 		$id_table_objet = id_table_objet($objet, $serveur);
-		$champs = sql_fetsel('*', $spip_table_objet, addslashes($id_table_objet) . "=" . intval($id_objet));
+		$champs = sql_fetsel('*', $spip_table_objet, addslashes($id_table_objet) . '=' . intval($id_objet));
 
 		$marquer_doublons_doc = charger_fonction('marquer_doublons_doc', 'inc');
 		$marquer_doublons_doc($champs, $id_objet, $objet, $id_table_objet, $table_objet, $spip_table_objet, '', $serveur);
@@ -166,11 +167,13 @@ function dissocier_document($document, $objet, $id_objet, $supprime = false, $ch
 		$image = ($image == 'I');
 		$typdoc = sql_in('docs.extension', array('gif', 'jpg', 'png'), $image ? '' : 'NOT');
 
-		$obj = "id_objet=" . intval($id_objet) . " AND objet=" . sql_quote($objet);
+		$obj = 'id_objet=' . intval($id_objet) . ' AND objet=' . sql_quote($objet);
 
-		$s = sql_select('docs.id_document',
-			"spip_documents AS docs LEFT JOIN spip_documents_liens AS l ON l.id_document=docs.id_document",
-			"$obj AND vu='non' AND docs.mode=" . sql_quote($mode) . " AND $typdoc");
+		$s = sql_select(
+			'docs.id_document',
+			'spip_documents AS docs LEFT JOIN spip_documents_liens AS l ON l.id_document=docs.id_document',
+			"$obj AND vu='non' AND docs.mode=" . sql_quote($mode) . " AND $typdoc"
+		);
 		while ($t = sql_fetch($s)) {
 			supprimer_lien_document($t['id_document'], $objet, $id_objet, $supprime, $check);
 		}
