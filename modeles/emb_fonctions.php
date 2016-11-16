@@ -18,7 +18,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  * @return mixed
  */
 function trouver_modele_emb($extension, $mime_type) {
-	if ($extension and trouve_modele($fond = "emb_" . $extension)) {
+	if ($extension and trouve_modele($fond = 'emb_' . $extension)) {
 		return $fond;
 	}
 	$fond = preg_replace(',\W,', '_', $mime_type);
