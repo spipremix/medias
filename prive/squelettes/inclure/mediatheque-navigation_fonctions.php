@@ -17,6 +17,12 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 
 
 function liste_extensions_utilisees($media) {
-	return $media ? array_map('reset',
-		sql_allfetsel('extension', 'spip_documents', 'media=' . sql_quote($media))) : array();
+	return $media ? array_map(
+		'reset',
+		sql_allfetsel(
+			'extension',
+			'spip_documents',
+			'media=' . sql_quote($media)
+		)
+	) : array();
 }
