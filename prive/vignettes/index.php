@@ -13,7 +13,7 @@
 		$myDir = opendir('.');
 		$i = 0;
 		while ($file = readdir($myDir)) {
-			if (preg_match(",\.(png|gif)$,i", $file)) {
+			if (preg_match(',\.(png|gif)$,i', $file)) {
 				$r = "\n\t<td style='text-align:center; padding:10px'>$file<br /><img src='$file' alt='$file' /></td>";
 				if ($i % 10) {
 					echo $r;
