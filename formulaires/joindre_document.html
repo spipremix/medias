@@ -17,7 +17,6 @@
 		[(#INCLURE{fond=formulaires/inc-upload_document, env, mediatheque=#ENV{objet,''}|et{#ENV{id_objet,''}}|et{#ENV{proposer_media}}})]
 		
 	</div></form>
-
 </div>]
 [(#ENV{_galerie,''}|oui)
 		[(#INCLURE{fond=#ENV{_galerie}, env, ajax})]
