@@ -27,10 +27,11 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  *     Environnement du formulaire
  **/
 function formulaires_configurer_documents_charger_dist() {
+	$valeurs = array();
 	foreach (array(
-		         "documents_objets",
-		         "documents_date",
-	         ) as $m) {
+		'documents_objets',
+		'documents_date',
+	) as $m) {
 		$valeurs[$m] = isset($GLOBALS['meta'][$m]) ? $GLOBALS['meta'][$m] : '';
 	}
 	$valeurs['documents_objets'] = explode(',', $valeurs['documents_objets']);

@@ -37,21 +37,21 @@ function metadata_image_dist($fichier) {
 function decoder_type_image($type, $strict = false) {
 	switch ($type) {
 		case 1:
-			return "gif";
+			return 'gif';
 		case 2:
-			return "jpg";
+			return 'jpg';
 		case 3:
-			return "png";
+			return 'png';
 		case 4:
-			return $strict ? "" : "swf";
+			return $strict ? '' : 'swf';
 		case 5:
-			return "psd";
+			return 'psd';
 		case 6:
-			return "bmp";
+			return 'bmp';
 		case 7:
 		case 8:
-			return "tif";
+			return 'tif';
 		default:
-			return "";
+			return '';
 	}
 }

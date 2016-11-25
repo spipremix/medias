@@ -15,7 +15,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 // inclure les fonctions bases du core
-include_once _DIR_RESTREINT . "inc/documents.php";
+include_once _DIR_RESTREINT . 'inc/documents.php';
 
 include_spip('inc/actions'); // *action_auteur et determine_upload
 
@@ -32,7 +32,7 @@ if (!defined('CHARSET_JOINT')) {
 function contenu_document($arg, $charset = '') {
 	include_spip('inc/distant');
 	if (is_numeric($arg)) {
-		$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=" . intval($arg));
+		$r = sql_fetsel('fichier,distant', 'spip_documents', 'id_document=' . intval($arg));
 		if (!$r) {
 			return '';
 		}
@@ -69,7 +69,7 @@ function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 		return '';
 	}
 
-	$r = sql_fetsel("fichier,distant", "spip_documents", "id_document=" . intval($id_document));
+	$r = sql_fetsel('fichier,distant', 'spip_documents', 'id_document=' . intval($id_document));
 
 	if (!$r) {
 		return '';
@@ -91,12 +91,16 @@ function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 	include_spip('inc/securiser_action');
 
 	// cette action doit etre publique !
-	return generer_url_action('acceder_document',
-		$args . ($args ? "&" : '')
-		. 'arg=' . $id_document
-		. ($ancre ? "&ancre=$ancre" : '')
-		. '&cle=' . calculer_cle_action($id_document . ',' . $f)
-		. '&file=' . rawurlencode($f), true, true);
+	return generer_url_action(
+		'acceder_document',
+		$args . ($args ? '&' : '')
+			. 'arg=' . $id_document
+			. ($ancre ? "&ancre=$ancre" : '')
+			. '&cle=' . calculer_cle_action($id_document . ',' . $f)
+			. '&file=' . rawurlencode($f),
+		true,
+		true
+	);
 }
 
 //
@@ -116,19 +120,19 @@ function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $c
 	$e = $doc['extension'];
 	if (!$img) {
 		if ($img = image_du_document($doc)) {
-			if (!$x and !$y) // eviter une double reduction
-			{
+			if (!$x and !$y) {
+				// eviter une double reduction
 				$img = image_reduire($img);
 			}
 		} else {
 			$f = charger_fonction('vignette', 'inc');
 			$img = $f($e, false);
 			$size = @getimagesize($img);
-			$img = "<img src='$img' " . $size[3] . " />";
+			$img = "<img src='$img' " . $size[3] . ' />';
 		}
 	} else {
 		$size = @getimagesize($img);
-		$img = "<img src='$img' " . $size[3] . " />";
+		$img = "<img src='$img' " . $size[3] . ' />';
 	}
 	// on appelle image_reduire independamment de la presence ou non
 	// des librairies graphiques
@@ -147,10 +151,10 @@ function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $c
 	}
 
 	$titre = supprimer_tags(typo($doc['titre']));
-	$titre = " - " . taille_en_octets($doc['taille'])
-		. ($titre ? " - $titre" : "");
+	$titre = ' - ' . taille_en_octets($doc['taille'])
+		. ($titre ? " - $titre" : '');
 
-	$type = sql_fetsel('titre, mime_type', 'spip_types_documents', "extension = " . sql_quote($e));
+	$type = sql_fetsel('titre, mime_type', 'spip_types_documents', 'extension = ' . sql_quote($e));
 
 	$mime = $type['mime_type'];
 	$titre = attribut_html(couper($type['titre'] . $titre, 80));
@@ -201,7 +205,7 @@ function image_du_document($document) {
  * @return string
  *     Code HTML permettant de gérer des documents
  */
-function afficher_documents_colonne($id, $type = "article", $script = null) {
+function afficher_documents_colonne($id, $type = 'article', $script = null) {
 	return recuperer_fond('prive/objets/editer/colonne_document', array('objet' => $type, 'id_objet' => $id));
 }
 
@@ -224,12 +228,16 @@ function afficher_documents_colonne($id, $type = "article", $script = null) {
  **/
 function affiche_raccourci_doc($doc, $id, $align) {
 	static $num = 0;
-	$pipe = $onclick = "";
+	$pipe = $onclick = '';
 
 	if ($align) {
 		$pipe = "|$align";
-		$onclick = "\nondblclick=\"barre_inserer('\\x3C$doc$id$pipe&gt;', $('textarea[name=texte]')[0]);\"\ntitle=\"" . str_replace('&amp;',
-				'&', entites_html(_T('medias:double_clic_inserer_doc'))) . "\"";
+		$onclick = "\nondblclick=\"barre_inserer('\\x3C$doc$id$pipe&gt;', $('textarea[name=texte]')[0]);\"\ntitle=\"" .
+			str_replace(
+				'&amp;',
+				'&',
+				entites_html(_T('medias:double_clic_inserer_doc'))
+			) . '"';
 	} else {
 		$align = 'center';
 	}

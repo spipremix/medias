@@ -10,14 +10,13 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
 function formulaires_illustrer_document_charger_dist($id_document) {
 	include_spip('inc/documents');
-	$valeurs = sql_fetsel('id_document,mode,id_vignette,extension,media', 'spip_documents',
-		'id_document=' . intval($id_document));
+	$valeurs = sql_fetsel('id_document,mode,id_vignette,extension,media', 'spip_documents', 'id_document=' . intval($id_document));
 	if (!$valeurs /*OR in_array($valeurs['extension'],array('jpg','gif','png'))*/) {
 		return array('editable' => false, 'id' => $id_document);
 	}
@@ -25,8 +24,7 @@ function formulaires_illustrer_document_charger_dist($id_document) {
 	$valeurs['id'] = $id_document;
 	$valeurs['_hidden'] = "<input name='id_document' value='$id_document' type='hidden' />";
 	$valeurs['mode'] = 'vignette'; // pour les id dans le dom
-	$vignette = sql_fetsel('fichier,largeur,hauteur,id_document', 'spip_documents',
-		'id_document=' . $valeurs['id_vignette']);
+	$vignette = sql_fetsel('fichier,largeur,hauteur,id_document', 'spip_documents', 'id_document=' . $valeurs['id_vignette']);
 	$valeurs['vignette'] = get_spip_doc($vignette['fichier']);
 	$valeurs['hauteur'] = $vignette['hauteur'];
 	$valeurs['largeur'] = $vignette['largeur'];
@@ -39,9 +37,7 @@ function formulaires_illustrer_document_charger_dist($id_document) {
 function formulaires_illustrer_document_verifier_dist($id_document) {
 	$erreurs = array();
 	if (_request('supprimer')) {
-
 	} else {
-
 		$id_vignette = sql_getfetsel('id_vignette', 'spip_documents', 'id_document=' . intval($id_document));
 		$verifier = charger_fonction('verifier', 'formulaires/joindre_document');
 		$erreurs = $verifier($id_vignette, 0, '', 'vignette');
@@ -72,7 +68,7 @@ function formulaires_illustrer_document_traiter_dist($id_document) {
 			and $id_vignette = reset($ajoute)
 		) {
 			include_spip('action/editer_document');
-			document_modifier($id_document, array("id_vignette" => $id_vignette, 'mode' => 'document'));
+			document_modifier($id_document, array('id_vignette' => $id_vignette, 'mode' => 'document'));
 			$res['message_ok'] = _T('medias:document_installe_succes');
 		} else {
 			$res['message_erreur'] = reset($ajoute);
@@ -83,5 +79,4 @@ function formulaires_illustrer_document_traiter_dist($id_document) {
 	// generer les case docs si c'est necessaire
 	// rediriger sinon
 	return $res;
-
 }

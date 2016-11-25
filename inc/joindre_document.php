@@ -10,7 +10,7 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -107,8 +107,8 @@ function joindre_trouver_fichier_envoye() {
 			$upload .= $path;
 		}
 
-		if (!is_dir($upload)) // seul un fichier est demande
-		{
+		if (!is_dir($upload)) {
+			// seul un fichier est demande
 			return array(
 				array(
 					'name' => basename($upload),
@@ -128,22 +128,24 @@ function joindre_trouver_fichier_envoye() {
 			return $files;
 		}
 	} elseif (_request('joindre_zip') and $token_zip = _request('chemin_zip')) {
-
-		$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ? unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
-		if (!$zip_to_clean or !isset($zip_to_clean[$token_zip]) or !$path = $zip_to_clean[$token_zip]){
+		$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ?
+			unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
+		if (!$zip_to_clean
+			or !isset($zip_to_clean[$token_zip])
+			or !$path = $zip_to_clean[$token_zip]) {
 			return _T('avis_operation_impossible');
 		}
 
 		include_spip('inc/documents'); //pour creer_repertoire_documents
-		define('_tmp_zip', $path);
-		define('_tmp_dir', creer_repertoire_documents(md5($path . $GLOBALS['visiteur_session']['id_auteur'])));
-		if (_tmp_dir == _DIR_IMG) {
+		define('_TMP_ZIP', $path);
+		define('_TMP_DIR', creer_repertoire_documents(md5($path . $GLOBALS['visiteur_session']['id_auteur'])));
+		if (_TMP_DIR == _DIR_IMG) {
 			return _T('avis_operation_impossible');
 		}
 
 		$files = array();
 		if (_request('options_upload_zip') == 'deballe') {
-			$files = joindre_deballer_lister_zip($path, _tmp_dir);
+			$files = joindre_deballer_lister_zip($path, _TMP_DIR);
 		}
 
 		// si le zip doit aussi etre conserve, l'ajouter
@@ -153,9 +155,7 @@ function joindre_trouver_fichier_envoye() {
 				'tmp_name' => $path,
 			);
 		}
-
 		return $files;
-
 	}
 
 	return array();
@@ -173,41 +173,43 @@ function joindre_upload_error($error) {
 	}
 	spip_log("Erreur upload $error -- cf. http://php.net/manual/fr/features.file-upload.errors.php");
 	switch ($error) {
-
 		case 4: /* UPLOAD_ERR_NO_FILE */
 			return true;
 
 		# on peut affiner les differents messages d'erreur
 		case 1: /* UPLOAD_ERR_INI_SIZE */
-			$msg = _T('medias:upload_limit',
-				array('max' => ini_get('upload_max_filesize')));
+			$msg = _T(
+				'medias:upload_limit',
+				array('max' => ini_get('upload_max_filesize'))
+			);
 			break;
 		case 2: /* UPLOAD_ERR_FORM_SIZE */
-			$msg = _T('medias:upload_limit',
-				array('max' => ini_get('upload_max_filesize')));
+			$msg = _T(
+				'medias:upload_limit',
+				array('max' => ini_get('upload_max_filesize'))
+			);
 			break;
 		case 3: /* UPLOAD_ERR_PARTIAL  */
-			$msg = _T('medias:upload_limit',
-				array('max' => ini_get('upload_max_filesize')));
+			$msg = _T(
+				'medias:upload_limit',
+				array('max' => ini_get('upload_max_filesize'))
+			);
 			break;
 		case 6: /* UPLOAD_ERR_NO_TMP_DIR  */
 			$msg = _T('medias:erreur_dossier_tmp_manquant');
 			break;
 		case 7: /* UPLOAD_ERR_CANT_WRITE */
 			$msg = _T('medias:erreur_ecriture_fichier');
-
+			break;
 		default: /* autre */
 			if (!$msg) {
 				$msg = _T('pass_erreur') . ' ' . $error
-					. '<br />' . propre("[->http://php.net/manual/fr/features.file-upload.errors.php]");
+					. '<br />' . propre('[->http://php.net/manual/fr/features.file-upload.errors.php]');
 			}
 			break;
 	}
-
 	spip_log("erreur upload $error");
-
 	return $msg;
-
 }
 
 /**
@@ -225,13 +227,13 @@ function joindre_verifier_zip($files) {
 		(preg_match('/\.zip$/i', $files[0]['name'])
 			or (isset($files[0]['type']) and $files[0]['type'] == 'application/zip'))
 	) {
-
 		// on pose le fichier dans le repertoire zip
 		// (nota : copier_document n'ecrase pas un fichier avec lui-meme
 		// ca autorise a boucler)
 		include_spip('inc/getdocument');
 		$desc = $files[0];
-		$zip = copier_document("zip",
+		$zip = copier_document(
+			'zip',
 			$desc['name'],
 			$desc['tmp_name']
 		);
@@ -241,10 +243,11 @@ function joindre_verifier_zip($files) {
 		if ($zip
 			and $archive = new PclZip($zip)
 			and $contenu = joindre_decrire_contenu_zip($archive)
-			and $tmp = sous_repertoire(_DIR_TMP, "zip")
+			and $tmp = sous_repertoire(_DIR_TMP, 'zip')
 			and rename($zip, $tmp = $tmp . basename($zip))
 		) {
-			$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ? unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
+			$zip_to_clean = (isset($GLOBALS['visiteur_session']['zip_to_clean']) ?
+				unserialize($GLOBALS['visiteur_session']['zip_to_clean']) : array());
 			$zip_to_clean[md5($tmp)] = $tmp;
 			session_set('zip_to_clean', serialize($zip_to_clean));
 			$contenu[] = $tmp;
@@ -302,8 +305,10 @@ function joindre_deballer_lister_zip($path, $tmp_dir) {
 	include_spip('inc/pclzip');
 	$archive = new PclZip($path);
 	$archive->extract(
-		PCLZIP_OPT_PATH, _tmp_dir,
-		PCLZIP_CB_PRE_EXTRACT, 'callback_deballe_fichier'
+		PCLZIP_OPT_PATH,
+		_TMP_DIR,
+		PCLZIP_CB_PRE_EXTRACT,
+		'callback_deballe_fichier'
 	);
 	if ($contenu = joindre_decrire_contenu_zip($archive)) {
 		$files = array();
@@ -338,12 +343,16 @@ if (!function_exists('fixer_extension_document')) {
 		$extension = '';
 		$name = $doc['name'];
 		if (preg_match(',\.([^.]+)$,', $name, $r)
-			and $t = sql_fetsel("extension", "spip_types_documents", "extension=" . sql_quote(corriger_extension($r[1])))
+			and $t = sql_fetsel(
+				'extension',
+				'spip_types_documents',
+				'extension=' . sql_quote(corriger_extension($r[1]))
+			)
 		) {
 			$extension = $t['extension'];
 			$name = preg_replace(',\.[^.]*$,', '', $doc['name']) . '.' . $extension;
 		} else {
-			if ($t = sql_fetsel("extension", "spip_types_documents", "mime_type=" . sql_quote($doc['type']))) {
+			if ($t = sql_fetsel('extension', 'spip_types_documents', 'mime_type=' . sql_quote($doc['type']))) {
 				$extension = $t['extension'];
 				$name = preg_replace(',\.[^.]*$,', '', $doc['name']) . '.' . $extension;
 			}
@@ -359,13 +368,16 @@ if (!function_exists('fixer_extension_document')) {
 // http://code.spip.net/@accepte_fichier_upload
 
 function accepte_fichier_upload($f) {
-	if (!preg_match(",.*__MACOSX/,", $f)
-		and !preg_match(",^\.,", basename($f))
+	if (!preg_match(',.*__MACOSX/,', $f)
+		and !preg_match(',^\.,', basename($f))
 	) {
 		include_spip('action/ajouter_documents');
-		$ext = corriger_extension((strtolower(substr(strrchr($f, "."), 1))));
+		$ext = corriger_extension((strtolower(substr(strrchr($f, '.'), 1))));
 
-		return sql_countsel('spip_types_documents', "extension=" . sql_quote($ext) . " AND upload='oui'");
+		return sql_countsel(
+			'spip_types_documents',
+			'extension=' . sql_quote($ext) . " AND upload='oui'"
+		);
 	}
 }
 
@@ -375,7 +387,7 @@ function accepte_fichier_upload($f) {
 
 function callback_deballe_fichier($p_event, &$p_header) {
 	if (accepte_fichier_upload($p_header['filename'])) {
-		$p_header['filename'] = _tmp_dir . basename($p_header['filename']);
+		$p_header['filename'] = _TMP_DIR . basename($p_header['filename']);
 
 		return 1;
 	} else {

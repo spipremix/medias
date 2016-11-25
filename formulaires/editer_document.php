@@ -10,7 +10,7 @@
  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
 \***************************************************************************/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -28,12 +28,11 @@ function formulaires_editer_document_charger_dist(
 	$row = array(),
 	$hidden = ''
 ) {
-	$valeurs = formulaires_editer_objet_charger('document', $id_document, $id_parent, $lier_trad, $retour, $config_fonc,
-		$row, $hidden);
+	$valeurs = formulaires_editer_objet_charger('document', $id_document, $id_parent, $lier_trad, $retour, $config_fonc, $row, $hidden);
 
 	// relier les parents
 	$valeurs['parents'] = array();
-	$valeurs['_hidden'] = "";
+	$valeurs['_hidden'] = '';
 	$parents = sql_allfetsel('objet,id_objet', 'spip_documents_liens', 'id_document=' . intval($id_document));
 	foreach ($parents as $p) {
 		if (in_array($p['objet'], array('article', 'rubrique')) and $p['id_objet'] > 0) {
@@ -55,8 +54,11 @@ function formulaires_editer_document_charger_dist(
 	$valeurs['_editer_dimension'] = autoriser('tailler', 'document', $id_document) ? ' ' : '';
 
 	// type du document et inclusion
-	$row = sql_fetsel('titre as type_document,inclus', 'spip_types_documents',
-		'extension=' . sql_quote($valeurs['extension']));
+	$row = sql_fetsel(
+		'titre as type_document,inclus',
+		'spip_types_documents',
+		'extension=' . sql_quote($valeurs['extension'])
+	);
 	$valeurs['type_document'] = $row['type_document'];
 	$valeurs['_inclus'] = $row['inclus'];
 	if (in_array($valeurs['extension'], array('jpg', 'gif', 'png'))) {
@@ -117,8 +119,7 @@ function formulaires_editer_document_verifier_dist(
 	$row = array(),
 	$hidden = ''
 ) {
-	$erreurs = formulaires_editer_objet_verifier('document', $id_document,
-		is_numeric($id_document) ? array() : array('titre'));
+	$erreurs = formulaires_editer_objet_verifier('document', $id_document, is_numeric($id_document) ? array() : array('titre'));
 
 	// verifier l'upload si on a demande a changer le document
 	if (_request('joindre_upload') or _request('joindre_ftp') or _request('joindre_distant')) {
@@ -138,7 +139,7 @@ function formulaires_editer_document_verifier_dist(
 		} else {
 			set_request('saisie_date', date('d/m/Y', $date));
 			set_request('saisie_heure', date('H:i', $date));
-			set_request('date', date("Y-m-d H:i:s", $date));
+			set_request('date', date('Y-m-d H:i:s', $date));
 		}
 	}
 
@@ -167,8 +168,7 @@ function formulaires_editer_document_traiter_dist(
 		}
 	}
 
-	$res = formulaires_editer_objet_traiter('document', $id_document, $id_parent, $lier_trad, $retour, $config_fonc, $row,
-		$hidden);
+	$res = formulaires_editer_objet_traiter('document', $id_document, $id_parent, $lier_trad, $retour, $config_fonc, $row, $hidden);
 	set_request('parents');
 	$autoclose = "<script type='text/javascript'>if (window.jQuery) jQuery.modalboxclose();</script>";
 	if (_request('copier_local')
@@ -177,7 +177,7 @@ function formulaires_editer_document_traiter_dist(
 		or _request('joindre_distant')
 		or _request('joindre_zip')
 	) {
-		$autoclose = "";
+		$autoclose = '';
 		if (_request('copier_local')) {
 			$copier_local = charger_fonction('copier_local', 'action');
 			$res = array('editable' => true);
@@ -194,7 +194,6 @@ function formulaires_editer_document_traiter_dist(
 				and @file_exists($rename = get_spip_doc($ancien_fichier))
 			) {
 				@rename($rename, "$rename--.old");
-
 			}
 			$traiter = charger_fonction('traiter', 'formulaires/joindre_document');
 			$res2 = $traiter($id_document);
@@ -226,7 +225,7 @@ function formulaires_editer_document_traiter_dist(
 			$angle = 180;
 		}
 		if ($angle) {
-			$autoclose = "";
+			$autoclose = '';
 			$tourner = charger_fonction('tourner', 'action');
 			action_tourner_post($id_document, $angle);
 		}

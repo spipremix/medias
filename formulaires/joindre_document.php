@@ -15,7 +15,7 @@
  *
  * @package SPIP\Medias\Formulaires
  */
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -38,7 +38,8 @@ function joindre_determiner_mode($mode, $id_document, $objet) {
 		}
 		if (!in_array($mode, array('choix', 'document', 'image'))) {
 			$mode = 'choix';
-			if ($objet and !in_array(table_objet_sql($objet), explode(',', $GLOBALS['meta']["documents_objets"]))) {
+			if ($objet
+				and !in_array(table_objet_sql($objet), explode(',', $GLOBALS['meta']['documents_objets']))) {
 				$mode = 'image';
 			}
 		}
@@ -87,24 +88,26 @@ function formulaires_joindre_document_charger_dist(
 
 	$valeurs['url'] = 'http://';
 	$valeurs['fichier_upload'] = $valeurs['_options_upload_ftp'] = $valeurs['_dir_upload_ftp'] = '';
-	$valeurs['joindre_upload'] = $valeurs['joindre_distant'] = $valeurs['joindre_ftp'] = $valeurs['joindre_mediatheque'] = '';
+	$valeurs['joindre_upload'] = $valeurs['joindre_distant'] =
+	$valeurs['joindre_ftp'] = $valeurs['joindre_mediatheque'] = '';
 
 	$valeurs['editable'] = ' ';
 	if (intval($id_document)) {
 		$valeurs['editable'] = autoriser('modifier', 'document', $id_document) ? ' ' : '';
 	}
 
-	$valeurs['proposer_media'] = is_string($proposer_media) ? (preg_match('/^(false|non|no)$/i',
-		$proposer_media) ? false : true) : $proposer_media;
-	$valeurs['proposer_ftp'] = is_string($proposer_ftp) ? (preg_match('/^(false|non|no)$/i',
-		$proposer_ftp) ? false : true) : $proposer_ftp;
+	$valeurs['proposer_media'] = is_string($proposer_media) ?
+		(preg_match('/^(false|non|no)$/i', $proposer_media) ? false : true) : $proposer_media;
+	$valeurs['proposer_ftp'] = is_string($proposer_ftp) ?
+		(preg_match('/^(false|non|no)$/i', $proposer_ftp) ? false : true) : $proposer_ftp;
 
 	# regarder si un choix d'upload FTP est vraiment possible
 	if (
 		$valeurs['proposer_ftp']
 		and test_espace_prive() # ??
 		and ($mode != 'image') and ($mode != 'vignette') # si c'est pour un document
-		//AND !$vignette_de_doc		# pas pour une vignette (NB: la ligne precedente suffit, mais si on la supprime il faut conserver ce test-ci)
+		//AND !$vignette_de_doc
+		// pas pour une vignette (NB: la ligne precedente suffit, mais si on la supprime il faut conserver ce test-ci)
 		and $GLOBALS['flag_upload']
 	) {
 		include_spip('inc/documents');
@@ -114,7 +117,7 @@ function formulaires_joindre_document_charger_dist(
 			// s'il n'y en a pas, on affiche un message d'aide
 			// en mode document, mais pas en mode image
 			if ($valeurs['_options_upload_ftp'] or ($mode == 'document' or $mode == 'choix')) {
-				$valeurs['_dir_upload_ftp'] = "<b>" . joli_repertoire($dir) . "</b>";
+				$valeurs['_dir_upload_ftp'] = '<b>' . joli_repertoire($dir) . '</b>';
 			}
 		}
 	}
@@ -215,8 +218,14 @@ function formulaires_joindre_document_verifier_dist(
 						// on passe le md5 du fichier uniquement, on le retrouvera dans zip_to_clean de la session
 						$token_zip = md5($tmp_zip);
 						$erreurs['message_erreur'] = '';
-						$erreurs['lister_contenu_archive'] = recuperer_fond("formulaires/inc-lister_archive_jointe",
-							array('chemin_zip' => $token_zip, 'liste_fichiers_zip' => $fichiers, 'erreurs_fichier_zip' => $erreurs));
+						$erreurs['lister_contenu_archive'] = recuperer_fond(
+							'formulaires/inc-lister_archive_jointe',
+							array(
+								'chemin_zip' => $token_zip,
+								'liste_fichiers_zip' => $fichiers,
+								'erreurs_fichier_zip' => $erreurs
+							)
+						);
 					} else {
 						$erreurs['message_erreur'] = _T('medias:erreur_aucun_fichier');
 					}
@@ -268,14 +277,15 @@ function formulaires_joindre_document_traiter_dist(
 	$ancre = '';
 	// on joint un document deja dans le site
 	if (_request('joindre_mediatheque')) {
+		$sel = array();
 		$refdoc_joindre = _request('refdoc_joindre');
-		$refdoc_joindre = strtr($refdoc_joindre, ";,", "  ");
+		$refdoc_joindre = strtr($refdoc_joindre, ';,', '  ');
 		$refdoc_joindre = preg_replace(',\b(doc|document|img),', '', $refdoc_joindre);
 		// expliciter les intervales xxx-yyy
 		while (preg_match(",\b(\d+)-(\d+)\b,", $refdoc_joindre, $m)) {
-			$refdoc_joindre = str_replace($m[0], implode(" ", range($m[1], $m[2])), $refdoc_joindre);
+			$refdoc_joindre = str_replace($m[0], implode(' ', range($m[1], $m[2])), $refdoc_joindre);
 		}
-		$refdoc_joindre = explode(" ", $refdoc_joindre);
+		$refdoc_joindre = explode(' ', $refdoc_joindre);
 		include_spip('action/editer_document');
 		foreach ($refdoc_joindre as $j) {
 			if ($j = intval(preg_replace(',^(doc|document|img),', '', $j))) {
@@ -290,8 +300,11 @@ function formulaires_joindre_document_traiter_dist(
 			}
 		}
 		if ($sel) {
-			$res['message_ok'] = singulier_ou_pluriel(count($sel), 'medias:document_attache_succes',
-				'medias:nb_documents_attache_succes');
+			$res['message_ok'] = singulier_ou_pluriel(
+				count($sel),
+				'medias:document_attache_succes',
+				'medias:nb_documents_attache_succes'
+			);
 		}
 		set_request('refdoc_joindre', ''); // vider la saisie
 	} // sinon c'est un upload
@@ -313,7 +326,6 @@ function formulaires_joindre_document_traiter_dist(
 
 		// checker les erreurs eventuelles
 		$messages_erreur = array();
-		$nb_docs = 0;
 		$sel = array();
 		foreach ($nouveaux_doc as $doc) {
 			if (!is_numeric($doc)) {
@@ -332,15 +344,18 @@ function formulaires_joindre_document_traiter_dist(
 			$res['message_erreur'] = implode('<br />', $messages_erreur);
 		}
 		if ($sel) {
-			$res['message_ok'] = singulier_ou_pluriel(count($sel), 'medias:document_installe_succes',
-				'medias:nb_documents_installe_succes');
+			$res['message_ok'] = singulier_ou_pluriel(
+				count($sel),
+				'medias:document_installe_succes',
+				'medias:nb_documents_installe_succes'
+			);
 		}
 		if ($ancre) {
 			$res['redirect'] = "#doc$ancre";
 		}
 	}
 	if (count($sel) or isset($res['message_ok'])) {
-		$callback = "";
+		$callback = '';
 		if ($ancre) {
 			$callback .= "jQuery('#doc$ancre a.editbox').eq(0).focus();";
 		}
@@ -348,7 +363,7 @@ function formulaires_joindre_document_traiter_dist(
 			// passer les ids document selectionnes aux pipelines
 			$res['ids'] = $sel;
 
-			$sel = "#doc" . implode(",#doc", $sel);
+			$sel = '#doc' . implode(',#doc', $sel);
 			$callback .= "jQuery('$sel').animateAppend();";
 		}
 		$js = "if (window.jQuery) jQuery(function(){ajaxReload('documents',{callback:function(){ $callback }});});";
@@ -384,7 +399,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 
 	foreach ($fichiers as $f) {
 		$f = preg_replace(",^$dir,", '', $f);
-		if (preg_match(",\.([^.]+)$,", $f, $match)) {
+		if (preg_match(',\.([^.]+)$,', $f, $match)) {
 			$ext = strtolower($match[1]);
 			if (!isset($exts[$ext])) {
 				include_spip('action/ajouter_documents');
@@ -397,7 +412,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 			}
 
 			$k = 2 * substr_count($f, '/');
-			$n = strrpos($f, "/");
+			$n = strrpos($f, '/');
 			if ($n === false) {
 				$lefichier = $f;
 			} else {
@@ -405,18 +420,18 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 				$ledossier = substr($f, 0, $n);
 				if (!in_array($ledossier, $dirs)) {
 					$texte_upload[] = "\n<option value=\"$ledossier\">"
-						. str_repeat("&nbsp;", $k)
+						. str_repeat('&nbsp;', $k)
 						. _T('medias:tout_dossier_upload', array('upload' => $ledossier))
-						. "</option>";
+						. '</option>';
 					$dirs[] = $ledossier;
 				}
 			}
 
 			if ($exts[$ext] == 'oui') {
 				$texte_upload[] = "\n<option value=\"$f\">"
-					. str_repeat("&nbsp;", $k + 2)
+					. str_repeat('&nbsp;', $k + 2)
 					. $lefichier
-					. "</option>";
+					. '</option>';
 			}
 		}
 	}
@@ -425,7 +440,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 	if (count($texte_upload) > 1) {
 		$texte = "\n<option value=\"/\" style='font-weight: bold;'>"
 			. _T('medias:info_installer_tous_documents')
-			. "</option>" . $texte;
+			. '</option>' . $texte;
 	}
 
 	return $texte;
@@ -447,10 +462,9 @@ function joindre_liste_contenu_tailles_archive($files) {
 	if (is_array($files)) {
 		foreach ($files as $nom => $file) {
 			$nom = translitteration($nom);
-			$date = date_interface(date("Y-m-d H:i:s", $file['mtime']));
-
+			$date = date_interface(date('Y-m-d H:i:s', $file['mtime']));
 			$taille = taille_en_octets($file['size']);
-			$res .= "<li title=\"" . attribut_html($title) . "\"><b>$nom</b> &ndash; $taille<br />&nbsp; $date</li>\n";
+			$res .= '<li title="' . attribut_html($nom) . "\"><b>$nom</b> &ndash; $taille<br />&nbsp; $date</li>\n";
 		}
 	}
 
@@ -468,16 +482,18 @@ function joindre_liste_contenu_tailles_archive($files) {
  */
 function joindre_liste_erreurs_to_li($erreurs) {
 	if (count($erreurs) == 1) {
-		return "<p>" . reset($erreurs) . "</p>";
+		return '<p>' . reset($erreurs) . '</p>';
 	}
 
-	$res = implode("</li><li>", $erreurs);
+	$res = implode('</li><li>', $erreurs);
 	if (strlen($res)) {
 		$res = "<li>$res</li></ul>";
 	}
 	if (count($erreurs) > 4) {
-		$res = "<p style='cursor:pointer;' onclick='jQuery(this).siblings(\"ul\").toggle();return false;'>" . _T("medias:erreurs_voir",
-				array('nb' => count($erreurs))) . "</p><ul class=\"spip none-js\">" . $res . "</ul>";
+		$res = "<p style='cursor:pointer;' onclick='jQuery(this).siblings(\"ul\").toggle();return false;'>" . _T(
+			'medias:erreurs_voir',
+			array('nb' => count($erreurs))
+		) . '</p><ul class="spip none-js">' . $res . '</ul>';
 	} else {
 		$res = "<ul class=\"spip\">$res</ul>";
 	}

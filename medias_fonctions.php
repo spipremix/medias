@@ -48,7 +48,6 @@ if (isset($_SERVER['REQUEST_METHOD'])
 	and strncmp($_SERVER['CONTENT_TYPE'], 'multipart/form-data', 19) == 0
 	and $_SERVER['CONTENT_LENGTH'] > medias_inigetoctets('post_max_size')
 ) {
-
 	include_spip('inc/minipres');
 	echo minipres(_T('medias:upload_limit', array('max' => ini_get('post_max_size'))));
 	exit;
@@ -76,10 +75,13 @@ function medias_inigetoctets($var) {
 	switch ($last) { // The 'G' modifier is available since PHP 5.1.0
 		case 'g':
 			$val *= 1024;
+			break;
 		case 'm':
 			$val *= 1024;
+			break;
 		case 'k':
 			$val *= 1024;
+			break;
 	}
 
 	return $val;
@@ -99,10 +101,10 @@ function medias_puce_statut_document($id_document, $statut) {
 	if ($statut == 'publie') {
 		$puce = 'puce-verte.gif';
 	} else {
-		if ($statut == "prepa") {
+		if ($statut == 'prepa') {
 			$puce = 'puce-blanche.gif';
 		} else {
-			if ($statut == "poubelle") {
+			if ($statut == 'poubelle') {
 				$puce = 'puce-poubelle.gif';
 			} else {
 				$puce = 'puce-blanche.gif';
@@ -178,9 +180,9 @@ function critere_DOCUMENTS_orphelins_dist($idb, &$boucles, $crit) {
 
 	$boucle = &$boucles[$idb];
 	$cond = $crit->cond;
-	$not = $crit->not ? "" : "NOT";
+	$not = $crit->not ? '' : 'NOT';
 
-	$select = sql_get_select("DISTINCT id_document", "spip_documents_liens as oooo");
+	$select = sql_get_select('DISTINCT id_document', 'spip_documents_liens as oooo');
 	$where = "'" . $boucle->id_table . ".id_document $not IN ($select)'";
 	if ($cond) {
 		$_quoi = '@$Pile[0]["orphelins"]';
@@ -204,7 +206,7 @@ function critere_DOCUMENTS_orphelins_dist($idb, &$boucles, $crit) {
 function critere_DOCUMENTS_portrait_dist($idb, &$boucles, $crit) {
 	$boucle = &$boucles[$idb];
 	$table = $boucle->id_table;
-	$not = ($crit->not ? "NOT " : "");
+	$not = ($crit->not ? 'NOT ' : '');
 	$boucle->where[] = "'$not($table.largeur>0 AND $table.hauteur > $table.largeur)'";
 }
 
@@ -222,7 +224,7 @@ function critere_DOCUMENTS_portrait_dist($idb, &$boucles, $crit) {
 function critere_DOCUMENTS_paysage_dist($idb, &$boucles, $crit) {
 	$boucle = &$boucles[$idb];
 	$table = $boucle->id_table;
-	$not = ($crit->not ? "NOT " : "");
+	$not = ($crit->not ? 'NOT ' : '');
 	$boucle->where[] = "'$not($table.largeur>0 AND $table.largeur > $table.hauteur)'";
 }
 
@@ -240,7 +242,7 @@ function critere_DOCUMENTS_paysage_dist($idb, &$boucles, $crit) {
 function critere_DOCUMENTS_carre_dist($idb, &$boucles, $crit) {
 	$boucle = &$boucles[$idb];
 	$table = $boucle->id_table;
-	$not = ($crit->not ? "NOT " : "");
+	$not = ($crit->not ? 'NOT ' : '');
 	$boucle->where[] = "'$not($table.largeur>0 AND $table.largeur = $table.hauteur)'";
 }
 

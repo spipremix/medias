@@ -16,7 +16,7 @@
  * @package SPIP\Medias\Renseigner
  **/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -113,7 +113,6 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 		or !@file_exists($fichier)
 		or !$infos['taille'] = @intval(filesize($fichier))
 	) {
-
 		if ($distant) {
 			// on ne saura pas la taille
 			unset($infos['taille']);
@@ -136,17 +135,19 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 
 	// chercher une fonction de description
 	$meta = array();
-	if ($metadata = charger_fonction($ext, "metadata", true)) {
+	if ($metadata = charger_fonction($ext, 'metadata', true)) {
 		$meta = $metadata($fichier);
 	} else {
 		$media = sql_getfetsel('media_defaut', 'spip_types_documents', 'extension=' . sql_quote($ext));
-		if ($metadata = charger_fonction($media, "metadata", true)) {
+		if ($metadata = charger_fonction($media, 'metadata', true)) {
 			$meta = $metadata($fichier);
 		}
 	}
 
-	$meta = pipeline('renseigner_document',
-		array('args' => array('extension' => $ext, 'fichier' => $fichier), 'data' => $meta));
+	$meta = pipeline(
+		'renseigner_document',
+		array('args' => array('extension' => $ext, 'fichier' => $fichier), 'data' => $meta)
+	);
 
 	include_spip('inc/filtres'); # pour objet_info()
 	$editables = objet_info('document', 'champs_editables');

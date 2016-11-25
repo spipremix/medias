@@ -25,7 +25,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  *
  * @pipeline autoriser
  */
-function medias_autoriser() { }
+function medias_autoriser() {
+}
 
 /**
  * Autorisation d'administrer la médiathèque
@@ -90,16 +91,16 @@ function autoriser_document_tailler_dist($faire, $type, $id, $qui, $options) {
 
 	// Donnees sur le type de document
 	$extension = $document['extension'];
-	$type_inclus = sql_getfetsel('inclus', 'spip_types_documents', "extension=" . sql_quote($extension));
+	$type_inclus = sql_getfetsel('inclus', 'spip_types_documents', 'extension=' . sql_quote($extension));
 
-	if (($type_inclus == "embed" or $type_inclus == "image")
+	if (($type_inclus == 'embed' or $type_inclus == 'image')
 		and (
 			// documents dont la taille est definie
 			($document['largeur'] * $document['hauteur'])
 			// ou distants
 			or $document['distant'] == 'oui'
 			// ou tous les formats qui s'affichent en embed
-			or $type_inclus == "embed"
+			or $type_inclus == 'embed'
 		)
 	) {
 		return true;
@@ -162,7 +163,7 @@ function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt) {
 		return $m[$q][$id];
 	}
 
-	$s = sql_getfetsel("statut", "spip_documents", "id_document=" . intval($id));
+	$s = sql_getfetsel('statut', 'spip_documents', 'id_document=' . intval($id));
 	// les admins ont le droit de modifier tous les documents existants
 	if ($qui['statut'] == '0minirezo'
 		and !$qui['restreint']
@@ -180,7 +181,7 @@ function autoriser_document_modifier_dist($faire, $type, $id, $qui, $opt) {
 	if (!isset($m[$q][$id])) {
 		$interdit = false;
 
-		$s = sql_select("id_objet,objet", "spip_documents_liens", "id_document=" . intval($id));
+		$s = sql_select('id_objet,objet', 'spip_documents_liens', 'id_document=' . intval($id));
 		while ($t = sql_fetch($s)) {
 			if (!autoriser('modifier', $t['objet'], $t['id_objet'], $qui, $opt)) {
 				$interdit = true;
@@ -229,9 +230,11 @@ function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt) {
 		return !$id_document or autoriser('modifier', 'document', $id_document);
 	}
 	// si c'est un document annexe, se ramener a l'autorisation de son parent
-	if ($id_document = sql_getfetsel('id_objet', 'spip_documents_liens',
-		"objet='document' AND id_document=" . intval($id))
-	) {
+	if ($id_document = sql_getfetsel(
+		'id_objet',
+		'spip_documents_liens',
+		"objet='document' AND id_document=" . intval($id)
+	)) {
 		return autoriser('modifier', 'document', $id_document);
 	}
 
@@ -261,8 +264,8 @@ function autoriser_document_supprimer_dist($faire, $type, $id, $qui, $opt) {
  **/
 function autoriser_document_voir_dist($faire, $type, $id, $qui, $opt) {
 
-	if (!isset($GLOBALS['meta']["creer_htaccess"])
-		or $GLOBALS['meta']["creer_htaccess"] != 'oui'
+	if (!isset($GLOBALS['meta']['creer_htaccess'])
+		or $GLOBALS['meta']['creer_htaccess'] != 'oui'
 	) {
 		return true;
 	}
@@ -279,12 +282,13 @@ function autoriser_document_voir_dist($faire, $type, $id, $qui, $opt) {
 		foreach ($liens as $l) {
 			$table_sql = table_objet_sql($l['objet']);
 			$id_table = id_table_objet($l['objet']);
-			if (sql_countsel($table_sql, "$id_table = " . intval($l['id_objet'])
+			if (sql_countsel(
+				$table_sql,
+				"$id_table = " . intval($l['id_objet'])
 					. (in_array($l['objet'], array('article', 'rubrique', 'breve'))
-						? " AND statut = 'publie'"
-						: '')
-				) > 0
-			) {
+					? " AND statut = 'publie'"
+					: '')
+			) > 0) {
 				return 'htaccess';
 			}
 		}

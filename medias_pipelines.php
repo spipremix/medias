@@ -34,8 +34,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  **/
 function medias_detecter_fond_par_defaut($fond) {
 	if (empty($_GET) and empty($_POST) and empty($_FILES)
-		and isset($_SERVER["CONTENT_LENGTH"])
-		and strstr($_SERVER["CONTENT_TYPE"], "multipart/form-data;")
+		and isset($_SERVER['CONTENT_LENGTH'])
+		and strstr($_SERVER['CONTENT_TYPE'], 'multipart/form-data;')
 	) {
 		include_spip('inc/getdocument');
 		erreur_upload_trop_gros();
@@ -69,7 +69,6 @@ function medias_post_insertion($flux) {
 	if (autoriser('joindredocument', $objet, $id_objet)
 		and $id_auteur = intval($GLOBALS['visiteur_session']['id_auteur'])
 	) {
-
 		# cf. HACK medias_affiche_gauche()
 		# rattrapper les documents associes a cet objet nouveau
 		# ils ont un id = 0-id_auteur
@@ -81,7 +80,7 @@ function medias_post_insertion($flux) {
 			objet_associer(array('document' => $lien['document']), array($objet => $id_objet), $lien);
 		}
 		// un simple delete pour supprimer les liens temporaires
-		sql_delete("spip_documents_liens", array("id_objet = " . (0 - $id_auteur), "objet=" . sql_quote($objet)));
+		sql_delete('spip_documents_liens', array('id_objet = ' . (0 - $id_auteur), 'objet=' . sql_quote($objet)));
 	}
 
 	return $flux;
@@ -95,9 +94,11 @@ function medias_post_insertion($flux) {
  * @return array
  */
 function medias_affiche_milieu($flux) {
-	if ($flux["args"]["exec"] == "configurer_contenu") {
-		$flux["data"] .= recuperer_fond('prive/squelettes/inclure/configurer',
-			array('configurer' => 'configurer_documents'));
+	if ($flux['args']['exec'] == 'configurer_contenu') {
+		$flux['data'] .= recuperer_fond(
+			'prive/squelettes/inclure/configurer',
+			array('configurer' => 'configurer_documents')
+		);
 	}
 
 	return $flux;
@@ -142,8 +143,8 @@ function medias_post_edition($flux) {
 		// verifier d'abord les doublons !
 		include_spip('inc/autoriser');
 		if (autoriser('autoassocierdocument', $type, $flux['args']['id_objet'])) {
-			$table_objet = isset($flux['args']['table_objet']) ? $flux['args']['table_objet'] : table_objet($flux['args']['table'],
-				$serveur);
+			$table_objet = isset($flux['args']['table_objet']) ?
+				$flux['args']['table_objet'] : table_objet($flux['args']['table'], $serveur);
 			$marquer_doublons_doc = charger_fonction('marquer_doublons_doc', 'inc');
 			$marquer_doublons_doc($flux['data'], $flux['args']['id_objet'], $type, id_table_objet($type, $serveur),
 				$table_objet, $flux['args']['table'], '', $serveur);
@@ -152,11 +153,13 @@ function medias_post_edition($flux) {
 		if (($flux['args']['action'] and $flux['args']['action'] == 'instituer') or isset($flux['data']['statut'])) {
 			include_spip('base/abstract_sql');
 			$id = $flux['args']['id_objet'];
-			$docs = array_map('reset', sql_allfetsel('id_document', 'spip_documents_liens',
-				'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type)));
+			$docs = array_map(
+				'reset',
+				sql_allfetsel('id_document', 'spip_documents_liens', 'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type))
+			);
 			include_spip('action/editer_document');
-			foreach ($docs as $id_document) // mettre a jour le statut si necessaire
-			{
+			foreach ($docs as $id_document) {
+				// mettre a jour le statut si necessaire
 				document_instituer($id_document);
 			}
 		}
@@ -225,7 +228,10 @@ function medias_affiche_gauche($flux) {
 			or $id = 0 - $GLOBALS['visiteur_session']['id_auteur'])
 		and autoriser('joindredocument', $type, $id)
 	) {
-		$flux['data'] .= recuperer_fond('prive/objets/editer/colonne_document', array('objet' => $type, 'id_objet' => $id));
+		$flux['data'] .= recuperer_fond(
+			'prive/objets/editer/colonne_document',
+			array('objet' => $type, 'id_objet' => $id)
+		);
 	}
 
 	return $flux;
@@ -300,11 +306,15 @@ function medias_objet_compte_enfants($flux) {
 	) {
 		// juste les publies ?
 		if (array_key_exists('statut', $flux['args']) and ($flux['args']['statut'] == 'publie')) {
-			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document',
-				"L.objet=" . sql_quote($objet) . "AND L.id_objet=" . intval($id) . " AND (D.statut='publie')");
+			$flux['data']['document'] = sql_countsel(
+				'spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document',
+				'L.objet=' . sql_quote($objet) . 'AND L.id_objet=' . intval($id) . " AND (D.statut='publie')"
+			);
 		} else {
-			$flux['data']['document'] = sql_countsel('spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document',
-				"L.objet=" . sql_quote($objet) . "AND L.id_objet=" . intval($id) . " AND (D.statut='publie' OR D.statut='prepa')");
+			$flux['data']['document'] = sql_countsel(
+				'spip_documents AS D JOIN spip_documents_liens AS L ON D.id_document=L.id_document',
+				'L.objet=' . sql_quote($objet) . 'AND L.id_objet=' . intval($id) . " AND (D.statut='publie' OR D.statut='prepa')"
+			);
 		}
 	}
 
@@ -323,8 +333,8 @@ function medias_boite_infos($flux) {
 		and $id_rubrique = $flux['args']['id']
 	) {
 		if ($nb = sql_countsel('spip_documents_liens', "objet='rubrique' AND id_objet=" . intval($id_rubrique))) {
-			$nb = "<div>" . singulier_ou_pluriel($nb, "medias:un_document", "medias:des_documents") . "</div>";
-			if ($p = strpos($flux['data'], "<!--nb_elements-->")) {
+			$nb = '<div>' . singulier_ou_pluriel($nb, 'medias:un_document', 'medias:des_documents') . '</div>';
+			if ($p = strpos($flux['data'], '<!--nb_elements-->')) {
 				$flux['data'] = substr_replace($flux['data'], $nb, $p, 0);
 			}
 		}

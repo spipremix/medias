@@ -16,7 +16,7 @@
  * @package SPIP\Medias\Fonctions
  **/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -114,7 +114,7 @@ function inc_marquer_doublons_doc_dist(
 	$GLOBALS['doublons_documents_inclus'] = array();
 
 	// detecter les doublons dans ces textes
-	traiter_modeles(implode(" ", $champs), array('documents' => $modeles), '', '', null, array(
+	traiter_modeles(implode(' ', $champs), array('documents' => $modeles), '', '', null, array(
 		'objet' => $type,
 		'id_objet' => $id,
 		$id_table_objet => $id
@@ -141,7 +141,7 @@ function inc_marquer_doublons_doc_dist(
 
 	if ($nouveaux) {
 		// on vérifie que les documents indiqués vus existent réellement tout de même (en cas d'erreur de saisie)
-		$ids = sql_allfetsel("id_document", "spip_documents", sql_in('id_document', $nouveaux));
+		$ids = sql_allfetsel('id_document', 'spip_documents', sql_in('id_document', $nouveaux));
 		$ids = array_map('reset', $ids);
 		if ($ids) {
 			// Creer le lien s'il n'existe pas déjà
@@ -153,5 +153,4 @@ function inc_marquer_doublons_doc_dist(
 	if ($anciens) {
 		objet_qualifier_liens(array('document' => $anciens), array($type => $id), array('vu' => 'non'));
 	}
-
 }

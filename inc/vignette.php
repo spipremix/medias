@@ -48,7 +48,7 @@ function inc_vignette_dist($ext, $size = true, $loop = true) {
 	// dans les vignettes persos, ou dans les vignettes standard
 	if (
 		# installation dans un dossier /vignettes personnel, par exemple /squelettes/vignettes
-	!$v = find_in_path("prive/vignettes/" . $ext . ".png")
+	!$v = find_in_path('prive/vignettes/' . $ext . '.png')
 	) {
 		if ($loop) {
 			$f = charger_fonction('vignette', 'inc');

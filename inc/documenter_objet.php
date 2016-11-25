@@ -16,7 +16,7 @@
  * @package SPIP\Medias\Fonctions
  **/
 
-if (!defined("_ECRIRE_INC_VERSION")) {
+if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
@@ -39,7 +39,7 @@ function inc_documenter_objet_dist($id, $type) {
 	$spip_table_objet = table_objet_sql($type);
 	$table_objet = table_objet($type);
 	$id_table_objet = id_table_objet($type, $serveur);
-	$champs = sql_fetsel('*', $spip_table_objet, addslashes($id_table_objet) . "=" . intval($id));
+	$champs = sql_fetsel('*', $spip_table_objet, addslashes($id_table_objet) . '=' . intval($id));
 
 	$marquer_doublons_doc = charger_fonction('marquer_doublons_doc', 'inc');
 	$marquer_doublons_doc($champs, $id, $type, $id_table_objet, $table_objet, $spip_table_objet, '', $serveur);

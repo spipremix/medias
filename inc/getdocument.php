@@ -28,7 +28,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 // inclure les fonctions bases du core
-include_once _DIR_RESTREINT . "inc/documents.php";
+include_once _DIR_RESTREINT . 'inc/documents.php';
 
 include_spip('inc/minipres');
 
@@ -44,13 +44,15 @@ include_spip('inc/minipres');
 function erreur_upload_trop_gros() {
 	include_spip('inc/filtres');
 
-	$msg = "<p>"
-		. taille_en_octets($_SERVER["CONTENT_LENGTH"])
+	$msg = '<p>'
+		. taille_en_octets($_SERVER['CONTENT_LENGTH'])
 		. '<br />'
-		. _T('medias:upload_limit',
-			array('max' => ini_get('upload_max_filesize')))
-		. "</p>";
+		. _T(
+			'medias:upload_limit',
+			array('max' => ini_get('upload_max_filesize'))
+		)
+		. '</p>';
 
-	echo minipres(_T('pass_erreur'), "<div class='upload_answer upload_error'>" . $msg . "</div>");
+	echo minipres(_T('pass_erreur'), "<div class='upload_answer upload_error'>" . $msg . '</div>');
 	exit;
 }
