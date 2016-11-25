@@ -317,11 +317,11 @@ function formulaires_joindre_document_traiter_dist(
 
 		$nouveaux_doc = $ajouter_documents($id_document, $files, $objet, $id_objet, $mode);
 
-		if (defined('_tmp_zip')) {
-			unlink(_tmp_zip);
+		if (defined('_TMP_ZIP')) {
+			unlink(_TMP_ZIP);
 		}
-		if (defined('_tmp_dir')) {
-			effacer_repertoire_temporaire(_tmp_dir);
+		if (defined('_TMP_DIR')) {
+			effacer_repertoire_temporaire(_TMP_DIR);
 		}
 
 		// checker les erreurs eventuelles
