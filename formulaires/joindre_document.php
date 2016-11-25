@@ -233,8 +233,8 @@ function formulaires_joindre_document_verifier_dist(
 			}
 		}
 
-		if (count($erreurs) and defined('_tmp_dir')) {
-			effacer_repertoire_temporaire(_tmp_dir);
+		if (count($erreurs) and defined('_TMP_ZIP')) {
+			effacer_repertoire_temporaire(_TMP_DIR);
 		}
 	}
 
