@@ -294,10 +294,15 @@ function medias_revision_document_parents($id_document, $parents = null, $ajout 
 		}
 	}
 
-	// verifier les droits d'associer
+	// trier les objets à traiter : ne pas prendre en compte ceux qui sont déjà associés ou qu'on n'a pas le droit d'associer
 	foreach ($objets_parents as $objet => $ids) {
 		foreach ($ids as $k => $id) {
-			if (!autoriser('associerdocuments', $objet, $id)) {
+			if ((
+					isset($deja_parents[$objet])
+					and in_array($id, $deja_parents[$objet])
+				)
+				or !autoriser('associerdocuments', $objet, $id)
+			) {
 				unset($objets_parents[$objet][$k]);
 			}
 		}
