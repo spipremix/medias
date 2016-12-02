@@ -120,6 +120,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_statut_document' => 'This document is:',
 	'info_taille' => 'Weight',
 	'info_telecharger' => 'Upload from your computer:',
+	'info_utilisation' => 'Used by',
 	'infos' => 'Technical infos',
 	'item_autoriser_selectionner_date_en_ligne' => 'Allow changes to the date of each document',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'The date of a document is the day it was added to the site',
