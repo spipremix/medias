@@ -120,6 +120,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_statut_document' => 'Este documento é:',
 	'info_taille' => 'Tamanho',
 	'info_telecharger' => 'Transferir do seu computador:',
+	'info_utilisation' => 'Utilização(ões)',
 	'infos' => 'Exibir informações técnicas',
 	'item_autoriser_selectionner_date_en_ligne' => 'Permite modificar a data de cada documento',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'A data dos documentos é a mesma da incorporação ao site',
