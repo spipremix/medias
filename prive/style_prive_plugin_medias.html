@@ -183,3 +183,148 @@ p.actions {clear:both;}
 .portfolios .tout_supprimer span {display:block;text-align:#GET{right};}
 
 .item.vu_oui {background:#f9f9f9;}
+
+
+/* Types d'affichages des listes de douments */
+
+h3 .affichages {
+	float:#GET{right};
+}
+
+.affichages .icone {
+	width:16px;
+	height:16px;
+	margin:0;
+	padding:2px;
+	display:inline-block;
+	background:rgba(255, 255, 255, 0.5) center center no-repeat;
+	border-radius:3px;
+	cursor:pointer;
+}
+.affichages .icone + .icone {
+	margin-#GET{left}:5px;
+}
+.affichages .icone.grand {
+	background-image: url([(#CHEMIN_IMAGE{documents-liste-16.png})]);
+}
+.affichages .icone.liste {
+	background-image: url([(#CHEMIN_IMAGE{documents-liste-courte-16.png})]);
+}
+.affichages .icone.cases {
+	background-image: url([(#CHEMIN_IMAGE{documents-cases-16.png})]);
+}
+.affichages .icone.on {
+	background-color:rgba(255, 255, 255, 0.9);
+}
+.affichages .icone.on:hover,
+.affichages .icone:hover {
+	background-color:rgba(255, 255, 255, 1);
+}
+
+/* Liste courte de documents */
+.portfolios .documents_liste .tout_supprimer {
+	clear:both;
+	margin-top:.5em;
+	display:block;
+}
+.portfolios .documents_liste .item  {
+	padding: 7px;
+	padding-#GET{right}: 100px;
+	padding-#GET{left}: 75px;
+	position:relative;
+}
+.portfolios .documents_liste .item .vignette {
+	width:65px;
+	margin-#GET{left}: -75px;
+}
+.portfolios .documents_liste .item .vignette img {
+	max-height: 36px;
+	max-width:65px;
+	height:auto;
+	width:auto;
+}
+.portfolios .documents_liste .item .tourner,
+.portfolios .documents_liste .item .infos,
+.portfolios .documents_liste .item .mode,
+.portfolios .documents_liste .item .actions > * {
+	display:none;
+}
+.portfolios .documents_liste .item .titrem {
+	margin-bottom:0;
+}
+.portfolios .documents_liste .item .titrem .fichier,
+.portfolios .documents_liste .item .titrem .titre {
+	max-height:1.2em;
+	line-height:1.2em;
+	overflow:hidden;
+	white-space: nowrap;
+	display:block;
+	text-overflow:ellipsis;
+}
+.portfolios .documents_liste .item .titrem .titre {
+	max-height:1.5em;
+	line-height:1.5em;
+}
+.portfolios .documents_liste .item .actions {
+	position:absolute;
+	#GET{right}:0;
+	top:1.2em;
+}
+.portfolios .documents_liste .item .actions .editbox,
+.portfolios .documents_liste .item .actions .ordoc-deplacer {
+	display:inline-block;
+}
+
+
+/* Grille en cases des documents. */
+.portfolios .documents_cases {
+	display:flex;
+	flex-wrap: wrap;
+}
+.portfolios .documents_cases .item {
+	padding: 2px;
+	margin: 2px;
+	border:1px solid #eee;
+	border-radius:5px;
+	width:113px;
+	height:130px;
+	display:flex;
+	flex-direction:column;
+
+}
+.portfolios .documents_cases .item .tourner,
+.portfolios .documents_cases .item .infos,
+.portfolios .documents_cases .item .mode,
+.portfolios .documents_cases .item .titrem,
+.portfolios .documents_cases .item .actions > * {
+	display:none;
+}
+.portfolios .documents_cases .item .actions .editbox {
+	display:inline-block;
+	float:#GET{right};
+}
+.portfolios .documents_cases .item .actions .ordoc-deplacer {
+	display:inline-block;
+	float:#GET{left};
+}
+.portfolios .documents_cases .item .vignette {
+	float: none;
+	margin-#GET{left}: 0;
+	width:auto;
+	height:auto;
+	flex-grow:1;
+}
+.portfolios .documents_cases .item .vignette img {
+	max-height:110px;
+	max-width:110px;
+	width: auto;
+	height: auto;
+}
+
+.portfolios .documents_cases .item .actions {
+	display:block;
+	width:100%;
+}
+.portfolios .documents_cases .tout_supprimer {
+	flex-basis: 100%;
+}

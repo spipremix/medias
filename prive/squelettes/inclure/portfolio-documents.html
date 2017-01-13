@@ -56,6 +56,7 @@ var multifile='[(#CHEMIN{javascript/jquery.multifile.js}|texte_script)]';
 [(#INCLURE{javascript/medias_edit.js}|compacte{js})]
 [(#OBJET|=={rubrique}|et{#EVAL{_AJAX}}|et{#GET{nbdocs}|=={1}}|oui)
 if (window.jQuery) jQuery('#navigation .box.info').ajaxReload();]
+
 function check_reload_page(){
 	var reload = false;
 	if($('#illustrations[(#ENV{id_unique})]').length && !$('#illustrations[(#ENV{id_unique})] .item').length){
@@ -72,6 +73,72 @@ function check_reload_page(){
 		jQuery('#navigation .box.info').ajaxReload();
 	}
 }
-if (window.jQuery) jQuery(function(){onAjaxLoad(check_reload_page);});
+
+if (window.jQuery) {
+	jQuery(function(){onAjaxLoad(check_reload_page);});
+	jQuery(function($) {
+		/** Choix des différents affichages des documents (grand, en case, en liste courte) */
+		var affichages = function () {
+			$('#portfolios h3:not(:has(.affichages))').each(function () {
+				var titre = $(this);
+				var liste = titre.next('.liste_items.documents');
+
+				var identifiant = liste.attr('id');
+				if ($.inArray(identifiant, ['illustrations', 'portfolio', 'documents']) < 0) {
+					identifiant = null;
+				}
+
+				titre.append(
+					"<div class='affichages'>"
+					+ "<span class='icone grand on' title='<:medias:affichage_documents_en_grand|attribut_html:>'></span>"
+					+ "<span class='icone cases' title='<:medias:affichage_documents_en_cases|attribut_html:>'></span>"
+					+ "<span class='icone liste' title='<:medias:affichage_documents_en_liste_compacte|attribut_html:>'></span>"
+					+ "</div>"
+				);
+
+				var changer_affichage_documents = function (me, bouton, classe) {
+					$(me).parent().find('.icone').removeClass('on').end().end().addClass('on');
+					var liste = $(me).parents('h3').next('.liste_items.documents');
+					liste.removeClass('documents_cases').removeClass('documents_liste');
+					if (classe) {
+						liste.addClass(classe);
+					}
+					if (identifiant) {
+						Cookies.set('affichage-' + identifiant, bouton);
+					}
+
+					liste.trigger('affichage.documents.change', {
+						'liste': liste,
+						'icone': me,
+						'bouton': bouton,
+						'classe': classe
+					});
+
+				};
+
+				titre.find('.affichages > .grand').click(function () {
+					changer_affichage_documents(this, 'grand', null);
+				});
+
+				titre.find('.affichages > .cases').click(function () {
+					changer_affichage_documents(this, 'cases', 'documents_cases');
+				});
+
+				titre.find('.affichages > .liste').click(function () {
+					changer_affichage_documents(this, 'liste', 'documents_liste');
+				});
+
+				if (identifiant) {
+					var defaut = Cookies.get('affichage-' + identifiant);
+					if (defaut) {
+						titre.find('.affichages > .' + defaut).trigger('click');
+					}
+				}
+			});
+		}
+		affichages();
+		onAjaxLoad(affichages);
+	});
+}
 /*]]>*/</script>
 </div>

@@ -8,6 +8,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_grand' => 'Affichage en grand',
+	'affichage_documents_en_cases' => 'Affichage en cases',
+	'affichage_documents_en_liste_compacte' => 'Affichage en liste compacte',
 	'aucun_audio' => 'Aucune bande-son',
 	'aucun_document' => 'Aucun document',
 	'aucun_file' => 'Aucun document',
