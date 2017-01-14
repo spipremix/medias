@@ -149,7 +149,7 @@ p.actions {clear:both;}
 .portfolios h3 {background-color:#GET{claire};padding:2px 10px;color:#000;margin-bottom:0;}
 .portfolios .liste_items {margin-top:0;}
 .portfolios .item { clear:both; }
-.portfolios .item .presentation { display:flex; flex-direction:[(#ENV{ltr}|choixsiegal{left,row,row-reverse})]; width:100%; }
+.portfolios .item .presentation { display:flex; flex-direction:row; width:100%; }
 .portfolios .item .vignette { width: 150px; min-width:150px; text-align: center; }
 .portfolios .item .descriptions {  display:flex; flex-direction: column; padding-#GET{right}: 0.6925em; margin-#GET{left}:1em; width: 100%; flex-grow:1; }
 .portfolios .item .titrem {margin:0 0 5px;font-size:1em;}
@@ -177,7 +177,7 @@ p.actions {clear:both;}
 .portfolios .item div.mode,
 .portfolios .item .actions,
 .portfolios .item div.mode button,
-.portfolios .item .actions button {text-align: left; clear: none;}
+.portfolios .item .actions button {text-align: #GET{left}; clear: none;}
 .portfolios .item div.mode button,
 .portfolios .item .actions button {display: inline;}
 
@@ -289,6 +289,7 @@ h3 .affichages {
 .portfolios .documents_liste .item .actions .editbox,
 .portfolios .documents_liste .item .actions .deplacer-document {
 	display:inline-block;
+	float:none;
 }
 .documents_liste .deplacer-document-placeholder { height:40px; }
 
