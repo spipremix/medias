@@ -148,18 +148,30 @@ p.actions {clear:both;}
 .portfolios {}
 .portfolios h3 {background-color:#GET{claire};padding:2px 10px;color:#000;margin-bottom:0;}
 .portfolios .liste_items {margin-top:0;}
-.portfolios .item {clear:both;padding-#GET{left}:160px;padding-#GET{right}:2px;}
-.portfolios .item .tourner {display:block;float:#GET{right};}
-.portfolios .item .tourner button {border:1px solid #999;padding:0;display:block;float:#GET{left};margin-#GET{left}:4px;}
-
-.portfolios .item .vignette {margin-#GET{left}:-160px; width: 150px; text-align: center; float:#GET{left};}
-.ie6 .portfolios .item .spip_logo {display:inline;position:relative;}
+.portfolios .item { clear:both; }
+.portfolios .item .presentation { display:flex; flex-direction:[(#ENV{ltr}|choixsiegal{left,row,row-reverse})]; width:100%; }
+.portfolios .item .vignette { width: 150px; min-width:150px; text-align: center; }
+.portfolios .item .descriptions {  display:flex; flex-direction: column; padding-#GET{right}: 0.6925em; margin-#GET{left}:1em; width: 100%; flex-grow:1; }
 .portfolios .item .titrem {margin:0 0 5px;font-size:1em;}
-.portfolios .item .titrem .fichier {font-weight:normal;font-size:0.9em;font-style:italic;}
+.portfolios .item .titrem .fichier {font-weight:normal;font-size:0.9em; font-style:italic; display:block; }
 .portfolios .item .titrem .titre {display:block;font-size:1.1em;}
-.portfolios .item .infos { display: block; margin-bottom: 1em; }
-.portfolios .item div.mode {display:inline-block;clear:#GET{right};}
-.portfolios .item .actions {display:inline;}
+.portfolios .item .descriptif { color:#444; margin-bottom:4px; flex-grow: 1; }
+.portfolios .item .infos .permanentes {
+	display: block;
+	padding:2px 4px; margin-top:.5em; color:rgba(0,0,0,.8);
+	border-top:1px solid rgba(100, 100, 100, .1);
+	border-bottom:1px solid rgba(100, 100, 100, .1);
+}
+.portfolios .item .infos .lien_details { float:#GET{right}; cursor:pointer; }
+.portfolios .item .infos .detaillees { display:none; margin-top:1em; }
+.portfolios .item table.compact th,
+.portfolios .item table.compact td { padding:.3em .3em; }
+.portfolios .item table.compact tr { border-top:1px solid rgba(100, 100, 100, .1); border-bottom:1px solid rgba(100, 100, 100, .1);  }
+.portfolios .item table.compact tr:nth-child(2n) td,
+.portfolios .item table.compact tr:nth-child(2n) th { background:none; }
+.portfolios .item .infos .credits .vide {  font-style:italic; opacity:.5; }
+.portfolios .item div.mode {display:inline-block; clear:#GET{right};}
+.portfolios .item .actions { clear:both; overflow:visible; margin-top:.6925em; padding: 0 .6925em; margin-bottom:-3px; }
 .portfolios .item div.mode,
 .portfolios .item .actions,
 .portfolios .item div.mode button,
@@ -168,25 +180,23 @@ p.actions {clear:both;}
 .portfolios .item .actions button {display: inline;}
 
 .portfolios .item .actions > *,
-.portfolios .item .tourner,
 .portfolios .item .mode {opacity:0.1;}
 .portfolios .item .actions a.editbox { visibility: visible; opacity: 1; float: #GET{right}; font-weight: bold; }
 .portfolios .item:hover .actions > *,
-.portfolios .item:hover .tourner,
 .portfolios .item:hover .mode {visibility:visible;opacity:1;z-index:1000;}
 .portfolios .item.hover .actions > *,
-.portfolios .item.hover .tourner,
 .portfolios .item.hover .mode {visibility:visible;opacity:1;z-index:1000;}
 
-.portfolios .item .titre > .sanstitre {opacity:0.1;}
+.portfolios .item .titre > .sanstitre,
+.portfolios .item .titre > .sanstitre + .fichier {opacity:0.4;}
 
-.portfolios .tout_supprimer span {display:block;text-align:#GET{right};}
+.portfolios .tout_supprimer { clear:both; margin-top:.6925em; display:block; }
+.portfolios .tout_supprimer span {display:block; text-align:#GET{right};}
 
 .item.vu_oui {background:#f9f9f9;}
 
 
 /* Types d'affichages des listes de douments */
-
 h3 .affichages {
 	float:#GET{right};
 }
@@ -222,20 +232,14 @@ h3 .affichages {
 }
 
 /* Liste courte de documents */
-.portfolios .documents_liste .tout_supprimer {
-	clear:both;
-	margin-top:.5em;
-	display:block;
-}
 .portfolios .documents_liste .item  {
-	padding: 7px;
-	padding-#GET{right}: 100px;
-	padding-#GET{left}: 75px;
 	position:relative;
+	padding:7px;
+	display:flex;
 }
 .portfolios .documents_liste .item .vignette {
 	width:65px;
-	margin-#GET{left}: -75px;
+	min-width: 65px;
 }
 .portfolios .documents_liste .item .vignette img {
 	max-height: 36px;
@@ -243,8 +247,14 @@ h3 .affichages {
 	height:auto;
 	width:auto;
 }
-.portfolios .documents_liste .item .tourner,
+.portfolios .documents_liste .item .presentation {
+	align-items:center;
+	flex-grow:1;
+	overflow:hidden;
+}
+.portfolios .item .descriptions {  overflow: hidden; }
 .portfolios .documents_liste .item .infos,
+.portfolios .documents_liste .item .descriptif,
 .portfolios .documents_liste .item .mode,
 .portfolios .documents_liste .item .actions > * {
 	display:none;
@@ -254,21 +264,17 @@ h3 .affichages {
 }
 .portfolios .documents_liste .item .titrem .fichier,
 .portfolios .documents_liste .item .titrem .titre {
-	max-height:1.2em;
+	max-height:2.4em;
 	line-height:1.2em;
 	overflow:hidden;
 	white-space: nowrap;
 	display:block;
-	text-overflow:ellipsis;
-}
-.portfolios .documents_liste .item .titrem .titre {
-	max-height:1.5em;
-	line-height:1.5em;
+	text-overflow:ellipsis; /* necessite des overflow:hidden; sur les parents */
 }
 .portfolios .documents_liste .item .actions {
-	position:absolute;
-	#GET{right}:0;
-	top:1.2em;
+	align-items:center;
+	margin-#GET{left}:1em;
+	padding-#GET{right}:0;
 }
 .portfolios .documents_liste .item .actions .editbox,
 .portfolios .documents_liste .item .actions .ordoc-deplacer {
@@ -290,12 +296,11 @@ h3 .affichages {
 	height:130px;
 	display:flex;
 	flex-direction:column;
-
+	align-items:center;
 }
-.portfolios .documents_cases .item .tourner,
-.portfolios .documents_cases .item .infos,
+.portfolios .documents_cases .item .presentation { flex-grow:1; justify-content: center; }
+.portfolios .documents_cases .item .descriptions,
 .portfolios .documents_cases .item .mode,
-.portfolios .documents_cases .item .titrem,
 .portfolios .documents_cases .item .actions > * {
 	display:none;
 }
@@ -308,14 +313,12 @@ h3 .affichages {
 	float:#GET{left};
 }
 .portfolios .documents_cases .item .vignette {
-	float: none;
-	margin-#GET{left}: 0;
 	width:auto;
 	height:auto;
-	flex-grow:1;
+	min-width:auto;
 }
 .portfolios .documents_cases .item .vignette img {
-	max-height:110px;
+	max-height: 95px;
 	max-width:110px;
 	width: auto;
 	height: auto;
@@ -324,6 +327,9 @@ h3 .affichages {
 .portfolios .documents_cases .item .actions {
 	display:block;
 	width:100%;
+	margin-bottom:0;
+	box-sizing:border-box;
+	padding: 4px 6px;
 }
 .portfolios .documents_cases .tout_supprimer {
 	flex-basis: 100%;
