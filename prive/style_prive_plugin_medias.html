@@ -197,6 +197,12 @@ p.actions {clear:both;}
 
 .item.vu_oui {background:#f9f9f9;}
 
+.deplacer-document-placeholder { height:130px; }
+.deplacer-document { margin-#GET{right}:0.5em; float: #GET{left}; margin-top:2px; cursor:move; }
+.document-en-mouvement { cursor:move; }
+
+.portfolios .item .actions a.editbox { margin-top: 0 !important; }
+
 
 /* Types d'affichages des listes de douments */
 h3 .affichages {
@@ -275,13 +281,16 @@ h3 .affichages {
 }
 .portfolios .documents_liste .item .actions {
 	align-items:center;
+	text-align:#GET{right};
 	margin-#GET{left}:1em;
 	padding-#GET{right}:0;
+	min-width:80px;
 }
 .portfolios .documents_liste .item .actions .editbox,
-.portfolios .documents_liste .item .actions .ordoc-deplacer {
+.portfolios .documents_liste .item .actions .deplacer-document {
 	display:inline-block;
 }
+.documents_liste .deplacer-document-placeholder { height:40px; }
 
 
 /* Grille en cases des documents. */
@@ -310,10 +319,12 @@ h3 .affichages {
 	display:inline-block;
 	float:#GET{right};
 }
-.portfolios .documents_cases .item .actions .ordoc-deplacer {
+.portfolios .documents_cases .item .actions .deplacer-document {
 	display:inline-block;
-	float:#GET{left};
+	margin-top:0px;
 }
+.documents_cases .deplacer-document-placeholder { height:130px; width:113px; padding: 2px; margin: 2px;}
+
 .portfolios .documents_cases .item .vignette {
 	width:auto;
 	height:auto;
@@ -331,7 +342,7 @@ h3 .affichages {
 	width:100%;
 	margin-bottom:0;
 	box-sizing:border-box;
-	padding: 4px 6px;
+	padding: 2px 5px 1px 5px;
 }
 .portfolios .documents_cases .tout_supprimer {
 	flex-basis: 100%;

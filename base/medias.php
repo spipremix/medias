@@ -87,7 +87,8 @@ function medias_declarer_tables_auxiliaires($tables_auxiliaires) {
 		'id_document' => "bigint(21) DEFAULT '0' NOT NULL",
 		'id_objet' => "bigint(21) DEFAULT '0' NOT NULL",
 		'objet' => "VARCHAR (25) DEFAULT '' NOT NULL",
-		'vu' => "ENUM('non', 'oui') DEFAULT 'non' NOT NULL"
+		'vu' => "ENUM('non', 'oui') DEFAULT 'non' NOT NULL",
+		'rang_lien' => "int(4) DEFAULT '0' NOT NULL"
 	);
 
 	$spip_documents_liens_key = array(

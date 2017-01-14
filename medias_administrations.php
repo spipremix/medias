@@ -169,6 +169,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// ajout de ics + vcf
 		array('creer_base_types_doc')
 	);
+	$maj['1.3.0'] = array(
+		// ajout de rang_lien
+		array('maj_tables', 'spip_documents_liens'),
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);

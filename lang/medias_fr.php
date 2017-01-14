@@ -74,14 +74,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Titre de l’image :',
 	'erreur_aucun_document' => 'Ce document n’existe pas dans la médiathèque',
 	'erreur_aucun_fichier' => 'Aucun fichier n’a été trouvé',
+	'erreur_autorisation' => 'Échec de l’autorisation.',
 	'erreur_chemin_distant' => 'Le fichier distant @nom@ n’a pas pu être trouvé',
 	'erreur_chemin_ftp' => 'Le fichier indiqué n’a pas été trouvé sur le serveur',
 	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@',
+	'erreur_deplacement_impossible' => 'Déplacement impossible.',
 	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers',
 	'erreur_ecriture_fichier' => 'Erreur lors de l’écriture du fichier sur le disque',
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image',
 	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !',
 	'erreur_insertion_document_base' => 'Impossible d’enregistrer le document @fichier@ en base de données',
+	'erreur_objet_absent' => 'Informations reçues incomplètes.',
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette',
 	'erreur_upload_type_interdit' => 'Le téléchargement des fichiers du type de @nom@ n’est pas autorisé',
 	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@',
@@ -155,6 +158,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Document',
 	'objet_documents' => 'Documents',
+	'ordonner_ce_document' => 'Ordonner ce document',
 
 	// P
 	'par_date' => 'Date',
