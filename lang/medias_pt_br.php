@@ -10,6 +10,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_cases' => 'Exibição em boxes',
+	'affichage_documents_en_grand' => 'Exibiçao em tela cheia',
+	'affichage_documents_en_liste_compacte' => 'Exibição em lista compacta',
 	'aucun_audio' => 'Nemhum som',
 	'aucun_document' => 'Nenhum documento',
 	'aucun_file' => 'Nenhum documento',
@@ -51,6 +54,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => '@nb@ utilizações',
 	'des_videos' => '@nb@ vídeos',
 	'descriptif' => 'Descrição',
+	'details_document' => 'Detalhes',
+	'details_document_afficher_masquer' => 'Exibir / ocultar os detalhes do documento',
 	'document_attache_succes' => 'O documento foi adicionado com sucesso',
 	'document_copie_locale_succes' => 'O arquivo foi copiado com sucesso para o site',
 	'document_installe_succes' => 'O arquivo foi carregado com sucesso',
@@ -71,14 +76,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Título da imagem:',
 	'erreur_aucun_document' => 'Este documento não existe na biblioteca de mídia',
 	'erreur_aucun_fichier' => 'Nenhum documento encontrado',
+	'erreur_autorisation' => 'Falha de autenticação.',
 	'erreur_chemin_distant' => 'O arquivo remoto @nom@ não foi encontrado',
 	'erreur_chemin_ftp' => 'O arquivo indicado não foi encontrado no servidor',
 	'erreur_copie_fichier' => 'Impossível copiar o arquivo @nom@',
+	'erreur_deplacement_impossible' => 'Não é possível mover.',
 	'erreur_dossier_tmp_manquant' => 'Falta um diretório temporário para fazer carregamento dos arquivos',
 	'erreur_ecriture_fichier' => 'Erro ao gravar arquivo em disco',
 	'erreur_format_fichier_image' => 'O formato de @nom@ não é adequado para uma imagem',
 	'erreur_indiquez_un_fichier' => 'Indique um arquivo !',
 	'erreur_insertion_document_base' => 'Impossível salvar o documento @fichier@ no banco de dados',
+	'erreur_objet_absent' => 'As informações recebidas estão incompletas.',
 	'erreur_suppression_vignette' => 'Erro ao apagar a miniatura',
 	'erreur_upload_type_interdit' => 'O carregamento dos arquivos do tipo @nom@ não é autorizado',
 	'erreur_upload_vignette' => 'Erro no carregamento da miniatura @nom@',
@@ -152,6 +160,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Documento',
 	'objet_documents' => 'Documentos',
+	'ordonner_ce_document' => 'Solicitar este documento',
 
 	// P
 	'par_date' => 'Data',
