@@ -10,6 +10,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_cases' => 'Weergave in vakjes',
+	'affichage_documents_en_grand' => 'Grote weergave',
+	'affichage_documents_en_liste_compacte' => 'Compacte lijstweergave',
 	'aucun_audio' => 'Geen geluidsbestand',
 	'aucun_document' => 'Geen document',
 	'aucun_file' => 'Geen bestand',
@@ -51,6 +54,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => '@nb@ toepassingen',
 	'des_videos' => '@nb@ videos',
 	'descriptif' => 'Beschrijving',
+	'details_document' => 'Details',
+	'details_document_afficher_masquer' => 'Toon/verberg de details van het document',
 	'document_attache_succes' => 'Het document werd bijgevoegd',
 	'document_copie_locale_succes' => 'Het bestand werd op de site gekopieerd',
 	'document_installe_succes' => 'Het bestand werd opgeslagen',
@@ -71,14 +76,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Afbeeldingstitel:',
 	'erreur_aucun_document' => 'Dit document bestaat niet in de mediatheek ',
 	'erreur_aucun_fichier' => 'Er werd geen bestand gevonden',
+	'erreur_autorisation' => 'Autorisatiefout.',
 	'erreur_chemin_distant' => 'Remote bestand @nom@ werd niet gevonden',
 	'erreur_chemin_ftp' => 'Het gekozen bestand werd niet op de server gevonden',
 	'erreur_copie_fichier' => 'Onmogelijk het bestand @nom@ te kopiëren ',
+	'erreur_deplacement_impossible' => 'Verplaatsen niet mogelijk.',
 	'erreur_dossier_tmp_manquant' => 'Er ontbreekt een tijdelijke map om de bestanden te uploaden',
 	'erreur_ecriture_fichier' => 'Fout tijdens het schrijven van het bestand op de server',
 	'erreur_format_fichier_image' => 'Het @nom@ formaat is ongeldig voor een afbeelding',
 	'erreur_indiquez_un_fichier' => 'Geef een bestand aan!',
 	'erreur_insertion_document_base' => 'Onmogelijk het document @fichier@ in de database op te slaan',
+	'erreur_objet_absent' => 'Onvolledige informatie ontvangen.',
 	'erreur_suppression_vignette' => 'Fout tijdens het uitwissen van de verkleining',
 	'erreur_upload_type_interdit' => 'Het uploaden van bestanden met type @nom@ is niet toegelaten',
 	'erreur_upload_vignette' => 'Fout tijdens het laden van de verkleining @nom@',
@@ -152,6 +160,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Document',
 	'objet_documents' => 'Documenten',
+	'ordonner_ce_document' => 'Dit document ordenen',
 
 	// P
 	'par_date' => 'Datum',
