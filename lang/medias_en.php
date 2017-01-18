@@ -10,6 +10,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_grand' => 'Large display',
+	'affichage_documents_en_liste_compacte' => 'Compact lists',
 	'aucun_audio' => 'No sound',
 	'aucun_document' => 'No document',
 	'aucun_file' => 'No document',
@@ -51,6 +53,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => '@nb@ uses',
 	'des_videos' => '@nb@ videos',
 	'descriptif' => 'Description',
+	'details_document' => 'Details',
+	'details_document_afficher_masquer' => 'Show/hide the document details',
 	'document_attache_succes' => 'The document was successfully added',
 	'document_copie_locale_succes' => 'The file was successfully copied to the site',
 	'document_installe_succes' => 'The file was successfully uploaded',
@@ -71,14 +75,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Image title:',
 	'erreur_aucun_document' => 'This document doesn’t exist in the media library',
 	'erreur_aucun_fichier' => 'No file was found',
+	'erreur_autorisation' => 'Autorisation problem.',
 	'erreur_chemin_distant' => 'The remote file @nom@ could not be found',
 	'erreur_chemin_ftp' => 'The specified file was not found on the server',
 	'erreur_copie_fichier' => 'Unable to copy the file @nom@',
+	'erreur_deplacement_impossible' => 'Impossible to move.',
 	'erreur_dossier_tmp_manquant' => 'A temporrary folder is missing to download the files',
 	'erreur_ecriture_fichier' => 'Error writing the file to disk',
 	'erreur_format_fichier_image' => 'The format of @nom@ is not suitable for an image',
 	'erreur_indiquez_un_fichier' => 'Specify a file!',
 	'erreur_insertion_document_base' => 'Unable to save the document @fichier@ in the database',
+	'erreur_objet_absent' => 'Insufficient information.',
 	'erreur_suppression_vignette' => 'Error when deleting the thumbnail',
 	'erreur_upload_type_interdit' => 'Uploading files of type @nom@ is not allowed',
 	'erreur_upload_vignette' => 'Error loading thumbnail @nom@',
@@ -152,6 +159,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Document',
 	'objet_documents' => 'Documents',
+	'ordonner_ce_document' => 'Arrange this document',
 
 	// P
 	'par_date' => 'Date',
