@@ -14,7 +14,7 @@
 <h3><span class="image_loading"></span><:medias:info_illustrations:></h3>
 <div class="liste_items documents" id="illustrations#ENV{id_unique}">
 [<p class="pagination">(#PAGINATION{prive})</p>]
-<BOUCLE_illustrations(DOCUMENTS documents_liens types_documents){inclus=image}{mode=image}{id_objet}{objet}{par rang_lien, num titre, date,id_document}{pagination 5}{statut?}>
+<BOUCLE_illustrations(DOCUMENTS documents_liens types_documents){inclus=image}{mode=image}{id_objet}{objet}{par rang_lien, num titre, date,id_document}{pagination 50}{statut?}>
 	#MODELE{document_desc,id_document,id_objet,objet}
 </BOUCLE_illustrations>
 [<p class="pagination">(#PAGINATION{prive})</p>]
