@@ -194,7 +194,8 @@ p.actions {clear:both;}
 .portfolios .item .titre > .sanstitre,
 .portfolios .item .titre > .sanstitre + .fichier {opacity:0.4;}
 
-.portfolios .tout_supprimer { clear:both; margin-top:.6925em; display:block; }
+.portfolios .actions-liste { clear:both; margin-top:.6925em; display:block; }
+.portfolios .actions-liste > * {display:inline; }
 .portfolios .tout_supprimer span {display:block; text-align:#GET{right};}
 
 .item.vu_oui {background:#f9f9f9;}
@@ -298,7 +299,7 @@ h3 .affichages {
 
 
 /* Grille en cases des documents. */
-.portfolios .documents_cases {
+.portfolios .documents_cases .sortable {
 	display:flex;
 	flex-wrap: wrap;
 }

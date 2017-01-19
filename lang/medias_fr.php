@@ -141,6 +141,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_paginer_par' => 'Paginer par :',
 	'label_parents' => 'Ce document est lié à',
 	'label_refdoc_joindre' => 'Document numéro',
+	'lien_tout_desordonner' => 'Réinitialiser l’ordre',
+	'lien_tout_desordonner_verif' => 'L’ordre définit pour cette liste de documents sera réinitialisé. Êtes-vous sûr ?',
 	'lien_tout_enlever' => 'Tout enlever',
 	'logo' => 'Logo',
 

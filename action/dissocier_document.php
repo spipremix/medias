@@ -149,7 +149,7 @@ function supprimer_lien_document($id_document, $objet, $id_objet, $supprime = fa
  *   I/image pour dissocier les images en mode Image
  *   I/document pour dissocier les images en mode document
  *   D/document pour dissocier les documents non image en mode document
- * @param  $objet
+ * @param string $objet
  *   objet duquel dissocier
  * @param  $id_objet
  *   id_objet duquel dissocier
