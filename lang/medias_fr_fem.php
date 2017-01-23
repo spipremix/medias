@@ -1,6 +1,6 @@
 <?php
 // This is a SPIP language file  --  Ceci est un fichier langue de SPIP
-// extrait automatiquement de http://trad.spip.net/tradlang_module/medias?lang_cible=fr_fem
+// extrait automatiquement de https://trad.spip.net/tradlang_module/medias?lang_cible=fr_fem
 // ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) {
@@ -10,6 +10,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_cases' => 'Affichage en cases',
+	'affichage_documents_en_grand' => 'Affichage en grand',
+	'affichage_documents_en_liste_compacte' => 'Affichage en liste compacte',
 	'aucun_audio' => 'Aucune bande-son',
 	'aucun_document' => 'Aucun document',
 	'aucun_file' => 'Aucun document',
@@ -51,6 +54,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => '@nb@ utilisations',
 	'des_videos' => '@nb@ séquences',
 	'descriptif' => 'Description',
+	'details_document' => 'Détails',
+	'details_document_afficher_masquer' => 'Afficher / masquer les détails du document',
 	'document_attache_succes' => 'Le document a bien été ajouté',
 	'document_copie_locale_succes' => 'Le fichier a bien été copié dans le site',
 	'document_installe_succes' => 'Le fichier a bien été chargé',
@@ -71,14 +76,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Titre de l’image :',
 	'erreur_aucun_document' => 'Ce document n’existe pas dans la médiathèque',
 	'erreur_aucun_fichier' => 'Aucun fichier n’a été trouvé',
+	'erreur_autorisation' => 'Échec de l’autorisation.',
 	'erreur_chemin_distant' => 'Le fichier distant @nom@ n’a pas pu être trouvé',
 	'erreur_chemin_ftp' => 'Le fichier indiqué n’a pas été trouvé sur le serveur',
 	'erreur_copie_fichier' => 'Impossible de copier le fichier @nom@',
+	'erreur_deplacement_impossible' => 'Déplacement impossible.',
 	'erreur_dossier_tmp_manquant' => 'Un dossier temporaire est manquant pour télécharger les fichiers',
 	'erreur_ecriture_fichier' => 'Erreur lors de l’écriture du fichier sur le disque',
 	'erreur_format_fichier_image' => 'Le format de @nom@ ne convient pas pour une image',
 	'erreur_indiquez_un_fichier' => 'Indiquez un fichier !',
 	'erreur_insertion_document_base' => 'Impossible d’enregistrer le document @fichier@ en base de données',
+	'erreur_objet_absent' => 'Informations reçues incomplètes.',
 	'erreur_suppression_vignette' => 'Erreur lors de la suppression de la vignette',
 	'erreur_upload_type_interdit' => 'Le téléchargement des fichiers du type de @nom@ n’est pas autorisé',
 	'erreur_upload_vignette' => 'Erreur lors du chargement de la vignette @nom@',
@@ -120,6 +128,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_statut_document' => 'Ce document est :',
 	'info_taille' => 'Poids',
 	'info_telecharger' => 'Télécharger depuis votre ordinateur :',
+	'info_utilisation' => 'Utilisation(s)',
 	'infos' => 'Infos techniques',
 	'item_autoriser_selectionner_date_en_ligne' => 'Permettre de modifier la date de chaque document',
 	'item_non_autoriser_selectionner_date_en_ligne' => 'La date des documents est celle de leur ajout sur le site',
@@ -134,6 +143,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_paginer_par' => 'Paginer par :',
 	'label_parents' => 'Ce document est lié à',
 	'label_refdoc_joindre' => 'Document numéro',
+	'lien_tout_desordonner' => 'Réinitialiser l’ordre',
+	'lien_tout_desordonner_verif' => 'L’ordre définit pour cette liste de documents sera réinitialisé. Êtes-vous sûre ?',
 	'lien_tout_enlever' => 'Tout enlever',
 	'logo' => 'Logo',
 
@@ -151,6 +162,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Document',
 	'objet_documents' => 'Documents',
+	'ordonner_ce_document' => 'Ordonner ce document',
 
 	// P
 	'par_date' => 'Date',
