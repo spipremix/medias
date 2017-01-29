@@ -10,6 +10,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_cases' => 'Display in boxes',
 	'affichage_documents_en_grand' => 'Large display',
 	'affichage_documents_en_liste_compacte' => 'Compact lists',
 	'aucun_audio' => 'No sound',
@@ -142,6 +143,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_paginer_par' => 'Paginate by:',
 	'label_parents' => 'This document is linked to',
 	'label_refdoc_joindre' => 'Document number',
+	'lien_tout_desordonner' => 'Reset the order',
+	'lien_tout_desordonner_verif' => 'The order set for this list of documents will be reset. Are you sure?',
 	'lien_tout_enlever' => 'Remove all',
 	'logo' => 'Logo',
 
