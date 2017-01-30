@@ -35,6 +35,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 function medias_detecter_fond_par_defaut($fond) {
 	if (empty($_GET) and empty($_POST) and empty($_FILES)
 		and isset($_SERVER['CONTENT_LENGTH'])
+		and isset($_SERVER['CONTENT_TYPE'])
 		and strstr($_SERVER['CONTENT_TYPE'], 'multipart/form-data;')
 	) {
 		include_spip('inc/getdocument');
