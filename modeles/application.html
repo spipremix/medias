@@ -42,6 +42,6 @@ style='[(#ENV{align}|match{^(left|right)$}|oui)float:#ENV{align};] (#ENV{align,c
 [(#INCLURE{fond=modeles/img}{id_document}{align=#ENV{align}}{embed=oui}{lien=#ENV{lien}}{lien_class=#ENV{lien_class}})]
 ]
 ][(#INCLUS|=={embed}|oui)[(#ENV{controls,''}|non)
-[<div class='spip_doc_titre'><strong>(#TITRE)</strong></div>][<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]</div>
+[<div class='#EDIT{titre} spip_doc_titre'><strong>(#TITRE)</strong></div>][<div class='#EDIT{descriptif} spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]</div>
 ]]
 </BOUCLE_tous>

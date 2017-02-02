@@ -42,8 +42,8 @@ style='[(#ENV{align}|match{^(left|right)$}|?{' '})float:#ENV{align};] (#ENV{alig
 	<param name='src' value='#URL_DOCUMENT' />
 	[(#ID_DOCUMENT|appliquer_filtre{#MIME_TYPE})]
 </object>[
-<div class='spip_doc_titre'><strong>(#TITRE)</strong></div>
+<div class='#EDIT{titre} spip_doc_titre'><strong>(#TITRE)</strong></div>
 ][
-<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>
+<div class='#EDIT{descriptif} spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>
 ]</div>]
 </BOUCLE_tous>
