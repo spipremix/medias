@@ -12,8 +12,8 @@
 	       controls="controls"
 				 [autoplay="autoplay"(#ENV{autoplay}|oui)]></audio>
 </div>
-[<div class='spip_doc_titre'><strong>(#TITRE)</strong></div>]
-[<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]
+[<div class='#EDIT{titre} spip_doc_titre'><strong>(#TITRE)</strong></div>]
+[<div class='#EDIT{descriptif} spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]
 [<script>/*<!\[CDATA\[*/var mejspath='[(#CHEMIN{lib/mejs/mediaelement-and-player.min.js}|timestamp)]',mejscss='[(#CHEMIN{lib/mejs/mediaelementplayer.min.css}|timestamp)]';
 (#INCLURE{javascript/mejs-init.min.js})/*\]\]>*/</script>]
 [(#ENV{skin}|oui)[<style>(#INCLURE{#CHEMIN{css/mejs-skin-#ENV{skin}.css}|sinon{#CHEMIN{lib/mejs/mejs-skins.css}}|url_absolue_css})</style>]]
