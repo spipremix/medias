@@ -137,7 +137,7 @@ p.actions {clear:both;}
 #documents_joints .item .actions > *,
 #documents_joints .item .tourner,
 #documents_joints .item .mode {opacity:0.4;}
-#documents_joints .item .actions a.editbox {visibility:visible;opacity:1;font-weight:bold;}
+#documents_joints .item .actions .deplacer-modifier {visibility:visible;opacity:1;font-weight:bold;}
 #documents_joints .item:hover .actions > *,
 #documents_joints .item:hover .tourner,
 #documents_joints .item:hover .mode,
@@ -175,7 +175,7 @@ p.actions {clear:both;}
 .portfolios .item table.compact tr:nth-child(2n) th { background:none; }
 .portfolios .item .infos .credits .vide {  font-style:italic; opacity:.5; }
 .portfolios .item div.mode {display:inline-block; clear:#GET{right};}
-.portfolios .item .actions { clear:both; overflow:visible; margin-top:.6925em; padding: 0 .6925em; margin-bottom:-3px; }
+.portfolios .item .actions { clear:both; overflow:visible; margin-top:.6925em; padding-#GET{right}: .6925em; margin-bottom:-3px; }
 .portfolios .item div.mode,
 .portfolios .item .actions,
 .portfolios .item div.mode button,
@@ -185,7 +185,7 @@ p.actions {clear:both;}
 
 .portfolios .item .actions > *,
 .portfolios .item .mode {opacity:0.4;}
-.portfolios .item .actions a.editbox { visibility: visible; opacity: 1; float: #GET{right}; font-weight: bold; }
+.portfolios .item .actions .deplacer-modifier { visibility: visible; opacity: 1; float: #GET{right}; font-weight: bold; }
 .portfolios .item:hover .actions > *,
 .portfolios .item:hover .mode,
 .portfolios .item.hover .actions > *,
@@ -201,10 +201,8 @@ p.actions {clear:both;}
 .item.vu_oui {background:#f9f9f9;}
 
 .deplacer-document-placeholder { height:130px; }
-.deplacer-document { margin-#GET{right}:0.5em; float: #GET{left}; margin-top:2px; cursor:move; }
+.deplacer-document { margin-#GET{right}:0.5em; float: #GET{left}; margin-top:1px; cursor:move; }
 .document-en-mouvement { cursor:move; }
-
-.portfolios .item .actions a.editbox { margin-top: 0 !important; }
 
 
 /* Types d'affichages des listes de douments */
@@ -288,9 +286,7 @@ h3 .affichages {
 	padding-#GET{right}:0;
 	min-width:80px;
 }
-.portfolios .documents_liste .item .actions .deplacer-document img { vertical-align:text-bottom; }
-.portfolios .documents_liste .item .actions .editbox,
-.portfolios .documents_liste .item .actions .deplacer-document {
+.portfolios .documents_liste .item .actions .deplacer-modifier {
 	display:inline-block;
 	float:none;
 	margin-#GET{right}:0;
@@ -320,14 +316,8 @@ h3 .affichages {
 .portfolios .documents_cases .item .actions > * {
 	display:none;
 }
-.portfolios .documents_cases .item .actions .editbox {
-	display:inline-block;
-	float:#GET{right};
-}
-.portfolios .documents_cases .item .actions .deplacer-document {
-	display:inline-block;
-	margin-top:0px;
-}
+.portfolios .documents_cases .item .actions .deplacer-modifier  { display:block; width:100%;}
+.portfolios .documents_cases .item .actions .editbox  { float:right; }
 .documents_cases .deplacer-document-placeholder { height:130px; width:113px; padding: 2px; margin: 2px;}
 
 .portfolios .documents_cases .item .vignette {
