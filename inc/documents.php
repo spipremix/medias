@@ -50,7 +50,7 @@ function contenu_document($arg, $charset = '') {
 	$r = spip_file_get_contents($f);
 
 	if ($charset) {
-		include_spip('inc/charset');
+		include_spip('inc/charsets');
 		if ($charset !== 'auto') {
 			$r = importer_charset($r, $charset);
 		} elseif ($GLOBALS['meta']['charset'] == 'utf-8' and !is_utf8($r)) {
