@@ -42,8 +42,12 @@ Distribue sous licence GPL
 						</tr>
 						[(#LARGEUR|ou{#HAUTEUR}|oui)
 						<tr>
-							<th><:medias:entree_dimensions:></th>
+							<th><:medias:info_dimensions_image:></th>
 							<td>[(#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#LARGEUR,hauteur_vignette,#HAUTEUR}})]</td>
+						</tr>
+						<tr>
+							<th><:medias:info_resolution_image:></th>
+							<td>[(#LARGEUR|mult{#HAUTEUR}|div{1000000}|round{1})&nbsp;<:medias:info_resolution_mpx:>]</td>
 						</tr>
 						]
 						<tr>
