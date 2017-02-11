@@ -12,7 +12,7 @@
 [(#REM) D'abord les images illustration]
 <B_illustrations>
 <h3><span class="image_loading"></span><:medias:info_illustrations:></h3>
-<div class="liste_items documents" id="illustrations#ENV{id_unique}">
+<div class="liste_items documents ordonner_rang_lien" id="illustrations#ENV{id_unique}"  data-cookie-affichage="illustrations" data-lien="[(#OBJET|concat{'/',#ID_OBJET}|attribut_html)]">
 [<p class="pagination">(#PAGINATION{prive})</p>]
 <div class="sortable">
 <BOUCLE_illustrations(DOCUMENTS documents_liens types_documents){inclus=image}{mode=image}{id_objet}{objet}{par rang_lien, num titre, date,id_document}{pagination 50}{statut?}>
@@ -33,7 +33,7 @@
 [(#REM) puis les images du portfolio]
 <B_portfolio>
 <h3><:medias:info_portfolio:></h3>
-<div class="liste_items documents" id="portfolio#ENV{id_unique}">
+<div class="liste_items documents ordonner_rang_lien" id="portfolio#ENV{id_unique}" data-cookie-affichage="portfolio" data-lien="[(#OBJET|concat{'/',#ID_OBJET}|attribut_html)]">
 [<p class="pagination">(#PAGINATION{prive})</p>]
 <div class="sortable">
 <BOUCLE_portfolio(DOCUMENTS documents_liens types_documents){inclus=image}{mode=document}{id_objet}{objet}{par rang_lien, num titre, date,id_document}{pagination 50}{statut?}>
@@ -54,7 +54,7 @@
 [(#REM) puis les documents]
 <B_documents>
 <h3><:medias:info_documents:></h3>
-<div class="liste_items documents" id="documents#ENV{id_unique}">
+<div class="liste_items documents ordonner_rang_lien" id="documents#ENV{id_unique}" data-cookie-affichage="documents" data-lien="[(#OBJET|concat{'/',#ID_OBJET}|attribut_html)]">
 [<p class="pagination">(#PAGINATION{prive})</p>]
 <div class="sortable">
 <BOUCLE_documents(DOCUMENTS documents_liens types_documents){inclus!=image}{mode!=vignette}{id_objet}{objet}{par rang_lien, num titre, date,id_document}{pagination 50}{statut?}>
@@ -73,180 +73,15 @@
 </B_documents>
 
 <script type="text/javascript">/*<![CDATA[*/
+/* Plugin multifile et gestion de la modale */
 var multifile='[(#CHEMIN{javascript/jquery.multifile.js}|texte_script)]';
 [(#INCLURE{javascript/medias_edit.js}|compacte{js})]
+
+/* Sur la page d'une rubrique, recharger la boîte d'info en cas de rechargement ajax */
 [(#OBJET|=={rubrique}|et{#EVAL{_AJAX}}|et{#GET{nbdocs}|=={1}}|oui)
 if (window.jQuery) jQuery('#navigation .box.info').ajaxReload();]
 
-function check_reload_page(){
-	var reload = false;
-	if($('#illustrations[(#ENV{id_unique})]').length && !$('#illustrations[(#ENV{id_unique})] .item').length){
-		$('#illustrations#ENV{id_unique}').remove();reload = true;
-	}
-	if($('#portfolio[(#ENV{id_unique})]').length && !$('#portfolio[(#ENV{id_unique})] .item').length){
-		$('#portfolio[(#ENV{id_unique})]').remove();reload = true;
-	}
-	if($('#documents[(#ENV{id_unique})]').length && !$('#documents[(#ENV{id_unique})] .item').length){
-		$('#documents[(#ENV{id_unique})]').remove();reload = true;
-	}
-	if (reload) {
-		jQuery('#portfolios[(#ENV{id_unique})]').ajaxReload();
-		jQuery('#navigation .box.info').ajaxReload();
-	}
-}
-
-/** Choix des différents affichages des documents (grand, en case, en liste courte) */
-function choix_affichages_documents() {
-	$('#portfolios h3:not(:has(.affichages))').each(function () {
-		var titre = $(this);
-		var liste = titre.next('.liste_items.documents');
-
-		var identifiant = liste.attr('id');
-		if ($.inArray(identifiant, ['illustrations', 'portfolio', 'documents']) < 0) {
-			identifiant = null;
-		}
-
-		titre.append(
-			"<div class='affichages'>"
-			+ "<span class='icone grand on' title='<:medias:affichage_documents_en_grand|attribut_html:>'></span>"
-			+ "<span class='icone cases' title='<:medias:affichage_documents_en_cases|attribut_html:>'></span>"
-			+ "<span class='icone liste' title='<:medias:affichage_documents_en_liste_compacte|attribut_html:>'></span>"
-			+ "</div>"
-		);
-
-		var changer_affichage_documents = function (me, bouton, classe) {
-			$(me).parent().find('.icone').removeClass('on').end().end().addClass('on');
-			var liste = $(me).parents('h3').next('.liste_items.documents');
-			liste.removeClass('documents_cases').removeClass('documents_liste');
-			if (classe) {
-				liste.addClass(classe);
-			}
-			if (identifiant) {
-				Cookies.set('affichage-' + identifiant, bouton);
-			}
-
-			liste.trigger('affichage.documents.change', {
-				'liste': liste,
-				'icone': me,
-				'bouton': bouton,
-				'classe': classe
-			});
-
-		};
-
-		titre.find('.affichages > .grand').click(function () {
-			changer_affichage_documents(this, 'grand', null);
-		});
-
-		titre.find('.affichages > .cases').click(function () {
-			changer_affichage_documents(this, 'cases', 'documents_cases');
-		});
-
-		titre.find('.affichages > .liste').click(function () {
-			changer_affichage_documents(this, 'liste', 'documents_liste');
-		});
-
-		if (identifiant) {
-			var defaut = Cookies.get('affichage-' + identifiant);
-			if (defaut) {
-				titre.find('.affichages > .' + defaut).trigger('click');
-			}
-		}
-	});
-}
-
-/* Gestion du tri des listes de documents et de leur enregistrement */
-function ordonner_listes_documents() {
-	if ($.fn.sortable) {
-		$("#illustrations#ENV{id_unique}, #portfolio#ENV{id_unique}, #documents#ENV{id_unique}").find('> .sortable').each(function () {
-			// détruire / recréer le sortable à chaque appel ajax
-			if ($(this).has('.ui-sortable').length) {
-				$(this).sortable('destroy');
-			}
-			// pas de tri possible s'il n'y a qu'un seul élément.
-			if ($(this).find('> .item').length < 2) {
-				$(this).find('.deplacer-document').hide();
-				return true; // continue
-			} else {
-				$(this).find('.deplacer-document').show();
-			}
-			$(this).sortable({
-				/*axis: "y",*/ /* minidoc a un affichage en case */
-				handle: "",
-				placeholder: "ui-state-highlight deplacer-document-placeholder",
-				cancel: 'img.croix_centre_image',
-				start: function(event, ui) {
-					ui.item.addClass('document-en-mouvement');
-				},
-				stop: function(event, ui) {
-					ui.item.removeClass('document-en-mouvement');
-				},
-				update: function (event, ui) {
-					var items = $(this);
-					var item = ui.item;
-					var liste = items.sortable('toArray');
-					var ordre = [];
-
-					$.each(liste, function(i, id) {
-						if (id) {
-							ordre.push( id.substring(3) ); // doc123 => 123
-						}
-					});
-
-					var action = '[(#VAL{ordonner_liens_documents}|generer_url_action{"", 1})]';
-					var params = {
-						objet_source: 'document',
-						objet_lie: '#OBJET',
-						id_objet_lie: '#ID_OBJET',
-						ordre: ordre,
-					};
-
-					item.animateLoading();
-
-					$.ajax({
-						url: action,
-						data: params,
-						dataType: 'json',
-						cache: false,
-					}).done(function(data) {
-
-						var couleur_origine = item.css('background-color');
-						var couleur_erreur = $("<div class='remove'></div>").css('background-color');
-						var couleur_succes = $("<div class='append'></div>").css('background-color');
-						item.endLoading(true);
-
-						if (data.errors.length) {
-							items.sortable('cancel');
-							item.css({backgroundColor: couleur_erreur}).animate({backgroundColor: couleur_origine}, 'normal', function(){
-								item.css({backgroundColor: ''});
-							});
-						} else {
-							item.css({backgroundColor: couleur_succes}).animate({backgroundColor: couleur_origine}, 'normal', function(){
-								item.css({backgroundColor: ''});
-							});
-							items.parent().find('.tout_desordonner').show();
-						}
-					});
-				}
-			});
-			// bouton "désordonner"
-			if ($(this).parent().find('.deplacer-document[data-rang!=0]').length) {
-				$(this).parent().find('.tout_desordonner').show();
-			} else {
-				$(this).parent().find('.tout_desordonner').hide();
-			}
-		});
-	}
-}
-
-if (window.jQuery) {
-	jQuery(function($){
-		onAjaxLoad(check_reload_page);
-		choix_affichages_documents();
-		onAjaxLoad(choix_affichages_documents);
-		ordonner_listes_documents();
-		onAjaxLoad(ordonner_listes_documents);
-	});
-}
+/* Gestion des différents modes d'affichages, du tri des documents, et des rechargements ajax */
+[(#INCLURE{fond=javascript/gestion_listes_documents.js}|compacte{js})]
 /*]]>*/</script>
 </div>
