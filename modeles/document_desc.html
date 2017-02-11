@@ -47,7 +47,7 @@ Distribue sous licence GPL
 						</tr>
 						<tr>
 							<th><:medias:info_resolution_image:></th>
-							<td>[(#LARGEUR|mult{#HAUTEUR}|div{1000000}|round{1})&nbsp;<:medias:info_resolution_mpx:>]</td>
+							<td>[(#VAL{medias:info_resolution_mpx}|_T{#ARRAY{resolution,#LARGEUR|mult{#HAUTEUR}|div{1000000}|round{1}}})]</td>
 						</tr>
 						]
 						<tr>
