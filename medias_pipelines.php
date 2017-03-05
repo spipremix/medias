@@ -63,12 +63,11 @@ function medias_post_insertion($flux) {
 
 	$objet = objet_type($flux['args']['table']);
 	$id_objet = $flux['args']['id_objet'];
+	$id_auteur = isset($GLOBALS['visiteur_session']['id_auteur']) ? $GLOBALS['visiteur_session']['id_auteur'] : 0;
 
 	include_spip('inc/autoriser');
 
-	if (autoriser('joindredocument', $objet, $id_objet)
-		and $id_auteur = intval($GLOBALS['visiteur_session']['id_auteur'])
-	) {
+	if (autoriser('joindredocument', $objet, $id_objet) and $id_auteur) {
 
 		# cf. HACK medias_affiche_gauche()
 		# rattrapper les documents associes a cet objet nouveau
