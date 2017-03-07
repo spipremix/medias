@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.17.6"
+	version="2.17.7"
 	etat="stable"
 	compatibilite="[3.2.0-dev;]"
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -46,8 +46,8 @@
 	<utilise nom="Z" compatibilite="[1.7.28;]" />
 	<utilise nom="mediabox" compatibilite="[1.0.1;]" />
 	<utilise nom="mots" compatibilite="[2.7.8;]" />
-	<necessite nom="archives" compatibilite="[0.1.0;[" />
-	
+	<necessite nom="archiviste" compatibilite="[0.1.1;[" />
+
 	<menu nom="documents" titre="medias:info_documents" parent="menu_edition" icone="images/portfolio-16.png" />
 
 	<chemin path="squelettes" />
