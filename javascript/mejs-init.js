@@ -27,7 +27,7 @@ var mejsloader;
 					}
 					var opt = {options: {}, plugins: {}, css: []}, i, v;
 					for (i in opt){
-						if (v = me.attr('data-mejs'+i)) opt[i] = JSON.parse(v);
+						if (v = me.attr('data-mejs'+i)) opt[i] = jQuery.parseJSON(v);
 					}
 					function runthisplayer(){
 						var run = true;
