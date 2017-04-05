@@ -18,7 +18,7 @@
 				height="100%"[
 				poster="(#LOGO_DOCUMENT{vignette}|image_reduire{#GET{largeur},0}|extraire_attribut{src})"]
 				controls="controls"
-				preload="auto"[
+				preload="none"[
 				autoplay="autoplay"(#ENV{autoplay}|oui)]
 			>
 			<source type="[(#EXTENSION|in_array{#LISTE{mp4,webm,ogv}}|?{[(#MIME_TYPE|replace{application/,video/})],#MIME_TYPE})]" src="#FICHIER" />
