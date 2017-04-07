@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.18.11"
+	version="2.18.12"
 	etat="stable"
 	compatibilite="[3.2.0-dev;3.2.*]"
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -45,9 +45,9 @@
 
 	<procure nom="minidoc" version="1.0.2" />
 	<procure nom="ordoc" version="1.1.1" />
-	
+
 	<necessite nom="archiviste" compatibilite="[0.2.1;]" />
-	
+
 	<utilise nom="Z" compatibilite="[1.7.28;]" />
 	<utilise nom="mediabox" compatibilite="[1.1.2;]" />
 	<utilise nom="mots" compatibilite="[2.8.2;]" />
