@@ -173,6 +173,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// ajout de rang_lien
 		array('maj_tables', 'spip_documents_liens'),
 	);
+	$maj['1.3.1'] = array(
+		// plus de place dans les crédits
+		array('sql_alter', "TABLE spip_documents CHANGE credits credits text DEFAULT '' NOT NULL"),
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
