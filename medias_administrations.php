@@ -169,6 +169,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// ajout de ics + vcf
 		array('creer_base_types_doc')
 	);
+	$maj['1.2.8'] = array(
+		// plus de place dans les crédits
+		array('sql_alter', "TABLE spip_documents CHANGE credits credits text DEFAULT '' NOT NULL"),
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);

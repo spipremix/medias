@@ -151,7 +151,7 @@ function medias_declarer_tables_objets_sql($tables) {
 			"mode" => "varchar(10) DEFAULT 'document' NOT NULL",
 			"distant" => "VARCHAR(3) DEFAULT 'non'",
 			"statut" => "varchar(10) DEFAULT '0' NOT NULL",
-			"credits" => "varchar(255) DEFAULT '' NOT NULL",
+			"credits" => "text DEFAULT '' NOT NULL",
 			"date_publication" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"brise" => "tinyint DEFAULT 0",
 			"maj" => "TIMESTAMP"
