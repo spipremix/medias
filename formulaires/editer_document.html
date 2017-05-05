@@ -11,6 +11,9 @@
 		il ne doit pas etre hidden pour marcher dans safari
 		]
 	  <div style="position:absolute;#LANG_LEFT:-10000px;"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></div>
+		[(#REM) en cas d'appel en pop-in
+				on ajoute un bouton enregistrer en haut pour l'ergonomie
+		][(#ENV{action}|match{popin}|oui)<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>]
 	  <div class="editer-groupe">
 	    <div class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
 		    <label for="titre">[(#ENV{mode}|=={document}|?{<:medias:entree_titre_document:>,<:medias:entree_titre_image:>})]</label>[
