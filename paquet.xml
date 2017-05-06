@@ -1,11 +1,11 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.18.15"
+	version="2.19.15"
 	etat="stable"
 	compatibilite="[3.2.0-dev;3.2.*]"
 	logo="prive/themes/spip/images/portfolio-32.png"
-	schema="1.3.2"
+	schema="1.3.3"
 >
 
 	<nom>Medias</nom>

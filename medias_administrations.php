@@ -181,6 +181,11 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// buggons en 2038 plutôt qu'en 2018'
 		array('medias_check_statuts', true),
 	);
+	$maj['1.3.3'] = array(
+		// 1.3.2 n'étais pas suffisant grml'
+		array('medias_maj_date_publication_documents'),
+		array('medias_check_statuts', true)
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
@@ -211,6 +216,13 @@ function medias_peuple_media_document($champ_media = 'media_defaut') {
 			return;
 		}
 	}
+}
+
+/**
+ * Maj des date de publication des documents cf ticket #3329, z104221
+ */
+function medias_maj_date_publication_documents() {
+	sql_update('spip_documents', array('statut' => '0'), 'date_publication' > '2017-01-01 00:00:00');
 }
 
 /*
