@@ -177,11 +177,14 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// plus de place dans les crédits
 		array('sql_alter', "TABLE spip_documents CHANGE credits credits text DEFAULT '' NOT NULL"),
 	);
+	$maj['1.3.2'] = array(
+		// buggons en 2038 plutôt qu'en 2018'
+		array('medias_check_statuts', true),
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 
-	medias_check_statuts();
 }
 
 /**
