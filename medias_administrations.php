@@ -181,8 +181,8 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// buggons en 2038 plutôt qu'en 2018'
 		array('medias_check_statuts', true),
 	);
-	$maj['1.3.3'] = array(
-		// 1.3.2 n'étais pas suffisant grml'
+	$maj['1.3.4'] = array(
+		// 1.3.2 et 1.3.3 n'étaient pas suffisants grml'
 		array('medias_maj_date_publication_documents'),
 		array('medias_check_statuts', true)
 	);
@@ -222,7 +222,8 @@ function medias_peuple_media_document($champ_media = 'media_defaut') {
  * Maj des date de publication des documents cf ticket #3329, z104221
  */
 function medias_maj_date_publication_documents() {
-	sql_update('spip_documents', array('statut' => '0'), 'date_publication' > '2017-01-01 00:00:00');
+	sql_update('spip_documents', array('statut' => '0'), 'date_publication > ' . sql_quote('2017-01-01 00:00:00'));
+	sql_update('spip_documents', array('statut' => '0'), 'date_publication = ' . sql_quote('1970-01-01 01:33:58'));
 }
 
 /*
