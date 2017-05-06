@@ -200,7 +200,7 @@ function document_instituer($id_document, $champs = array()) {
 			"objet!='document' AND id_document=" . intval($id_document)
 		);
 		// On aura 19 jours 3h14 et 7 secondes pour corriger en 2038 (limitation de la représentation POSIX du temps sur les 32 bits)
-		$date_publication = '2038-01-01 00:00:00';
+		$date_publication = strtotime('2038-01-01 00:00:00');
 		include_spip('base/objets');
 		while ($row = sql_fetch($res)) {
 			if (
