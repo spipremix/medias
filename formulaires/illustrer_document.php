@@ -31,6 +31,17 @@ function formulaires_illustrer_document_charger_dist($id_document) {
 	$valeurs['id_vignette'] = $vignette['id_document'];
 	$valeurs['_pipeline'] = array('editer_contenu_objet', array('type' => 'illustrer_document', 'id' => $id_document));
 
+	// méthodes d'upload disponibles
+	$valeurs['_methodes_upload'] = array();
+	$valeurs['_methodes_upload']['upload'] = array('label_lien'=>_T('medias:bouton_download_local'),'label_bouton'=>_T('bouton_upload'));
+	$valeurs['_methodes_upload']['distant'] = array('label_lien'=>_T('medias:bouton_download_sur_le_web'),'label_bouton'=>_T('bouton_choisir'));
+
+	// pipeline pour les méthodes d'upload
+	$valeurs['_methodes_upload'] = pipeline('medias_methodes_upload', array(
+		'args' => array('objet' => 'document', 'id_objet' => $id_document),
+		'data' => $valeurs['_methodes_upload']
+	));
+
 	return $valeurs;
 }
 

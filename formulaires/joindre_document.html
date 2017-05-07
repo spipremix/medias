@@ -13,60 +13,9 @@
 	
 	<form action="#ENV{action}#formulaire_joindre_document-#ENV{id,new}" method="post" enctype='multipart/form-data'><div>
 		[(#ACTION_FORMULAIRE{#ENV{action}})]
-
-		[(#GET{mediatheque,[(#ENV{objet,''}|et{#ENV{id_objet,''}}|et{#ENV{proposer_media}})]})]
-
-		#SET{domid,_#ENV{mode}|concat{'_',#ENV{id,new}}}
-		#SET{methode,upload}
-		[(#ENV{joindre_mediatheque}|oui)#SET{methode,mediatheque}]
-		[(#ENV{joindre_distant}|oui)#SET{methode,distant}]
-		[(#ENV{joindre_ftp}|oui)#SET{methode,ftp}]
-
-		<div id="defaultsubmit#GET{domid}" class="none">DEFAULT</div>
-
-		<BOUCLE_methodes(DATA){source tableau,#ENV{_methodes_upload}}>
-			#SET{methode_upload,#CLE}
-			<div class='joindre_mode#GET{domid}[(#GET{methode}|=={#CLE}|non)none-js]' id='joindre_#CLE#GET{domid}'>
-				
-				[(#INCLURE{fond=formulaires/methodes_upload/#CLE, env, mediatheque=#ENV{objet,''}|et{#ENV{id_objet,''}}|et{#ENV{proposer_media}}})]
-
-				<div class='sourceup'>
-					[(#SET{cpt,1})]
-					<:medias:bouton_download_depuis:>
-					<BOUCLE_methodes_liens(DATA){source tableau,#ENV{_methodes_upload}}>
-						[(#GET{cpt}|>{1}|oui)
-							[(#VAL{'|'})]
-						]
-						[(#GET{methode_upload}|=={#CLE}|oui)
-							#VALEUR
-						]
-						[(#GET{methode_upload}|=={#CLE}|non)
-							<a href='#' onclick="change_methode('#GET{domid}','#CLE');return false;">#VALEUR</a>
-						]
-						[(#SET{cpt,#GET{cpt}|plus{1}})]
-					</BOUCLE_methodes_liens>
-				</div>
-				<p class='boutons'><input class='submit' type="submit" name="joindre_#CLE" value="<:bouton_upload:>"/></p>
-			</div>
-		</BOUCLE_methodes>
-
-		[(#REM) Formulaire pour deballer un zip]
-		[<div class="editer-groupe"><div class='fieldset deballer_zip'>(#ENV**{erreurs}|table_valeur{lister_contenu_archive})</div></div>]
-
-		<script type='text/javascript'>/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
-		if (window.jQuery){
-		function change_methode(domid,methode){
-			var id = "#joindre_"+methode+domid;
-			if (jQuery(id).is(':hidden')) {
-				jQuery('div.joindre_mode'+domid+':visible').slideUp('fast');
-				jQuery(id).slideDown('fast');
-			}
-			// placer en haut du formulaire les boutons submit par defaut correspondant a la methode active
-			jQuery("#defaultsubmit"+domid).html('').append(jQuery(id).find('.boutons').eq(-1).find('input').clone(true));
-		}
-		jQuery(function(){change_methode('#GET{domid}','#GET{methode}');});
-		}
-		/*#EVAL{chr(93)}[(#EVAL{chr(93)})]>*/</script>
+		
+		[(#INCLURE{fond=formulaires/inc-upload_document, env, mediatheque=#ENV{objet,''}|et{#ENV{id_objet,''}}|et{#ENV{proposer_media}}})]
+		
 	</div></form>
 </div>]
 [(#ENV{_galerie,''}|oui)
