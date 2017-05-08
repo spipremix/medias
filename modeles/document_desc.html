@@ -28,6 +28,9 @@ Distribue sous licence GPL
 			<div class="infos">
 				<div class="permanentes">
 					[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{distant-16.png}' width='16' height='16' alt='<:medias:fichier_distant|attribut_html:>' title='<:medias:fichier_distant|attribut_html:>'/> ]<:info_numero_abbreviation:>#ID_DOCUMENT - #EXTENSION
+					[(#LARGEUR|ou{#HAUTEUR}|oui)
+						[- (#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#LARGEUR,hauteur_vignette,#HAUTEUR}})]
+					]
 
 					<a class="lien_details"
 						onClick="$(this).parent().next('.detaillees').toggle(); return true;"
