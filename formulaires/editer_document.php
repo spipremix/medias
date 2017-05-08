@@ -146,7 +146,7 @@ function formulaires_editer_document_verifier_dist(
 	return $erreurs;
 }
 
-// http://code.spip.net/@inc_editer_article_dist
+// https://code.spip.net/@inc_editer_article_dist
 function formulaires_editer_document_traiter_dist(
 	$id_document = 'new',
 	$id_parent = '',
