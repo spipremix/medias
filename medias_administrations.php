@@ -186,6 +186,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		array('medias_maj_date_publication_documents'),
 		array('medias_check_statuts', true)
 	);
+	$maj['1.3.5'] = array(
+		// ajout de duree
+		array('maj_tables', 'spip_documents'),
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
