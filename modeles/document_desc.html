@@ -28,10 +28,11 @@ Distribue sous licence GPL
 			<div class="infos">
 				<div class="permanentes">
 					[(#DISTANT|=={oui}|oui)<img src='#CHEMIN_IMAGE{distant-16.png}' width='16' height='16' alt='<:medias:fichier_distant|attribut_html:>' title='<:medias:fichier_distant|attribut_html:>'/> ]<:info_numero_abbreviation:>#ID_DOCUMENT - #EXTENSION
-					[(#LARGEUR|ou{#HAUTEUR}|oui)
+					[(#LARGEUR|ou{#HAUTEUR}|et{#MEDIA|=={image}})
 						[- (#VAL{info_largeur_vignette}|_T{#ARRAY{largeur_vignette,#LARGEUR,hauteur_vignette,#HAUTEUR}})]
+					][(#MEDIA|in_array{#LISTE{audio,video}}|et{#DUREE|intval}|oui)
+					 - [(#DUREE|duree_en_secondes)]
 					]
-
 					<a class="lien_details"
 						onClick="$(this).parent().next('.detaillees').toggle(); return true;"
 						title="<:medias:details_document_afficher_masquer|attribut_html:>"><:medias:details_document:></a>
@@ -52,7 +53,11 @@ Distribue sous licence GPL
 							<th><:medias:info_resolution_image:></th>
 							<td>[(#VAL{medias:info_resolution_mpx}|_T{#ARRAY{resolution,#LARGEUR|mult{#HAUTEUR}|div{1000000}|round{1}|number_format{1}}})]</td>
 						</tr>
-						]
+						][(#DUREE|intval|oui)
+						<tr>
+							<th><:medias:info_duree:></th>
+							<td>[(#DUREE|duree_en_secondes{precis})]</td>
+						</tr>]
 						<tr>
 							<th><:medias:info_taille:></th>
 							<td>[(#TAILLE|taille_en_octets)]</td>

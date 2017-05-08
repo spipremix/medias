@@ -320,3 +320,28 @@ function medias_lister_methodes_upload($env) {
 
 	return $methodes;
 }
+
+function duree_en_secondes($duree, $precis = false) {
+	$out = "";
+	$heures = $minutes = 0;
+	if ($duree>3600) {
+		$heures = intval(floor($duree/3600));
+		$duree -= $heures * 3600;
+	}
+	if ($duree>60) {
+		$minutes = intval(floor($duree/60));
+		$duree -= $minutes * 60;
+	}
+
+	if ($heures>0 or $minutes>0) {
+		$out = _T('date_fmt_heures_minutes', array('h' => $heures, 'm' => $minutes));
+		if (!$heures) {
+			$out = preg_replace(',^0[^\d]+,Uims', '', $out);
+		}
+	}
+
+	if (!$heures or $precis) {
+		$out .= intval($duree).'s';
+	}
+	return $out;
+}
