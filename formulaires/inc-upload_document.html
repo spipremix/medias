@@ -1,5 +1,3 @@
-[(#GET{mediatheque,[(#ENV{objet,''}|et{#ENV{id_objet,''}}|et{#ENV{proposer_media}})]})]
-
 #SET{domid,_#ENV{mode}|concat{'_',#ENV{id,new}}}
 #SET{methode,upload}
 [(#ENV{joindre_mediatheque}|oui)#SET{methode,mediatheque}]
@@ -13,7 +11,7 @@
 	#SET{methode_upload,#CLE}
 	<div class='joindre_mode#GET{domid}[(#GET{methode}|=={#CLE}|non)none-js]' id='joindre_#CLE#GET{domid}'>
 
-		[(#INCLURE{fond=formulaires/methodes_upload/#CLE, env, mediatheque=#ENV{objet,''}|et{#ENV{id_objet,''}}|et{#ENV{proposer_media}}})]
+		<INCLURE{fond=formulaires/methodes_upload/#CLE,env,domid=#GET{domid}} />
 
 		<div class='sourceup'>
 			[(#SET{cpt,1})]
