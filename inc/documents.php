@@ -28,7 +28,7 @@ if (!defined('CHARSET_JOINT')) {
 // Filtre pour #FICHIER permettant d'incruster le contenu d'un document
 // Si 2e arg fourni, conversion dans le charset du site si possible
 
-// http://code.spip.net/@contenu_document
+// https://code.spip.net/@contenu_document
 function contenu_document($arg, $charset = '') {
 	include_spip('inc/distant');
 	if (is_numeric($arg)) {
@@ -61,7 +61,7 @@ function contenu_document($arg, $charset = '') {
 	return $r;
 }
 
-// http://code.spip.net/@generer_url_document_dist
+// https://code.spip.net/@generer_url_document_dist
 function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 
 	include_spip('inc/autoriser');
@@ -108,7 +108,7 @@ function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 //
 // A noter : dans le portfolio prive on pousse le vice jusqu'a reduire la taille
 // de la vignette -> c'est a ca que sert la variable $portfolio
-// http://code.spip.net/@vignette_automatique
+// https://code.spip.net/@vignette_automatique
 function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $class = 'spip_logo spip_logos') {
 	include_spip('inc/distant');
 	include_spip('inc/texte');
