@@ -6,9 +6,10 @@
 [(#ENV{joindre_distant}|oui)#SET{methode,distant}]
 [(#ENV{joindre_ftp}|oui)#SET{methode,ftp}]
 
-<div id="defaultsubmit#GET{domid}" class="none">DEFAULT</div>
+#SET{methodes_upload,#ENV**|medias_lister_methodes_upload}
 
-<BOUCLE_methodes(DATA){source tableau,#ENV{_methodes_upload}}>
+<div id="defaultsubmit#GET{domid}" class="none">DEFAULT</div>
+<BOUCLE_methodes(DATA){source tableau,#GET{methodes_upload}}>
 	#SET{methode_upload,#CLE}
 	<div class='joindre_mode#GET{domid}[(#GET{methode}|=={#CLE}|non)none-js]' id='joindre_#CLE#GET{domid}'>
 
@@ -17,7 +18,7 @@
 		<div class='sourceup'>
 			[(#SET{cpt,1})]
 			<:medias:bouton_download_depuis:>
-			<BOUCLE_methodes_liens(DATA){source tableau,#ENV{_methodes_upload}}>
+			<BOUCLE_methodes_liens(DATA){source tableau,#GET{methodes_upload}}>
 				[(#GET{cpt}|>{1}|oui)
 					[(#VAL{'|'})]
 				]

@@ -284,3 +284,39 @@ function filtre_vignette_dist($extension = 'defaut', $get_chemin = false) {
 	// retourne une balise <img ... />
 	return $balise_img($fichier);
 }
+
+/**
+ * Determiner les methodes upload en fonction du env de inc-upload_document
+ *
+ * @param string|array $env
+ * @return array
+ */
+function medias_lister_methodes_upload($env) {
+	if (is_string($env)) {
+		$env = unserialize($env);
+	}
+
+	$methodes = array();
+	// méthodes d'upload disponibles
+	$methodes = array();
+	$methodes['upload'] = array('label_lien'=>_T('medias:bouton_download_local'),'label_bouton'=>_T('bouton_upload'));
+
+	if((isset($env['mediatheque']) and $env['mediatheque'])){
+		$methodes['mediatheque'] = array('label_lien'=>_T('medias:bouton_download_par_mediatheque'),'label_bouton'=>_T('medias:bouton_attacher_document'));
+	}
+	
+	if((isset($env['proposer_ftp']) and $env['proposer_ftp'])){
+		$methodes['ftp'] = array('label_lien'=>_T('medias:bouton_download_par_ftp'),'label_bouton'=>_T('bouton_choisir'));
+	}
+	$methodes['distant'] = array('label_lien'=>_T('medias:bouton_download_sur_le_web'),'label_bouton'=>_T('bouton_choisir'));
+
+	// pipeline pour les méthodes d'upload
+	$methodes = pipeline('medias_methodes_upload',
+		array(
+			'args' => array('objet' => $env['objet'], 'id_objet' => $env['id_objet']),
+			'data' => $methodes
+		)
+	);
+
+	return $methodes;
+}

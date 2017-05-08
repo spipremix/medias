@@ -83,23 +83,6 @@ function formulaires_joindre_document_charger_dist(
 	$valeurs = array();
 	$mode = joindre_determiner_mode($mode, $id_document, $objet);
 
-	// méthodes d'upload disponibles
-	$valeurs['_methodes_upload'] = array();
-	$valeurs['_methodes_upload']['upload'] = array('label_lien'=>_T('medias:bouton_download_local'),'label_bouton'=>_T('bouton_upload'));
-	if($proposer_media && !empty($objet) && $id_objet != 0){
-		$valeurs['_methodes_upload']['mediatheque'] = array('label_lien'=>_T('medias:bouton_download_par_mediatheque'),'label_bouton'=>_T('medias:bouton_attacher_document'));
-	}
-	if($proposer_ftp) {
-		$valeurs['_methodes_upload']['ftp'] = array('label_lien'=>_T('medias:bouton_download_par_ftp'),'label_bouton'=>_T('bouton_choisir'));
-	}
-	$valeurs['_methodes_upload']['distant'] = array('label_lien'=>_T('medias:bouton_download_sur_le_web'),'label_bouton'=>_T('bouton_choisir'));
-
-
-	// pipeline pour les méthodes d'upload
-	$valeurs['_methodes_upload'] = pipeline('medias_methodes_upload', array(
-		'args' => array('objet' => $objet, 'id_objet' => $id_objet), 
-		'data' => $valeurs['_methodes_upload']
-	));
 
 	$valeurs['id'] = $id_document;
 	$valeurs['_mode'] = $mode;
