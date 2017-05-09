@@ -91,6 +91,9 @@ function formulaires_joindre_document_charger_dist(
 	$valeurs['fichier_upload'] = $valeurs['_options_upload_ftp'] = $valeurs['_dir_upload_ftp'] = '';
 	$valeurs['joindre_upload'] = $valeurs['joindre_distant'] =
 	$valeurs['joindre_ftp'] = $valeurs['joindre_mediatheque'] = '';
+	
+	// gérer le focus de la méthode d'upload lorsque le formulaire est envoyé
+	$valeurs['methode_upload_focus'] = _request('methode_upload_focus');
 
 	$valeurs['editable'] = ' ';
 	if (intval($id_document)) {

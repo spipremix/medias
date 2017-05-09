@@ -5,8 +5,9 @@
 [(#ENV{joindre_ftp}|oui)#SET{methode,ftp}]
 
 #SET{methodes_upload,#ENV**|medias_lister_methodes_upload}
+[(#ENV{methode_upload_focus}|et{#GET{methodes_upload}|is_array}|et{#ENV{methode_upload_focus}|array_key_exists{#GET{methodes_upload}}}|oui)#SET{methode,#ENV{methode_upload_focus}}]
 
-<div id="defaultsubmit#GET{domid}" class="none">DEFAULT</div>
+<div id="defaultsubmit#GET{domid}" class="none"></div>
 <BOUCLE_methodes(DATA){source tableau,#GET{methodes_upload}}>
 	#SET{methode_upload,#CLE}
 	<div class='joindre_mode#GET{domid}[(#GET{methode}|=={#CLE}|non)none-js]' id='joindre_#CLE#GET{domid}'>
