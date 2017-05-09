@@ -93,7 +93,7 @@ function formulaires_joindre_document_charger_dist(
 	$valeurs['joindre_ftp'] = $valeurs['joindre_mediatheque'] = '';
 	
 	// gérer le focus de la méthode d'upload lorsque le formulaire est envoyé
-	$valeurs['methode_upload_focus'] = _request('methode_upload_focus');
+	$valeurs['methode_focus'] = _request('methode_focus');
 
 	$valeurs['editable'] = ' ';
 	if (intval($id_document)) {
