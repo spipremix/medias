@@ -194,9 +194,8 @@ function document_instituer($id_document, $champs = array()) {
 		$trouver_table = charger_fonction('trouver_table', 'base');
 		$res = sql_select('id_objet,objet', 'spip_documents_liens',
 			"objet!='document' AND id_document=" . intval($id_document));
-		// dans 10 ans, ca nous fera un bug a corriger vers 2018
-		// penser a ouvrir un ticket d'ici la :p
-		$date_publication = time() + 10 * 365 * 24 * 3600;
+		// On aura 19 jours 3h14 et 7 secondes pour corriger en 2038 (limitation de la représentation POSIX du temps sur les 32 bits)
+		$date_publication = '2038-01-01 00:00:00';
 		include_spip('base/objets');
 		while ($row = sql_fetch($res)) {
 			if (
