@@ -173,7 +173,8 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// plus de place dans les crédits
 		array('sql_alter', "TABLE spip_documents CHANGE credits credits text DEFAULT '' NOT NULL"),
 	);
-	$maj['1.2.9'] = array(
+	$maj['1.2.10'] = array(
+		// 1.2.9 n'était pas suffisant grml'
 		array('medias_maj_date_publication_documents'),
 		array('medias_check_statuts', true)
 	);
@@ -215,7 +216,8 @@ function medias_peuple_media_document($champ_media = "media_defaut") {
  * Maj des date de publication des documents cf ticket #3329, z104221
  */
 function medias_maj_date_publication_documents() {
-	sql_update('spip_documents', array('statut' => '0'), 'date_publication' > '2017-01-01 00:00:00');
+	sql_update('spip_documents', array('statut' => '0'), 'date_publication > ' . sql_quote('2017-01-01 00:00:00'));
+	sql_update('spip_documents', array('statut' => '0'), 'date_publication = ' . sql_quote('1970-01-01 01:33:58'));
 }
 
 /*
