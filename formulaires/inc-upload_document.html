@@ -14,7 +14,7 @@
 		<div class='editer editer_fichier_upload[ (#ENV**{erreurs}|table_valeur{fichier_upload}|oui)erreur]'>
 			<label for='fichier_upload#GET{domid}'><:bouton_upload:></label>[
 			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{fichier_upload})</span>
-			]<input class='file multi' type="file" name="fichier_upload[]" value='[(#ENV{fichier_upload}|is_array|?{'', #ENV{fichier_upload}})]' id="fichier_upload#GET{domid}" size='11' />
+			]<input class='file[ (#ENV{multi}|=={oui}|oui)multi]' type="file" name="fichier_upload[]" value='[(#ENV{fichier_upload}|is_array|?{'', #ENV{fichier_upload}})]' id="fichier_upload#GET{domid}" size='11' />
 			<!--editer_fichier_upload-->
 		</div>
 	</div>
