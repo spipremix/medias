@@ -35,7 +35,7 @@
 				[(#PIPELINE{editer_document_actions,#ARRAY{args,#ARRAY{id_document,#ENV{id_document,nouveau}},data,''}})]
 				&#91;<a href='#' onclick='jQuery("#changer_fichier_document").toggle("fast");return false;'><:bouton_changer:></a>&#93;
 				</p>
-				#SET{upload,#INCLURE{fond=formulaires/inc-upload_document, env, joindre_upload=oui}}
+				#SET{upload,#INCLURE{fond=formulaires/inc-upload_document, env, joindre_upload=oui, multi=non}}
 				<div id='changer_fichier_document' class="[(#GET{upload}|match{erreur}|non)none-js]">
 					#GET{upload}
 				</div>
