@@ -37,7 +37,7 @@
 [(#REM) Formulaire pour deballer un zip]
 [<div class="editer-groupe"><div class='fieldset deballer_zip'>(#ENV**{erreurs}|table_valeur{lister_contenu_archive})</div></div>]
 
-<script type='text/javascript'>/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
+<script type='text/javascript'>/*<!\[CDATA#EVAL\[*/
 if (window.jQuery){
 function change_methode(domid,methode){
 	var id = "#joindre_"+methode+domid;
@@ -52,4 +52,4 @@ function change_methode(domid,methode){
 }
 jQuery(function(){change_methode('#GET{domid}','#GET{methode}');});
 }
-/*#EVAL{chr(93)}[(#EVAL{chr(93)})]>*/</script>
+/*\]\]>*/</script>

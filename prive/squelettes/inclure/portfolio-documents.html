@@ -78,7 +78,7 @@ var multifile='[(#CHEMIN{javascript/jquery.multifile.js}|texte_script)]';
 [(#INCLURE{javascript/medias_edit.js}|compacte{js})]
 
 /* Sur la page d'une rubrique, recharger la boîte d'info en cas de rechargement ajax */
-[(#OBJET|=={rubrique}|et{#EVAL{_AJAX}}|et{#GET{nbdocs}|=={1}}|oui)
+[(#OBJET|=={rubrique}|et{#CONST{_AJAX}}|et{#GET{nbdocs}|=={1}}|oui)
 if (window.jQuery) jQuery('#navigation .box.info').ajaxReload();]
 
 /* Gestion des différents modes d'affichages, du tri des documents, et des rechargements ajax */

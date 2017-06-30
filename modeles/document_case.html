@@ -29,7 +29,7 @@
 			]
 			[(#ID_DOCUMENT|medias_raccourcis_doc{#_docslies:TITRE,#_docslies:DESCRIPTIF,#INCLUS,#LARGEUR,#HAUTEUR,#MODE,#VU,#MEDIA})]
 			</BOUCLE_type_doc>
-				[<div class="mode">(#INCLUS|=={image}|et{#EVAL{_BOUTON_MODE_IMAGE}}|oui)
+				[<div class="mode">(#INCLUS|=={image}|et{#CONST{_BOUTON_MODE_IMAGE}}|oui)
 					[(#MODE|=={image}|oui)
 					[(#BOUTON_ACTION{<:medias:upload_info_mode_document:>,#URL_ACTION_AUTEUR{changer_mode_document,#ID_DOCUMENT-document,#SELF},ajax})]
 					][(#MODE|=={image}|non)
