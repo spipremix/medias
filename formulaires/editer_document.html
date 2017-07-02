@@ -5,7 +5,7 @@
 	<form method='post' action='#ENV{action}' enctype='multipart/form-data'><div>
 		[(#REM) declarer les hidden qui declencheront le service du formulaire 
 		parametre : url d'action ]
-		#ACTION_FORMULAIRE{#ENV{action}}
+		#ACTION_FORMULAIRE
 		<input type='hidden' name='id_document' value='#ENV{id_document}' />
 		[(#REM) un bouton submit pour enregistrer qui sera declenche par le return
 		il ne doit pas etre hidden pour marcher dans safari
