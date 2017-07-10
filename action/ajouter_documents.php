@@ -145,7 +145,6 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 			'distant' => 'non'
 		);
 
-		$type_image = ''; // au pire
 		$champs['titre'] = '';
 		if ($titrer) {
 			$titre = substr($nom_envoye, 0, strrpos($nom_envoye, '.')); // Enlever l'extension du nom du fichier
@@ -172,8 +171,29 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		 */
 		$infos = renseigner_taille_dimension_image($champs['fichier'], $champs['extension']);
 		if (is_string($infos)) {
+			// c'est un message d'erreur !
 			return $infos;
-		} // c'est un message d'erreur !
+		}
+
+		// lorsqu’une image arrive avec une mauvaise extension par rapport au mime type, adapter.
+		// Exemple : si extension .jpg mais le contenu est un png
+		if (!empty($infos['type_image']) and $infos['type_image'] !== $champs['extension']) {
+			spip_log('Image `' . $file['name'] . '` mauvaise extension. Correcte : ' . $infos['type_image'], 'medias' . _LOG_INFO);
+			$new = copier_document($infos['type_image'], $file['name'] . '.' . $infos['type_image'], $champs['fichier']);
+			if ($new) {
+				supprimer_fichier($champs['fichier']);
+				$champs['fichier'] = $new;
+				$champs['extension'] = $infos['type_image'];
+				$infos = renseigner_taille_dimension_image($champs['fichier'], $champs['extension']);
+				if (is_string($infos)) {
+					// c'est un message d'erreur !
+					return $infos;
+				}
+				spip_log('> Image `' . $file['name'] . '` renommée en : ' . basename($champs['fichier']), 'medias' . _LOG_INFO);
+			} else {
+				spip_log('! Image  `' . $file['name'] . '` non renommée en extension : ' . $champs['extension'], 'medias' . _LOG_INFO_IMPORTANTE);
+			}
+		}
 
 		$champs = array_merge($champs, $infos);
 
