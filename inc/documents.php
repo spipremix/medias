@@ -112,14 +112,16 @@ function generer_url_document_dist($id_document, $args = '', $ancre = '') {
 //
 // A noter : dans le portfolio prive on pousse le vice jusqu'a reduire la taille
 // de la vignette -> c'est a ca que sert la variable $portfolio
-// https://code.spip.net/@vignette_automatique
-function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $class = 'spip_logo spip_logos') {
+function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $class = null, $connect = null) {
 	include_spip('inc/distant');
 	include_spip('inc/texte');
 	include_spip('inc/filtres_images_mini');
+	if (is_null($class)) {
+		$class = 'spip_logo spip_logos';
+	}
 	$e = $doc['extension'];
 	if (!$img) {
-		if ($img = image_du_document($doc)) {
+		if ($img = image_du_document($doc, $connect)) {
 			if (!$x and !$y) {
 				// eviter une double reduction
 				$img = image_reduire($img);
@@ -162,13 +164,21 @@ function vignette_automatique($img, $doc, $lien, $x = 0, $y = 0, $align = '', $c
 	return "<a href='$lien' type='$mime' title='$titre'>$img</a>";
 }
 
-// Trouve une image caracteristique d'un document.
-// Si celui-ci est une image et que les outils graphiques sont dispos,
-// retourner le document (en exploitant sa copie locale s'il est distant).
-// Autrement retourner la vignette fournie par SPIP pour ce type MIME
-// Resultat: un fichier local existant
-
-function image_du_document($document) {
+/**
+ * Trouve une image caractéristique d'un document.
+ *
+ * Si celui-ci est une image et que les outils graphiques sont dispos,
+ * retourner le document (en exploitant sa copie locale s'il est distant).
+ *
+ * Si on a un connecteur externe, on utilise l’URL externe.
+ *
+ * Autrement retourner la vignette fournie par SPIP pour ce type MIME
+ *
+ * @param array $document
+ * @param null|string $connect
+ * @return string Chemin de l’image
+ */
+function image_du_document($document, $connect = null) {
 	if ($e = $document['extension']
 		and isset($GLOBALS['meta']['formats_graphiques'])
 		and (strpos($GLOBALS['meta']['formats_graphiques'], $e) !== false)
@@ -177,6 +187,8 @@ function image_du_document($document) {
 	) {
 		if ($document['distant'] == 'oui') {
 			$image = _DIR_RACINE . copie_locale($document['fichier']);
+		} elseif ($image = document_spip_externe($document['fichier'], $connect)) {
+			return $image;
 		} else {
 			$image = get_spip_doc($document['fichier']);
 		}
