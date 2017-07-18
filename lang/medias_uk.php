@@ -10,6 +10,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_grand' => 'Великий екран',
+	'affichage_documents_en_liste_compacte' => 'Компактні списки',
 	'aucun_audio' => 'Нема аудіо файлів ',
 	'aucun_document' => 'Нема документів (файлів)',
 	'aucun_file' => 'Нема документів (файлів)',
@@ -51,6 +53,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => 'Використовується @nb@ раз(ів)',
 	'des_videos' => '@nb@ відео файлів',
 	'descriptif' => 'Опис',
+	'details_document' => 'Деталі',
+	'details_document_afficher_masquer' => 'Показати / сховати деталі документу',
 	'document_attache_succes' => 'Документ (файл) доданий успішно',
 	'document_copie_locale_succes' => 'Файл успішно скопійований на сайт',
 	'document_installe_succes' => 'Файл доданий успішно',
@@ -71,14 +75,17 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Назва зображення:',
 	'erreur_aucun_document' => 'Цього документу нема в модулі управління файлами',
 	'erreur_aucun_fichier' => 'Файл не знайдений',
+	'erreur_autorisation' => 'Проблема авторизації.',
 	'erreur_chemin_distant' => 'Файл @nom@ з іншого сайту не знайдений',
 	'erreur_chemin_ftp' => 'Не вдалося знайти вказаний файл на сервері',
 	'erreur_copie_fichier' => 'Неможливо скопіювати файл @nom@ до вказаної папки',
+	'erreur_deplacement_impossible' => 'Неможливо перемістити.',
 	'erreur_dossier_tmp_manquant' => 'Не вдається створити тимчасову папку для завантаження файлів',
 	'erreur_ecriture_fichier' => 'Помилка при спробі записати на диск',
 	'erreur_format_fichier_image' => 'Формат файлу @nom@ не схожий на формат зображення',
 	'erreur_indiquez_un_fichier' => 'Вкажіть файл!',
 	'erreur_insertion_document_base' => 'Не вдається додати документ @fichier@ до бази даних',
+	'erreur_objet_absent' => 'Інформації недостатньо.',
 	'erreur_suppression_vignette' => 'При видаленні мініатюри виникла помилка',
 	'erreur_upload_type_interdit' => 'Заборонено завантаження цього типу файлів - @nom@',
 	'erreur_upload_vignette' => 'При завантаженні мініатюри виникла помилка @nom@',
@@ -97,10 +104,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'image_tourner_180' => 'Поворот на 180°',
 	'image_tourner_droite' => 'Поворот на 90° вправо',
 	'image_tourner_gauche' => 'Поворот на 90° вліво',
+	'info_dimensions_image' => 'Розміри',
 	'info_doc_max_poids' => 'Розмір файлу має бути не більше @maxi@ (поточний розмір @actuel@).',
 	'info_document' => 'Документ',
 	'info_document_indisponible' => 'Цей документ недоступний',
 	'info_documents' => 'Документи',
+	'info_duree' => 'Тривалість ',
 	'info_gauche_numero_document' => 'НОМЕР ДОКУМЕНТУ',
 	'info_hauteur' => 'Висота',
 	'info_heure' => 'Час',
@@ -116,6 +125,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_document' => 'Змінити файл',
 	'info_portfolio' => 'Галерея фотографій і документів',
 	'info_referencer_doc_distant' => 'Посилання на файл (URL):',
+	'info_resolution_mpx' => '@resolution@ Mpx',
 	'info_sans_vignette' => 'Без мініатюри',
 	'info_statut_document' => 'Статус документу:',
 	'info_taille' => 'Вага',
@@ -134,6 +144,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_paginer_par' => 'Посторінково по:',
 	'label_parents' => 'Документ використовується в:',
 	'label_refdoc_joindre' => 'Номер документа',
+	'lien_tout_desordonner_verif' => 'Порядок, встановлений для цього списку документів, буде скинуто. Ви впевнені?',
 	'lien_tout_enlever' => 'Видалити усе',
 	'logo' => 'Лого',
 
@@ -151,6 +162,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Документ',
 	'objet_documents' => 'Документи',
+	'ordonner_ce_document' => 'Упорядкувати цей документ',
 
 	// P
 	'par_date' => 'Дата',
