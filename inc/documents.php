@@ -185,6 +185,7 @@ function image_du_document($document, $connect = null) {
 		and (!test_espace_prive() or $GLOBALS['meta']['creer_preview'] == 'oui')
 		and $document['fichier']
 	) {
+		include_spip('inc/quete');
 		if ($document['distant'] == 'oui') {
 			$image = _DIR_RACINE . copie_locale($document['fichier']);
 		} elseif ($image = document_spip_externe($document['fichier'], $connect)) {
