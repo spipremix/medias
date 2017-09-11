@@ -10,6 +10,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'affichage_documents_en_cases' => 'Zobraziť v poliach',
+	'affichage_documents_en_grand' => 'Zobraziť plnú veľkosť',
+	'affichage_documents_en_liste_compacte' => 'Zobraziť ako kompaktný zoznam',
 	'aucun_audio' => 'Žiadna zvuková stopa',
 	'aucun_document' => 'Žiaden dokument',
 	'aucun_file' => 'Žiaden dokument',
@@ -51,6 +54,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'des_utilisations' => '@nb@ použití',
 	'des_videos' => '@nb@ videosekvencií',
 	'descriptif' => 'Opis',
+	'details_document' => 'Podrobnosti',
+	'details_document_afficher_masquer' => 'Zobraziť/skryť podrobnosti dokumentu',
 	'document_attache_succes' => 'Dokument bol úspešne pridaný',
 	'document_copie_locale_succes' => 'Súbor bol úspešne skopírovaný na stránku',
 	'document_installe_succes' => 'Súbor sa úspešne nahral',
@@ -71,6 +76,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'entree_titre_image' => 'Názov obrázka:',
 	'erreur_aucun_document' => 'Tento dokument v knižnici multimédií neexistuje',
 	'erreur_aucun_fichier' => 'Žiaden súbor sa nenašiel',
+	'erreur_autorisation' => 'Autorizácia sa nepodarila.',
 	'erreur_chemin_distant' => 'Nepodarilo sa nájsť vzdialený súbor @nom@',
 	'erreur_chemin_ftp' => 'Uvedený súbor sa na serveri nenašiel',
 	'erreur_copie_fichier' => 'Nepodarilo sa skopírovať súbor @nom@',
@@ -79,6 +85,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_format_fichier_image' => 'Formát súboru @nom@ nie je vhodný pre obrázok',
 	'erreur_indiquez_un_fichier' => 'Uveďte súbor!',
 	'erreur_insertion_document_base' => 'Dokument @fichier@ sa nepodarilo uložiť do databázy súborov',
+	'erreur_objet_absent' => 'Prijaté údaje nie sú kompletné.',
 	'erreur_suppression_vignette' => 'Chyba pri odstraňovaní miniatúry',
 	'erreur_upload_type_interdit' => 'Sťahovanie súborov typu @nom@ nie je povolené',
 	'erreur_upload_vignette' => 'Chyba pri načítavaní miniatúry @nom@',
@@ -97,10 +104,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'image_tourner_180' => 'Otočiť o 180°',
 	'image_tourner_droite' => 'Otočiť o 90° doprava',
 	'image_tourner_gauche' => 'Otočiť o 90° doľava',
+	'info_dimensions_image' => 'Rozmery',
 	'info_doc_max_poids' => 'Dokumenty musia mať nevyhnutne menej ako @maxi@ (tento súbor má @actuel@).',
 	'info_document' => 'Dokument',
 	'info_document_indisponible' => 'Tento dokument je nedostupný',
 	'info_documents' => 'Dokumenty',
+	'info_duree' => 'Trvanie',
 	'info_gauche_numero_document' => 'DOKUMENT ČÍSLO',
 	'info_hauteur' => 'Výška',
 	'info_heure' => 'Čas',
@@ -116,6 +125,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_document' => 'Upraviť dokument',
 	'info_portfolio' => 'Portfólio',
 	'info_referencer_doc_distant' => 'Odkázať na dokument na internete:',
+	'info_resolution_image' => 'Rozlíšenie',
+	'info_resolution_mpx' => '@resolution@ Mpx',
 	'info_sans_vignette' => 'Žiadna miniatúra',
 	'info_statut_document' => 'Tento dokument je:',
 	'info_taille' => 'Veľkosť',
@@ -134,6 +145,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_paginer_par' => 'Stránkovať po:',
 	'label_parents' => 'Tento dokument je prepojený s prvkom',
 	'label_refdoc_joindre' => 'Dokument číslo',
+	'lien_tout_desordonner' => 'Obnoviť poradie',
+	'lien_tout_desordonner_verif' => 'Poradie určené pre tento zoznam dokumentov sa zmení. Určite to chcete urobiť?',
 	'lien_tout_enlever' => 'Odstrániť všetko',
 	'logo' => 'Logo',
 
@@ -151,6 +164,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// O
 	'objet_document' => 'Dokument',
 	'objet_documents' => 'Dokumenty',
+	'ordonner_ce_document' => 'Zoradiť tento dokument',
 
 	// P
 	'par_date' => 'Dátum',
