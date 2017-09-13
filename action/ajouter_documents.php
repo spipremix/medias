@@ -120,6 +120,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 			return _T('medias:erreur_chemin_distant', array('nom' => $source));
 		}
 		include_spip('inc/distant');
+		$source = str_replace(array("'",'"','<'),array("%27",'%22','%3C'), $source);
 		if (is_array($a = renseigner_source_distante($source))) {
 
 			$champs = $a;
