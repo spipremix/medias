@@ -45,7 +45,7 @@ function erreur_upload_trop_gros() {
 	include_spip('inc/filtres');
 
 	$msg = '<p>'
-		. taille_en_octets($_SERVER['CONTENT_LENGTH'])
+		. taille_en_octets(entites_html($_SERVER['CONTENT_LENGTH']))
 		. '<br />'
 		. _T(
 			'medias:upload_limit',

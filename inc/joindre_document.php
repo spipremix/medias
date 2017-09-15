@@ -51,7 +51,7 @@ function joindre_trouver_fichier_envoye() {
 								return $err;
 							} // un erreur upload
 							if (!is_array(verifier_upload_autorise($test['name']))) {
-								return _T('medias:erreur_upload_type_interdit', array('nom' => $test['name']));
+								return _T('medias:erreur_upload_type_interdit', array('nom' => entites_html($test['name'])));
 							}
 							$files[] = $test;
 						}
@@ -63,7 +63,7 @@ function joindre_trouver_fichier_envoye() {
 							return $err;
 						} // un erreur upload
 						if (!is_array(verifier_upload_autorise($file['name']))) {
-							return _T('medias:erreur_upload_type_interdit', array('nom' => $file['name']));
+							return _T('medias:erreur_upload_type_interdit', array('nom' => entites_html($file['name'])));
 						}
 						$files[] = $file;
 					}
@@ -284,7 +284,7 @@ function joindre_decrire_contenu_zip($zip) {
 		} else // pas de message pour les dossiers et fichiers caches
 		{
 			if (substr($f, -1) !== '/' and substr(basename($f), 0, 1) !== '.') {
-				$erreurs[] = _T('medias:erreur_upload_type_interdit', array('nom' => $f));
+				$erreurs[] = _T('medias:erreur_upload_type_interdit', array('nom' => entites_html($f)));
 			}
 		}
 	}

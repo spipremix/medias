@@ -89,5 +89,5 @@ function action_copier_local_post($id_document) {
 		spip_log("echec copie locale $source n'est pas une URL distante", 'medias' . _LOG_ERREUR);
 	}
 
-	return _T('medias:erreur_copie_fichier', array('nom' => $source));
+	return _T('medias:erreur_copie_fichier', array('nom' => entites_html($source)));
 }

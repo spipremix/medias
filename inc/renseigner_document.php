@@ -61,7 +61,7 @@ function renseigner_source_distante($source) {
 	// methode traditionnelle : chargement de l'url puis analyse
 	if (!isset($a['fichier']) or !isset($a['mode'])) {
 		if (!$a = recuperer_infos_distantes($a['source'])) {
-			return _T('medias:erreur_chemin_distant', array('nom' => $source));
+			return _T('medias:erreur_chemin_distant', array('nom' => entites_html($source)));
 		}
 		# NB: dans les bonnes conditions (fichier autorise et pas trop gros)
 		# $a['fichier'] est une copie locale du fichier
@@ -123,13 +123,13 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 			if (!$res) {
 				spip_log("Echec copie du fichier $fichier", 'medias');
 
-				return _T('medias:erreur_copie_fichier', array('nom' => $fichier));
+				return _T('medias:erreur_copie_fichier', array('nom' => entites_html($fichier)));
 			}
 			$fichier = $tmp;
 		} else {
 			spip_log("Echec copie du fichier $fichier", 'medias');
 
-			return _T('medias:erreur_copie_fichier', array('nom' => $fichier));
+			return _T('medias:erreur_copie_fichier', array('nom' => entites_html($fichier)));
 		}
 	}
 
