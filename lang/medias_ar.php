@@ -151,7 +151,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'lien_tout_desordonner' => 'إعادة تأصيل الترتيب',
 	'lien_tout_desordonner_verif' => 'سيتم إعادة تأصيل ترتيب هذه اللائحة. هل تؤكدون ذلك؟',
 	'lien_tout_enlever' => 'إزالة الكل',
-	'logo' => 'شعار',
+	'logo' => 'رمز',
 
 	// M
 	'media_audio' => 'شريط صوتي',
