@@ -17,12 +17,12 @@ function inc_verifier_document_mode_image_dist($infos) {
 
 	// Si on veut uploader une image, il faut qu'elle ait ete bien lue
 	if ($infos['inclus'] != 'image') {
-		return _T('medias:erreur_format_fichier_image', array('nom' => entites_html($infos['fichier'])));
+		return _T('medias:erreur_format_fichier_image', array('nom' => $infos['fichier']));
 	} #SVG
 
 	if (isset($infos['largeur']) and isset($infos['hauteur'])) {
 		if (!($infos['largeur'] or $infos['hauteur'])) {
-			return _T('medias:erreur_upload_vignette', array('nom' => entites_html($infos['fichier'])));
+			return _T('medias:erreur_upload_vignette', array('nom' => $infos['fichier']));
 		}
 	}
 

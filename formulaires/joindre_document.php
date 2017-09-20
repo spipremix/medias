@@ -425,7 +425,7 @@ function joindre_options_upload_ftp($dir, $mode = 'document') {
 				if (!in_array($ledossier, $dirs)) {
 					$texte_upload[] = "\n<option value=\"$ledossier\">"
 						. str_repeat('&nbsp;', $k)
-						. _T('medias:tout_dossier_upload', array('upload' => entites_html($ledossier)))
+						. _T('medias:tout_dossier_upload', array('upload' => $ledossier))
 						. '</option>';
 					$dirs[] = $ledossier;
 				}

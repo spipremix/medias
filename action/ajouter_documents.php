@@ -118,7 +118,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 	// content-type est connu, et si possible recuperer la taille, voire plus.
 	if (isset($file['distant']) and $file['distant']) {
 		if (!tester_url_absolue($source)) {
-			return _T('medias:erreur_chemin_distant', array('nom' => entites_html($source)));
+			return _T('medias:erreur_chemin_distant', array('nom' => $source));
 		}
 		include_spip('inc/distant');
 		$source = str_replace(array("'",'"','<'),array("%27",'%22','%3C'), $source);
@@ -155,7 +155,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 
 		if (!is_array($fichier = fixer_fichier_upload($file, $mode))) {
 			return is_string($fichier) ?
-				$fichier : _T('medias:erreur_upload_type_interdit', array('nom' => entites_html($file['name'])));
+				$fichier : _T('medias:erreur_upload_type_interdit', array('nom' => $file['name']));
 		}
 
 		$champs['inclus'] = $fichier['inclus'];
@@ -256,7 +256,7 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		}
 	}
 	if (!$id_document) {
-		return _T('medias:erreur_insertion_document_base', array('fichier' => '<em>' . entites_html($file['name']) . '</em>'));
+		return _T('medias:erreur_insertion_document_base', array('fichier' => '<em>' . $file['name'] . '</em>'));
 	}
 
 	document_modifier($id_document, $champs);
@@ -411,7 +411,7 @@ function fixer_fichier_upload($file, $mode = '') {
 			if ($row['fichier'] && (!$taille = @intval(filesize(get_spip_doc($row['fichier']))))) {
 				spip_log('Echec copie du fichier ' . $file['tmp_name'] . ' (taille de fichier indéfinie)');
 				spip_unlink(get_spip_doc($row['fichier']));
-				return _T('medias:erreur_copie_fichier', array('nom' => entites_html($file['tmp_name'])));
+				return _T('medias:erreur_copie_fichier', array('nom' => $file['tmp_name']));
 			} else {
 				return $row;
 			}
@@ -465,7 +465,7 @@ function fixer_fichier_upload($file, $mode = '') {
 				spip_log('Echec copie du fichier ' . $file['tmp_name'] . ' (taille de fichier indéfinie)');
 				spip_unlink(get_spip_doc($row['fichier']));
 
-				return _T('medias:erreur_copie_fichier', array('nom' => entites_html($file['tmp_name'])));
+				return _T('medias:erreur_copie_fichier', array('nom' => $file['tmp_name']));
 			} else {
 				return $row;
 			}
