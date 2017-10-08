@@ -47,11 +47,11 @@
 	<procure nom="minidoc" version="1.0.2" />
 	<procure nom="ordoc" version="1.1.1" />
 
-	<necessite nom="archiviste" compatibilite="[0.2.1;]" />
+	<necessite nom="archiviste" compatibilite="[0.3.0;]" />
 
-	<utilise nom="Z" compatibilite="[1.7.28;]" />
-	<utilise nom="mediabox" compatibilite="[1.1.2;]" />
-	<utilise nom="mots" compatibilite="[2.8.2;]" />
+	<utilise nom="Z" compatibilite="[1.7.30;]" />
+	<utilise nom="mediabox" compatibilite="[1.2.0;]" />
+	<utilise nom="mots" compatibilite="[2.9.0;]" />
 
 	<menu nom="documents" titre="medias:info_documents" parent="menu_edition" icone="images/portfolio-16.png" />
 
