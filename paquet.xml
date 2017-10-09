@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.20.15"
+	version="2.20.16"
 	etat="stable"
 	compatibilite="[3.2.0;3.2.*]"
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -44,8 +44,8 @@
 	<pipeline nom="ieconfig_metas" inclure="medias_ieconfig.php" />
 	<pipeline nom="medias_methodes_upload" action='' /> 
 
-	<procure nom="minidoc" version="1.0.2" />
-	<procure nom="ordoc" version="1.1.1" />
+	<procure nom="minidoc" version="1.0.3" />
+	<procure nom="ordoc" version="1.1.2" />
 
 	<necessite nom="archiviste" compatibilite="[0.2.2;]" />
 
