@@ -110,6 +110,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_document' => 'Dokument',
 	'info_document_indisponible' => 'Dokument nicht verfügbar',
 	'info_documents' => 'Dokumente',
+	'info_duree' => 'Dauer',
 	'info_gauche_numero_document' => 'DOKUMENT NUMMER',
 	'info_hauteur' => 'Höhe',
 	'info_heure' => 'Stunde',
