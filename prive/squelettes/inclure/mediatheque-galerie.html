@@ -1,9 +1,9 @@
 #SET{editable,#ENV{editable,oui}|=={non}|non}
 
 <div class="galerie[ media-(#ENV{media,''})]">
+	[(#SET{poids_total,0})]<BOUCLE_poids_total(DOCUMENTS){id_rubrique ?}{id_article ?}{id_breve ?}{id_document ?}{recherche ?}{media?}{extension?}{distant?}{brise?}{statut==#ENV{statut,.*}}{orphelins?}{titre==(#ENV{sanstitre}|?{'^$','.*'})}{id_vignette==(#ENV{sansvignette}|?{'^0','.*'})}>[(#SET{poids_total,#GET{poids_total}|plus{#TAILLE}})]</BOUCLE_poids_total>
 	<B_galerie>
-	
-	<h2>[(#GRAND_TOTAL|singulier_ou_pluriel{#VAL{medias:un_}|concat{#ENV{media,document}},#VAL{medias:des_}|concat{#ENV{media,document},s}})]</h2>
+	<h2>[(#GRAND_TOTAL|singulier_ou_pluriel{#VAL{medias:un_}|concat{#ENV{media,document}},#VAL{medias:des_}|concat{#ENV{media,document},s}})][ - (#GET{poids_total}|taille_en_octets)]</h2>
 	<div class='pagination tri'>
 		[(#TRI{'>',#CHEMIN_IMAGE{tri-asc-16.png}|balise_img{<:par_tri_croissant:>}}) |]
 		[(#TRI{'<',#CHEMIN_IMAGE{tri-desc-16.png}|balise_img{<:par_tri_decroissant:>}}) |]
