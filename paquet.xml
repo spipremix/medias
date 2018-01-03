@@ -1,7 +1,7 @@
 <paquet
 	prefix="medias"
 	categorie="multimedia"
-	version="2.21.5"
+	version="2.21.6"
 	etat="stable"
 	compatibilite="[3.3.0-dev;3.3.*]"
 	logo="prive/themes/spip/images/portfolio-32.png"
@@ -46,6 +46,7 @@
 
 	<procure nom="minidoc" version="1.0.3" />
 	<procure nom="ordoc" version="1.1.2" />
+	<procure nom="mejs" version="4.2.7" />
 
 	<necessite nom="archiviste" compatibilite="[0.3.0;]" />
 
