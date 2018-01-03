@@ -17,7 +17,7 @@ var mejsloader;
 		L.init = function (){
 			if (!(L.gs===true)) return;
 			(function ($){
-				jQuery("audio.mejs,video.mejs").not('.done').each(function (){
+				jQuery("audio.mejs,video.mejs").not('.done,.mejs__player').each(function (){
 					var me = jQuery(this).addClass('done');
 					var id;
 					if (!(id = me.attr('id'))){
