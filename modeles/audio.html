@@ -4,7 +4,7 @@
 	style='[(#ENV{align}|match{^(left|right)$}|oui)float:#ENV{align};][width:(#GET{largeur})px]'>
 	[(#LOGO_DOCUMENT{vignette}|image_reduire{#GET{largeur},0}|vider_attribut{class})]
 <div class="audio-wrapper"[ style='width:(#GET{largeur})px;max-width:100%;']>
-	<audio class="mejs mejs__player mejs-#ID_DOCUMENT [ mejs-(#ENV{skin})]"
+	<audio class="mejs mejs-#ID_DOCUMENT [ mejs-(#ENV{skin})]"
 	       data-id="[(#VAL{mejs-#ID_DOCUMENT}|concat{#ENV{skin}}|md5)]"
 	       src="#FICHIER"
 	       type="#MIME_TYPE"
