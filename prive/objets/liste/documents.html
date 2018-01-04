@@ -30,7 +30,7 @@
 			<td class='utilisations'><BOUCLE_utilisations_doc(documents_liens){id_document}> </BOUCLE_utilisations_doc> [(#TOTAL_BOUCLE|singulier_ou_pluriel{medias:une_utilisation,medias:des_utilisations})]</B_utilisations_doc></td>
 			<td class='date secondaire'>[(#DATE|affdate_jourcourt)]</td>
 			<td class='id'>[(#AUTORISER{modifier,document,#ID_DOCUMENT}|?{
-				<a href="[(#URL_ECRIRE{document_edit,id_document=#ID_DOCUMENT})]">#ID_DOCUMENT</a>,
+				<a href="[(#URL_ECRIRE{document_edit,id_document=#ID_DOCUMENT})]" title="<:medias:bouton_modifier_document|attribut_html:>">#ID_DOCUMENT</a>,
 				#ID_DOCUMENT
 			})]</td>
 		</tr>
