@@ -149,9 +149,14 @@ function action_ajouter_un_document_dist($id_document, $file, $objet, $id_objet,
 		$type_image = ''; // au pire
 		$champs['titre'] = '';
 		if ($titrer) {
-			$titre = substr($nom_envoye, 0, strrpos($nom_envoye, ".")); // Enlever l'extension du nom du fichier
-			$titre = preg_replace(',[[:punct:][:space:]]+,u', ' ', $titre);
-			$champs['titre'] = preg_replace(',\.([^.]+)$,', '', $titre);
+			if ($titrer_document = charger_fonction('titrer_document', 'inc', true)) {
+				$champs['titre'] = $titrer_document($nom_envoye);
+			}
+			else {
+				$titre = substr($nom_envoye, 0, strrpos($nom_envoye, ".")); // Enlever l'extension du nom du fichier
+				$titre = preg_replace(',[[:punct:][:space:]]+,u', ' ', $titre);
+				$champs['titre'] = preg_replace(',\.([^.]+)$,', '', $titre);
+			}
 		}
 
 		if (!is_array($fichier = fixer_fichier_upload($file, $mode))) {
