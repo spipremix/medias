@@ -22,7 +22,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'aucune_vignette' => 'Nenhuma miniatura',
 
 	// B
-	'bouton_ajouter_document' => 'Incluir ao documento',
+	'bouton_ajouter_document' => 'Incluir um documento',
 	'bouton_ajouter_image' => 'Incluir uma imagem',
 	'bouton_ajouter_image_document' => 'Incluir uma imagem ou um documento',
 	'bouton_attacher_document' => 'Anexar',
@@ -110,6 +110,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_document' => 'Documento',
 	'info_document_indisponible' => 'Este documento não está disponível',
 	'info_documents' => 'Documentos',
+	'info_duree' => 'Duração',
 	'info_gauche_numero_document' => 'Documento número',
 	'info_hauteur' => 'Altura',
 	'info_heure' => 'Tempo',
