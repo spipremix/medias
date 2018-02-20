@@ -56,9 +56,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'descriptif' => 'Descrição',
 	'details_document' => 'Detalhes',
 	'details_document_afficher_masquer' => 'Exibir / ocultar os detalhes do documento',
-	'document_attache_succes' => 'O documento foi adicionado com sucesso',
-	'document_copie_locale_succes' => 'O arquivo foi copiado com sucesso para o site',
-	'document_installe_succes' => 'O arquivo foi carregado com sucesso',
+	'document_attache_succes' => 'O documento foi vinculado corretamente',
+	'document_copie_locale_succes' => 'O arquivo foi transferido corretamente para o site.',
+	'document_installe_succes' => 'O arquivo foi carregado corretamente',
 	'document_vu' => 'Inserido no texto',
 	'documents' => 'Biblioteca de mídia',
 	'documents_brises' => 'Danificados',
@@ -160,8 +160,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'miniature_automatique_active' => 'SPIP criará automaticamente uma miniatura da imagem',
 
 	// N
-	'nb_documents_attache_succes' => '@nb@ documentos foram adicionados',
-	'nb_documents_installe_succes' => '@nb@ arquivos carregados com sucesso',
+	'nb_documents_attache_succes' => '@nb@ documentos foram vinculados',
+	'nb_documents_installe_succes' => '@nb@ arquivos carregados corretamemnte',
 
 	// O
 	'objet_document' => 'Documento',
