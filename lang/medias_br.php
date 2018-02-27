@@ -9,18 +9,68 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
+	// A
+	'aucun_audio' => 'Roudenn-son ebet',
+	'aucun_document' => 'Teul ebet',
+	'aucun_file' => 'Teul ebet',
+	'aucun_image' => 'Skeudenn ebet',
+	'aucun_video' => 'Sekañs ebet',
+	'aucune_utilisation' => 'N’eo ket implijet an teul-mañ',
+	'aucune_vignette' => 'Skeudennig ebet',
+
 	// B
 	'bouton_ajouter_document' => 'Ouzhpennañ un teul',
 	'bouton_ajouter_image' => 'Ouzhpennañ ur skeudenn',
 	'bouton_ajouter_image_document' => 'Ouzhpennañ ur skeudenn pe un teul',
+	'bouton_attacher_document' => 'Kenstagañ',
+	'bouton_copier_local' => 'Eilañ el lec’h ',
+	'bouton_download_depuis' => 'abaoe :',
+	'bouton_download_local' => 'ma urzhiataer ',
+	'bouton_download_par_ftp' => 'ar servijer',
+	'bouton_download_par_mediatheque' => 'ar mediaoueg',
+	'bouton_download_sur_le_web' => 'kenrouedad',
+	'bouton_enlever_document' => 'Distagañ',
+	'bouton_enlever_supprimer_document' => 'Dilemel',
+	'bouton_modifier_document' => 'Kemmañ',
+	'bouton_parcourir' => 'Furchal...',
+	'bouton_refresh_document' => 'Adtresañ an teul',
+	'bouton_remplacer_document' => 'Erlec’hiañ an teul-mañ',
+	'bouton_remplacer_image' => 'Erlec’hiañ ar skeudenn-mañ',
+	'bouton_supprimer' => 'Dilemel',
+	'bouton_supprimer_tous_orphelins' => 'Dilemel an holl emzivadoù',
+	'bouton_upload' => 'Pellgargañ',
 
 	// D
+	'des_audios' => '@nb@ roudennoù-son',
+	'des_documents' => '@nb@ teulioù',
+	'des_files' => '@nb@ teulioù',
+	'des_images' => '@nb@ skeudennoù',
+	'des_utilisations' => '@nb@ implijout',
+	'des_videos' => '@nb@ sekañsoù',
+	'descriptif' => 'Deskrivadur',
+	'details_document' => 'Munudoù',
+	'document_attache_succes' => 'Ouzhpennet eo bet an teul',
+	'document_copie_locale_succes' => 'Eilet eo bet ar restr el lec’h',
+	'document_installe_succes' => 'Karget eo bet ar restr',
+	'document_vu' => 'Ensoc’het en testenn',
+	'documents' => 'Mediaoueg',
+	'documents_brises' => 'Torret',
+	'documents_distants' => 'A-bell',
+	'documents_locaux' => 'Lec’hioù',
+	'documents_non_publies' => 'Ket embannet',
+	'documents_orphelins' => 'Ket implijet',
+	'documents_publies' => 'Embannet',
+	'documents_tous' => 'An holl',
 	'double_clic_inserer_doc' => 'Daouglikit evit ouzhpennañ ar verradenn-mañ en destenn',
 
 	// E
 	'entree_dimensions' => 'Ment :',
 	'entree_titre_document' => 'Titl an teul :',
 	'entree_titre_image' => 'Titl ar skeudenn :',
+	'erreur_aucun_fichier' => 'N’eus kavet teul ebet',
+	'erreur_autorisation' => 'Fazi en aotre.',
+	'erreurs' => '@nb@ fazioù',
+	'erreurs_voir' => 'Gwelet ar @nb@ fazioù',
 
 	// I
 	'image_tourner_180' => 'Treiñ da 180 derez',
