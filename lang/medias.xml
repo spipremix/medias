@@ -45,7 +45,8 @@
 	</langue>
 	<langue code="en_hx" url="https://trad.spip.net/tradlang_module/medias?lang_cible=en_hx" total="172" traduits="9" relire="0" modifs="4" nouveaux="159" pourcent="5.23">
 	</langue>
-	<langue code="eo" url="https://trad.spip.net/tradlang_module/medias?lang_cible=eo" total="172" traduits="29" relire="0" modifs="5" nouveaux="138" pourcent="16.86">
+	<langue code="eo" url="https://trad.spip.net/tradlang_module/medias?lang_cible=eo" total="172" traduits="123" relire="0" modifs="0" nouveaux="49" pourcent="71.51">
+		<traducteur nom="gpl" lien="https://trad.spip.net/auteur/gpl" />
 		<traducteur nom="Matthieu Marcillaud" lien="https://trad.spip.net/auteur/matthieu-marcillaud" />
 	</langue>
 	<langue code="es" url="https://trad.spip.net/tradlang_module/medias?lang_cible=es" total="172" traduits="156" relire="0" modifs="0" nouveaux="16" pourcent="90.70">
