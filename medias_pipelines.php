@@ -356,20 +356,20 @@ function medias_boite_infos($flux) {
 function medias_revisions_chercher_label($flux) {
 	foreach (array('id_vignette', 'hauteur', 'largeur', 'mode', 'taille') as $champ) {
 		if ($flux['args']['champ'] == $champ) {
-			$flux['data'] = _T('medias:info_' . $champ);
+			$flux['data'] = 'medias:info_' . $champ;
 
 			return $flux;
 		}
 	}
 	foreach (array('fichier', 'taille', 'mode', 'credits') as $champ) {
 		if ($flux['args']['champ'] == $champ) {
-			$flux['data'] = _T('medias:label_' . $champ);
+			$flux['data'] = 'medias:label_' . $champ;
 
 			return $flux;
 		}
 	}
 	if ($flux['args']['champ'] == 'distant') {
-		$flux['data'] = $flux['data'] = _T('medias:fichier_distant');
+		$flux['data'] = $flux['data'] = 'medias:fichier_distant';
 	}
 
 	return $flux;
