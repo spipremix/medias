@@ -33,7 +33,6 @@ function metadata_audio($file) {
 	// Scan file - should parse correctly if file is not corrupted
 	$file_info = $getID3->analyze($file);
 
-	header('Content-Type: text/plain');
 	if (isset($file_info['id3v2']['comments']['title'])) {
 		$meta['titre'] = ucfirst(trim(implode(' ',$file_info['id3v2']['comments']['title'])));
 	}
