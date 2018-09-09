@@ -188,7 +188,7 @@ function medias_post_edition($flux) {
 function medias_afficher_complement_objet($flux) {
 	if ($type = $flux['args']['type']
 		and $id = intval($flux['args']['id'])
-		and (autoriser('joindredocument', $type, $id))
+		and (autoriser('voir', 'document', $id))
 	) {
 		$documenter_objet = charger_fonction('documenter_objet', 'inc');
 		$flux['data'] .= $documenter_objet($id, $type);
