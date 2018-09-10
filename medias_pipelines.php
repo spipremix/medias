@@ -187,11 +187,14 @@ function medias_post_edition($flux) {
  */
 function medias_afficher_complement_objet($flux) {
 	if ($type = $flux['args']['type']
-		and $id = intval($flux['args']['id'])
-		and (autoriser('voir', 'document', $id))
+		and $id = intval($flux['args']['id']))
 	) {
-		$documenter_objet = charger_fonction('documenter_objet', 'inc');
-		$flux['data'] .= $documenter_objet($id, $type);
+		include_spip('inc/config');
+		// document autorisé en upload sur cet objet ?
+		if ($type == 'article' or in_array(table_objet_sql($type), explode(',', lire_config('documents_objets', '')))) {
+			$documenter_objet = charger_fonction('documenter_objet', 'inc');
+			$flux['data'] .= $documenter_objet($id, $type);
+		}
 	}
 
 	return $flux;
