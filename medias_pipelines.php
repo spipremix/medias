@@ -187,7 +187,7 @@ function medias_post_edition($flux) {
  */
 function medias_afficher_complement_objet($flux) {
 	if ($type = $flux['args']['type']
-		and $id = intval($flux['args']['id']))
+		and $id = intval($flux['args']['id'])
 	) {
 		include_spip('inc/config');
 		// document autorisé en upload sur cet objet ?
