@@ -80,6 +80,10 @@ function joindre_trouver_fichier_envoye() {
 		if (!strlen($path) or $path == 'http://') {
 			return _T('medias:erreur_indiquez_un_fichier');
 		}
+		include_spip('inc/distant');
+		if (!valider_url_distante($path)) {
+			return _T('medias:erreur_upload_type_interdit', array('nom' => $path));
+		}
 		include_spip('action/ajouter_documents');
 		$infos = renseigner_source_distante($path);
 		if (!is_array($infos)) {
