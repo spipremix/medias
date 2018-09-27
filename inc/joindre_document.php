@@ -310,7 +310,7 @@ function joindre_deballer_lister_zip($path, $tmp_dir) {
 	$archive = new PclZip($path);
 	$archive->extract(
 		PCLZIP_OPT_PATH,
-		_TMP_DIR,
+		$tmp_dir,
 		PCLZIP_CB_PRE_EXTRACT,
 		'callback_deballe_fichier'
 	);
