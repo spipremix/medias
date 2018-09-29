@@ -10,10 +10,10 @@
 		[(#REM) un bouton submit pour enregistrer qui sera declenche par le return
 		il ne doit pas etre hidden pour marcher dans safari
 		]
-		<div style="position:absolute;#LANG_LEFT:-10000px;"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></div>
+		<div style="position:absolute;#LANG_LEFT:-10000px;"><input type='submit' class='btn submit' value='<:bouton_enregistrer:>' /></div>
 		[(#REM) en cas d'appel en pop-in
 				on ajoute un bouton enregistrer en haut pour l'ergonomie
-		][(#ENV{action}|match{popin}|oui)<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>]
+		][(#ENV{action}|match{popin}|oui)<p class="boutons"><input type='submit' class='btn submit' value='<:bouton_enregistrer:>' /></p>]
 		<div class="editer-groupe">
 			<div class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
 				<label for="titre">[(#ENV{mode}|=={document}|?{<:medias:entree_titre_document:>,<:medias:entree_titre_image:>})]</label>[
@@ -31,7 +31,7 @@
 				]
 				(#ENV{fichier})
 				<p class='actions'>
-				[(#ENV{distant}|=={oui}|et{#TAILLE|<{#CONST{_COPIE_LOCALE_MAX_SIZE}}}|oui)<input type='submit' class='submit' name='copier_local' value='<:medias:bouton_copier_local|attribut_html:>' />]
+				[(#ENV{distant}|=={oui}|et{#TAILLE|<{#CONST{_COPIE_LOCALE_MAX_SIZE}}}|oui)<input type='submit' class='btn submit' name='copier_local' value='<:medias:bouton_copier_local|attribut_html:>' />]
 				[(#PIPELINE{editer_document_actions,#ARRAY{args,#ARRAY{id_document,#ENV{id_document,nouveau}},data,''}})]
 				&#91;<a href='#' onclick='jQuery("#changer_fichier_document").toggle("fast");return false;'><:bouton_changer:></a>&#93;
 				</p>
@@ -106,7 +106,7 @@
 		</div>
 		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 		<!--extra-->
-		<p class="boutons"><span class='image_loading'>&nbsp;</span><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+		<p class="boutons"><span class='image_loading'>&nbsp;</span><input type='submit' class='btn submit' value='<:bouton_enregistrer:>' /></p>
 	</div></form>
 	#INCLURE{fond=formulaires/dateur/inc-dateur}]
 </div>

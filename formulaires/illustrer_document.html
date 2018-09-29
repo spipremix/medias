@@ -14,7 +14,7 @@
 				[(#CONFIG{creer_preview}|=={oui}|et{#ENV{media}|=={image}})<br /><:medias:miniature_automatique_active:>]
 				]
 				<p class='actions'>
-				[(#ENV{id_vignette}|oui|et{#AUTORISER{supprimer,document,#ENV{id_vignette}}}) <input type='submit' class='submit' name='supprimer' value='<:medias:bouton_supprimer|attribut_html:>' />]
+				[(#ENV{id_vignette}|oui|et{#AUTORISER{supprimer,document,#ENV{id_vignette}}}) <input type='submit' class='btn submit' name='supprimer' value='<:medias:bouton_supprimer|attribut_html:>' />]
 				[(#ENV{id_vignette}|non|ou{#AUTORISER{modifier,document,#ENV{id_vignette}}}) &#91;<a href='#' onclick='jQuery("#illustrer_document").toggle("fast");return false;'><:bouton_changer:></a>&#93;]
 				<span class='image_loading'>&nbsp;</span>
 				</p>
