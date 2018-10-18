@@ -142,7 +142,7 @@ function inc_marquer_doublons_doc_dist(
 	if ($nouveaux) {
 		// on vérifie que les documents indiqués vus existent réellement tout de même (en cas d'erreur de saisie)
 		$ids = sql_allfetsel('id_document', 'spip_documents', sql_in('id_document', $nouveaux));
-		$ids = array_map('reset', $ids);
+		$ids = array_column($ids, 'id_document');
 		if ($ids) {
 			// Creer le lien s'il n'existe pas déjà
 			objet_associer(array('document' => $ids), array($type => $id), array('vu' => 'oui'));

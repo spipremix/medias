@@ -30,7 +30,10 @@ function medias_check_statuts($affiche = false) {
 
 	// utiliser sql_allfetsel pour clore la requete avant la mise a jour en base sur chaque doc (sqlite)
 	// iterer par groupe de 100 pour ne pas exploser sur les grosses bases
-	$docs = array_map('reset', sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'));
+	$docs = array_column(
+		sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'),
+		'id_document'
+	);
 	while (count($docs)) {
 		include_spip('action/editer_document');
 		foreach ($docs as $id_document) {
@@ -40,7 +43,10 @@ function medias_check_statuts($affiche = false) {
 		if ($affiche) {
 			echo ' .';
 		}
-		$docs = array_map('reset', sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'));
+		$docs = array_column(
+			sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'),
+			'id_document'
+		);
 	}
 }
 

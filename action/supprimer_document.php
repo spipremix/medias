@@ -50,9 +50,9 @@ function action_supprimer_document_dist($id_document = 0) {
 	}
 	// Si c'est un document ayant des documents annexes (sous-titre, ...)
 	// les supprimer aussi
-	$annexes = array_map(
-		'reset',
-		sql_allfetsel('id_document', 'spip_documents_liens', "objet='document' AND id_objet=" . intval($id_document))
+	$annexes = array_column(
+		sql_allfetsel('id_document', 'spip_documents_liens', "objet='document' AND id_objet=" . intval($id_document)),
+		'id_document'
 	);
 	foreach ($annexes as $id) {
 		action_supprimer_document_dist($id);

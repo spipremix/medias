@@ -153,9 +153,9 @@ function medias_post_edition($flux) {
 		if (($flux['args']['action'] and $flux['args']['action'] == 'instituer') or isset($flux['data']['statut'])) {
 			include_spip('base/abstract_sql');
 			$id = $flux['args']['id_objet'];
-			$docs = array_map(
-				'reset',
-				sql_allfetsel('id_document', 'spip_documents_liens', 'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type))
+			$docs = array_column(
+				sql_allfetsel('id_document', 'spip_documents_liens', 'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type)),
+				'id_document'
 			);
 			include_spip('action/editer_document');
 			foreach ($docs as $id_document) {
