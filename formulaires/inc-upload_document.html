@@ -15,19 +15,14 @@
 		<INCLURE{fond=formulaires/methodes_upload/#CLE,env,domid=#GET{domid}} />
 
 		<div class='sourceup'>
-			[(#SET{cpt,1})]
 			<:medias:bouton_download_depuis:>
-			<BOUCLE_methodes_liens(DATA){source tableau,#GET{methodes_upload}}>
-				[(#GET{cpt}|>{1}|oui)
-					[(#VAL{'|'})]
-				]
+			<BOUCLE_methodes_liens(DATA){source tableau,#GET{methodes_upload}}{"|"}>
 				[(#GET{methode_upload}|=={#CLE}|oui)
 					#VALEUR{label_lien}
 				]
 				[(#GET{methode_upload}|=={#CLE}|non)
 					<a href='#' onclick="change_methode('#GET{domid}','#CLE');return false;">#VALEUR{label_lien}</a>
 				]
-				[(#SET{cpt,#GET{cpt}|plus{1}})]
 			</BOUCLE_methodes_liens>
 		</div>
 		<p class='boutons'><input class='btn submit' type="submit" name="joindre_#CLE" value="#VALEUR{label_bouton}"/></p>
