@@ -196,6 +196,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 		// ajout de duree
 		array('maj_tables', 'spip_documents'),
 	);
+	$maj['1.3.6'] = array(
+		// ajout de vtt
+		array('creer_base_types_doc')
+	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
