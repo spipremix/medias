@@ -86,6 +86,7 @@ function ordonner_listes_documents() {
 			// pas de tri possible s'il n'y a qu'un seul élément.
 			if ($(this).find('> .item').length < 2) {
 				$(this).find('.deplacer-document').hide();
+				$(this).parent().find('.tout_desordonner').hide();
 				return true; // continue
 			} else {
 				$(this).find('.deplacer-document').show();
