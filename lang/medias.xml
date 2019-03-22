@@ -91,7 +91,8 @@
 	</langue>
 	<langue code="it_fem" url="https://trad.spip.net/tradlang_module/medias?lang_cible=it_fem" total="172" traduits="31" relire="0" modifs="3" nouveaux="138" pourcent="18.02">
 	</langue>
-	<langue code="ja" url="https://trad.spip.net/tradlang_module/medias?lang_cible=ja" total="172" traduits="24" relire="0" modifs="4" nouveaux="144" pourcent="13.95">
+	<langue code="ja" url="https://trad.spip.net/tradlang_module/medias?lang_cible=ja" total="172" traduits="172" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="origenius" lien="https://trad.spip.net/auteur/origenius" />
 	</langue>
 	<langue code="km" url="https://trad.spip.net/tradlang_module/medias?lang_cible=km" total="172" traduits="28" relire="0" modifs="2" nouveaux="142" pourcent="16.28">
 	</langue>
