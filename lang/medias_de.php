@@ -179,7 +179,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'texte_documents_joints' => 'Sie können die Zuordnung von Dokumenten (Office-Dokumente, Bilder, Multimedia-Dateien, etc.) zu Artikeln und/oder Rubriken erlauben. Diese Dokumente können anschliessend innerhalb von Artikeln verlinkt oder separat angezeigt werden.',
 	'texte_documents_joints_2' => 'Diese Einstellung verhindert weder das Einfügen von Bildern noch von Dokumenten in den Text von Artikeln.',
-	'titre_documents_joints' => 'beigefügte Dokumente',
+	'titre_documents_joints' => 'Dokumente',
 	'titre_page_documents_edit' => 'Dokument bearbeiten: @titre@',
 	'tous_les_medias' => 'Alle Medien',
 	'tout_dossier_upload' => 'Das ganze Verzeichnis @upload@',

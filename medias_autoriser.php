@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2018                                                *
+ *  Copyright (c) 2001-2019                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -31,6 +31,8 @@ function medias_autoriser() {
 /**
  * Autorisation d'administrer la médiathèque
  *
+ * @deprecated
+ *
  * @param  string $faire Action demandée
  * @param  string $type Type d'objet sur lequel appliquer l'action
  * @param  int $id Identifiant de l'objet
@@ -39,6 +41,20 @@ function medias_autoriser() {
  * @return bool          true s'il a le droit, false sinon
  **/
 function autoriser_mediatheque_administrer_dist($faire, $type, $id, $qui, $opt) {
+	return autoriser('voir', '_documents', $id, $qui, $opt);
+}
+
+/**
+ * Autorisation de voir la page documents
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type Type d'objet sur lequel appliquer l'action
+ * @param  int $id Identifiant de l'objet
+ * @param  array $qui Description de l'auteur demandant l'autorisation
+ * @param  array $opt Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+ **/
+function autoriser_documents_voir_dist($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo';
 }
 
@@ -53,7 +69,7 @@ function autoriser_mediatheque_administrer_dist($faire, $type, $id, $qui, $opt) 
  * @return bool          true s'il a le droit, false sinon
  **/
 function autoriser_documents_menu_dist($faire, $type, $id, $qui, $opt) {
-	return autoriser('administrer', 'mediatheque', $id, $qui, $opt);
+	return autoriser('voir', '_documents', $id, $qui, $opt);
 }
 
 /**

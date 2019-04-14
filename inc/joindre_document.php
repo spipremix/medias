@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2018                                                *
+ *  Copyright (c) 2001-2019                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -79,6 +79,10 @@ function joindre_trouver_fichier_envoye() {
 		$path = _request('url');
 		if (!strlen($path) or $path == 'http://') {
 			return _T('medias:erreur_indiquez_un_fichier');
+		}
+		include_spip('inc/distant');
+		if (!valider_url_distante($path)) {
+			return _T('medias:erreur_upload_type_interdit', array('nom' => $path));
 		}
 		include_spip('action/ajouter_documents');
 		$infos = renseigner_source_distante($path);
@@ -306,7 +310,7 @@ function joindre_deballer_lister_zip($path, $tmp_dir) {
 	$archive = new PclZip($path);
 	$archive->extract(
 		PCLZIP_OPT_PATH,
-		_TMP_DIR,
+		$tmp_dir,
 		PCLZIP_CB_PRE_EXTRACT,
 		'callback_deballe_fichier'
 	);

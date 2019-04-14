@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2018                                                *
+ *  Copyright (c) 2001-2019                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -30,7 +30,10 @@ function medias_check_statuts($affiche = false) {
 
 	// utiliser sql_allfetsel pour clore la requete avant la mise a jour en base sur chaque doc (sqlite)
 	// iterer par groupe de 100 pour ne pas exploser sur les grosses bases
-	$docs = array_map('reset', sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'));
+	$docs = array_column(
+		sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'),
+		'id_document'
+	);
 	while (count($docs)) {
 		include_spip('action/editer_document');
 		foreach ($docs as $id_document) {
@@ -40,7 +43,10 @@ function medias_check_statuts($affiche = false) {
 		if ($affiche) {
 			echo ' .';
 		}
-		$docs = array_map('reset', sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'));
+		$docs = array_column(
+			sql_allfetsel('id_document', 'spip_documents', "statut='0'", '', '', '0,100'),
+			'id_document'
+		);
 	}
 }
 
@@ -189,6 +195,10 @@ function medias_upgrade($nom_meta_base_version, $version_cible) {
 	$maj['1.3.5'] = array(
 		// ajout de duree
 		array('maj_tables', 'spip_documents'),
+	);
+	$maj['1.3.6'] = array(
+		// ajout de vtt
+		array('creer_base_types_doc')
 	);
 	include_spip('base/upgrade');
 	include_spip('base/medias');

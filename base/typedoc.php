@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2018                                                *
+ *  Copyright (c) 2001-2019                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -160,6 +160,7 @@ $tables_documents = array(
 	'txt' => 'Texte',
 	'usf' => 'Universal Subtitle Format',
 	'vcf' => 'vCard',
+	'vtt' => 'WebVTT',
 	'wmf' => 'Windows Metafile',
 	'wpl' => 'Windows Media Player Playlist',
 	'xcf' => 'GIMP multi-layer',
@@ -347,6 +348,7 @@ $tables_mime = array(
 	'txt' => 'text/plain',
 	'usf' => 'application/xml',
 	'vcf' => 'text/vcard',
+	'vtt' => 'text/vtt',
 	'xcf' => 'application/x-xcf',
 	'xls' => 'application/vnd.ms-excel',
 	'xlt' => 'application/vnd.ms-excel',

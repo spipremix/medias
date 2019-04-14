@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2018                                                *
+ *  Copyright (c) 2001-2019                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -153,9 +153,9 @@ function medias_post_edition($flux) {
 		if (($flux['args']['action'] and $flux['args']['action'] == 'instituer') or isset($flux['data']['statut'])) {
 			include_spip('base/abstract_sql');
 			$id = $flux['args']['id_objet'];
-			$docs = array_map(
-				'reset',
-				sql_allfetsel('id_document', 'spip_documents_liens', 'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type))
+			$docs = array_column(
+				sql_allfetsel('id_document', 'spip_documents_liens', 'id_objet=' . intval($id) . ' AND objet=' . sql_quote($type)),
+				'id_document'
 			);
 			include_spip('action/editer_document');
 			foreach ($docs as $id_document) {
@@ -188,10 +188,13 @@ function medias_post_edition($flux) {
 function medias_afficher_complement_objet($flux) {
 	if ($type = $flux['args']['type']
 		and $id = intval($flux['args']['id'])
-		and (autoriser('joindredocument', $type, $id))
 	) {
-		$documenter_objet = charger_fonction('documenter_objet', 'inc');
-		$flux['data'] .= $documenter_objet($id, $type);
+		include_spip('inc/config');
+		// document autorisé en upload sur cet objet ?
+		if ($type == 'article' or in_array(table_objet_sql($type), explode(',', lire_config('documents_objets', '')))) {
+			$documenter_objet = charger_fonction('documenter_objet', 'inc');
+			$flux['data'] .= $documenter_objet($id, $type);
+		}
 	}
 
 	return $flux;
