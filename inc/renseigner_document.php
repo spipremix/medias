@@ -3,7 +3,7 @@
 /***************************************************************************\
  *  SPIP, Systeme de publication pour l'internet                           *
  *                                                                         *
- *  Copyright (c) 2001-2018                                                *
+ *  Copyright (c) 2001-2019                                                *
  *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
  *                                                                         *
  *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
@@ -122,13 +122,13 @@ function renseigner_taille_dimension_image($fichier, $ext, $distant = false) {
 			$tmp = _DIR_TMP . md5($fichier);
 			$res = recuperer_url($fichier, array('file' => $tmp, 'taille_max' => 512 * 1024));
 			if (!$res) {
-				spip_log("Echec copie du fichier $fichier");
+				spip_log("Echec copie du fichier $fichier", 'medias');
 
 				return _T('medias:erreur_copie_fichier', array('nom' => $fichier));
 			}
 			$fichier = $tmp;
 		} else {
-			spip_log("Echec copie du fichier $fichier");
+			spip_log("Echec copie du fichier $fichier", 'medias');
 
 			return _T('medias:erreur_copie_fichier', array('nom' => $fichier));
 		}
