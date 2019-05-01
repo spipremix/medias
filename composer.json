@@ -1,0 +1,13 @@
+{
+    "name": "spip/medias",
+    "type": "spip-plugin",
+    "description": "Gestion des medias dans SPIP",
+    "license": "GPL-3.0-or-later",
+    "authors": [{
+        "name": "Collectif SPIP",
+        "email": "spip-dev@rezo.net"
+    }],
+    "require": {
+        "spip/archiviste": "^0.2.2"
+    }
+}

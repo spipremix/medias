@@ -1,0 +1,46 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9ee4475c94ee984185fe84c8fee0f468",
+    "packages": [
+        {
+            "name": "spip/archiviste",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spipremix/archiviste.git",
+                "reference": "50c2bc777a8c289ff43b82cb8fc1a0a64b523869"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spipremix/archiviste/zipball/50c2bc777a8c289ff43b82cb8fc1a0a64b523869",
+                "reference": "50c2bc777a8c289ff43b82cb8fc1a0a64b523869",
+                "shasum": ""
+            },
+            "type": "spip-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Collectif SPIP",
+                    "email": "spip-dev@rezo.net"
+                }
+            ],
+            "description": "Archiviste",
+            "time": "2019-04-14T20:40:42+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
